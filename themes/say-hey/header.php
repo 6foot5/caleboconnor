@@ -28,10 +28,12 @@
 
 	<style type="text/css">
 		.sh-page-bg {
+			/*
 			width: 100%;
 	    height: auto;
-	    background-image: url('<?php echo $bgImgURL; ?>');
+	    background-image: url('<?php //echo $bgImgURL; ?>');
 	    background-size: cover;
+			*/
 		}
 	</style>
 
