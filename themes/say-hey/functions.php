@@ -294,3 +294,7 @@ function artworkCaptioner($workID = 0, $relatedCaption = '', $args = NULL) {
 
   return $relatedCaption;
 }
+
+/* Disable WordPress Admin Bar for all users but admins. */
+
+show_admin_bar(false);
