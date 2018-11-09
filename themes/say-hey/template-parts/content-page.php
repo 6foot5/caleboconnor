@@ -14,7 +14,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php say_hey_post_thumbnail(); ?>
+	<?php //say_hey_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php

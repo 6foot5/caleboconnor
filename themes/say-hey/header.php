@@ -17,10 +17,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
+	<?php	wp_head(); ?>
+
+	<?php
+		$thisID = get_queried_object_id();
+		$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
+	?>
+
+	<meta name="pageID" content="<?php echo $thisID; ?>">
+
+	<style type="text/css">
+		.sh-page-bg {
+			width: 100%;
+	    height: auto;
+	    background-image: url('<?php echo $bgImgURL; ?>');
+	    background-size: cover;
+		}
+	</style>
+
+
 </head>
 
-<body <?php body_class(); ?>>
+<body class="sh-page-bg" <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say-hey' ); ?></a>
 
