@@ -1,4 +1,6 @@
 uploads/**
 upgrade/**
 plugins/**
+node_modules/**
+package-lock.json
 .DS_Store
