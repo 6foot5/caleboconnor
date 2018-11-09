@@ -1,2 +1,4 @@
 uploads/**
+upgrade/**
+plugins/**
 .DS_Store
