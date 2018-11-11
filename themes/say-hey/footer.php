@@ -13,20 +13,13 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'say-hey' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				//printf( esc_html__( 'Proudly powered by %s', 'say-hey' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep">FOO | TER</span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				//printf( esc_html__( 'Theme: %1$s by %2$s.', 'say-hey' ), 'say-hey', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
+	<footer id="colophon" class="sh-footer">
+		<a class="sh-footer__link" href="https://www.facebook.com/OConnorArtStudios/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+		<a class="sh-footer__link" href="https://www.instagram.com/oconnorartstudios/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+		<a class="sh-footer__link" href="https://twitter.com/oconnorartists" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+		<a class="sh-footer__link" href="https://www.pinterest.com/Oconnorarts/" target="_blank"><i class="fa fa-pinterest fa-2x"></i></a>
+		<a class="sh-footer__link" href="<?php echo get_permalink(78); ?>"><i class="fa fa-envelope-o fa-2x"></i></a>
+
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

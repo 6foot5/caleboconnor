@@ -56,6 +56,10 @@
 			'menu-1' => esc_html__( 'Primary', 'say-hey' ),
 		) );
 
+    add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
+    add_image_size('gallery-thumb', 200, 200, true); // (name, width, height, crop? - near center of photo)
+    add_image_size('gallery-category', 400, 400, true); // (name, width, height, crop?)
+
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -91,6 +95,34 @@
 	}
 endif;
 add_action( 'after_setup_theme', 'say_hey_setup' );
+
+/*
+***** SET PAGE BANNER ********
+*/
+
+function pageBanner($args = NULL) {
+
+  if(!$args['photo']) {
+    if(get_field('page_banner_background_image')) {
+      $bgImg = get_field('page_banner_background_image');
+      $args['photo'] = $bgImg['sizes']['page-banner'];
+    }
+    else {
+      $args['photo'] = get_theme_file_uri('/img/fabric-banner.jpg');
+    }
+  }
+
+  ?>
+
+  <div class="sh-banner">
+    <div class="sh-banner__bg-image" style="background-image: url(<?php echo $args['photo']; ?>);">BANNER</div>
+  </div>
+
+  <?php
+}
+
+
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -130,7 +162,10 @@ add_action( 'widgets_init', 'say_hey_widgets_init' );
  */
 function say_hey_scripts() {
 
-	wp_enqueue_style( 'say-hey-style', get_stylesheet_uri() );
+  //wp_enqueue_style('mcptc_main_styles', get_stylesheet_uri(), NULL, microtime());
+  wp_enqueue_style( 'say-hey-style', get_stylesheet_uri(), NULL, microtime());
+  wp_enqueue_style( 'say-hey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
+  wp_enqueue_style( 'say-hey-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 	wp_enqueue_script( 'say-hey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -142,6 +177,7 @@ function say_hey_scripts() {
 
   // See https://wordpress.stackexchange.com/questions/189310/how-to-remove-default-jquery-and-add-js-in-footer
   // Goal is to prevent WP from loading default JQ version for *non-admin* pages (e.g. to use fancy box)
+
   	if ( !is_admin() ) {
 
   	   wp_deregister_script('jquery');
@@ -217,9 +253,12 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
+/*
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+*/
+
 
 function artworkCaptioner($workID = 0, $relatedCaption = '', $args = NULL) {
 

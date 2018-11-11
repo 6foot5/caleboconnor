@@ -20,59 +20,65 @@
 	<?php	wp_head(); ?>
 
 	<?php
-		$thisID = get_queried_object_id();
-		$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
+		if (is_front_page()) {
+			$thisID = get_queried_object_id();
+			$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
+
+			?>
+
+			<style type="text/css">
+				.home {
+					width: 100%;
+			    height: auto;
+			    background-image: url('<?php echo $bgImgURL; ?>');
+			    background-size: cover;
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-attachment: fixed;
+				}
+			</style>
+
+			<?php
+		}
 	?>
 
 	<meta name="pageID" content="<?php echo $thisID; ?>">
 
-	<style type="text/css">
-		.sh-page-bg {
-			/*
-			width: 100%;
-	    height: auto;
-	    background-image: url('<?php //echo $bgImgURL; ?>');
-	    background-size: cover;
-			*/
-		}
-	</style>
 
 
 </head>
 
-<body class="sh-page-bg" <?php body_class(); ?>>
+<body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say-hey' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$say_hey_description = get_bloginfo( 'description', 'display' );
-			if ( $say_hey_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $say_hey_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'say-hey' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	<header class="sh-header">
+    <div class="sh-wrapper">
+      <div class="sh-header__logo">
+				<a href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url') ?>/img/logo-t.png"><br /><span>caleb o'connor</span></a>
+      </div>
+      <div class="sh-header__menu-icon">
 
-	<div id="content" class="site-content">
+      </div>
+      <div class="sh-header__menu-content">
+
+				<nav id="site-navigation" class="main-navigation">
+			    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'say-hey' ); ?></button>
+			    <?php
+			    wp_nav_menu( array(
+			      'theme_location' => 'menu-1',
+			      'menu_id'        => 'primary-menu',
+			    ) );
+			    ?>
+			  </nav><!-- #site-navigation -->
+
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+	<div id="content" class="site-content sh-wrapper">
