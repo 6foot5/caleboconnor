@@ -1,0 +1,27 @@
+
+.gallery-index-item {
+  position: relative;
+  padding: 0;
+  margin-bottom: 2.0rem;
+  border: 0px solid $offBlack;
+  text-align: center;
+
+  &__text-content {
+    position: absolute;
+    padding-top: 88px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    font-size: 2.2rem;
+    color: $offWhite;
+    font-weight: 400;
+    text-align: center;
+    border: 0px solid $offBlack;
+
+
+    @mixin atMedium {
+      padding-top: 0px;
+    }
+  }
+}

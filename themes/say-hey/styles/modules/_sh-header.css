@@ -5,7 +5,7 @@
   padding: 0;
   width: 100%;
   z-index: 2;
-    border-bottom: 1px solid $offBlack;
+  border-bottom: 1px solid $offBlack;
 
   @mixin atMedium {
 /*    background-color: rgba(242,243,244,1); */
@@ -20,7 +20,6 @@
     text-align: center;
     transform: translateX(-50%) scale(.8);
     transform-origin: 50% 0;
-/*    background-color: rgba(242,243,244,1); */
     background-color: $offWhite;
     padding: 20px 36px;
 

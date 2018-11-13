@@ -1,0 +1,136 @@
+
+.row {
+
+  @mixin clearFix;
+
+  &--t-padding  {
+    padding-top: 80px;  /* This is to offset the relative positioning of the images in the testimonials section (they overflow 80px above the top of the containing div) */
+  }
+
+  &--margins  {
+    margin-right: -65px;  /* Basically makes row larger than intended, but effectively removes unnecessary padding on the right, which will be hidden by the overflow property in the wrapper block */
+  }
+
+  &--margins-large  {
+    margin-right: -100px;  /* Basically makes row larger than intended, but effectively removes unnecessary padding on the right, which will be hidden by the overflow property in the wrapper block */
+  }
+
+  &--margins-small {
+    margin-right: -45px;
+  }
+
+  &--margins > div {    /* Apply to all children that are divs */
+    padding-right: 65px;
+  }
+
+  &--margins-large > div {    /* Apply to all children that are divs */
+    padding-right: 100px;
+  }
+
+  &--margins-small > div {    /* Apply to all children that are divs */
+    padding-right: 45px;
+  }
+
+  &__img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__b-margin-until-medium {
+    margin-bottom: 1rem;
+  }
+
+  @mixin atMedium {
+
+    &__b-margin-until-medium {
+      margin-bottom: 0;
+    }
+
+    &__medium-4 {
+      float: left;
+      width: 33.33%;
+    }
+
+    &__medium-6 {
+      float: left;
+      width: 50%;
+    }
+
+    &__medium-4--larger {
+      float: left;
+      width: 37%;
+    }
+
+    &__medium-8 {
+      float: left;
+      width: 66.66%;
+    }
+
+    &__medium-8--smaller {
+      float: left;
+      width: 63%;
+    }
+  }
+
+  @mixin atLarge {
+
+    &__b-margin-until-large {
+      margin-bottom: 0;
+    }
+
+    &__large-4 {
+      float: left;
+      width: 33.33%;
+    }
+
+    &__large-6 {
+      float: left;
+      width: 50%;
+    }
+
+    &__large-4--larger {
+      float: left;
+      width: 37%;
+    }
+
+    &__large-8 {
+      float: left;
+      width: 66.66%;
+    }
+
+    &__large-8--smaller {
+      float: left;
+      width: 63%;
+    }
+  }
+
+  /* BEGIN EQUAL HEIGHT RULES */
+
+  &--equal-height-at-medium {
+
+    @mixin atMedium {
+      display: flex;
+    }
+
+    & > div {
+      float: none;
+      display: flex;
+    }
+
+  }
+
+  &--equal-height-at-large {
+
+    @mixin atLarge {
+      display: flex;
+    }
+
+    & > div {
+      float: none;
+      display: flex;
+    }
+
+  }
+
+}

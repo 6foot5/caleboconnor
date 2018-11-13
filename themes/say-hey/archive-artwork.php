@@ -11,6 +11,10 @@ get_header();
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
+			<div class="aligncenter">
+				<h1>ARTWORK</h1>
+			</div>
+
 		<?php
 			echo '**' . $cat_id->term_id . '**';
 			print_r($cat_id);
@@ -23,9 +27,18 @@ get_header();
 				)
 			);
 
+			$itemCount = 0;
+
+			echo '<div class="row row--margins-large">';
+
       foreach ( $terms as $childTerm ) {
 
-				echo '<p>';
+				if ($itemCount % 2 == 0) {
+
+					echo '<div class="row__medium-6">';
+				}
+
+				echo '<div class="gallery-index-item">';
 				//print_r($childTerm);
 
 
@@ -38,22 +51,39 @@ get_header();
 						$label = $childOf->name . ' - ' . $label;
 					}
 
-          printf( '<a href="%1$s">%2$s</a><br />',
+					$galleryThumbURL = $image['sizes']['gallery-category'];
+
+					$imgTag = '<img src="' . $galleryThumbURL . '" alt="' . $label . '" />';
+
+          printf( '<a href="%1$s">%2$s</a>',
               esc_url( get_term_link( $childTerm->term_id ) ),
-							$label
+							$imgTag
           );
+
 					?>
 
-					<?php  echo wp_get_attachment_image($image['id'], 'medium');
+					<div class="gallery-index-item__text-content">
+						<?php echo $label; ?>
+					</div>
 
-					echo '</p>';
+					<?php  //echo wp_get_attachment_image($image['id'], 'medium');
 
+					echo '</div>';
+
+					if ($itemCount % 2 != 0) {
+						echo '</div>';
+					}
+
+					$itemCount += 1;
       }
+
+			echo '</div>';
+
 		?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+
 get_footer();
