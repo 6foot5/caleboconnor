@@ -1,0 +1,25 @@
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.self-alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.self-alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.self-aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contents-aligncenter {
+  text-align: center;
+}

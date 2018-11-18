@@ -1,14 +1,8 @@
-
+/*
 body {
-  font-family: 'Roboto', sans-serif;
-  color: $offBlack;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  position: relative;
 }
-
-img {
-   max-width: 100%;
-   height: auto;
-}
-
-* {
-  box-sizing: border-box;
-}
+*/

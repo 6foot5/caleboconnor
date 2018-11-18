@@ -53,15 +53,18 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say-hey' ); ?></a>
 
 
-	<header class="sh-header">
-    <div class="sh-wrapper">
-      <div class="sh-header__logo">
-				<a href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url') ?>/img/logo-t.png"><br /><span>caleb o'connor</span></a>
-      </div>
-      <div class="sh-header__menu-icon">
+	<header class="site-header">
 
-      </div>
-      <div class="sh-header__menu-content">
+    <div class="content-area">
+
+      <div class="site-header__logo">
+				<a href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url') ?>/img/logo-t.png"><br /><span>caleb o'connor</span></a>
+      </div><!-- #site-navigation -->
+
+      <div class="site-header__menu-icon">
+      </div><!-- #site-header__menu-icon -->
+
+      <div class="site-header__menu-content">
 
 				<nav id="site-navigation" class="main-navigation">
 			    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'say-hey' ); ?></button>
@@ -71,14 +74,11 @@
 			      'menu_id'        => 'primary-menu',
 			    ) );
 			    ?>
-			  </nav><!-- #site-navigation -->
+			  </nav><!-- .main-navigation -->
 
-      </div>
-    </div>
-  </header>
-
-
+      </div><!-- .site-header__menu-content -->
+    </div><!-- .content-area -->
+  </header><!-- .site-header -->
 
 
-
-	<div id="content" class="site-content sh-wrapper">
+	<div id="content" class="site-content">

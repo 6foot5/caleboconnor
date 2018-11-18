@@ -114,8 +114,8 @@ function pageBanner($args = NULL) {
 
   ?>
 
-  <div class="sh-banner">
-    <div class="sh-banner__bg-image" style="background-image: url(<?php echo $args['photo']; ?>);">BANNER</div>
+  <div class="site-banner">
+    <div class="site-banner__bg-image" style="background-image: url(<?php echo $args['photo']; ?>);"></div>
   </div>
 
   <?php

@@ -16,14 +16,13 @@ get_header();
 ?>
 
 
-	<?php pageBanner();	?>
+<?php pageBanner();	?>
 
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-
+ABOUTTTT
 		<?php
-
 
 		while ( have_posts() ) :
 			the_post();
@@ -40,7 +39,7 @@ get_header();
 
 		?>
 
-ABOUTTTT
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

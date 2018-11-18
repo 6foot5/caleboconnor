@@ -1,5 +1,5 @@
 
-.sh-banner {
+.site-banner {
 
   border-bottom: 10px solid $logoGold;
 
@@ -7,7 +7,8 @@
 
   &__bg-image {
     display: block;
-    height: 350px;
+    background-size: cover;
+    height: 250px;
     z-index: 5;
   }
 

@@ -8,16 +8,18 @@
 get_header();
 ?>
 
+<?php pageBanner();	?>
+
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
 				<h1>ARTWORK</h1>
 			</div>
 
 		<?php
-			echo '**' . $cat_id->term_id . '**';
-			print_r($cat_id);
+			//echo '**' . $cat_id->term_id . '**';
+			//print_r($cat_id);
 
 			$terms = get_terms( array(
 				'taxonomy' => 'gallery',
@@ -29,13 +31,13 @@ get_header();
 
 			$itemCount = 0;
 
-			echo '<div class="row row--margins-large">';
+			//echo '<div class="row row--margins-large">';
 
       foreach ( $terms as $childTerm ) {
 
 				if ($itemCount % 2 == 0) {
 
-					echo '<div class="row__medium-6">';
+					//echo '<div class="row__medium-6">';
 				}
 
 				echo '<div class="gallery-index-item">';
@@ -71,13 +73,13 @@ get_header();
 					echo '</div>';
 
 					if ($itemCount % 2 != 0) {
-						echo '</div>';
+						//echo '</div>';
 					}
 
 					$itemCount += 1;
       }
 
-			echo '</div>';
+			//echo '</div>';
 
 		?>
 
