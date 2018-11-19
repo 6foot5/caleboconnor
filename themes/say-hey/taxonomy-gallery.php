@@ -16,50 +16,88 @@ get_header();
 
 //locate_template( 'archive-artwork.php', true );
 
-$cat_id = get_queried_object();
+$this_cat = get_queried_object();
 
-echo '<h1>' . $cat_id->term_id . '</h1>';
+$children = get_term_children($this_cat->term_id, 'gallery');
 
-$children = get_term_children($cat_id->term_id, 'gallery');
+/*
+echo '<h1>' . $this_cat->term_id . '</h1>';
 
-//print_r($children);
+print_r($children);
 echo '*** ' . empty($children) . ' *** GALLERY TAX';
+*/
 
 ?>
 
+<?php pageBanner();	?>
+
+	<div id="primary" class="content-area content-area--padded-sides">
+		<main id="main" class="site-main contents-aligncenter">
+
+			<div class="aligncenter">
+				<h1>Gallery - <?php echo $this_cat->name; ?></h1>
+			</div>
+
     <?php
+
+    //print_r($this_cat);
+    //echo 'cat-term:' . $this_cat->term_id;
+
 
       if ( !empty($children) ) {    // If this category has subcategories....
 
         $terms = get_terms( array(
           'taxonomy' => 'gallery',
-          'parent' => $cat_id->term_id,
+          'parent' => $this_cat->term_id,
           'hide_empty' => 1
           )
         );
-
-        //echo '<h1>GOT CHILDREN!</h1>';
-        //print_r($terms);
-        //echo '<br /><br />';
-
-        $queried_object = get_queried_object();
+/*
+        echo '<h1>GOT CHILDREN!</h1>';
+        print_r($terms);
+        echo '<br /><br />';
+*/
+        //$queried_object = get_queried_object();
 
         //print_r($queried_object);
         //echo '<br /><br />';
 
         foreach ($terms as $childTerm) {
 
+          echo '<div class="gallery-index-item">';
+
           $image = get_field('term_image', $childTerm);
 
-          //print_r($image);
+          //print_r($childTerm);
           //echo '<br /><br />';
 
+          $galleryThumbURL = $image['sizes']['gallery-category'];
+
+          $label = $childTerm->name;
+
+					$imgTag = '<img width="100%" src="' . $galleryThumbURL . '" alt="' . $label . '" />';
+
+          printf( '<a href="%1$s">%2$s</a>',
+              esc_url( get_term_link( $childTerm->term_id ) ),
+							$imgTag
+          );
+
+          ?>
+
+          <a href="<?php echo esc_url( get_term_link( $childTerm->term_id ) ) ?>">
+            <div class="gallery-index-item__shadow-overlay">
+              <div class="gallery-index-item__text-content">
+                <?php	echo $label; ?>
+              </div>
+            </div>
+          </a>
+
+          <?php
+
+          echo '</div>';
 
 //print_r($childTerm);
           ?>
-
-          <a href="<?php echo get_category_link($childTerm->term_id);?>">Go to <?php echo $childTerm->name;?>!</a>
-          <?php  echo wp_get_attachment_image($image['id'], 'medium'); ?>
 
           <?php
         }
@@ -68,9 +106,9 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
           //echo '<h1>FREE AND CLEAR!</h1>';
 
-          $queried_object = get_queried_object();
+          //$queried_object = get_queried_object();
 
-          print_r($queried_object);
+          //print_r($this_cat);
 
           $relatedWorks = new WP_Query(array(
             'posts_per_page' => -1,
@@ -81,7 +119,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
                   array(
                   'taxonomy' => 'gallery',
                   'field' => 'slug',
-                  'terms' => $queried_object->slug
+                  'terms' => $this_cat->slug
                 )
               )
             )
@@ -112,12 +150,10 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
             <?php
 
-              echo '<hr>';
+              //echo '<hr>';
               //echo '<h2>' . get_the_title() . '</h2>';
               //echo '<ul>';
               ?>
-
-              <p class="imglist" style="max-width: 1000px;">
 
               <?php
 
@@ -144,12 +180,18 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
                 ?>
 
-                <a data-fancybox="gallery" href="<?php the_post_thumbnail_url('large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php the_title(); ?>" src="<?php the_post_thumbnail_url('medium'); ?>"></a>
+                <div class="gallery-thumb">
+
+                  <a data-fancybox="gallery" href="<?php the_post_thumbnail_url('large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php the_title(); ?>" src="<?php the_post_thumbnail_url('gallery-thumb'); ?>">
+
+                  <div class="gallery-thumb__shadow-overlay">
+                  </div></a>
+                </div>
+
 
               <?php
 
             }
-            echo '</p>';
 
           }
 
@@ -178,8 +220,12 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
       ?>
 
+    </main><!-- #main -->
+	</div><!-- #primary -->
+
+
 
 
 <?php
-get_sidebar();
+
 get_footer();

@@ -24,5 +24,6 @@
 @import "modules/_site-content";
 @import "modules/_site-main";
 @import "modules/_gallery-index-item";
+@import "modules/_gallery-thumb";
 @import "modules/_row";
 @import "modules/_site-footer";

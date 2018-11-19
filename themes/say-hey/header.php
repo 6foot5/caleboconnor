@@ -20,8 +20,11 @@
 	<?php	wp_head(); ?>
 
 	<?php
+
+		$thisID = get_queried_object_id();
+		$thisType = get_post_type($thisID);
+
 		if (is_front_page()) {
-			$thisID = get_queried_object_id();
 			$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
 
 			?>
@@ -44,11 +47,18 @@
 
 	<meta name="pageID" content="<?php echo $thisID; ?>">
 
-
+	<meta name="postType" content="<?php echo $thisType; ?>" />
 
 </head>
 
 <body <?php body_class(); ?>>
+
+<?php
+
+if ($thisType != 'post') {
+
+?>
+
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say-hey' ); ?></a>
 
@@ -82,3 +92,8 @@
 
 
 	<div id="content" class="site-content">
+
+<?php
+
+}		// Only output visible header if not on a 'post' type (Magic360)
+?>

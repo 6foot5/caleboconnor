@@ -4,7 +4,7 @@ function sh_tax() {
 
 //function sh_custom_taxonomies() {
 
-     $galleryTaxLabels = array( 
+     $galleryTaxLabels = array(
         'name' => _x( 'Gallery Category', 'say-hey' ),
         'singular_name' => _x( 'Gallery Category', 'say-hey' ),
         'search_items' => _x( 'Search Gallery Categories', 'say-hey' ),
@@ -20,13 +20,13 @@ function sh_tax() {
         'choose_from_most_used' => _x( 'Choose from most used Gallery Categories', 'say-hey' ),
         'menu_name' => _x( 'Gallery Categories', 'say-hey' )
     );
- 
-    $galleryTaxArgs = array( 
+
+    $galleryTaxArgs = array(
         'labels' => $galleryTaxLabels,
         'public' => true,
         'show_in_nav_menus' => true,
-		'show_ui' => true,
-		'show_admin_column' => true,
+		    'show_ui' => true,
+		    'show_admin_column' => true,
         'show_tagcloud' => false,
         'show_admin_column' => true,
         'hierarchical' => true,
@@ -36,7 +36,7 @@ function sh_tax() {
         ),
         'query_var' => true
     );
- 
+
     register_taxonomy( 'gallery', 'artwork', $galleryTaxArgs );
 
 }
@@ -46,7 +46,7 @@ function sh_cpt() {
 
   // Artwork post type
 
-    $artworkLabels = array( 
+    $artworkLabels = array(
         'name' => _x( 'Artwork', 'say-hey' ),
         'singular_name' => _x( 'Work', 'say-hey' ),
         'all_items' => _x( 'All Artwork', 'say-hey' ),
@@ -60,8 +60,8 @@ function sh_cpt() {
         'not_found_in_trash' => _x( 'No artwork found in Trash', 'say-hey' ),
         'menu_name' => _x( 'Artwork', 'say-hey' )
     );
-    
-    $artworkArgs = array( 
+
+    $artworkArgs = array(
         'labels' => $artworkLabels,
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
@@ -85,7 +85,7 @@ function sh_cpt() {
   // Story post type
 
 
-    $storyLabels = array( 
+    $storyLabels = array(
         'name' => _x( 'Stories', 'say-hey' ),
         'singular_name' => _x( 'Story', 'say-hey' ),
         'all_items' => _x( 'All Stories', 'say-hey' ),
@@ -99,8 +99,8 @@ function sh_cpt() {
         'not_found_in_trash' => _x( 'No Stories found in Trash', 'say-hey' ),
         'menu_name' => _x( 'Stories', 'say-hey' )
     );
-    
-    $storyArgs = array( 
+
+    $storyArgs = array(
         'labels' => $storyLabels,
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
@@ -124,9 +124,9 @@ function sh_cpt() {
 
 
   // Process post type
-  
-  
-    $processLabels = array( 
+
+
+    $processLabels = array(
         'name' => _x( 'Processes', 'say-hey' ),
         'singular_name' => _x( 'Process', 'say-hey' ),
         'all_items' => _x( 'All Processes', 'say-hey' ),
@@ -140,8 +140,8 @@ function sh_cpt() {
         'not_found_in_trash' => _x( 'No Processes found in Trash', 'say-hey' ),
         'menu_name' => _x( 'Processes', 'say-hey' ),
     );
-    
-    $processArgs = array( 
+
+    $processArgs = array(
         'labels' => $processLabels,
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
@@ -183,7 +183,7 @@ function generate_taxonomy_rewrite_rules( $wp_rewrite ) {
   $taxonomies = get_taxonomies( array( 'name' => 'gallery', 'public' => true, '_builtin' => false ), 'objects' );
 
   foreach ( $post_types as $post_type ) {
-    
+
     $post_type_name = $post_type->name; // 'artwork'
     $post_type_slug = $post_type->rewrite['slug']; // 'artwork'
 
@@ -199,7 +199,7 @@ function generate_taxonomy_rewrite_rules( $wp_rewrite ) {
       }
     }
   }
-  
+
   $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 
 }

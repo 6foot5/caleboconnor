@@ -7,22 +7,22 @@
  * @package Say_Hey
  */
 
-get_header();
+//get_header();
 ?>
 
 <?php //pageBanner();	?>
 
-	<div id="primary" class="content-area content-area--padded-sides">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main contents-aligncenter">
 
 		<?php
 		while ( have_posts() ) :
+
 			the_post();
 
+			the_post_thumbnail('large');
 
 			the_content();
-			//get_template_part( 'template-parts/content', get_post_type() );
-
 
 		endwhile; // End of the loop.
 		?>
@@ -32,4 +32,4 @@ get_header();
 
 <?php
 //get_sidebar();
-get_footer();
+//get_footer();

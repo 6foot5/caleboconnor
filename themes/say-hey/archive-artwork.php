@@ -10,7 +10,7 @@ get_header();
 
 <?php pageBanner();	?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area content-area--padded-sides">
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
@@ -34,12 +34,17 @@ get_header();
 			//echo '<div class="row row--margins-large">';
 
       foreach ( $terms as $childTerm ) {
+/*
+
+				-->  Displaying gallery thumbs as inline-block divs allows them to naturally
+				flow from one line to the next, obviating the need to row/column logic.
 
 				if ($itemCount % 2 == 0) {
 
 					//echo '<div class="row__medium-6">';
 				}
 
+*/
 				echo '<div class="gallery-index-item">';
 				//print_r($childTerm);
 
@@ -50,12 +55,12 @@ get_header();
 
 					if ($childTerm->parent) {
 						$childOf = get_term($childTerm->parent);
-						$label = $childOf->name . ' - ' . $label;
+						$label = $childOf->name . '<hr>' . $label;
 					}
 
 					$galleryThumbURL = $image['sizes']['gallery-category'];
 
-					$imgTag = '<img src="' . $galleryThumbURL . '" alt="' . $label . '" />';
+					$imgTag = '<img width="100%" src="' . $galleryThumbURL . '" alt="' . $label . '" />';
 
           printf( '<a href="%1$s">%2$s</a>',
               esc_url( get_term_link( $childTerm->term_id ) ),
@@ -64,20 +69,31 @@ get_header();
 
 					?>
 
-					<div class="gallery-index-item__text-content">
-						<?php echo $label; ?>
-					</div>
+					<a href="<?php echo esc_url( get_term_link( $childTerm->term_id ) ) ?>">
+						<div class="gallery-index-item__shadow-overlay">
+							<div class="gallery-index-item__text-content">
+								<?php	echo $label; ?>
+							</div>
+						</div>
+					</a>
 
-					<?php  //echo wp_get_attachment_image($image['id'], 'medium');
+					<?php
 
 					echo '</div>';
+
+					/*
+
+									-->  Displaying gallery thumbs as inline-block divs allows them to naturally
+									flow from one line to the next, obviating the need to row/column logic.
+
 
 					if ($itemCount % 2 != 0) {
 						//echo '</div>';
 					}
 
 					$itemCount += 1;
-      }
+*/
+			}  //for each item in gallery
 
 			//echo '</div>';
 

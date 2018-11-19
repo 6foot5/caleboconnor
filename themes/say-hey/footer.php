@@ -11,6 +11,11 @@
 
 ?>
 
+<?php
+
+if ($thisType != 'post') {
+
+?>
 </div><!-- #content | .site-content-->
 
 	<footer id="colophon" class="site-footer">
@@ -23,6 +28,11 @@
 
 	</footer><!-- #colophon | .site-footer-->
 </div><!-- #page | .site-->
+
+<?php
+
+}		// Only output visible footer if not on a 'post' type (Magic360)
+?>
 
 <?php wp_footer(); ?>
 

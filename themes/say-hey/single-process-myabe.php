@@ -10,9 +10,7 @@
 get_header();
 ?>
 
-<?php pageBanner();	?>
-
-	<div id="primary" class="content-area content-area--padded-sides">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 		<?php
@@ -27,7 +25,6 @@ get_header();
 
 				$relatedArtwork = get_field('related_artwork');
 
-//print_r($relatedArtwork);
 				if ($relatedArtwork) {
 					?>
 
@@ -59,33 +56,26 @@ get_header();
 					<p>
 
 					<?php
-
 						foreach($relatedArtwork as $artwork) {
 
 							$relatedCaption = '';
 							$workID = $artwork->ID;
 
 							$captionArgs = array(
-					        'get_spin' => true,
-					        'get_stories' => true,
-					        'get_processes' => true
-					    );
+									'get_spin' => true,
+									'get_stories' => true,
+									'get_processes' => true
+							);
 
 							$relatedCaption = artworkCaptioner($workID, $relatedCaption, $captionArgs);
 
 					?>
 
-					<div class="gallery-thumb">
+							<a data-fancybox="gallery" href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($workID, 'thumbnail'); ?>"></a>
 
-							<a data-fancybox="gallery" href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($artwork->ID, 'gallery-thumb'); ?>">
-
-							<div class="gallery-thumb__shadow-overlay">
-							</div></a>
-
-					</div>
+              
 
 					<?php
-
 						}
 						?>
 
@@ -120,5 +110,5 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-//get_sidebar();
+get_sidebar();
 get_footer();

@@ -10,8 +10,12 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
+<?php pageBanner();	?>
+
+	<div id="primary" class="content-area content-area--padded-sides">
 		<main id="main" class="site-main">
+
+
 
 		<?php if ( have_posts() ) : ?>
 
@@ -34,6 +38,8 @@ get_header();
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 
+				//the_excerpt();
+
 			endwhile;
 
 			the_posts_navigation();
@@ -49,5 +55,5 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();

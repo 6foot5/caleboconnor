@@ -10,7 +10,9 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
+<?php pageBanner();	?>
+
+	<div id="primary" class="content-area content-area--padded-sides">
 		<main id="main" class="site-main">
 
 		<?php
@@ -73,9 +75,17 @@ get_header();
 
 					?>
 
-							<a data-fancybox="gallery" href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($artwork->ID, 'thumbnail'); ?>"></a>
+					<div class="gallery-thumb">
+
+							<a data-fancybox="gallery" href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($artwork->ID, 'gallery-thumb'); ?>">
+
+							<div class="gallery-thumb__shadow-overlay">
+							</div></a>
+
+					</div>
 
 					<?php
+
 						}
 						?>
 
@@ -110,5 +120,5 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();

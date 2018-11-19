@@ -33,9 +33,11 @@
 
 	<div class="entry-content">
 		<?php
+		//the_excerpt();
+
 		the_content( sprintf(
 			wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers */
+
 				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'say-hey' ),
 				array(
 					'span' => array(
@@ -46,10 +48,14 @@
 			get_the_title()
 		) );
 
+
+						/* translators: %s: Name of current post. Only visible to screen readers */
+/*
 		wp_link_pages( array(
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'say-hey' ),
 			'after'  => '</div>',
 		) );
+		*/
 		?>
 	</div><!-- .entry-content -->
 
