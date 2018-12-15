@@ -99,7 +99,7 @@ get_header();
 
 						$('[data-fancybox="gallery"]').fancybox({
 								thumbs : {
-									autoStart : true,
+									autoStart : false,
 									axis      : 'x'
 							}
 						})

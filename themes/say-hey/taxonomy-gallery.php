@@ -180,13 +180,27 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
                 ?>
 
-                <div class="gallery-thumb">
+								<div class="gallery-thumb">
+									<div class="gallery-thumb__image">
 
-                  <a data-fancybox="gallery" href="<?php the_post_thumbnail_url('large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php the_title(); ?>" src="<?php the_post_thumbnail_url('gallery-thumb'); ?>">
+	                  <a
+											href = "<?php the_post_thumbnail_url('large'); ?>"
+											data-fancybox = "gallery"
+											data-caption = "<a data-fancybox data-type='iframe' href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
+												<img
+													alt="<?php the_title(); ?>"
+													src="<?php the_post_thumbnail_url('gallery-thumb'); ?>">
 
-                  <div class="gallery-thumb__shadow-overlay">
-                  </div></a>
-                </div>
+		                  <div class="gallery-thumb__shadow-overlay">
+		                  </div>
+
+										</a>
+	                </div>
+									<div class="gallery-thumb__caption">
+										<?php the_title(); ?>										
+									</div>
+								</div>
+
 
 
               <?php
@@ -205,7 +219,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
                 $('[data-fancybox="gallery"]').fancybox({
             				thumbs : {
-          			    	autoStart : true,
+          			    	autoStart : false,
           			    	axis      : 'x'
           				}
           			})

@@ -69,6 +69,7 @@ function sh_cpt() {
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,
+        'show_in_rest' => false,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
         'has_archive' => true,
@@ -108,6 +109,7 @@ function sh_cpt() {
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,
+        'show_in_rest' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
         'has_archive' => true,
@@ -117,7 +119,7 @@ function sh_cpt() {
         'capability_type' => 'post',
         'taxonomies' => array('categories'),
         'menu_icon' => 'dashicons-book',
-        'menu_position' => 6
+        'menu_position' => 7
 
     );
 
@@ -149,6 +151,7 @@ function sh_cpt() {
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,
+        'show_in_rest' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
         'has_archive' => true,
@@ -158,12 +161,52 @@ function sh_cpt() {
         'capability_type' => 'post',
         'taxonomies' => array('categories'),
         'menu_icon' => 'dashicons-lightbulb',
-        'menu_position' => 7
+        'menu_position' => 8
     );
+
+
+    $spinLabels = array(
+        'name' => _x( 'Spins', 'say-hey' ),
+        'singular_name' => _x( '360 Spin', 'say-hey' ),
+        'all_items' => _x( 'All 360 Spins', 'say-hey' ),
+        'add_new' => _x( 'Add New 360 Spin', 'say-hey' ),
+        'add_new_item' => _x( 'Add New 360 Spin', 'say-hey' ),
+        'edit_item' => _x( 'Edit 360 Spin', 'say-hey' ),
+        'new_item' => _x( 'New 360 Spin', 'say-hey' ),
+        'view_item' => _x( 'View 360 Spins', 'say-hey' ),
+        'search_items' => _x( 'Search 360 Spins', 'say-hey' ),
+        'not_found' => _x( 'No 360 Spins found', 'say-hey' ),
+        'not_found_in_trash' => _x( 'No 360 Spins found in Trash', 'say-hey' ),
+        'menu_name' => _x( '360 Spins', 'say-hey' ),
+    );
+
+    $spinArgs = array(
+        'labels' => $spinLabels,
+        'hierarchical' => false,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_rest' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array( 'slug' => 'spins'),
+        'capability_type' => 'post',
+        'taxonomies' => array('categories'),
+        'menu_icon' => 'dashicons-image-rotate',
+        'menu_position' => 6
+    );
+
+
 
 	register_post_type('artwork', $artworkArgs);
 	register_post_type('story', $storyArgs);
-	register_post_type('process', $processArgs);
+  register_post_type('process', $processArgs);
+  register_post_type('spin', $spinArgs);
 
 }
 

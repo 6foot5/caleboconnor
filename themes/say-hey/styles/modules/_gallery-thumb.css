@@ -1,15 +1,29 @@
 
+
+
 .gallery-thumb {
   position: relative;
   display: inline-block;
   width: 200px;
   padding: 0;
-  margin-bottom: 1.0rem;
-  margin-right: 1.0rem;
-  margin-left: 1.0rem;
-  border: 0px solid yellow;
+  margin-bottom: 1.2rem;
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
+  border: 0px solid black;
   text-align: center;
 
+  &__caption {
+    z-index: 10;
+    display: block;
+    border: 0px solid yellow;
+  }
+
+  &__image {
+    padding: 0;
+    width: 200px;
+    text-align: center;
+    border: 0px solid red;
+  }
 
   &__shadow-overlay {
     z-index: 5;
@@ -21,6 +35,7 @@
     height: 100%;
     padding: 0;
     margin: 0;
+    border: 0px solid blue;
   }
 
   &__shadow-overlay:hover {

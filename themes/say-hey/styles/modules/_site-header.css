@@ -7,7 +7,7 @@
   z-index: 2;
   border-bottom: 1px solid $offBlack;
 
-  @mixin atMedium {
+  @mixin atSmall {
 /*    background-color: rgba(242,243,244,1); */
     background-color: $offWhite;
   }
@@ -23,7 +23,7 @@
     background-color: $offWhite;
     padding: 20px 36px;
 
-    @mixin atMedium {
+    @mixin atSmall {
       left: auto;
       transform: translateX(0);
     }

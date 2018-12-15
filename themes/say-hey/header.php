@@ -55,7 +55,7 @@
 
 <?php
 
-if ($thisType != 'post') {
+if ($thisType != 'spin') {
 
 ?>
 
@@ -95,5 +95,5 @@ if ($thisType != 'post') {
 
 <?php
 
-}		// Only output visible header if not on a 'post' type (Magic360)
+}		// Only output visible header if not on a 'spin' type (Magic360)
 ?>

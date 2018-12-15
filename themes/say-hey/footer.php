@@ -13,7 +13,12 @@
 
 <?php
 
-if ($thisType != 'post') {
+$thisID = get_queried_object_id();
+$thisType = get_post_type($thisID);
+
+//echo '****' . $thisType . '***';
+
+if ($thisType != 'spin') {
 
 ?>
 </div><!-- #content | .site-content-->
@@ -31,7 +36,7 @@ if ($thisType != 'post') {
 
 <?php
 
-}		// Only output visible footer if not on a 'post' type (Magic360)
+}		// Only output visible footer if not on a 'spin' type (Magic360)
 ?>
 
 <?php wp_footer(); ?>

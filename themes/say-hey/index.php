@@ -50,7 +50,7 @@ get_header();
 
 		endif;
 		?>
-
+INDEX!
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
