@@ -59,6 +59,7 @@
     add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
     add_image_size('gallery-thumb', 200, 200, true); // (name, width, height, crop? - near center of photo)
     add_image_size('gallery-category', 400, 400, true); // (name, width, height, crop?)
+    add_image_size('admin-preview', 55, 55, true); // (name, width, height, crop?)
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -337,3 +338,90 @@ function artworkCaptioner($workID = 0, $relatedCaption = '', $args = NULL) {
 /* Disable WordPress Admin Bar for all users but admins. */
 
 show_admin_bar(false);
+
+/*
+Make admin interface more useful by showing featured image thumbnails in post listings
+*/
+
+  // GET FEATURED IMAGE
+  function ST4_get_featured_image($post_ID) {
+      $post_thumbnail_id = get_post_thumbnail_id($post_ID);
+      if ($post_thumbnail_id) {
+          $post_thumbnail_img = wp_get_attachment_image_src($post_thumbnail_id, 'admin-preview');
+          return $post_thumbnail_img[0];
+      }
+  }
+
+  // ADD NEW COLUMN
+  function ST4_columns_head($defaults) {
+      $defaults['featured_image'] = 'Featured Image';
+      return $defaults;
+  }
+
+  // SHOW THE FEATURED IMAGE
+  function ST4_columns_content($column_name, $post_ID) {
+      if ($column_name == 'featured_image') {
+          $post_featured_image = ST4_get_featured_image($post_ID);
+          if ($post_featured_image) {
+              echo '<img src="' . $post_featured_image . '" />';
+          }
+      }
+  }
+
+  add_filter('manage_artwork_posts_columns', 'ST4_columns_head');
+  add_action('manage_artwork_posts_custom_column', 'ST4_columns_content', 10, 2);
+
+  add_filter('manage_spin_posts_columns', 'ST4_columns_head');
+  add_action('manage_spin_posts_custom_column', 'ST4_columns_content', 10, 2);
+
+/*
+END - Show featured image thumbnails in admin post listings
+*/
+
+
+
+/**
+ * Display a custom taxonomy dropdown in admin
+ * @author Mike Hemberger
+ * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+ */
+
+  add_action('restrict_manage_posts', 'tsm_filter_post_type_by_taxonomy');
+
+  function tsm_filter_post_type_by_taxonomy() {
+  	global $typenow;
+  	$post_type = 'artwork';
+  	$taxonomy  = 'gallery';
+  	if ($typenow == $post_type) {
+  		$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
+  		$info_taxonomy = get_taxonomy($taxonomy);
+
+  		wp_dropdown_categories(array(
+  			'show_option_all' => __("{$info_taxonomy->labels->all_items}"),
+  			'taxonomy'        => $taxonomy,
+  			'name'            => $taxonomy,
+  			'orderby'         => 'name',
+  			'selected'        => $selected,
+  			'show_count'      => false,
+  			'hide_empty'      => false,
+  		));
+  	};
+  }
+
+  /**
+   * Filter posts by taxonomy in admin
+   * @author  Mike Hemberger
+   * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+   */
+  add_filter('parse_query', 'tsm_convert_id_to_term_in_query');
+
+  function tsm_convert_id_to_term_in_query($query) {
+  	global $pagenow;
+  	$post_type = 'artwork';
+  	$taxonomy  = 'gallery';
+  	$q_vars    = &$query->query_vars;
+  	if ( $pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0 ) {
+  		$term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);
+  		$q_vars[$taxonomy] = $term->slug;
+  	}
+  }
