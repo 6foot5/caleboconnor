@@ -18,7 +18,7 @@ $thisType = get_post_type($thisID);
 
 //echo '****' . $thisType . '***';
 
-if ($thisType != 'spin') {
+if ($thisType != 'spin' && !is_front_page()) {
 
 ?>
 </div><!-- #content | .site-content-->

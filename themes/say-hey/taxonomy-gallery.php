@@ -29,7 +29,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
 ?>
 
-<?php pageBanner();	?>
+<?php //pageBanner();	?>
 
 	<div id="primary" class="content-area content-area--padded-sides">
 		<main id="main" class="site-main contents-aligncenter">
@@ -197,7 +197,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 										</a>
 	                </div>
 									<div class="gallery-thumb__caption">
-										<?php the_title(); ?>										
+										<?php the_title(); ?>
 									</div>
 								</div>
 

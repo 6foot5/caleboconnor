@@ -10,12 +10,12 @@
 get_header();
 ?>
 
-<?php pageBanner();	?>
+<?php //pageBanner();	?>
 
 	<div id="primary" class="content-area content-area--padded-sides">
 		<main id="main" class="site-main">
 
-ARCHIVE
+ARCHIVE?!?!
 
 		<?php if ( have_posts() ) : ?>
 

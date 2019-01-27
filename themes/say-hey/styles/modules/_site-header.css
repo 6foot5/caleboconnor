@@ -1,32 +1,100 @@
 
 .site-header {
 
-  position: absolute;
+  background-color: $offWhite;
+  top: 0;
   padding: 0;
   width: 100%;
-  z-index: 2;
-  border-bottom: 1px solid $offBlack;
+  height: auto;
+  border: 0px solid green;
 
   @mixin atSmall {
 /*    background-color: rgba(242,243,244,1); */
     background-color: $offWhite;
+    border-bottom: 0px solid $offBlack;
+  }
+
+  &--is-expanded {
+    border-bottom: 0px solid $offBlack;
+  }
+
+
+  &__menu-content {
+
+    &--is-visible {
+      z-index: 10;
+      display: block;
+    }
+
+    @mixin atSmall {
+      float: right;
+    }
+
   }
 
   &__logo {
 
-    position: absolute;
-    top: 0;
-    left: 50%;
-    text-align: center;
-    transform: translateX(-50%) scale(.8);
-    transform-origin: 50% 0;
+    position: relative;
     background-color: $offWhite;
-    padding: 20px 36px;
+    border: 0px solid orange;
+    text-align: right;
+    display: inline-block;
 
     @mixin atSmall {
+      display: block;
       left: auto;
-      transform: translateX(0);
+      position: absolute;
+      top: 0;
+      width: auto;
+      z-index: 1;
+      text-align: center;
     }
+
+    &__image {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      min-height: 120px;
+      background-color: $offWhite;
+      border: 0px solid purple;
+      display: none;
+
+      @mixin atSmall {
+        display: block;
+        margin-top: 10px;
+        left: auto;
+        width: auto;
+        min-height: 100px;
+        background-color: transparent;
+        background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        z-index: 1;
+      }
+    }
+
+    &__text {
+      display: inline-block;
+      padding: 10px 40px 10px 40px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border: 0px solid green;
+
+      @mixin atSmall {
+        display: block;
+        padding: 10px 30px 10px 30px;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__logo:hover {
+    color: $logoGold;
   }
 
 }

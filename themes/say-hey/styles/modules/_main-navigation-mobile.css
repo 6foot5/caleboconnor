@@ -1,0 +1,77 @@
+
+/*
+  MEDIA QUERY FOR MOBILE MENU PROPERTIES
+*/
+
+@media screen and (max-width: 600px) {
+
+  .main-navigation {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    background-color: $offWhite;
+    border: 0px solid black;
+    text-align: center;
+    font-size: 0; /* remove weird space below the inline-block .menu-header-container */
+  }
+
+  .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+    display: block;
+    text-align: left;
+    border: 0px solid red;
+    font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
+    margin: 0;
+  }
+
+  .main-navigation ul,
+  .main-navigation ul ul,
+  .main-navigation ul ul ul {
+    display: block;
+    position: static;
+  }
+
+  .main-navigation ul ul {
+    background: none;
+    margin-left: 25px;
+  }
+
+  .main-navigation ul ul ul {
+    background: none;
+    margin-left: 50px;
+  }
+
+  .main-navigation > div > ul {
+    padding: 0;
+  }
+
+  .main-navigation > div > ul > li {
+    display: block;
+    float: none;
+    margin-top: 0px;
+  }
+
+  .main-navigation ul li {
+    border: 0px solid blue;
+  }
+
+  .main-navigation ul li:hover {
+    background: none;
+  }
+
+  .main-navigation > div > ul > li > a {
+    padding: 10px 15px;
+  }
+
+  .main-navigation ul li a {
+    width: auto;
+    display: block;
+    margin: 0px 0px;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+  }
+
+  .main-navigation ul li a:hover {
+    background-color: $hoverGrey;
+  }
+
+}

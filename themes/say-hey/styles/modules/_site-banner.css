@@ -1,9 +1,14 @@
 
 .site-banner {
 
-  border-bottom: 10px solid $logoGold;
+  display: none;
 
-  position: relative;
+  @mixin atSmall {
+    display: block;
+    border-bottom: 5px solid $logoGold;
+    position: relative;
+    margin-top: 0px;
+  }
 
   &__bg-image {
     display: block;

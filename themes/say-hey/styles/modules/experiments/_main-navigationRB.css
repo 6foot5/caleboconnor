@@ -1,0 +1,417 @@
+
+nav {
+	background-color: $offWhite;
+	position: absolute;
+	top: 0px;
+	padding: 10px 0 0 0 ;
+	width: 100%;
+	border: 0px solid purple;
+}
+
+nav::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+nav ul li:hover {
+	background-color: #f0f0f0;
+}
+
+nav ul li:hover > ul {
+	display: block;
+}
+
+nav ul li a {
+	display: inline-block;
+	padding: 10px 30px 10px 15px;
+	text-decoration: none;
+	position: relative;
+	width: 100%;
+
+	@mixin atSmall {
+		max-width: 200px;
+	}
+}
+
+nav ul li a: visited {
+	color: #fff;
+}
+
+nav ul li a: hover {
+	background-color: #6d0911;
+}
+
+nav ul ul {
+	position: absolute;
+	top: 100%;
+	background-color: #fff;
+	display: none;
+}
+
+nav ul ul li {
+	position: relative;
+}
+
+nav ul ul ul {
+	left: 100%;
+	top: 0px;
+}
+
+
+
+nav > div > ul {
+	padding-left: 200px;
+}
+
+nav > div > ul > li {
+	float: left;
+}
+
+nav > div > ul > li > a {
+	width: auto;
+	padding: 10px 20px 15px 20px;
+}
+
+
+nav a[aria-haspopup="true"]::after {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: 16px;
+	right: 15px;
+	border-top: 4px solid trasparent;
+	border-bottom: 4px solid trasparent;
+	border-left: 4px solid black;
+}
+
+nav > ul > li > a[aria-haspopup="true"]::after {
+	border-left: 4px solid transparent;
+	border-right: 4px solid trasparent;
+	border-top: 4px solid black;
+	left: 20px;
+	right: auto;
+	bottom: 6px;
+	top: auto;
+}
+
+/*
+For logo, use background-size: contain (SVG will scale to size of div container)
+
+*/
+
+/* Menu toggle */
+
+.menu-toggle {
+	background-color: transparent;
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #222;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.5;
+	margin: 1px auto 2px;
+	padding: 1em;
+	text-shadow: none;
+	cursor: pointer;
+	display: none;
+
+	@mixin atSmall {
+		display: inline-block;
+	}
+}
+
+
+
+/* Display the menu toggle when JavaScript is available. */
+
+
+
+.toggled-on .menu-toggle .icon-bars,
+.menu-toggle .icon-close {
+	display: none;
+}
+
+.toggled-on .menu-toggle .icon-close {
+	display: inline-block;
+}
+
+
+@media screen and (max-width: 600px) {
+
+	.menu-toggle {
+		display: inline-block;
+	}
+
+	nav {
+		margin-top: 10px;
+		position: relative;
+		width: auto;
+		background-color: $offWhite;
+		border: 0px solid red;
+	}
+
+	nav > div > ul {
+		padding-left: 10px;
+	}
+
+	nav ul,
+	nav ul ul,
+	nav ul ul ul {
+		display: block;
+		position: static;
+	}
+
+	nav > div > ul {
+		padding: 0;
+	}
+
+	nav > div > ul > li {
+		float: none;
+		margin-top: 5px;
+		border: 0px solid yellow;
+	}
+
+	nav ul li:hover {
+		background: none;
+	}
+
+	nav ul li a {
+		display: block;
+		margin: 8px 10px;
+		padding: 6px 15px;
+		border: 1px solid rgba(0,0,0,.25);
+		width: 100%;
+	}
+
+	nav ul li a:hover {
+		background-color: rgba(0,0,0,.8);
+	}
+
+	nav ul li:hover > ul {
+		display: none;
+	}
+
+	nav ul ul {
+		background: none;
+	}
+
+	nav ul ul li a {
+		margin-left: 30px;
+	}
+
+	nav ul ul ul li a {
+		margin-left: 60px;
+	}
+
+	nav a[aria-haspopup="true"]::after {
+		display: none;
+	}
+
+	.menu-header-container {
+		display: none;
+	}
+
+	.site-nav--is-expanded {
+		display: block;
+	}
+
+	.sub-menu {
+		display: none;
+	}
+
+}
+
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+/*
+.main-navigation {
+	background-color: $offWhite;
+	position: absolute;
+	top: 0px;
+	padding: 10px 0 0 0 ;
+	width: 100%;
+	border: 0px solid purple;
+}
+
+.main-navigation ul {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.main-navigation ul ul {
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+	float: left;
+	position: absolute;
+	top: 100%;
+	left: -999em;
+	z-index: 99999;
+	background: $offWhite;
+}
+
+.main-navigation ul ul li {
+  border-top: .5px solid #bbb;
+}
+
+.main-navigation ul ul ul {
+	left: -999em;
+	top: 0;
+}
+
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
+	left: 100%;
+}
+
+.main-navigation ul ul a {
+	width: 200px;
+}
+
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+	left: auto;
+}
+
+.main-navigation li {
+	list-style: none;
+	float: left;
+	padding-left: 30px;
+	padding-right: 30px;
+	position: relative;
+}
+
+.main-navigation li:hover {
+  color: $logoGold;
+  background-color: $hoverGrey;
+}
+
+
+.main-navigation a {
+	color: $offBlack;
+	text-decoration: none;
+	font-weight: 400;
+	display: block;
+	padding: 20px 0;
+}
+
+.main-navigation a:hover {
+  color: $logoGold;
+}
+*/
+
+/* Small menu.
+.menu-toggle,
+nav.toggled ul {
+	display: block;
+}
+*/
+/*
+.js .menu-toggle {
+	display: block;
+	@mixin atMedium {
+		display: none;
+	}
+}
+
+.toggled-on .menu-toggle .icon-bars,
+.menu-toggle .icon-close {
+	display: none;
+}
+
+.toggled-on .menu-toggle .icon-close {
+	display: inline-block;
+}
+*/
+@media screen and (max-width: 37.5em) {
+/*
+	.main-navigation ul {
+		display: block;
+	}
+
+	.menu-toggle {
+		display: none;
+	}
+*/
+}
+/*
+.toggled-on {
+	display: block;
+}
+
+
+.js nav.toggled-on > div > ul {
+	display: block;
+}
+
+nav ul ul.toggled-on {
+	display: block;
+}
+
+nav ul.nav-menu {
+	display: block;
+}
+*/
+.toggled-on .menu-toggle .icon-bars,
+.menu-toggle .icon-close {
+	display: none;
+}
+
+.toggled-on .menu-toggle .icon-close {
+	display: inline-block;
+}
+
+.dropdown-toggle {
+	background-color: transparent;
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #222;
+	display: block;
+	font-size: 16px;
+	right: -0.5em;
+	line-height: 1.5;
+	margin: 0 auto;
+	padding: 0.5em;
+	position: absolute;
+	text-shadow: none;
+	top: 0;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+	background: transparent;
+}
+
+.dropdown-toggle:focus {
+	outline: thin dotted;
+}
+
+.dropdown-toggle.toggled-on .icon {
+	-ms-transform: rotate(-180deg); /* IE 9 */
+	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
+	transform: rotate(-180deg);
+}
+
+
+
+
+.current_page_item > a,
+.current-menu-item > a,
+.current_page_ancestor > a,
+.current-menu-ancestor > a {
+	text-decoration: underline;
+}

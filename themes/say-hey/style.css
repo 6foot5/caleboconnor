@@ -728,7 +728,10 @@ object {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  border: 0px solid orange;
+  border: 0px solid yellow;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
 
 }
 .content-area--padded-sides {
@@ -740,205 +743,356 @@ object {
    /*height: 100%; */
    min-height: 100%;
    position: relative;
+   padding: 0;
  }
 .site-header {
 
-  position: absolute;
+  background-color: #F2F3F4;
+  top: 0;
   padding: 0;
   width: 100%;
-  z-index: 2;
-  border-bottom: 1px solid #414A4C;
+  height: auto;
+  border: 0px solid green;
 
 }
 @media (min-width: 600px) {
 .site-header {
 /*    background-color: rgba(242,243,244,1); */
-    background-color: #F2F3F4
+    background-color: #F2F3F4;
+    border-bottom: 0px solid #414A4C
 
 }
   }
+.site-header--is-expanded {
+    border-bottom: 0px solid #414A4C;
+  }
+.site-header__menu-content--is-visible {
+      z-index: 10;
+      display: block;
+    }
+@media (min-width: 600px) {
+.site-header__menu-content {
+      float: right
+
+  }
+  }
 .site-header__logo {
 
-    position: absolute;
-    top: 0;
-    left: 50%;
-    text-align: center;
-    -webkit-transform: translateX(-50%) scale(.8);
-            transform: translateX(-50%) scale(.8);
-    -webkit-transform-origin: 50% 0;
-            transform-origin: 50% 0;
+    position: relative;
     background-color: #F2F3F4;
-    padding: 20px 36px;
+    border: 0px solid orange;
+    text-align: right;
+    display: inline-block;
   }
 @media (min-width: 600px) {
 .site-header__logo {
+      display: block;
       left: auto;
-      -webkit-transform: translateX(0);
-              transform: translateX(0)
+      position: absolute;
+      top: 0;
+      width: auto;
+      z-index: 1;
+      text-align: center
   }
   }
-/*--------------------------------------------------------------
-## Menus
---------------------------------------------------------------*/
-.main-navigation {
-	float: right;
-}
-.main-navigation ul {
-	display: none;
-	list-style: none;
-	margin: 0;
-	padding-left: 0;
-}
-.main-navigation ul ul {
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	float: left;
-	position: absolute;
-	top: 100%;
-	left: -999em;
-	z-index: 99999;
-	background: #F2F3F4;
-}
-.main-navigation ul ul li {
-  border-top: .5px solid #bbb;
-}
-.main-navigation ul ul ul {
-	left: -999em;
-	top: 0;
-}
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-	left: 100%;
-}
-.main-navigation ul ul a {
-	width: 200px;
-}
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-	left: auto;
-}
-.main-navigation li {
-	list-style: none;
-	float: left;
-	padding-left: 30px;
-	padding-right: 30px;
-	position: relative;
-}
-.main-navigation li:hover {
-  color: #b38c40;
-  background-color: #DDDDDD;
-}
-.main-navigation a {
-	color: #414A4C;
-	text-decoration: none;
-	font-weight: 400;
-	display: block;
-	padding: 25px 0;
-}
-.main-navigation a:hover {
-  color: #b38c40;
-}
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
-		display: block;
-	}
-}
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
-.post-navigation {
-	margin: 0 0 1.5em;
-	overflow: hidden;
-}
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-	float: left;
-	width: 50%;
-}
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
-}
+.site-header__logo__image {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      min-height: 120px;
+      background-color: #F2F3F4;
+      border: 0px solid purple;
+      display: none;
+    }
+@media (min-width: 600px) {
+.site-header__logo__image {
+        display: block;
+        margin-top: 10px;
+        left: auto;
+        width: auto;
+        min-height: 100px;
+        background-color: transparent;
+        background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        z-index: 1
+    }
+  }
+.site-header__logo__text {
+      display: inline-block;
+      padding: 10px 40px 10px 40px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border: 0px solid green;
+    }
+@media (min-width: 600px) {
+.site-header__logo__text {
+        display: block;
+        padding: 10px 30px 10px 30px;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+        z-index: 1
+    }
+  }
+.site-header__logo:hover {
+    color: #b38c40;
+  }
 /*
 
-.sh-nav {
+Taken from the small screen media query below...
 
-  &--pull-right {
-    float: right;
-  }
+.main-navigation {
+  position: static;
+  width: auto;
+  padding: 20px 15px;
+  float: none;
+  margin: 0;
 
-  ul {
-    margin: 0;
-    padding: 0;
+}
 
-    @mixin clearFix;
-  }
-
-  ul ul {
-      display: none;
-      position: absolute;
-      background-color: #f1f1f1;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-  }
-
-  ul li:hover > ul {
-    display: block;
-  }
-
-  li:first-child {
-
-  }
-
-  li {
-    list-style: none;
-    float: left;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  ul ul li {
-    color: red;
-    display: block;
-  }
-
-  a {
-    color: #121212;
-    text-decoration: none;
-    font-weight: 400;
-    display: block;
-    padding: 25px 0;
-  }
-
-  a:active {
-      color: red;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
+.main-navigation {
+margin-top: 10px;
+position: relative;
+width: 100%;
+background-color: $offWhite;
+border: 0px solid black;
+text-align: center;
+background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
+background-repeat: no-repeat;
+background-position: top .25rem left 1rem;
+background-size: 3.2rem auto;
+font-size: 0;
 }
 
 */
-.site-banner {
+.main-navigation {
 
-  border-bottom: 10px solid #b38c40;
-
-  position: relative;
+  margin-top: 0;
+  background-color: #F2F3F4;
+	position: relative;
+  font-size: 0;
+	top: 0px;
+  left: 0px;
+	padding: 0;
+	width: 100%;
+  border: 0px solid black;
+  text-align: right; /* when wider than mobile, align nav list block to right of container */
+  background: none;
 
 }
+.menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+  display: inline-block;
+  text-align: left;
+  border: 0px solid red;
+  font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
+  margin: 0;
+}
+.main-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+.main-navigation ul li:hover { /* do I need to make this [ul li]? */
+  background-color: #DDDDDD;
+}
+.menu a { /* Wordpress-generated class applied to the top-level <ul>; a more specific anchor target, leaves logo text alone */
+  display: inline-block;
+  color: #414A4C;
+  padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
+  border: 0px solid orange;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  width: 225px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+  position: relative; /* will allow positioning of drop-down arrows inside anchor tag */
+}
+.main-navigation ul ul {
+  position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
+  background-color: #F2F3F4;
+  display: none; /* Will be revealed on parent <li> hover*/
+}
+.main-navigation li:hover > ul { /* do I need to make this [ul li]? */
+  display: block;
+}
+.main-navigation ul ul li {
+  position: relative; /* to accommodate a possible sub-menu */
+}
+.main-navigation ul ul ul {
+  left: 100%;
+  top: 0;
+}
+/* TOP LEVEL */
+.main-navigation > div > ul {
+  padding-left: 0px;
+  overflow: hidden;
+}
+.main-navigation > div > ul > li {
+  display: inline-block;
+  margin: 0;
+  float:left;
+}
+.main-navigation > div > ul > li > a {
+  width: auto;
+  padding: 10px 45px 10px 15px; /* Sets padding for the top-level menu "buttons" */
+}
+.dropdown-toggle {
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	color: #222;
+	display: block;
+	font-size: 16px;
+	right: -0.5em;
+	line-height: 1.5;
+	margin: 0 auto;
+	padding: 0.5em;
+	position: absolute;
+	text-shadow: none;
+	top: 0;
+}
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+	background: transparent;
+}
+.dropdown-toggle:focus {
+	outline: thin dotted;
+}
+.dropdown-toggle.toggled-on .icon { /* IE 9 */
+	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
+	transform: rotate(-180deg);
+}
+/*
+  MEDIA QUERY FOR MOBILE MENU PROPERTIES
+*/
+@media screen and (max-width: 600px) {
+
+  .main-navigation {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    background-color: #F2F3F4;
+    border: 0px solid black;
+    text-align: center;
+    font-size: 0; /* remove weird space below the inline-block .menu-header-container */
+  }
+
+  .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+    display: block;
+    text-align: left;
+    border: 0px solid red;
+    font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
+    margin: 0;
+  }
+
+  .main-navigation ul,
+  .main-navigation ul ul,
+  .main-navigation ul ul ul {
+    display: block;
+    position: static;
+  }
+
+  .main-navigation ul ul {
+    background: none;
+    margin-left: 25px;
+  }
+
+  .main-navigation ul ul ul {
+    background: none;
+    margin-left: 50px;
+  }
+
+  .main-navigation > div > ul {
+    padding: 0;
+  }
+
+  .main-navigation > div > ul > li {
+    display: block;
+    float: none;
+    margin-top: 0px;
+  }
+
+  .main-navigation ul li {
+    border: 0px solid blue;
+  }
+
+  .main-navigation ul li:hover {
+    background: none;
+  }
+
+  .main-navigation > div > ul > li > a {
+    padding: 10px 15px;
+  }
+
+  .main-navigation ul li a {
+    width: auto;
+    display: block;
+    margin: 0px 0px;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+  }
+
+  .main-navigation ul li a:hover {
+    background-color: #DDDDDD;
+  }
+
+}
+.mobile-header {
+  text-align: center;
+  padding: .9rem 0 .9rem 0;
+  margin: 0 0 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
+  background-repeat: no-repeat;
+  background-position: top 1rem left 1rem;
+  background-size: 3.2rem auto;
+}
+@media (min-width: 600px) {
+.mobile-header {
+    margin: 0;
+    padding: 0
+}
+  }
+.menu-toggle {
+	background-color: transparent;
+	border: 0px solid black;
+	box-shadow: none;
+	color: #222;
+	font-size: 1.7rem;
+	font-weight: 500;
+	line-height: 1.5;
+	margin: 1px auto 2px;
+	padding: .5rem;
+	text-shadow: none;
+	cursor: pointer;
+	display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
+
+}
+@media (min-width: 600px) {
+.menu-toggle {
+    display: none
+
+}
+  }
+.site-banner {
+
+  display: none;
+
+}
+@media (min-width: 600px) {
+.site-banner {
+    display: block;
+    border-bottom: 5px solid #b38c40;
+    position: relative;
+    margin-top: 0px
+
+}
+  }
 .site-banner__bg-image {
     display: block;
     background-size: cover;
@@ -1032,7 +1186,7 @@ object {
 .gallery-index-item {
   position: relative;
   display: inline-block;
-  width: 200px;
+  width: 300px;
   padding: 0;
   margin-bottom: 2.0rem;
   margin-right: 2.0rem;
@@ -1267,6 +1421,16 @@ object {
       float: none;
       display: flex;
     }
+/* SVG Icons base styles */
+.icon {
+	display: inline-block;
+	fill: currentColor;
+	height: 1em;
+	position: relative; /* Align more nicely with capital letters */
+	top: -0.0625em;
+	vertical-align: middle;
+	width: 1em;
+}
 .site-footer {
   position: absolute;
   height: 42px;

@@ -16,7 +16,7 @@ get_header();
 ?>
 
 
-	<?php pageBanner();	?>
+	<?php //pageBanner();	?>
 
 
 	<div id="primary" class="content-area content-area--padded-sides">

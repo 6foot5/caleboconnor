@@ -53,7 +53,7 @@
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'say-hey' ),
+			'header' => esc_html__( 'Primary', 'say-hey' ),
 		) );
 
     add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
@@ -119,7 +119,9 @@ function pageBanner($args = NULL) {
     <div class="site-banner__bg-image" style="background-image: url(<?php echo $args['photo']; ?>);"></div>
   </div>
 
+
   <?php
+  //return $args['photo'];
 }
 
 
@@ -168,7 +170,35 @@ function say_hey_scripts() {
   wp_enqueue_style( 'say-hey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
   wp_enqueue_style( 'say-hey-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
-	wp_enqueue_script( 'say-hey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+/*
+  wp_enqueue_script( 'say_hey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+*/
+
+/*
+  For use with borrowed 2017 theme JS
+*/
+
+  wp_enqueue_script( 'say_hey-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+
+  wp_localize_script( 'say_hey-navigation', 'say_heyScreenReaderText', array(
+      'expand' => __('Expand child menu', 'say_hey'),
+      'collapse' => __('Collapse child menu', 'say_hey')
+  ));
+
+
+/*
+  if ( has_nav_menu( 'top' ) ) {
+		wp_enqueue_script( 'say_hey-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array( 'jquery' ), '1.0', true );
+		$say_hey_l10n['expand']   = __( 'Expand child menu', 'say_hey' );
+		$say_hey_l10n['collapse'] = __( 'Collapse child menu', 'say_hey' );
+		$say_hey_l10n['icon']     = say_hey_get_svg(
+			array(
+				'icon'     => 'angle-down',
+				'fallback' => true,
+			)
+		);
+	}
+*/
 
 	wp_enqueue_script( 'say-hey-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -425,3 +455,19 @@ END - Show featured image thumbnails in admin post listings
   		$q_vars[$taxonomy] = $term->slug;
   	}
   }
+
+
+  /*
+  * separate media categories from post categories
+  * use a custom category called ‘category_media’ for the categories in the media library
+  */
+  add_filter('wpmediacategory_taxonomy', 'define_media_category');
+
+  function define_media_category() {
+    return 'category_media';
+  }
+
+  /**
+   * SVG icons functions and filters from 2017.
+   */
+  require get_parent_theme_file_path( '/inc/icon-functions.php' );

@@ -14,7 +14,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php	wp_head(); ?>
@@ -62,43 +62,36 @@ if ($thisType != 'spin') {
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say-hey' ); ?></a>
 
-	<header id="masthead" class="site-header">
 
-		<div class="content-area">
+	<header id="masthead" class="site-header" style="background-image: url(<?php echo pageBanner(); ?>); background-size: cover; background-repeat: no-repeat;">
 
-			<div class="mobile-header">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<?php
-					echo say_hey_get_svg( array( 'icon' => 'bars' ) );
-					echo say_hey_get_svg( array( 'icon' => 'close' ) );
-					_e( '', 'say_hey' );
-					?>
-				</button>
+    <div class="content-area">
 
-				<a href="<?php echo site_url(); ?>"><div class="site-header__logo">
-					<div class="site-header__logo__image"></div>
-					<div class="site-header__logo__text"><span>caleb o'connor</span></div>
-				</div></a><!-- .site-header__logo -->
-			</div>
-
-			<nav id="site-navigation" class="main-navigation">
-
-				<?php
-				wp_nav_menu( array(	'theme_location' => 'header',	'menu_id' => 'primary-menu',	) );
-				?>
-			</nav><!-- .main-navigation -->
-
-		</div>
+      <div class="site-header__logo">
+				<a href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_url') ?>/img/logo-t.png"><br /><span>caleb o'connor</span></a>
+      </div><!-- #site-navigation -->
 
 
-	</header><!-- .site-header -->
+      <div class="site-header__menu-content">
 
-	<?php
-		if ( !is_front_page()) {
-			pageBanner();
-		}
-	?>
+				<nav id="site-navigation" class="main-navigation">
+			    <!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars fa-2x"></i> Menu</button> -->
+					<div class="menu-toggle site-header__menu-icon" aria-controls="primary-menu" aria-expanded="false">
+						<div class="site-header__menu-icon__middle"></div>
+		      </div><!-- #site-header__menu-icon -->
 
+			    <?php
+			    wp_nav_menu( array(
+			      'theme_location' => 'header',
+			      'menu_id'        => 'primary-menu',
+			    ) );
+			    ?>
+			  </nav><!-- .main-navigation -->
+
+      </div><!-- .site-header__menu-content -->
+
+    </div><!-- .content-area -->
+  </header><!-- .site-header -->
 
 
 	<div id="content" class="site-content">
