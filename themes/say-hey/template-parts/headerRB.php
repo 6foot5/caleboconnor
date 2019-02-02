@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 ?>
@@ -60,7 +60,7 @@ if ($thisType != 'spin') {
 ?>
 
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say-hey' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'sayhey' ); ?></a>
 
 
 	<header id="masthead" class="site-header" style="background-image: url(<?php echo pageBanner(); ?>); background-size: cover; background-repeat: no-repeat;">

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 ?>
@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				say_hey_posted_on();
-				say_hey_posted_by();
+				sayhey_posted_on();
+				sayhey_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php say_hey_post_thumbnail(); ?>
+	<?php sayhey_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -38,7 +38,7 @@
 		the_content( sprintf(
 			wp_kses(
 
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'say-hey' ),
+				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'sayhey' ),
 				array(
 					'span' => array(
 						'class' => array(),
@@ -52,7 +52,7 @@
 						/* translators: %s: Name of current post. Only visible to screen readers */
 /*
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'say-hey' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'sayhey' ),
 			'after'  => '</div>',
 		) );
 		*/
@@ -60,6 +60,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php say_hey_entry_footer(); ?>
+		<?php sayhey_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

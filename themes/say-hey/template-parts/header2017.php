@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 ?>
@@ -60,7 +60,7 @@ if ($thisType != 'spin') {
 ?>
 
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'say_hey' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'sayhey' ); ?></a>
 
 
 	<header id="masthead" class="site-header">
@@ -75,12 +75,12 @@ if ($thisType != 'spin') {
 
 			<div class="navigation-top">
 				<div class="wrap">
-					<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'say_hey' ); ?>">
+					<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'sayhey' ); ?>">
 						<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
 							<?php
-							echo say_hey_get_svg( array( 'icon' => 'bars' ) );
-							echo say_hey_get_svg( array( 'icon' => 'close' ) );
-							_e( 'Menu', 'say_hey' );
+							echo sayhey_get_svg( array( 'icon' => 'bars' ) );
+							echo sayhey_get_svg( array( 'icon' => 'close' ) );
+							_e( 'Menu', 'sayhey' );
 							?>
 						</button>
 

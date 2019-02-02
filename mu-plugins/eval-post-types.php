@@ -5,20 +5,20 @@ function sh_tax() {
 //function sh_custom_taxonomies() {
 
      $galleryTaxLabels = array(
-        'name' => _x( 'Gallery Category', 'say-hey' ),
-        'singular_name' => _x( 'Gallery Category', 'say-hey' ),
-        'search_items' => _x( 'Search Gallery Categories', 'say-hey' ),
-        'popular_items' => _x( 'Popular Gallery Categories', 'say-hey' ),
-        'all_items' => _x( 'All Gallery Categories', 'say-hey' ),
-        'parent_item' => _x( 'Parent Gallery Category', 'say-hey' ),
-        'parent_item_colon' => _x( 'Parent Gallery Category:', 'say-hey' ),
-        'edit_item' => _x( 'Edit Gallery Category', 'say-hey' ),
-        'update_item' => _x( 'Update Gallery Category', 'say-hey' ),
-        'add_new_item' => _x( 'Add New Gallery Category', 'say-hey' ),
-        'new_item_name' => _x( 'New Gallery Category', 'say-hey' ),
-        'add_or_remove_items' => _x( 'Add or remove Gallery Categories', 'say-hey' ),
-        'choose_from_most_used' => _x( 'Choose from most used Gallery Categories', 'say-hey' ),
-        'menu_name' => _x( 'Gallery Categories', 'say-hey' )
+        'name' => _x( 'Gallery Category', 'sayhey' ),
+        'singular_name' => _x( 'Gallery Category', 'sayhey' ),
+        'search_items' => _x( 'Search Gallery Categories', 'sayhey' ),
+        'popular_items' => _x( 'Popular Gallery Categories', 'sayhey' ),
+        'all_items' => _x( 'All Gallery Categories', 'sayhey' ),
+        'parent_item' => _x( 'Parent Gallery Category', 'sayhey' ),
+        'parent_item_colon' => _x( 'Parent Gallery Category:', 'sayhey' ),
+        'edit_item' => _x( 'Edit Gallery Category', 'sayhey' ),
+        'update_item' => _x( 'Update Gallery Category', 'sayhey' ),
+        'add_new_item' => _x( 'Add New Gallery Category', 'sayhey' ),
+        'new_item_name' => _x( 'New Gallery Category', 'sayhey' ),
+        'add_or_remove_items' => _x( 'Add or remove Gallery Categories', 'sayhey' ),
+        'choose_from_most_used' => _x( 'Choose from most used Gallery Categories', 'sayhey' ),
+        'menu_name' => _x( 'Gallery Categories', 'sayhey' )
     );
 
     $galleryTaxArgs = array(
@@ -47,18 +47,18 @@ function sh_cpt() {
   // Artwork post type
 
     $artworkLabels = array(
-        'name' => _x( 'Artwork', 'say-hey' ),
-        'singular_name' => _x( 'Work', 'say-hey' ),
-        'all_items' => _x( 'All Artwork', 'say-hey' ),
-        'add_new' => _x( 'Add New Work', 'say-hey' ),
-        'add_new_item' => _x( 'Add New Work', 'say-hey' ),
-        'edit_item' => _x( 'Edit Work', 'say-hey' ),
-        'new_item' => _x( 'New Work', 'say-hey' ),
-        'view_item' => _x( 'View Work', 'say-hey' ),
-        'search_items' => _x( 'Search Artwork', 'say-hey' ),
-        'not_found' => _x( 'No artwork found', 'say-hey' ),
-        'not_found_in_trash' => _x( 'No artwork found in Trash', 'say-hey' ),
-        'menu_name' => _x( 'Artwork', 'say-hey' )
+        'name' => _x( 'Artwork', 'sayhey' ),
+        'singular_name' => _x( 'Work', 'sayhey' ),
+        'all_items' => _x( 'All Artwork', 'sayhey' ),
+        'add_new' => _x( 'Add New Work', 'sayhey' ),
+        'add_new_item' => _x( 'Add New Work', 'sayhey' ),
+        'edit_item' => _x( 'Edit Work', 'sayhey' ),
+        'new_item' => _x( 'New Work', 'sayhey' ),
+        'view_item' => _x( 'View Work', 'sayhey' ),
+        'search_items' => _x( 'Search Artwork', 'sayhey' ),
+        'not_found' => _x( 'No artwork found', 'sayhey' ),
+        'not_found_in_trash' => _x( 'No artwork found in Trash', 'sayhey' ),
+        'menu_name' => _x( 'Artwork', 'sayhey' )
     );
 
     $artworkArgs = array(
@@ -87,18 +87,18 @@ function sh_cpt() {
 
 
     $storyLabels = array(
-        'name' => _x( 'Stories', 'say-hey' ),
-        'singular_name' => _x( 'Story', 'say-hey' ),
-        'all_items' => _x( 'All Stories', 'say-hey' ),
-        'add_new' => _x( 'Add New Story', 'say-hey' ),
-        'add_new_item' => _x( 'Add New Story', 'say-hey' ),
-        'edit_item' => _x( 'Edit Story', 'say-hey' ),
-        'new_item' => _x( 'New Story', 'say-hey' ),
-        'view_item' => _x( 'View Story', 'say-hey' ),
-        'search_items' => _x( 'Search Stories', 'say-hey' ),
-        'not_found' => _x( 'No Stories found', 'say-hey' ),
-        'not_found_in_trash' => _x( 'No Stories found in Trash', 'say-hey' ),
-        'menu_name' => _x( 'Stories', 'say-hey' )
+        'name' => _x( 'Stories', 'sayhey' ),
+        'singular_name' => _x( 'Story', 'sayhey' ),
+        'all_items' => _x( 'All Stories', 'sayhey' ),
+        'add_new' => _x( 'Add New Story', 'sayhey' ),
+        'add_new_item' => _x( 'Add New Story', 'sayhey' ),
+        'edit_item' => _x( 'Edit Story', 'sayhey' ),
+        'new_item' => _x( 'New Story', 'sayhey' ),
+        'view_item' => _x( 'View Story', 'sayhey' ),
+        'search_items' => _x( 'Search Stories', 'sayhey' ),
+        'not_found' => _x( 'No Stories found', 'sayhey' ),
+        'not_found_in_trash' => _x( 'No Stories found in Trash', 'sayhey' ),
+        'menu_name' => _x( 'Stories', 'sayhey' )
     );
 
     $storyArgs = array(
@@ -129,18 +129,18 @@ function sh_cpt() {
 
 
     $processLabels = array(
-        'name' => _x( 'Processes', 'say-hey' ),
-        'singular_name' => _x( 'Process', 'say-hey' ),
-        'all_items' => _x( 'All Processes', 'say-hey' ),
-        'add_new' => _x( 'Add New Process', 'say-hey' ),
-        'add_new_item' => _x( 'Add New Process', 'say-hey' ),
-        'edit_item' => _x( 'Edit Process', 'say-hey' ),
-        'new_item' => _x( 'New Process', 'say-hey' ),
-        'view_item' => _x( 'View Process', 'say-hey' ),
-        'search_items' => _x( 'Search Processes', 'say-hey' ),
-        'not_found' => _x( 'No Processes found', 'say-hey' ),
-        'not_found_in_trash' => _x( 'No Processes found in Trash', 'say-hey' ),
-        'menu_name' => _x( 'Processes', 'say-hey' ),
+        'name' => _x( 'Processes', 'sayhey' ),
+        'singular_name' => _x( 'Process', 'sayhey' ),
+        'all_items' => _x( 'All Processes', 'sayhey' ),
+        'add_new' => _x( 'Add New Process', 'sayhey' ),
+        'add_new_item' => _x( 'Add New Process', 'sayhey' ),
+        'edit_item' => _x( 'Edit Process', 'sayhey' ),
+        'new_item' => _x( 'New Process', 'sayhey' ),
+        'view_item' => _x( 'View Process', 'sayhey' ),
+        'search_items' => _x( 'Search Processes', 'sayhey' ),
+        'not_found' => _x( 'No Processes found', 'sayhey' ),
+        'not_found_in_trash' => _x( 'No Processes found in Trash', 'sayhey' ),
+        'menu_name' => _x( 'Processes', 'sayhey' ),
     );
 
     $processArgs = array(
@@ -166,18 +166,18 @@ function sh_cpt() {
 
 
     $spinLabels = array(
-        'name' => _x( 'Spins', 'say-hey' ),
-        'singular_name' => _x( '360 Spin', 'say-hey' ),
-        'all_items' => _x( 'All 360 Spins', 'say-hey' ),
-        'add_new' => _x( 'Add New 360 Spin', 'say-hey' ),
-        'add_new_item' => _x( 'Add New 360 Spin', 'say-hey' ),
-        'edit_item' => _x( 'Edit 360 Spin', 'say-hey' ),
-        'new_item' => _x( 'New 360 Spin', 'say-hey' ),
-        'view_item' => _x( 'View 360 Spins', 'say-hey' ),
-        'search_items' => _x( 'Search 360 Spins', 'say-hey' ),
-        'not_found' => _x( 'No 360 Spins found', 'say-hey' ),
-        'not_found_in_trash' => _x( 'No 360 Spins found in Trash', 'say-hey' ),
-        'menu_name' => _x( '360 Spins', 'say-hey' ),
+        'name' => _x( 'Spins', 'sayhey' ),
+        'singular_name' => _x( '360 Spin', 'sayhey' ),
+        'all_items' => _x( 'All 360 Spins', 'sayhey' ),
+        'add_new' => _x( 'Add New 360 Spin', 'sayhey' ),
+        'add_new_item' => _x( 'Add New 360 Spin', 'sayhey' ),
+        'edit_item' => _x( 'Edit 360 Spin', 'sayhey' ),
+        'new_item' => _x( 'New 360 Spin', 'sayhey' ),
+        'view_item' => _x( 'View 360 Spins', 'sayhey' ),
+        'search_items' => _x( 'Search 360 Spins', 'sayhey' ),
+        'not_found' => _x( 'No 360 Spins found', 'sayhey' ),
+        'not_found_in_trash' => _x( 'No 360 Spins found in Trash', 'sayhey' ),
+        'menu_name' => _x( '360 Spins', 'sayhey' ),
     );
 
     $spinArgs = array(

@@ -1,12 +1,12 @@
 <?php
 
-if ( ! function_exists( 'say_hey_attachment_terms' ) ) :
+if ( ! function_exists( 'sayhey_attachment_terms' ) ) :
   /**
   * Creates custom taxonomy for attachments.
   *
   */
 
-  function say_hey_attachment_terms() {
+  function sayhey_attachment_terms() {
 
     // Add the ability to use custom taxonomies with images, attachments, etc
 
@@ -41,10 +41,10 @@ if ( ! function_exists( 'say_hey_attachment_terms' ) ) :
 
 endif;
 
-add_action( 'init' , 'say_hey_attachment_terms' );
+add_action( 'init' , 'sayhey_attachment_terms' );
 
 
-if ( ! function_exists( 'say_hey_taxonomy_filter' ) ) :
+if ( ! function_exists( 'sayhey_taxonomy_filter' ) ) :
  /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -52,7 +52,7 @@ if ( ! function_exists( 'say_hey_taxonomy_filter' ) ) :
 
    // Add the ability to use custom taxonomies with images, attachments, etc
 
-   function say_hey_taxonomy_filter() {
+   function sayhey_taxonomy_filter() {
 
     global $typenow; // this variable stores the current custom post type
 
@@ -87,4 +87,4 @@ if ( ! function_exists( 'say_hey_taxonomy_filter' ) ) :
 
 endif;
 
-add_action( 'restrict_manage_posts', 'say_hey_taxonomy_filter' );
+add_action( 'restrict_manage_posts', 'sayhey_taxonomy_filter' );

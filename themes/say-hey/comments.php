@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 /*
@@ -28,18 +28,18 @@ if ( post_password_required() ) {
 		?>
 		<h2 class="comments-title">
 			<?php
-			$say_hey_comment_count = get_comments_number();
-			if ( '1' === $say_hey_comment_count ) {
+			$sayhey_comment_count = get_comments_number();
+			if ( '1' === $sayhey_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'say-hey' ),
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'sayhey' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
 				printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $say_hey_comment_count, 'comments title', 'say-hey' ) ),
-					number_format_i18n( $say_hey_comment_count ),
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $sayhey_comment_count, 'comments title', 'sayhey' ) ),
+					number_format_i18n( $sayhey_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			}
@@ -63,7 +63,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'say-hey' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'sayhey' ); ?></p>
 			<?php
 		endif;
 

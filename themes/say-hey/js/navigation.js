@@ -1,4 +1,4 @@
-/* global say_heyScreenReaderText */
+/* global sayheyScreenReaderText */
 /**
  * Theme functions file. Copied.
  *
@@ -47,12 +47,12 @@
 		/*
     var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
 			.append( $( '<span />', { 'class': 'dropdown-symbol', text: '+' }) )
-			.append( $( '<span />', { 'class': 'screen-reader-text', text: say_heyScreenReaderText.expand }) );
+			.append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
     */
 
     var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle fa fa-angle-down', 'aria-expanded': false })
-      .append( say_heyScreenReaderText.icon )
-      .append( $( '<span />', { 'class': 'screen-reader-text', text: say_heyScreenReaderText.expand }) );
+      .append( sayheyScreenReaderText.icon )
+      .append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
 
 		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
 
@@ -62,7 +62,7 @@
 			.addClass( 'toggled-on' )
 			.attr( 'aria-expanded', 'true' )
 			.find( '.screen-reader-text' )
-			.text( say_heyScreenReaderText.collapse );
+			.text( sayheyScreenReaderText.collapse );
 
 		// Set the active submenu initial state.
 		container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
@@ -79,7 +79,7 @@
 
 			_this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 
-			screenReaderSpan.text( screenReaderSpan.text() === say_heyScreenReaderText.expand ? say_heyScreenReaderText.collapse : say_heyScreenReaderText.expand );
+			screenReaderSpan.text( screenReaderSpan.text() === sayheyScreenReaderText.expand ? sayheyScreenReaderText.collapse : sayheyScreenReaderText.expand );
 		});
 	}
 
@@ -102,7 +102,7 @@
 		// Add an initial value for the attribute.
 		menuToggle.attr( 'aria-expanded', 'false' );
 
-		menuToggle.on( 'click.say_hey', function() {
+		menuToggle.on( 'click.sayhey', function() {
 			siteNavContain.toggleClass( 'toggled-on' );
 
 			$( this ).attr( 'aria-expanded', siteNavContain.hasClass( 'toggled-on' ) );
@@ -119,14 +119,14 @@
 		function toggleFocusClassTouchScreen() {
 			if ( 'none' === $( '.menu-toggle' ).css( 'display' ) ) {
 
-				$( document.body ).on( 'touchstart.say_hey', function( e ) {
+				$( document.body ).on( 'touchstart.sayhey', function( e ) {
 					if ( ! $( e.target ).closest( '.main-navigation li' ).length ) {
 						$( '.main-navigation li' ).removeClass( 'focus' );
 					}
 				});
 
 				siteNavigation.find( '.menu-item-has-children > a, .page_item_has_children > a' )
-					.on( 'touchstart.say_hey', function( e ) {
+					.on( 'touchstart.sayhey', function( e ) {
 						var el = $( this ).parent( 'li' );
 
 						if ( ! el.hasClass( 'focus' ) ) {
@@ -137,16 +137,16 @@
 					});
 
 			} else {
-				siteNavigation.find( '.menu-item-has-children > a, .page_item_has_children > a' ).unbind( 'touchstart.say_hey' );
+				siteNavigation.find( '.menu-item-has-children > a, .page_item_has_children > a' ).unbind( 'touchstart.sayhey' );
 			}
 		}
 
 		if ( 'ontouchstart' in window ) {
-			$( window ).on( 'resize.say_hey', toggleFocusClassTouchScreen );
+			$( window ).on( 'resize.sayhey', toggleFocusClassTouchScreen );
 			toggleFocusClassTouchScreen();
 		}
 
-		siteNavigation.find( 'a' ).on( 'focus.say_hey blur.say_hey', function() {
+		siteNavigation.find( 'a' ).on( 'focus.sayhey blur.sayhey', function() {
 			$( this ).parents( '.menu-item, .page_item' ).toggleClass( 'focus' );
 		});
 	})();

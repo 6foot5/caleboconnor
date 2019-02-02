@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 get_header();

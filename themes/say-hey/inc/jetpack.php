@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 /**
@@ -14,11 +14,11 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function say_hey_jetpack_setup() {
+function sayhey_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'say_hey_infinite_scroll_render',
+		'render'    => 'sayhey_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
@@ -28,7 +28,7 @@ function say_hey_jetpack_setup() {
 	// Add theme support for Content Options.
 	add_theme_support( 'jetpack-content-options', array(
 		'post-details'    => array(
-			'stylesheet' => 'say-hey-style',
+			'stylesheet' => 'sayhey-style',
 			'date'       => '.posted-on',
 			'categories' => '.cat-links',
 			'tags'       => '.tags-links',
@@ -42,12 +42,12 @@ function say_hey_jetpack_setup() {
 		),
 	) );
 }
-add_action( 'after_setup_theme', 'say_hey_jetpack_setup' );
+add_action( 'after_setup_theme', 'sayhey_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function say_hey_infinite_scroll_render() {
+function sayhey_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

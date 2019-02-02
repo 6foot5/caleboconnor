@@ -2,7 +2,7 @@
 /**
  * This template is to display a gallery index page, with links to each category of art
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 get_header();

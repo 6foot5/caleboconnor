@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Say_Hey
+ * @package SayHey
  */
 
 // View posts query SQL...
@@ -16,7 +16,7 @@
  add_filter( 'posts_request', 'my_posts_request_filter' );
 */
 
- if ( ! function_exists( 'say_hey_setup' ) ) :
+ if ( ! function_exists( 'sayhey_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -24,14 +24,14 @@
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function say_hey_setup() {
+	function sayhey_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Say Hey, use a find and replace
-		 * to change 'say-hey' to the name of your theme in all the template files.
+		 * to change 'sayhey' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'say-hey', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'sayhey', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -53,7 +53,7 @@
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'header' => esc_html__( 'Primary', 'say-hey' ),
+			'header' => esc_html__( 'Primary', 'sayhey' ),
 		) );
 
     add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
@@ -74,7 +74,7 @@
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'say_hey_custom_background_args', array(
+		add_theme_support( 'custom-background', apply_filters( 'sayhey_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
@@ -95,7 +95,7 @@
 		) );
 	}
 endif;
-add_action( 'after_setup_theme', 'say_hey_setup' );
+add_action( 'after_setup_theme', 'sayhey_setup' );
 
 /*
 ***** SET PAGE BANNER ********
@@ -134,64 +134,64 @@ function pageBanner($args = NULL) {
  *
  * @global int $content_width
  */
-function say_hey_content_width() {
+function sayhey_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'say_hey_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'sayhey_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'say_hey_content_width', 0 );
+add_action( 'after_setup_theme', 'sayhey_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function say_hey_widgets_init() {
+function sayhey_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'say-hey' ),
+		'name'          => esc_html__( 'Sidebar', 'sayhey' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'say-hey' ),
+		'description'   => esc_html__( 'Add widgets here.', 'sayhey' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'say_hey_widgets_init' );
+add_action( 'widgets_init', 'sayhey_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function say_hey_scripts() {
+function sayhey_scripts() {
 
   //wp_enqueue_style('mcptc_main_styles', get_stylesheet_uri(), NULL, microtime());
-  wp_enqueue_style( 'say-hey-style', get_stylesheet_uri(), NULL, microtime());
-  wp_enqueue_style( 'say-hey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
-  wp_enqueue_style( 'say-hey-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+  wp_enqueue_style( 'sayhey-style', get_stylesheet_uri(), NULL, microtime());
+  wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
+  wp_enqueue_style( 'sayhey-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 /*
-  wp_enqueue_script( 'say_hey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+  wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 */
 
 /*
   For use with borrowed 2017 theme JS
 */
 
-  wp_enqueue_script( 'say_hey-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+  wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
 
-  wp_localize_script( 'say_hey-navigation', 'say_heyScreenReaderText', array(
-      'expand' => __('Expand child menu', 'say_hey'),
-      'collapse' => __('Collapse child menu', 'say_hey')
+  wp_localize_script( 'sayhey-navigation', 'sayheyScreenReaderText', array(
+      'expand' => __('Expand child menu', 'sayhey'),
+      'collapse' => __('Collapse child menu', 'sayhey')
   ));
 
 
 /*
   if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'say_hey-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array( 'jquery' ), '1.0', true );
-		$say_hey_l10n['expand']   = __( 'Expand child menu', 'say_hey' );
-		$say_hey_l10n['collapse'] = __( 'Collapse child menu', 'say_hey' );
-		$say_hey_l10n['icon']     = say_hey_get_svg(
+		wp_enqueue_script( 'sayhey-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array( 'jquery' ), '1.0', true );
+		$sayhey_l10n['expand']   = __( 'Expand child menu', 'sayhey' );
+		$sayhey_l10n['collapse'] = __( 'Collapse child menu', 'sayhey' );
+		$sayhey_l10n['icon']     = sayhey_get_svg(
 			array(
 				'icon'     => 'angle-down',
 				'fallback' => true,
@@ -200,7 +200,7 @@ function say_hey_scripts() {
 	}
 */
 
-	wp_enqueue_script( 'say-hey-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'sayhey-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -222,9 +222,9 @@ function say_hey_scripts() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'say_hey_scripts' );
+add_action( 'wp_enqueue_scripts', 'sayhey_scripts' );
 /*
-function say_hey_subcategory_hierarchy() {
+function sayhey_subcategory_hierarchy() {
 
     $category = get_queried_object();
 
@@ -258,7 +258,7 @@ function say_hey_subcategory_hierarchy() {
     return locate_template( $templates );
 }
 
-add_filter( 'category_template', 'say_hey_subcategory_hierarchy' );
+add_filter( 'category_template', 'sayhey_subcategory_hierarchy' );
 */
 
 /**
