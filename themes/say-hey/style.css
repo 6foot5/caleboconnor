@@ -755,6 +755,10 @@ object {
   border: 0px solid green;
 
 }
+/*
+position: sticky;
+z-index: 15;
+*/
 @media (min-width: 600px) {
 .site-header {
 /*    background-color: rgba(242,243,244,1); */
@@ -970,7 +974,7 @@ font-size: 0;
 @media screen and (max-width: 600px) {
 
   .main-navigation {
-    margin-top: 10px;
+    margin-top: 0px;
     position: relative;
     width: 100%;
     background-color: #F2F3F4;
@@ -987,11 +991,15 @@ font-size: 0;
     margin: 0;
   }
 
+
+
+
+
   .main-navigation ul,
   .main-navigation ul ul,
   .main-navigation ul ul ul {
-    display: block;
-    position: static;
+  	display: none;  /*?*/
+  	position: static;
   }
 
   .main-navigation ul ul {
@@ -1008,8 +1016,12 @@ font-size: 0;
     padding: 0;
   }
 
+/*
+ TOP LEVEL NAV BUTTONS
+*/
+
   .main-navigation > div > ul > li {
-    display: block;
+    display: none; /*?*/
     float: none;
     margin-top: 0px;
   }
@@ -1025,7 +1037,11 @@ font-size: 0;
   .main-navigation > div > ul > li > a {
     padding: 10px 15px;
   }
-
+/*
+  .main-navigation ul li a {
+    display: none;
+  }
+*/
   .main-navigation ul li a {
     width: auto;
     display: block;
@@ -1038,11 +1054,21 @@ font-size: 0;
     background-color: #DDDDDD;
   }
 
+/*
+  .main-navigation ul,
+  .main-navigation .menu-item-has-children > a > .icon,
+  .main-navigation .page_item_has_children > a > .icon,
+  .main-navigation ul a > .icon {
+  	display: none;
+  }
+*/
+
 }
 .mobile-header {
   text-align: center;
   padding: .9rem 0 .9rem 0;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0 0;
+  border: 0px solid rgba(0,0,0,.9);
   border-bottom: 1px solid rgba(0,0,0,.15);
   background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
   background-repeat: no-repeat;
@@ -1057,7 +1083,7 @@ font-size: 0;
   }
 .menu-toggle {
 	background-color: transparent;
-	border: 0px solid black;
+	border: 0;
 	box-shadow: none;
 	color: #222;
 	font-size: 1.7rem;
@@ -1069,8 +1095,8 @@ font-size: 0;
 	cursor: pointer;
 	display: inline-block;
   position: absolute;
-  top: 1rem;
-  right: .5rem;
+  top: .9rem;
+  right: .6rem;
 
 }
 @media (min-width: 600px) {
@@ -1079,6 +1105,71 @@ font-size: 0;
 
 }
   }
+/*
+	My TOGGLE attempts...
+*/
+.main-navigation.toggled-on ul,
+.main-navigation.toggled-on ul ul,
+.main-navigation.toggled-on ul ul ul {
+	display: block;
+	position: static;
+
+}
+.main-navigation.toggled-on > div > ul > li {
+  display: block;
+  float: none;
+  margin-top: 0px;
+}
+/*
+2017 bits
+
+.main-navigation.toggled-on > div > ul > li {
+	display: block;
+}
+
+.main-navigation.toggled-on ul ul {
+	display: block;
+}
+
+.main-navigation.toggled-on ul {
+	display: block;
+}
+*/
+.menu-toggle:hover,
+.menu-toggle:focus {
+	background-color: transparent;
+	box-shadow: none;
+}
+.menu-toggle:focus {
+	outline: thin solid;
+}
+.menu-toggle .icon {
+	margin-right: 0;
+	top: 0px;
+}
+.toggled-on .menu-toggle .icon-bars,
+.menu-toggle .icon-close {
+	display: none;
+}
+.toggled-on .menu-toggle .icon-close {
+	display: inline-block;
+}
+/* SOME no-svg bits from 2017 */
+.no-svg .dropdown-toggle .svg-fallback.icon-angle-down {
+	font-size: 20px;
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.no-svg .dropdown-toggle.toggled-on .svg-fallback.icon-angle-down {
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+}
+.no-svg .dropdown-toggle .svg-fallback.icon-angle-down:before {
+	content: "\005E";
+}
 .site-banner {
 
   display: none;

@@ -7,6 +7,10 @@
   width: 100%;
   height: auto;
   border: 0px solid green;
+/*
+position: sticky;
+z-index: 15;
+*/
 
   @mixin atSmall {
 /*    background-color: rgba(242,243,244,1); */

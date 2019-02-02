@@ -6,7 +6,7 @@
 @media screen and (max-width: 600px) {
 
   .main-navigation {
-    margin-top: 10px;
+    margin-top: 0px;
     position: relative;
     width: 100%;
     background-color: $offWhite;
@@ -23,11 +23,15 @@
     margin: 0;
   }
 
+
+
+
+
   .main-navigation ul,
   .main-navigation ul ul,
   .main-navigation ul ul ul {
-    display: block;
-    position: static;
+  	display: none;  /*?*/
+  	position: static;
   }
 
   .main-navigation ul ul {
@@ -44,8 +48,12 @@
     padding: 0;
   }
 
+/*
+ TOP LEVEL NAV BUTTONS
+*/
+
   .main-navigation > div > ul > li {
-    display: block;
+    display: none; /*?*/
     float: none;
     margin-top: 0px;
   }
@@ -61,7 +69,11 @@
   .main-navigation > div > ul > li > a {
     padding: 10px 15px;
   }
-
+/*
+  .main-navigation ul li a {
+    display: none;
+  }
+*/
   .main-navigation ul li a {
     width: auto;
     display: block;
@@ -73,5 +85,14 @@
   .main-navigation ul li a:hover {
     background-color: $hoverGrey;
   }
+
+/*
+  .main-navigation ul,
+  .main-navigation .menu-item-has-children > a > .icon,
+  .main-navigation .page_item_has_children > a > .icon,
+  .main-navigation ul a > .icon {
+  	display: none;
+  }
+*/
 
 }

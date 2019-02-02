@@ -11,7 +11,7 @@
 
    constructor() {
      this.siteHeader = $(".site-header");
-     this.menuIcon = $(".menu-toggle");
+     this.menuIcon = $("#hamburger");
      this.menuContent = $(".site-header__menu-content");
      this.siteNav = $(".menu-header-container");
      this.events();
@@ -22,10 +22,14 @@
    }
 
    toggleTheMenu() {
-     this.menuContent.toggleClass("site-header__menu-content--is-visible");
-     this.siteHeader.toggleClass("site-header--is-expanded");
-     this.siteNav.toggleClass("site-nav--is-expanded");
-     this.menuIcon.toggleClass("site-header__menu-icon--close-x");
+
+     if (this.menuIcon.hasClass('fa-bars')) {
+       this.menuIcon.removeClass('fa-bars');
+       this.menuIcon.addClass('fa-times');
+     } else {
+       this.menuIcon.removeClass('fa-times');
+       this.menuIcon.addClass('fa-bars');
+     }
    }
 
  }
@@ -46,7 +50,7 @@
 			.append( $( '<span />', { 'class': 'screen-reader-text', text: say_heyScreenReaderText.expand }) );
     */
 
-    var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
+    var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle fa fa-angle-down', 'aria-expanded': false })
       .append( say_heyScreenReaderText.icon )
       .append( $( '<span />', { 'class': 'screen-reader-text', text: say_heyScreenReaderText.expand }) );
 

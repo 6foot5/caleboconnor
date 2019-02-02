@@ -1,7 +1,7 @@
 
 .menu-toggle {
 	background-color: transparent;
-	border: 0px solid black;
+	border: 0;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	color: #222;
@@ -14,11 +14,94 @@
 	cursor: pointer;
 	display: inline-block;
   position: absolute;
-  top: 1rem;
-  right: .5rem;
+  top: .9rem;
+  right: .6rem;
 
   @mixin atSmall {
     display: none;
   }
 
+}
+
+/*
+	My TOGGLE attempts...
+*/
+
+.main-navigation.toggled-on ul,
+.main-navigation.toggled-on ul ul,
+.main-navigation.toggled-on ul ul ul {
+	display: block;
+	position: static;
+
+}
+
+
+.main-navigation.toggled-on > div > ul > li {
+  display: block;
+  float: none;
+  margin-top: 0px;
+}
+
+/*
+2017 bits
+
+.main-navigation.toggled-on > div > ul > li {
+	display: block;
+}
+
+.main-navigation.toggled-on ul ul {
+	display: block;
+}
+
+.main-navigation.toggled-on ul {
+	display: block;
+}
+*/
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.menu-toggle:focus {
+	outline: thin solid;
+}
+
+.menu-toggle .icon {
+	margin-right: 0;
+	top: 0px;
+}
+
+
+.toggled-on .menu-toggle .icon-bars,
+.menu-toggle .icon-close {
+	display: none;
+}
+
+.toggled-on .menu-toggle .icon-close {
+	display: inline-block;
+}
+
+/* SOME no-svg bits from 2017 */
+
+.no-svg .dropdown-toggle .svg-fallback.icon-angle-down {
+	font-size: 20px;
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.no-svg .dropdown-toggle.toggled-on .svg-fallback.icon-angle-down {
+	-webkit-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+}
+
+.no-svg .dropdown-toggle .svg-fallback.icon-angle-down:before {
+	content: "\005E";
 }

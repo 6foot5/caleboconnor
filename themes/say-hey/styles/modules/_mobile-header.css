@@ -2,7 +2,8 @@
 .mobile-header {
   text-align: center;
   padding: .9rem 0 .9rem 0;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0 0;
+  border: 0px solid rgba(0,0,0,.9);
   border-bottom: 1px solid rgba(0,0,0,.15);
   background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
   background-repeat: no-repeat;

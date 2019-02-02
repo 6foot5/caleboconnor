@@ -69,10 +69,11 @@ if ($thisType != 'spin') {
 			<div class="mobile-header">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 					<?php
-					echo say_hey_get_svg( array( 'icon' => 'bars' ) );
-					echo say_hey_get_svg( array( 'icon' => 'close' ) );
-					_e( '', 'say_hey' );
+					//echo say_hey_get_svg( array( 'icon' => 'bars' ) );
+					//echo say_hey_get_svg( array( 'icon' => 'close' ) );
+					//_e( '', 'say_hey' );
 					?>
+					<i id="hamburger" class="fa fa-bars"></i>
 				</button>
 
 				<a href="<?php echo site_url(); ?>"><div class="site-header__logo">
