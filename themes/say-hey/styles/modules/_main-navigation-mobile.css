@@ -6,10 +6,10 @@
 @media screen and (max-width: 600px) {
 
   .main-navigation {
-    margin-top: 0px;
+    margin-top: 0;
+    background-color: $offWhite;
     position: relative;
     width: 100%;
-    background-color: $offWhite;
     border: 0px solid black;
     text-align: center;
     font-size: 0; /* remove weird space below the inline-block .menu-header-container */
@@ -22,10 +22,6 @@
     font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
     margin: 0;
   }
-
-
-
-
 
   .main-navigation ul,
   .main-navigation ul ul,

@@ -1,42 +1,9 @@
 /* global sayheyScreenReaderText */
 /**
- * Theme functions file. Copied.
+ * Theme functions file.
  *
  * Contains handlers for navigation and widget area.
  */
-
- // MOBILE MENU
-
- class MobileMenu {
-
-   constructor() {
-     this.siteHeader = $(".site-header");
-     this.menuIcon = $("#hamburger");
-     this.menuContent = $(".site-header__menu-content");
-     this.siteNav = $(".menu-header-container");
-     this.events();
-   }
-
-   events() {
-     this.menuIcon.click(this.toggleTheMenu.bind(this));
-   }
-
-   toggleTheMenu() {
-
-     if (this.menuIcon.hasClass('fa-bars')) {
-       this.menuIcon.removeClass('fa-bars');
-       this.menuIcon.addClass('fa-times');
-     } else {
-       this.menuIcon.removeClass('fa-times');
-       this.menuIcon.addClass('fa-bars');
-     }
-   }
-
- }
-
- //export default MobileMenu;
-
- var mobileMenu = new MobileMenu();
 
 (function( $ ) {
 	var masthead, menuToggle, siteNavContain, siteNavigation;
@@ -44,36 +11,42 @@
 	function initMainNavigation( container ) {
 
 		// Add dropdown toggle that displays child menu items.
-		/*
-    var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
-			.append( $( '<span />', { 'class': 'dropdown-symbol', text: '+' }) )
+		var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
+      .append( $( '<span />', { 'class': 'fa fa-chevron-down dds', text: '' }) )
 			.append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
-    */
 
-    var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle fa fa-angle-down', 'aria-expanded': false })
-      .append( sayheyScreenReaderText.icon )
-      .append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
-
-		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
+      container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
+      //container.find( '.menu-item-has-children > a > i, .page_item_has_children > a > i' ).after( dropdownToggle );
 
 		// Set the active submenu dropdown toggle button initial state.
-
 		container.find( '.current-menu-ancestor > button' )
 			.addClass( 'toggled-on' )
 			.attr( 'aria-expanded', 'true' )
 			.find( '.screen-reader-text' )
 			.text( sayheyScreenReaderText.collapse );
-
+      
 		// Set the active submenu initial state.
 		container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
 
 		container.find( '.dropdown-toggle' ).click( function( e ) {
 			var _this = $( this ),
-      screenReaderSpan = _this.find( '.screen-reader-text' );
-      dropdownSymbol = _this.find( '.dropdown-symbol' );
-      dropdownSymbol.text( dropdownSymbol.text() === '-' ? '+' : '-');
+				screenReaderSpan = _this.find( '.screen-reader-text' ),
+        dropdownSymbolFa = _this.find( '.dds' );
+
+        if (dropdownSymbolFa.hasClass('fa-chevron-down')) {
+          dropdownSymbolFa.removeClass('fa-chevron-down');
+          dropdownSymbolFa.addClass('fa-chevron-up');
+        } else {
+          dropdownSymbolFa.removeClass('fa-chevron-up');
+          dropdownSymbolFa.addClass('fa-chevron-down');
+        }
+
+/* This part is working...to toggle the chevron
+      dropdownSymbolFa.class( dropdownSymbolFa.hasClass('fa-chevron-down') ? ( dropdownSymbolFa.removeClass('fa-chevron-down'), dropdownSymbolFa.addClass('fa-chevron-up') ) : ( dropdownSymbolFa.removeClass('fa-chevron-up'), dropdownSymbolFa.addClass('fa-chevron-down') ) );
+*/
 
 			e.preventDefault();
+      console.log(_this);
 			_this.toggleClass( 'toggled-on' );
 			_this.next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
 
@@ -87,6 +60,7 @@
 
 	masthead       = $( '#masthead' );
 	menuToggle     = masthead.find( '.menu-toggle' );
+  menuBurger     = masthead.find( '#hamburger');
 	siteNavContain = masthead.find( '.main-navigation' );
 	siteNavigation = masthead.find( '.main-navigation > div > ul' );
 
@@ -95,7 +69,6 @@
 
 		// Return early if menuToggle is missing.
 		if ( ! menuToggle.length ) {
-      console.log('Empty');
 			return;
 		}
 
@@ -103,9 +76,19 @@
 		menuToggle.attr( 'aria-expanded', 'false' );
 
 		menuToggle.on( 'click.sayhey', function() {
+
 			siteNavContain.toggleClass( 'toggled-on' );
 
+      if (menuBurger.hasClass('fa-bars')) {
+        menuBurger.removeClass('fa-bars');
+        menuBurger.addClass('fa-times');
+      } else {
+        menuBurger.removeClass('fa-times');
+        menuBurger.addClass('fa-bars');
+      }
+
 			$( this ).attr( 'aria-expanded', siteNavContain.hasClass( 'toggled-on' ) );
+
 		});
 	})();
 

@@ -24,7 +24,8 @@ get_header();
 			$terms = get_terms( array(
 				'taxonomy' => 'gallery',
 				'hide_empty' => 1,
-				'childless' => true,
+				'childless' => false,		// includes top-level categories that have subcategories
+				'parent' => 0, 					// returns only top-level categories
 				'orderby' => 'parent'
 				)
 			);

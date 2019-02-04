@@ -6,7 +6,7 @@
 	box-shadow: none;
 	color: #222;
 	font-size: 1.7rem;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 1.5;
 	margin: 1px auto 2px;
 	padding: .5rem;
@@ -23,16 +23,16 @@
 
 }
 
+
+
+
 /*
 	My TOGGLE attempts...
-*/
+	*/
 
-.main-navigation.toggled-on ul,
-.main-navigation.toggled-on ul ul,
-.main-navigation.toggled-on ul ul ul {
+
+.main-navigation.toggled-on ul {
 	display: block;
-	position: static;
-
 }
 
 
@@ -42,8 +42,23 @@
   margin-top: 0px;
 }
 
+
 /*
 2017 bits
+
+.main-navigation.toggled-on > div > ul {
+	display: block;
+}
+
+.main-navigation ul ul.toggled-on {
+	display: block;
+}
+
+.main-navigation.toggled-on ul.menu {
+	display: block;
+}
+
+
 
 .main-navigation.toggled-on > div > ul > li {
 	display: block;
@@ -67,41 +82,4 @@
 
 .menu-toggle:focus {
 	outline: thin solid;
-}
-
-.menu-toggle .icon {
-	margin-right: 0;
-	top: 0px;
-}
-
-
-.toggled-on .menu-toggle .icon-bars,
-.menu-toggle .icon-close {
-	display: none;
-}
-
-.toggled-on .menu-toggle .icon-close {
-	display: inline-block;
-}
-
-/* SOME no-svg bits from 2017 */
-
-.no-svg .dropdown-toggle .svg-fallback.icon-angle-down {
-	font-size: 20px;
-	font-size: 1.25rem;
-	font-weight: 400;
-	line-height: 1;
-	-webkit-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	transform: rotate(180deg);
-}
-
-.no-svg .dropdown-toggle.toggled-on .svg-fallback.icon-angle-down {
-	-webkit-transform: rotate(0);
-	-ms-transform: rotate(0);
-	transform: rotate(0);
-}
-
-.no-svg .dropdown-toggle .svg-fallback.icon-angle-down:before {
-	content: "\005E";
 }

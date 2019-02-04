@@ -470,4 +470,4 @@ END - Show featured image thumbnails in admin post listings
   /**
    * SVG icons functions and filters from 2017.
    */
-  require get_parent_theme_file_path( '/inc/icon-functions.php' );
+  //require get_parent_theme_file_path( '/inc/icon-functions.php' );

@@ -1,9 +1,42 @@
 /* global sayheyScreenReaderText */
 /**
- * Theme functions file.
+ * Theme functions file. Copied.
  *
  * Contains handlers for navigation and widget area.
  */
+
+ // MOBILE MENU
+
+ class MobileMenu {
+
+   constructor() {
+     this.siteHeader = $(".site-header");
+     this.menuIcon = $("#hamburger");
+     this.menuContent = $(".site-header__menu-content");
+     this.siteNav = $(".menu-header-container");
+     this.events();
+   }
+
+   events() {
+     this.menuIcon.click(this.toggleTheMenu.bind(this));
+   }
+
+   toggleTheMenu() {
+
+     if (this.menuIcon.hasClass('fa-bars')) {
+       this.menuIcon.removeClass('fa-bars');
+       this.menuIcon.addClass('fa-times');
+     } else {
+       this.menuIcon.removeClass('fa-times');
+       this.menuIcon.addClass('fa-bars');
+     }
+   }
+
+ }
+
+ //export default MobileMenu;
+
+ var mobileMenu = new MobileMenu();
 
 (function( $ ) {
 	var masthead, menuToggle, siteNavContain, siteNavigation;
@@ -11,24 +44,34 @@
 	function initMainNavigation( container ) {
 
 		// Add dropdown toggle that displays child menu items.
-		var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
-			.append( sayheyScreenReaderText.icon )
+		/*
+    var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
+			.append( $( '<span />', { 'class': 'dropdown-symbol', text: '+' }) )
 			.append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
+    */
+
+    var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle fa fa-angle-down', 'aria-expanded': false })
+      .append( sayheyScreenReaderText.icon )
+      .append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
 
 		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
 
 		// Set the active submenu dropdown toggle button initial state.
+
 		container.find( '.current-menu-ancestor > button' )
 			.addClass( 'toggled-on' )
 			.attr( 'aria-expanded', 'true' )
 			.find( '.screen-reader-text' )
 			.text( sayheyScreenReaderText.collapse );
+
 		// Set the active submenu initial state.
 		container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
 
 		container.find( '.dropdown-toggle' ).click( function( e ) {
 			var _this = $( this ),
-				screenReaderSpan = _this.find( '.screen-reader-text' );
+      screenReaderSpan = _this.find( '.screen-reader-text' );
+      dropdownSymbol = _this.find( '.dropdown-symbol' );
+      dropdownSymbol.text( dropdownSymbol.text() === '-' ? '+' : '-');
 
 			e.preventDefault();
 			_this.toggleClass( 'toggled-on' );
@@ -52,6 +95,7 @@
 
 		// Return early if menuToggle is missing.
 		if ( ! menuToggle.length ) {
+      console.log('Empty');
 			return;
 		}
 

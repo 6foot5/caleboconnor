@@ -873,19 +873,17 @@ font-size: 0;
 
 */
 .main-navigation {
-
   margin-top: 0;
   background-color: #F2F3F4;
 	position: relative;
-  font-size: 0;
+  font-size: 0; /* to remove blank space under .menu-header-container  */
 	top: 0px;
   left: 0px;
 	padding: 0;
 	width: 100%;
   border: 0px solid black;
-  text-align: right; /* when wider than mobile, align nav list block to right of container */
+  text-align: right; /* when wider than mobile, align the child <ul> block (nav links) to right of container */
   background: none;
-
 }
 .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
   display: inline-block;
@@ -893,6 +891,7 @@ font-size: 0;
   border: 0px solid red;
   font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
   margin: 0;
+  padding: 0;
 }
 .main-navigation ul {
   list-style: none;
@@ -909,20 +908,31 @@ font-size: 0;
   padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
   border: 0px solid orange;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,.15);
   width: 225px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
-  position: relative; /* will allow positioning of drop-down arrows inside anchor tag */
+  /* position: relative; will allow positioning of drop-down arrows inside anchor tag (commented out; arrows now placed after anchor inside <li>) */
+}
+.menu .sub-menu a {
+  border-bottom: 1px solid rgba(0,0,0,.15);
 }
 .main-navigation ul ul {
   position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
   background-color: #F2F3F4;
-  display: none; /* Will be revealed on parent <li> hover*/
+  display: none; /* Will be revealed on parent <li> hover */
 }
-.main-navigation li:hover > ul { /* do I need to make this [ul li]? */
+/*
+This line will activate submenu on click
+.main-navigation ul ul.toggled-on {
+    display: block;
+}
+*/
+/*
+This line will activate submenu on hover
+*/
+.main-navigation li:hover > ul {
   display: block;
 }
 .main-navigation ul ul li {
-  position: relative; /* to accommodate a possible sub-menu */
+  position: relative; /* to accommodate a possible sub-menu and will allow positioning of drop-down arrows within <li> */
 }
 .main-navigation ul ul ul {
   left: 100%;
@@ -931,38 +941,49 @@ font-size: 0;
 /* TOP LEVEL */
 .main-navigation > div > ul {
   padding-left: 0px;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  border: none;
 }
 .main-navigation > div > ul > li {
   display: inline-block;
   margin: 0;
-  float:left;
+  float:left; /* experiment with turning this off... it may not be necessary with current styles */
+  /* padding: 10px 45px 10px 15px; Sets padding for the top-level menu "buttons" */
+  position: relative;
+  border: none;
 }
 .main-navigation > div > ul > li > a {
   width: auto;
   padding: 10px 45px 10px 15px; /* Sets padding for the top-level menu "buttons" */
 }
+/*
+.main-navigation > div > ul > li > a {
+  width: auto;
+  padding: 10px 45px 10px 15px;
+}
+*/
 .dropdown-toggle {
 	background-color: transparent;
 	border: 0;
 	box-shadow: none;
-	color: #222;
-	display: block;
-	font-size: 16px;
-	right: -0.5em;
-	line-height: 1.5;
-	margin: 0 auto;
-	padding: 0.5em;
+  text-shadow: none;
+	color: #414A4C;
+	display: inline-block;
+	font-size: .5rem;
+	/*line-height: 1.5;*/
+	margin: 0 .5rem;
+	padding: 1rem;
 	position: absolute;
-	text-shadow: none;
-	top: 0;
+	top: 1px;
+  right: -.3rem;
+  z-index: 999;
 }
 .dropdown-toggle:hover,
 .dropdown-toggle:focus {
 	background: transparent;
 }
 .dropdown-toggle:focus {
-	outline: thin dotted;
+	outline: none;
 }
 .dropdown-toggle.toggled-on .icon { /* IE 9 */
 	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
@@ -974,10 +995,10 @@ font-size: 0;
 @media screen and (max-width: 600px) {
 
   .main-navigation {
-    margin-top: 0px;
+    margin-top: 0;
+    background-color: #F2F3F4;
     position: relative;
     width: 100%;
-    background-color: #F2F3F4;
     border: 0px solid black;
     text-align: center;
     font-size: 0; /* remove weird space below the inline-block .menu-header-container */
@@ -990,10 +1011,6 @@ font-size: 0;
     font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
     margin: 0;
   }
-
-
-
-
 
   .main-navigation ul,
   .main-navigation ul ul,
@@ -1078,7 +1095,8 @@ font-size: 0;
 @media (min-width: 600px) {
 .mobile-header {
     margin: 0;
-    padding: 0
+    padding: 0;
+    border: none
 }
   }
 .menu-toggle {
@@ -1087,7 +1105,7 @@ font-size: 0;
 	box-shadow: none;
 	color: #222;
 	font-size: 1.7rem;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 1.5;
 	margin: 1px auto 2px;
 	padding: .5rem;
@@ -1107,13 +1125,9 @@ font-size: 0;
   }
 /*
 	My TOGGLE attempts...
-*/
-.main-navigation.toggled-on ul,
-.main-navigation.toggled-on ul ul,
-.main-navigation.toggled-on ul ul ul {
+	*/
+.main-navigation.toggled-on ul {
 	display: block;
-	position: static;
-
 }
 .main-navigation.toggled-on > div > ul > li {
   display: block;
@@ -1122,6 +1136,20 @@ font-size: 0;
 }
 /*
 2017 bits
+
+.main-navigation.toggled-on > div > ul {
+	display: block;
+}
+
+.main-navigation ul ul.toggled-on {
+	display: block;
+}
+
+.main-navigation.toggled-on ul.menu {
+	display: block;
+}
+
+
 
 .main-navigation.toggled-on > div > ul > li {
 	display: block;
@@ -1142,33 +1170,6 @@ font-size: 0;
 }
 .menu-toggle:focus {
 	outline: thin solid;
-}
-.menu-toggle .icon {
-	margin-right: 0;
-	top: 0px;
-}
-.toggled-on .menu-toggle .icon-bars,
-.menu-toggle .icon-close {
-	display: none;
-}
-.toggled-on .menu-toggle .icon-close {
-	display: inline-block;
-}
-/* SOME no-svg bits from 2017 */
-.no-svg .dropdown-toggle .svg-fallback.icon-angle-down {
-	font-size: 20px;
-	font-size: 1.25rem;
-	font-weight: 400;
-	line-height: 1;
-	-webkit-transform: rotate(180deg);
-	transform: rotate(180deg);
-}
-.no-svg .dropdown-toggle.toggled-on .svg-fallback.icon-angle-down {
-	-webkit-transform: rotate(0);
-	transform: rotate(0);
-}
-.no-svg .dropdown-toggle .svg-fallback.icon-angle-down:before {
-	content: "\005E";
 }
 .site-banner {
 
