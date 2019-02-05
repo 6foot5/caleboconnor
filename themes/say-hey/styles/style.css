@@ -29,5 +29,7 @@
 @import "modules/_gallery-index-item";
 @import "modules/_gallery-thumb";
 @import "modules/_row";
+@import "modules/_flexible";
+@import "modules/_about-link";
 @import "modules/_icon";
 @import "modules/_site-footer";

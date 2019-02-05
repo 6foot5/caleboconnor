@@ -1,0 +1,30 @@
+
+.about-link {
+  display: inline-block;
+  background-color: $offWhite;
+  border: 1px solid $offBlack;
+  padding: 5px;
+  margin: 20px 5px;
+
+  @mixin atSmall {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 6px;
+    width: 50%
+  }
+}
+
+.about-head {
+  line-height: normal;
+  margin-top: 0;
+}
+
+.about-hr {
+  margin-bottom: 30px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1513,6 +1513,76 @@ This line will activate submenu on hover
       float: none;
       display: flex;
     }
+.flexible {
+
+  display: block;
+  border: 0px solid red;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.flexible__flex-left {
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+  }
+@media (min-width: 600px) {
+.flexible__flex-left {
+      width: 50%
+  }
+  }
+.flexible__flex-right {
+    display: inline-block;
+    width: 80%;
+    border: 0px solid green;
+    padding: 20px 0;
+  }
+@media (min-width: 600px) {
+.flexible__flex-right {
+      width: 50%;
+      padding: 0 0px;
+      margin-left: auto;
+      margin-right: auto
+  }
+  }
+@media (min-width: 600px) {
+.flexible {
+    display: flex
+
+}
+  }
+.about-photo {
+  border-radius: 20%;
+}
+.about-link {
+  display: inline-block;
+  background-color: #F2F3F4;
+  border: 1px solid #414A4C;
+  padding: 5px;
+  margin: 20px 5px;
+}
+@media (min-width: 600px) {
+.about-link {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 6px;
+    width: 50%
+}
+  }
+.about-head {
+  line-height: normal;
+  margin-top: 0;
+}
+.about-hr {
+  margin-bottom: 30px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
 /* SVG Icons base styles */
 .icon {
 	display: inline-block;
