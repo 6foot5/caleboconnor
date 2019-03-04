@@ -14,91 +14,122 @@ get_header();
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
-				<h1>ARTWORK</h1>
+			  <h1>All Artwork</h1>
 			</div>
 
-		<?php
-			//echo '**' . $cat_id->term_id . '**';
-			//print_r($cat_id);
+			<?php
 
-			$terms = get_terms( array(
-				'taxonomy' => 'gallery',
-				'hide_empty' => 1,
-				'childless' => false,		// includes top-level categories that have subcategories
-				'parent' => 0, 					// returns only top-level categories
-				'orderby' => 'parent'
+			$relatedWorks = new WP_Query(array(
+				'posts_per_page' => -1,
+				'post_type' => 'artwork',
+				'orderby' => 'title',
+				'order' => 'asc'
 				)
 			);
 
-			$itemCount = 0;
+			if ($relatedWorks->have_posts()) {
+				?>
+				<style>
+					@media all and (min-width: 800px) {
+						.fancybox-thumbs {
+							top: auto;
+							width: auto;
+							bottom: 0;
+							left: 0;
+							right : 0;
+							height: 95px;
+							padding: 10px 10px 5px 10px;
+							box-sizing: border-box;
+							background: rgba(0, 0, 0, 0.7);
+						}
 
-			//echo '<div class="row row--margins-large">';
-
-      foreach ( $terms as $childTerm ) {
-/*
-
-				-->  Displaying gallery thumbs as inline-block divs allows them to naturally
-				flow from one line to the next, obviating the need to row/column logic.
-
-				if ($itemCount % 2 == 0) {
-
-					//echo '<div class="row__medium-6">';
-				}
-
-*/
-				echo '<div class="gallery-index-item">';
-				//print_r($childTerm);
-
-
-					$image = get_field('term_image', $childTerm);
-
-					$label = $childTerm->name;
-
-					if ($childTerm->parent) {
-						$childOf = get_term($childTerm->parent);
-						$label = $childOf->name . '<hr>' . $label;
+						.fancybox-show-thumbs .fancybox-inner {
+							right: 0;
+							bottom: 95px;
+						}
 					}
+				</style>
 
-					$galleryThumbURL = $image['sizes']['gallery-category'];
+				<?php
 
-					$imgTag = '<img width="100%" src="' . $galleryThumbURL . '" alt="' . $label . '" />';
-
-          printf( '<a href="%1$s">%2$s</a>',
-              esc_url( get_term_link( $childTerm->term_id ) ),
-							$imgTag
-          );
-
+					//echo '<hr>';
+					//echo '<h2>' . get_the_title() . '</h2>';
+					//echo '<ul>';
 					?>
-
-					<a href="<?php echo esc_url( get_term_link( $childTerm->term_id ) ) ?>">
-						<div class="gallery-index-item__shadow-overlay">
-							<div class="gallery-index-item__text-content">
-								<?php	echo $label; ?>
-							</div>
-						</div>
-					</a>
 
 					<?php
 
-					echo '</div>';
+					while ($relatedWorks->have_posts()) {
 
-					/*
+						$relatedWorks->the_post();
 
-									-->  Displaying gallery thumbs as inline-block divs allows them to naturally
-									flow from one line to the next, obviating the need to row/column logic.
+						$workID = get_the_ID();
+						$relatedCaption = '';
+						$captionArgs = array(
+								'get_spin' => false,
+								'get_stories' => true,
+								'get_processes' => true
+						);
+
+						$relatedSpin = get_field('related_spin');
+
+						if ($relatedSpin) {
+							$relatedCaption .= ' | ' . '<a data-fancybox data-type=\'iframe\' href=\'' . get_permalink($relatedSpin->ID) . '\'>View 360-degree Spin</a>';
+						}
+
+						$relatedCaption = artworkCaptioner($workID, $relatedCaption, $captionArgs);
 
 
-					if ($itemCount % 2 != 0) {
-						//echo '</div>';
-					}
+						?>
 
-					$itemCount += 1;
-*/
-			}  //for each item in gallery
+						<div class="gallery-thumb">
+							<div class="gallery-thumb__image">
 
-			//echo '</div>';
+								<a
+									href = "<?php the_post_thumbnail_url('large'); ?>"
+									data-fancybox = "gallery"
+									data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
+										<img
+											alt="<?php the_title(); ?>"
+											src="<?php the_post_thumbnail_url('gallery-thumb'); ?>">
 
-		?>
+									<div class="gallery-thumb__shadow-overlay">
+									</div>
+
+								</a>
+							</div>
+							<div class="gallery-thumb__caption">
+								<?php the_title(); ?>
+							</div>
+						</div>
+
+
+
+					<?php
+
+				}
+
+			}
+
+			?>
+
+			<script type="text/javascript">
+					 <!--
+						$.fancybox.defaults.loop = true;
+						$.fancybox.defaults.protect = true;
+						$.fancybox.defaults.buttons = ['thumbs', 'fullScreen', 'close'];
+
+						$('[data-fancybox="gallery"]').fancybox({
+								thumbs : {
+									autoStart : false,
+									axis      : 'x'
+							}
+						})
+
+				//alert('Sucka!');
+
+					 //-->
+			</script>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

@@ -27,17 +27,32 @@
 		if (is_front_page()) {
 			$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
 
+			if(get_field('page_banner_background_image')) {
+				$bannerImg = get_field('page_banner_background_image');
+				$bgImgSmall = $bannerImg['sizes']['large'];
+			}
+
+			// Pull different bg sizes here and use media queries below to change bg src on the fly
+			// https://www.w3schools.com/Css/css_rwd_images.asp
+			// https://stackoverflow.com/questions/31848576/html-picture-or-srcset-for-responsive-images
+
 			?>
 
 			<style type="text/css">
 				.home {
 					width: 100%;
 			    height: auto;
-			    background-image: url('<?php echo $bgImgURL; ?>');
+			    background-image: url('<?php echo $bgImgSmall; ?>');
 			    background-size: cover;
 					background-position: center center;
 					background-repeat: no-repeat;
 					background-attachment: fixed;
+
+				}
+				@media (min-width: 600px) {
+					.home {
+						background-image: url('<?php echo $bgImgURL; ?>');
+					}
 				}
 			</style>
 

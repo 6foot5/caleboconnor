@@ -10,48 +10,66 @@
 get_header();
 ?>
 
+<?php
+	$siteMainExtraClass = "";
+	if ($wp->request == 'artwork/gallery') {
+		$siteMainExtraClass .= "contents-aligncenter";
+	}
+?>
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main <?php echo $siteMainExtraClass; ?>">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'sayhey' ); ?></h1>
-				</header><!-- .page-header -->
+			<?php
+				if ($wp->request == 'artwork/gallery') {
+					require get_theme_file_path('/template-parts/tax-landing.php');
+				}
+				else {
+			?>
+					<section class="error-404 not-found">
+						<header class="page-header">
+							<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'sayhey' ); ?></h1>
+						</header><!-- .page-header -->
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'sayhey' ); ?></p>
+						<div class="page-content">
 
-					<?php
-					get_search_form();
+							<p><?php esc_html_e( '404!! It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'sayhey' );
+							echo $wp->request; ?></p>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'sayhey' ); ?></h2>
-						<ul>
 							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
+							get_search_form();
+
+							the_widget( 'WP_Widget_Recent_Posts' );
 							?>
-						</ul>
-					</div><!-- .widget -->
 
-					<?php
-					/* translators: %1$s: smiley */
-					$sayhey_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'sayhey' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$sayhey_archive_content" );
+							<div class="widget widget_categories">
+								<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'sayhey' ); ?></h2>
+								<ul>
+									<?php
+									wp_list_categories( array(
+										'orderby'    => 'count',
+										'order'      => 'DESC',
+										'show_count' => 1,
+										'title_li'   => '',
+										'number'     => 10,
+									) );
+									?>
+								</ul>
+							</div><!-- .widget -->
 
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+							<?php
+							/* translators: %1$s: smiley */
+							$sayhey_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'sayhey' ), convert_smilies( ':)' ) ) . '</p>';
+							the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$sayhey_archive_content" );
 
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
+							the_widget( 'WP_Widget_Tag_Cloud' );
+							?>
+
+						</div><!-- .page-content -->
+					</section><!-- .error-404 -->
+
+			<?php
+				}
+			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

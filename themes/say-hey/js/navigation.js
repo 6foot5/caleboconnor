@@ -24,7 +24,7 @@
 			.attr( 'aria-expanded', 'true' )
 			.find( '.screen-reader-text' )
 			.text( sayheyScreenReaderText.collapse );
-      
+
 		// Set the active submenu initial state.
 		container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
 

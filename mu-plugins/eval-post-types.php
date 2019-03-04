@@ -26,12 +26,14 @@ function sh_tax() {
         'public' => true,
         'show_in_nav_menus' => true,
 		    'show_ui' => true,
+        'show_in_rest' => true,
 		    'show_admin_column' => true,
         'show_tagcloud' => false,
         'show_admin_column' => true,
         'hierarchical' => true,
         'rewrite' => array(
         	'slug' => 'artwork/gallery' ,
+          'hierarchical' => true,
         	'with_front' => false
         ),
         'query_var' => true
@@ -69,7 +71,7 @@ function sh_cpt() {
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,
-        'show_in_rest' => false,
+        'show_in_rest' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
         'has_archive' => true,
@@ -77,7 +79,7 @@ function sh_cpt() {
         'can_export' => true,
         'rewrite' => array( 'slug' => 'artwork', 'with_front' => false),
         'capability_type' => 'post',
-        'taxonomies' => array('gallery'),
+        'taxonomies' => array('gallery', 'post_tag'),
         'menu_icon' => 'dashicons-art',
         'menu_position' => 5
     );
@@ -117,7 +119,7 @@ function sh_cpt() {
         'can_export' => true,
         'rewrite' => array( 'slug' => 'stories'),
         'capability_type' => 'post',
-        'taxonomies' => array('categories'),
+        'taxonomies' => array('categories', 'post_tag'),
         'menu_icon' => 'dashicons-book',
         'menu_position' => 7
 
@@ -159,7 +161,7 @@ function sh_cpt() {
         'can_export' => true,
         'rewrite' => array( 'slug' => 'process'),
         'capability_type' => 'post',
-        'taxonomies' => array('categories'),
+        'taxonomies' => array('categories', 'post_tag'),
         'menu_icon' => 'dashicons-lightbulb',
         'menu_position' => 8
     );
@@ -183,7 +185,7 @@ function sh_cpt() {
     $spinArgs = array(
         'labels' => $spinLabels,
         'hierarchical' => false,
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'supports' => array('title', 'editor', 'thumbnail'),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -213,40 +215,5 @@ function sh_cpt() {
 add_action('init', 'sh_tax');
 add_action('init', 'sh_cpt');
 
+
 //add_action('init', 'sh_custom_taxonomies' );
-
-
-// picked up the below function from https://codeable.io/get-your-custom-taxonomy-urls-in-order/
-
-/*
-function generate_taxonomy_rewrite_rules( $wp_rewrite ) {
-
-  $rules = array();
-  $post_types = get_post_types( array( 'name' => 'artwork', 'public' => true, '_builtin' => false ), 'objects' );
-  $taxonomies = get_taxonomies( array( 'name' => 'gallery', 'public' => true, '_builtin' => false ), 'objects' );
-
-  foreach ( $post_types as $post_type ) {
-
-    $post_type_name = $post_type->name; // 'artwork'
-    $post_type_slug = $post_type->rewrite['slug']; // 'artwork'
-
-    foreach ( $taxonomies as $taxonomy ) {
-
-      if ( $taxonomy->object_type[0] == $post_type_name ) {
-
-        $terms = get_categories( array( 'type' => $post_type_name, 'taxonomy' => $taxonomy->name, 'hide_empty' => 0 ) );
-
-        foreach ( $terms as $term ) {
-          $rules[$post_type_slug . '/' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
-        }
-      }
-    }
-  }
-
-  $wp_rewrite->rules = $rules + $wp_rewrite->rules;
-
-}
-
-add_action('generate_rewrite_rules', 'generate_taxonomy_rewrite_rules');
-
-*/

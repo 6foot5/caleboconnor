@@ -16,6 +16,9 @@
  add_filter( 'posts_request', 'my_posts_request_filter' );
 */
 
+require get_theme_file_path('/inc/artwork-route.php');
+
+
  if ( ! function_exists( 'sayhey_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

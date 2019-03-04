@@ -22,7 +22,19 @@ get_header();
 
 			the_post_thumbnail('large');
 
+			$workTags = wp_get_post_tags(get_the_id());
+			$workCats = wp_get_object_terms(get_the_id(), 'gallery');
+			$spins = get_field('related_spin');
+
+			echo '<br /><br />';
+			print_r($workTags);
+			echo '<br /><br />';
+			print_r($spins);
+			echo '<br /><br />HELLO -- ' . get_field('related_spin')->ID;
+
 			the_content();
+
+			// fa-icons for image view: expand-arrows-alt, external-link-alt
 
 			// get related artwork
 
