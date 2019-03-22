@@ -1608,3 +1608,38 @@ This line will activate submenu on hover
     padding-left: 10px;
     padding-right: 10px;
   }
+.search-overlay {
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 110;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, .96);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(1.09);
+          transform: scale(1.09);
+  transition: opacity .3s, visibility .3s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility .3s;
+  transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
+  box-sizing: border-box;
+}
+.search-overlay--active {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+.spinner-loader {
+  margin-top: 45px;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid rgba(0, 0, 0, 0.2);
+  border-top-color: black;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}

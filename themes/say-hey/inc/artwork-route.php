@@ -9,11 +9,12 @@ function sayheyRegisterArtwork() {
   ));
 }
 
-function sayheyArtworkResults($data) {
+function sayheyArtworkResults($wpData) {
 
   $mainQuery = new WP_Query(array(
-    'posts_per_page'   => -1,
-    'post_type' => array('artwork')
+    'posts_per_page' => -1,
+    'post_type' => array('artwork'),
+    's' => sanitize_text_field($wpData['term'])
   ));
 
   $results = array(
@@ -25,6 +26,10 @@ function sayheyArtworkResults($data) {
     $mainQuery->the_post();
 
     $detailImages = get_field('detail_images');
+    //print_r($detailImages);
+    if (!$detailImages) {
+      $detailImages = array();
+    }
     $detailImageIDs = array();
 
     foreach($detailImages as $image) {

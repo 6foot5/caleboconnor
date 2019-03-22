@@ -100,12 +100,18 @@ if ($thisType != 'spin') {
 			<nav id="site-navigation" class="main-navigation">
 
 				<?php
-				wp_nav_menu( array(	'theme_location' => 'header',	'menu_id' => 'primary-menu') );
+				wp_nav_menu(
+					array(
+						'theme_location' => 'header',
+						'menu_id' => 'primary-menu'
+					)
+				);
+
 				//wp_nav_menu( array(	'theme_location' => 'header',	'menu_id' => 'primary-menu',	'link_after' => '<i></i>') );
 				?>
 			</nav><!-- .main-navigation -->
 
-		</div>
+		</div> <!-- .content-area -->
 
 
 	</header><!-- .site-header -->

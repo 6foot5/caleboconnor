@@ -6,3 +6,11 @@ body {
   position: relative;
 }
 */
+
+/*
+ Used to keep page from crolling when search overlay is ON
+*/
+
+.body-no-scroll {
+  overflow: hidden;
+}

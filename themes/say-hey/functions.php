@@ -221,6 +221,12 @@ function sayhey_scripts() {
   	   wp_enqueue_style( 'fancybox-style', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css', array(), '3.3.5' );
 
   	   wp_enqueue_script( 'fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), '3.3.5', false );
+
+       wp_enqueue_script('sayhey-search-js', get_theme_file_uri('/js/search.js'), NULL, microtime(), true);
+
+       wp_localize_script('sayhey-search-js', 'sayHeyData', array(
+        'root_url' => get_site_url()
+      ));
      }
 
 }
