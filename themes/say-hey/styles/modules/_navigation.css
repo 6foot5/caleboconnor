@@ -1,0 +1,214 @@
+
+.main-navigation {
+  margin-top: 0;
+  background-color: $offWhite;
+  position: relative;
+  width: 100%;
+  border: 0px solid black;
+  text-align: center;
+  font-size: 0; /* remove weird space below the inline-block .menu-header-container */
+
+  @mixin atSmall {
+    top: 0px;
+    left: 0px;
+    padding: 0;
+    text-align: right; /* when wider than mobile, align the child <ul> block (nav links) to right of container */
+    background: none;
+  }
+}
+
+.menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+  display: block;
+  text-align: left;
+  border: 0px solid red;
+  font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
+  margin: 0;
+
+  @mixin atSmall {
+    display: inline-block;
+    padding: 0;
+  }
+}
+
+.menu a { /* Wordpress-generated class applied to the top-level <ul>; a more specific anchor target, leaves logo text alone */
+
+  width: auto;
+  display: block;
+  margin: 0px 0px;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+
+  @mixin atSmall {
+    display: inline-block;
+    color: $offBlack;
+    padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
+    border: 0px solid orange;
+    text-decoration: none;
+    width: 225px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+    /* position: relative; will allow positioning of drop-down arrows inside anchor tag (commented out; arrows now placed after anchor inside <li>) */
+  }
+}
+
+.menu .sub-menu a {
+  border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+
+.main-navigation ul {
+  display: none;
+  position: static;
+
+  @mixin atSmall {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+  }
+}
+
+.main-navigation ul ul {
+  display: none;
+  position: static;
+  background: none;
+  margin-left: 25px;
+
+  @mixin atSmall {
+    position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
+    background-color: $offWhite;
+    display: none; /* Will be revealed on parent <li> hover */
+    margin-left: 0px;
+  }
+}
+
+.main-navigation ul ul ul {
+  display: none;
+  position: static;
+  background: none;
+  margin-left: 50px;
+
+  @mixin atSmall {
+    position: absolute;
+    background-color: $offWhite;
+    left: 100%;
+    top: 2.7rem; /* NEEDS ATTENTION */
+    margin-left: auto;
+  }
+}
+
+.main-navigation > div > ul {
+  padding: 0;
+
+  @mixin atSmall {
+    border: none;
+  }
+}
+
+.main-navigation > div > ul > li {
+  display: none; /*?*/
+  float: none;
+  margin-top: 0px;
+
+  @mixin atSmall {
+    display: inline-block;
+    margin: 0;
+    float: left; /* experiment with turning this off... it may not be necessary with current styles */
+    position: relative;
+    border: none;
+  }
+}
+
+.main-navigation ul li {
+  border: 0px solid blue;
+}
+
+.main-navigation ul li:hover {
+  background: none;
+
+  @mixin atSmall {
+    background-color: $hoverGrey;
+  }
+}
+
+.main-navigation ul li a:hover {
+  background-color: $hoverGrey;
+}
+
+/* This line will activate submenu on hover */
+.main-navigation li:hover > ul {
+
+  @mixin atSmall {
+    display: block;
+  }
+}
+
+.main-navigation > div > ul > li > a {
+  padding: 10px 15px;
+
+  @mixin atSmall {
+    width: auto;
+    padding: 10px 45px 10px 15px; /* Sets padding for the top-level menu "buttons" */
+  }
+}
+
+.main-navigation ul li a {
+
+}
+
+.main-navigation.toggled-on > div > ul {
+	display: block;
+}
+
+.main-navigation.toggled-on > div > ul > li {
+  display: block;
+  float: none;
+  margin-top: 0px;
+}
+
+
+
+
+
+
+
+.dropdown-toggle {
+	background-color: transparent;
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+  text-shadow: none;
+	color: $offBlack;
+	display: inline-block;
+	font-size: .5rem;
+	/*line-height: 1.5;*/
+	margin: 0 .5rem;
+	padding: 1rem;
+	position: absolute;
+	top: 1px;
+  right: -.3rem;
+  z-index: 999;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+	background: transparent;
+}
+
+.dropdown-toggle:focus {
+	outline: none;
+}
+
+.dropdown-toggle.toggled-on .icon {
+	-ms-transform: rotate(-180deg); /* IE 9 */
+	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
+	transform: rotate(-180deg);
+}
+
+/* Below is to rotate chevron when not on mobile (indicates submenu expands to the side) */
+.sub-menu > li > button > span {
+  @mixin atSmall {
+    -ms-transform: rotate(-90deg); /* IE 9 */
+  	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  	transform: rotate(-90deg);
+  }
+}

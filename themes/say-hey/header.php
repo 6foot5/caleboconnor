@@ -83,11 +83,6 @@ if ($thisType != 'spin') {
 
 			<div class="mobile-header">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<?php
-					//echo sayhey_get_svg( array( 'icon' => 'bars' ) );
-					//echo sayhey_get_svg( array( 'icon' => 'close' ) );
-					//_e( '', 'sayhey' );
-					?>
 					<i id="hamburger" class="fa fa-bars"></i>
 				</button>
 
@@ -95,7 +90,7 @@ if ($thisType != 'spin') {
 					<div class="site-header__logo__image"></div>
 					<div class="site-header__logo__text"><span>caleb o'connor</span></div>
 				</div></a><!-- .site-header__logo -->
-			</div>
+			</div><!-- .mobile-header -->
 
 			<nav id="site-navigation" class="main-navigation">
 

@@ -6,7 +6,9 @@
  *
  * @package SayHey
  */
-
+ if ($wp->request == 'artwork/gallery') {
+	 status_header(200); // WP thinks the artwork/gallery is a 404, but it's wrong. make it 200
+ }
 get_header();
 ?>
 

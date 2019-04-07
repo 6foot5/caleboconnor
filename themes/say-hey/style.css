@@ -844,124 +844,186 @@ z-index: 15;
 .site-header__logo:hover {
     color: #b38c40;
   }
+.mobile-header {
+  text-align: center;
+  padding: .9rem 0 .9rem 0;
+  margin: 0 0 0 0;
+  border: 0px solid rgba(0,0,0,.9);
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
+  background-repeat: no-repeat;
+  background-position: top 1rem left 1rem;
+  background-size: 3.2rem auto;
+}
+@media (min-width: 600px) {
+.mobile-header {
+    margin: 0;
+    padding: 0;
+    border: none
+}
+  }
 /*
-
-Taken from the small screen media query below...
-
-.main-navigation {
-  position: static;
-  width: auto;
-  padding: 20px 15px;
-  float: none;
-  margin: 0;
-
-}
-
-.main-navigation {
-margin-top: 10px;
-position: relative;
-width: 100%;
-background-color: $offWhite;
-border: 0px solid black;
-text-align: center;
-background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
-background-repeat: no-repeat;
-background-position: top .25rem left 1rem;
-background-size: 3.2rem auto;
-font-size: 0;
-}
-
+@import "modules/_main-navigation";
+@import "modules/_main-navigation-mobile";
 */
 .main-navigation {
   margin-top: 0;
   background-color: #F2F3F4;
-	position: relative;
-  font-size: 0; /* to remove blank space under .menu-header-container  */
-	top: 0px;
-  left: 0px;
-	padding: 0;
-	width: 100%;
+  position: relative;
+  width: 100%;
   border: 0px solid black;
-  text-align: right; /* when wider than mobile, align the child <ul> block (nav links) to right of container */
-  background: none;
+  text-align: center;
+  font-size: 0;
 }
+/* remove weird space below the inline-block .menu-header-container */
+@media (min-width: 600px) {
+.main-navigation {
+    top: 0px;
+    left: 0px;
+    padding: 0;
+    text-align: right; /* when wider than mobile, align the child <ul> block (nav links) to right of container */
+    background: none
+}
+  }
 .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
-  display: inline-block;
+  display: block;
   text-align: left;
   border: 0px solid red;
   font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
   margin: 0;
-  padding: 0;
 }
-.main-navigation ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  z-index: 10;
+@media (min-width: 600px) {
+.menu-header-container {
+    display: inline-block;
+    padding: 0
 }
-.main-navigation ul li:hover { /* do I need to make this [ul li]? */
-  background-color: #DDDDDD;
-}
+  }
 .menu a { /* Wordpress-generated class applied to the top-level <ul>; a more specific anchor target, leaves logo text alone */
-  display: inline-block;
-  color: #414A4C;
-  padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
-  border: 0px solid orange;
-  text-decoration: none;
-  width: 225px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
-  /* position: relative; will allow positioning of drop-down arrows inside anchor tag (commented out; arrows now placed after anchor inside <li>) */
+
+  width: auto;
+  display: block;
+  margin: 0px 0px;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(0,0,0,.15);
 }
+@media (min-width: 600px) {
+.menu a {
+    display: inline-block;
+    color: #414A4C;
+    padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
+    border: 0px solid orange;
+    text-decoration: none;
+    width: 225px /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+    /* position: relative; will allow positioning of drop-down arrows inside anchor tag (commented out; arrows now placed after anchor inside <li>) */
+}
+  }
 .menu .sub-menu a {
   border-bottom: 1px solid rgba(0,0,0,.15);
 }
-.main-navigation ul ul {
-  position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
-  background-color: #F2F3F4;
-  display: none; /* Will be revealed on parent <li> hover */
+.main-navigation ul {
+  display: none;
+  position: static;
 }
-/*
-This line will activate submenu on click
-.main-navigation ul ul.toggled-on {
+@media (min-width: 600px) {
+.main-navigation ul {
     display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10
 }
-*/
-/*
-This line will activate submenu on hover
-*/
-.main-navigation li:hover > ul {
-  display: block;
+  }
+.main-navigation ul ul {
+  display: none;
+  position: static;
+  background: none;
+  margin-left: 25px;
 }
-.main-navigation ul ul li {
-  position: relative; /* to accommodate a possible sub-menu and will allow positioning of drop-down arrows within <li> */
+@media (min-width: 600px) {
+.main-navigation ul ul {
+    position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
+    background-color: #F2F3F4;
+    display: none; /* Will be revealed on parent <li> hover */
+    margin-left: 0px
 }
+  }
 .main-navigation ul ul ul {
-  left: 100%;
-  top: 0;
+  display: none;
+  position: static;
+  background: none;
+  margin-left: 50px;
 }
-/* TOP LEVEL */
+@media (min-width: 600px) {
+.main-navigation ul ul ul {
+    position: absolute;
+    background-color: #F2F3F4;
+    left: 100%;
+    top: 2.7rem; /* NEEDS ATTENTION */
+    margin-left: auto
+}
+  }
 .main-navigation > div > ul {
-  padding-left: 0px;
-  /*overflow: hidden;*/
-  border: none;
+  padding: 0;
 }
+@media (min-width: 600px) {
+.main-navigation > div > ul {
+    border: none
+}
+  }
 .main-navigation > div > ul > li {
-  display: inline-block;
-  margin: 0;
-  float:left; /* experiment with turning this off... it may not be necessary with current styles */
-  /* padding: 10px 45px 10px 15px; Sets padding for the top-level menu "buttons" */
-  position: relative;
-  border: none;
+  display: none; /*?*/
+  float: none;
+  margin-top: 0px;
 }
+@media (min-width: 600px) {
+.main-navigation > div > ul > li {
+    display: inline-block;
+    margin: 0;
+    float: left; /* experiment with turning this off... it may not be necessary with current styles */
+    position: relative;
+    border: none
+}
+  }
+.main-navigation ul li {
+  border: 0px solid blue;
+}
+.main-navigation ul li:hover {
+  background: none;
+}
+@media (min-width: 600px) {
+.main-navigation ul li:hover {
+    background-color: #DDDDDD
+}
+  }
+.main-navigation ul li a:hover {
+  background-color: #DDDDDD;
+}
+/* This line will activate submenu on hover */
+@media (min-width: 600px) {
+.main-navigation li:hover > ul {
+    display: block
+}
+  }
 .main-navigation > div > ul > li > a {
-  width: auto;
-  padding: 10px 45px 10px 15px; /* Sets padding for the top-level menu "buttons" */
+  padding: 10px 15px;
 }
-/*
+@media (min-width: 600px) {
 .main-navigation > div > ul > li > a {
-  width: auto;
-  padding: 10px 45px 10px 15px;
+    width: auto;
+    padding: 10px 45px 10px 15px /* Sets padding for the top-level menu "buttons" */
 }
-*/
+  }
+.main-navigation ul li a {
+
+}
+.main-navigation.toggled-on > div > ul {
+	display: block;
+}
+.main-navigation.toggled-on > div > ul > li {
+  display: block;
+  float: none;
+  margin-top: 0px;
+}
 .dropdown-toggle {
 	background-color: transparent;
 	border: 0;
@@ -989,114 +1051,11 @@ This line will activate submenu on hover
 	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
 	transform: rotate(-180deg);
 }
-/*
-  MEDIA QUERY FOR MOBILE MENU PROPERTIES
-*/
-@media screen and (max-width: 600px) {
-
-  .main-navigation {
-    margin-top: 0;
-    background-color: #F2F3F4;
-    position: relative;
-    width: 100%;
-    border: 0px solid black;
-    text-align: center;
-    font-size: 0; /* remove weird space below the inline-block .menu-header-container */
-  }
-
-  .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
-    display: block;
-    text-align: left;
-    border: 0px solid red;
-    font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
-    margin: 0;
-  }
-
-  .main-navigation ul,
-  .main-navigation ul ul,
-  .main-navigation ul ul ul {
-  	display: none;  /*?*/
-  	position: static;
-  }
-
-  .main-navigation ul ul {
-    background: none;
-    margin-left: 25px;
-  }
-
-  .main-navigation ul ul ul {
-    background: none;
-    margin-left: 50px;
-  }
-
-  .main-navigation > div > ul {
-    padding: 0;
-  }
-
-/*
- TOP LEVEL NAV BUTTONS
-*/
-
-  .main-navigation > div > ul > li {
-    display: none; /*?*/
-    float: none;
-    margin-top: 0px;
-  }
-
-  .main-navigation ul li {
-    border: 0px solid blue;
-  }
-
-  .main-navigation ul li:hover {
-    background: none;
-  }
-
-  .main-navigation > div > ul > li > a {
-    padding: 10px 15px;
-  }
-/*
-  .main-navigation ul li a {
-    display: none;
-  }
-*/
-  .main-navigation ul li a {
-    width: auto;
-    display: block;
-    margin: 0px 0px;
-    padding: 10px 15px;
-    border-bottom: 1px solid rgba(0,0,0,.15);
-  }
-
-  .main-navigation ul li a:hover {
-    background-color: #DDDDDD;
-  }
-
-/*
-  .main-navigation ul,
-  .main-navigation .menu-item-has-children > a > .icon,
-  .main-navigation .page_item_has_children > a > .icon,
-  .main-navigation ul a > .icon {
-  	display: none;
-  }
-*/
-
-}
-.mobile-header {
-  text-align: center;
-  padding: .9rem 0 .9rem 0;
-  margin: 0 0 0 0;
-  border: 0px solid rgba(0,0,0,.9);
-  border-bottom: 1px solid rgba(0,0,0,.15);
-  background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
-  background-repeat: no-repeat;
-  background-position: top 1rem left 1rem;
-  background-size: 3.2rem auto;
-}
+/* Below is to rotate chevron when not on mobile (indicates submenu expands to the side) */
 @media (min-width: 600px) {
-.mobile-header {
-    margin: 0;
-    padding: 0;
-    border: none
+.sub-menu > li > button > span { /* IE 9 */
+  	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  	transform: rotate(-90deg)
 }
   }
 .menu-toggle {
@@ -1115,6 +1074,7 @@ This line will activate submenu on hover
   position: absolute;
   top: .9rem;
   right: .6rem;
+	outline: none;
 
 }
 @media (min-width: 600px) {
@@ -1123,53 +1083,13 @@ This line will activate submenu on hover
 
 }
   }
-/*
-	My TOGGLE attempts...
-	*/
-.main-navigation.toggled-on ul {
-	display: block;
-}
-.main-navigation.toggled-on > div > ul > li {
-  display: block;
-  float: none;
-  margin-top: 0px;
-}
-/*
-2017 bits
-
-.main-navigation.toggled-on > div > ul {
-	display: block;
-}
-
-.main-navigation ul ul.toggled-on {
-	display: block;
-}
-
-.main-navigation.toggled-on ul.menu {
-	display: block;
-}
-
-
-
-.main-navigation.toggled-on > div > ul > li {
-	display: block;
-}
-
-.main-navigation.toggled-on ul ul {
-	display: block;
-}
-
-.main-navigation.toggled-on ul {
-	display: block;
-}
-*/
 .menu-toggle:hover,
 .menu-toggle:focus {
 	background-color: transparent;
 	box-shadow: none;
 }
 .menu-toggle:focus {
-	outline: thin solid;
+	outline: none;
 }
 .site-banner {
 

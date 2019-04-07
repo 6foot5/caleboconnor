@@ -70,6 +70,16 @@
     display: none;
   }
 */
+
+
+ul.sub-menu {
+  display:none;
+}
+
+ul.sub-menu .toggled-on {
+  display:block;
+}
+
   .main-navigation ul li a {
     width: auto;
     display: block;
@@ -90,5 +100,20 @@
   	display: none;
   }
 */
+ul.sub-menu  {
+	display: none;
+}
+
+.main-navigation.toggled-on > div > ul {
+	display: block;
+}
+
+.main-navigation.toggled-on > div > ul > li {
+  display: block;
+  float: none;
+  margin-top: 0px;
+}
+
+
 
 }

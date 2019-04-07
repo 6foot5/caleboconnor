@@ -4,4 +4,7 @@ plugins/**
 node_modules/**
 package-lock.json
 .DS_Store
+themes/twentyfifteen/
+themes/twentysixteenteen/
+themes/twentyseventeen/
 themes/twentynineteen/

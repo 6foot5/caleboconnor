@@ -18,6 +18,16 @@
 
 require get_theme_file_path('/inc/artwork-route.php');
 
+function custom_title($title_parts) {
+
+  $pagePath = parse_url( $_SERVER['REQUEST_URI'] );
+
+  if (is_404() && $pagePath['path'] == '/artwork/gallery') {
+    $title_parts['title'] = "Gallery of Work";
+  }
+  return $title_parts;
+}
+add_filter( 'document_title_parts', 'custom_title' );
 
  if ( ! function_exists( 'sayhey_setup' ) ) :
 	/**

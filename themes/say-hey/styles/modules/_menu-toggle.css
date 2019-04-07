@@ -16,62 +16,13 @@
   position: absolute;
   top: .9rem;
   right: .6rem;
+	outline: none;
 
   @mixin atSmall {
     display: none;
   }
 
 }
-
-
-
-
-/*
-	My TOGGLE attempts...
-	*/
-
-
-.main-navigation.toggled-on ul {
-	display: block;
-}
-
-
-.main-navigation.toggled-on > div > ul > li {
-  display: block;
-  float: none;
-  margin-top: 0px;
-}
-
-
-/*
-2017 bits
-
-.main-navigation.toggled-on > div > ul {
-	display: block;
-}
-
-.main-navigation ul ul.toggled-on {
-	display: block;
-}
-
-.main-navigation.toggled-on ul.menu {
-	display: block;
-}
-
-
-
-.main-navigation.toggled-on > div > ul > li {
-	display: block;
-}
-
-.main-navigation.toggled-on ul ul {
-	display: block;
-}
-
-.main-navigation.toggled-on ul {
-	display: block;
-}
-*/
 
 .menu-toggle:hover,
 .menu-toggle:focus {
@@ -81,5 +32,5 @@
 }
 
 .menu-toggle:focus {
-	outline: thin solid;
+	outline: none;
 }
