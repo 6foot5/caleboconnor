@@ -15,8 +15,6 @@ get_header();
 	<div id="primary" class="content-area content-area--padded-sides">
 		<main id="main" class="site-main">
 
-ARCHIVE?!?!
-
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">

@@ -29,7 +29,7 @@ font-size: 0;
 
 */
 
-
+/*COPIED, checked*/
 .main-navigation {
   margin-top: 0;
   background-color: $offWhite;
@@ -44,6 +44,7 @@ font-size: 0;
   background: none;
 }
 
+/*COPIED, checked*/
 .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
   display: inline-block;
   text-align: left;
@@ -53,6 +54,7 @@ font-size: 0;
   padding: 0;
 }
 
+/*COPIED, checked*/
 .main-navigation ul {
   list-style: none;
   margin: 0;
@@ -60,10 +62,26 @@ font-size: 0;
   z-index: 10;
 }
 
+/*COPIED, checked*/
 .main-navigation ul li:hover { /* do I need to make this [ul li]? */
-  background-color: $hoverGrey;
+  /* background-color: $hoverGrey; */
+  -webkit-box-shadow:inset 3px 0px 0px 0px $logoGold;
+  -moz-box-shadow:inset 3px 0px 0px 0px $logoGold;
+  box-shadow:inset 3px 0px 0px 0px $logoGold;
 }
 
+/*COPIED, checked*/
+.main-navigation > div > ul > li:hover {
+
+    /* Override for hover over top level nav only - show bar on top */
+
+    -webkit-box-shadow:inset 0px 2px 0px 0px $logoGold;
+    -moz-box-shadow:inset 0px 2px 0px 0px $logoGold;
+    box-shadow:inset 0px 2px 0px 0px $logoGold;
+
+}
+
+/*COPIED, checked*/
 .menu a { /* Wordpress-generated class applied to the top-level <ul>; a more specific anchor target, leaves logo text alone */
   display: inline-block;
   color: $offBlack;
@@ -74,10 +92,12 @@ font-size: 0;
   /* position: relative; will allow positioning of drop-down arrows inside anchor tag (commented out; arrows now placed after anchor inside <li>) */
 }
 
+/*COPIED, checked*/
 .menu .sub-menu a {
   border-bottom: 1px solid rgba(0,0,0,.15);
 }
 
+/*COPIED, checked*/
 .main-navigation ul ul {
   position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
   background-color: $offWhite;
@@ -94,14 +114,19 @@ This line will activate submenu on click
 /*
 This line will activate submenu on hover
 */
+/*COPIED, checked*/
 .main-navigation li:hover > ul {
-  display: block;
+  @mixin atSmall {
+    display: block;
+  }
 }
 
+/*COPIED, checked*/
 .main-navigation ul ul li {
   position: relative; /* to accommodate a possible sub-menu and will allow positioning of drop-down arrows within <li> */
 }
 
+/*COPIED, checked*/
 .main-navigation ul ul ul {
   left: 100%;
   top: 0;
@@ -110,12 +135,14 @@ This line will activate submenu on hover
 
 /* TOP LEVEL */
 
+/*COPIED, checked*/
 .main-navigation > div > ul {
   padding-left: 0px;
   /*overflow: hidden;*/
   border: none;
 }
 
+/*COPIED, checked*/
 .main-navigation > div > ul > li {
   display: inline-block;
   margin: 0;
@@ -125,9 +152,16 @@ This line will activate submenu on hover
   border: none;
 }
 
+/*COPIED, checked*/
 .main-navigation > div > ul > li > a {
   width: auto;
-  padding: 10px 45px 10px 15px; /* Sets padding for the top-level menu "buttons" */
+  padding: 10px 20px 10px 20px; /* Sets padding for the top-level menu "buttons" */
+}
+
+/*COPIED, checked*/
+.main-navigation > div > ul > li.menu-item-has-children > a {
+  width: auto;
+  padding: 10px 45px 10px 15px; /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
 }
 
 /*
@@ -137,7 +171,7 @@ This line will activate submenu on hover
 }
 */
 
-
+/*COPIED, checked*/
 .dropdown-toggle {
 	background-color: transparent;
 	border: 0;
@@ -156,21 +190,25 @@ This line will activate submenu on hover
   z-index: 999;
 }
 
+/*COPIED, checked*/
 .dropdown-toggle:hover,
 .dropdown-toggle:focus {
 	background: transparent;
 }
 
+/*COPIED, checked*/
 .dropdown-toggle:focus {
 	outline: none;
 }
 
+/*COPIED, checked*/
 .dropdown-toggle.toggled-on .icon {
 	-ms-transform: rotate(-180deg); /* IE 9 */
 	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
 	transform: rotate(-180deg);
 }
 
+/*COPIED, checked*/
 /* Below is to rotate chevron when not on mobile (indicates submenu expands to the side) */
 .sub-menu > li > button > span {
   @mixin atSmall {

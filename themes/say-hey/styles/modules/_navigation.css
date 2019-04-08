@@ -1,4 +1,5 @@
 
+/* Classs for the NAV element; main wrapper around navigation */
 .main-navigation {
   margin-top: 0;
   background-color: $offWhite;
@@ -17,7 +18,8 @@
   }
 }
 
-.menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+/* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+.menu-header-container {
   display: block;
   text-align: left;
   border: 0px solid red;
@@ -45,22 +47,22 @@
     border: 0px solid orange;
     text-decoration: none;
     width: 225px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
-    /* position: relative; will allow positioning of drop-down arrows inside anchor tag (commented out; arrows now placed after anchor inside <li>) */
   }
-}
-
-.menu .sub-menu a {
-  border-bottom: 1px solid rgba(0,0,0,.15);
 }
 
 
 .main-navigation ul {
   display: none;
   position: static;
+  list-style: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
 
   @mixin atSmall {
     display: block;
-    list-style: none;
     margin: 0;
     padding: 0;
     z-index: 10;
@@ -74,7 +76,7 @@
   margin-left: 25px;
 
   @mixin atSmall {
-    position: absolute; /* want to take sub-menus out of the flow so it doesn't take up vertical space in the parent */
+    position: absolute; /* want to take sub-menus out of the flow so they doesn't take up vertical space in the parent */
     background-color: $offWhite;
     display: none; /* Will be revealed on parent <li> hover */
     margin-left: 0px;
@@ -91,7 +93,7 @@
     position: absolute;
     background-color: $offWhite;
     left: 100%;
-    top: 2.7rem; /* NEEDS ATTENTION */
+    top: 0; /* NEEDED attention (was causing sub-sub-menu to display in wrong vertical position. Now OK) */
     margin-left: auto;
   }
 }
@@ -108,6 +110,7 @@
   display: none; /*?*/
   float: none;
   margin-top: 0px;
+  position: relative;
 
   @mixin atSmall {
     display: inline-block;
@@ -126,33 +129,66 @@
   background: none;
 
   @mixin atSmall {
-    background-color: $hoverGrey;
+
+    /* Set default hover decoration to 3px bar on left */
+
+    -webkit-box-shadow:inset 3px 0px 0px 0px $logoGold;
+    -moz-box-shadow:inset 3px 0px 0px 0px $logoGold;
+    box-shadow:inset 3px 0px 0px 0px $logoGold;
+  }
+}
+
+.main-navigation > div > ul > li:hover {
+  background: none;
+
+  @mixin atSmall {
+
+    /* Override for hover over top level nav only - show bar on top */
+
+    -webkit-box-shadow:inset 0px 2px 0px 0px $logoGold;
+    -moz-box-shadow:inset 0px 2px 0px 0px $logoGold;
+    box-shadow:inset 0px 2px 0px 0px $logoGold;
   }
 }
 
 .main-navigation ul li a:hover {
-  background-color: $hoverGrey;
+  /* If I want to bring back the hover color...
+  background-color: $hoverGrey; */
 }
 
 /* This line will activate submenu on hover */
+/* To require dropdown click to expose submenu, remove this bit below */
 .main-navigation li:hover > ul {
-
   @mixin atSmall {
     display: block;
   }
 }
+
+.main-navigation ul ul li {
+  position: relative; /* to accommodate a possible sub-menu and will allow positioning of drop-down arrows within <li> */
+}
+
 
 .main-navigation > div > ul > li > a {
   padding: 10px 15px;
 
   @mixin atSmall {
     width: auto;
-    padding: 10px 45px 10px 15px; /* Sets padding for the top-level menu "buttons" */
+    padding: 10px 20px 10px 20px; /* Sets default padding for top-level menu "buttons" */
   }
 }
 
-.main-navigation ul li a {
+.main-navigation > div > ul > li.menu-item-has-children > a {
+  padding: 10px 15px;
 
+  @mixin atSmall {
+    width: auto;
+    padding: 10px 45px 10px 15px; /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
+  }
+}
+
+.main-navigation ul li a:hover {
+  color: $offBlack; /* This overrides global link hover color */
 }
 
 .main-navigation.toggled-on > div > ul {
@@ -165,15 +201,19 @@
   margin-top: 0px;
 }
 
+ul.sub-menu {
+  display:none;
+}
 
-
-
+ul.sub-menu.toggled-on {
+  display:block;
+}
 
 
 
 .dropdown-toggle {
 	background-color: transparent;
-	border: 0;
+	border: 0px solid purple;
 	-webkit-box-shadow: none;
 	box-shadow: none;
   text-shadow: none;
@@ -186,7 +226,7 @@
 	position: absolute;
 	top: 1px;
   right: -.3rem;
-  z-index: 999;
+  z-index: 99;
 }
 
 .dropdown-toggle:hover,

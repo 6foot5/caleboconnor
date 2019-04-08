@@ -5,6 +5,7 @@
 
 @media screen and (max-width: 600px) {
 
+  /*COPIED, checked*/
   .main-navigation {
     margin-top: 0;
     background-color: $offWhite;
@@ -15,6 +16,7 @@
     font-size: 0; /* remove weird space below the inline-block .menu-header-container */
   }
 
+  /*COPIED, checked*/
   .menu-header-container { /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
     display: block;
     text-align: left;
@@ -23,6 +25,7 @@
     margin: 0;
   }
 
+  /*COPIED, checked*/
   .main-navigation ul,
   .main-navigation ul ul,
   .main-navigation ul ul ul {
@@ -30,16 +33,19 @@
   	position: static;
   }
 
+  /*COPIED, checked*/
   .main-navigation ul ul {
     background: none;
     margin-left: 25px;
   }
 
+  /*COPIED, checked*/
   .main-navigation ul ul ul {
     background: none;
     margin-left: 50px;
   }
 
+  /*COPIED, checked*/
   .main-navigation > div > ul {
     padding: 0;
   }
@@ -48,72 +54,70 @@
  TOP LEVEL NAV BUTTONS
 */
 
+/*COPIED, checked*/
   .main-navigation > div > ul > li {
     display: none; /*?*/
     float: none;
     margin-top: 0px;
   }
 
+  /*COPIED, checked*/
   .main-navigation ul li {
     border: 0px solid blue;
   }
 
+  /*COPIED, checked*/
   .main-navigation ul li:hover {
     background: none;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
   }
 
+  /*COPIED, checked*/
   .main-navigation > div > ul > li > a {
     padding: 10px 15px;
   }
-/*
-  .main-navigation ul li a {
-    display: none;
+
+
+  /* TRY TO ADD THESE SELECTORS LATER
+  (Not copied yet....)
+----------------------------  */
+  ul.sub-menu {
+    display:none;
   }
-*/
 
+  ul.sub-menu.toggled-on {
+    display:block;
+  }
+/* ---------------------  */
 
-ul.sub-menu {
-  display:none;
-}
+  /* COPIED (to .menu a) <<<<< */
+  /* >>>>>>>>>>>-----------<<<<<<<<<< */
+    .main-navigation ul li a {
+      width: auto;
+      display: block;
+      margin: 0px 0px;
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(0,0,0,.15);
+    }
+  /* >>>>>>>>>>>-----------<<<<<<<<<< */
 
-ul.sub-menu .toggled-on {
-  display:block;
-}
+  /*COPIED, checked*/
+    .main-navigation ul li a:hover {
+      background-color: $hoverGrey;
+    }
 
-  .main-navigation ul li a {
-    width: auto;
+  /*COPIED, checked*/
+  .main-navigation.toggled-on > div > ul {
+  	display: block;
+  }
+
+  /*COPIED, checked*/
+  .main-navigation.toggled-on > div > ul > li {
     display: block;
-    margin: 0px 0px;
-    padding: 10px 15px;
-    border-bottom: 1px solid rgba(0,0,0,.15);
+    float: none;
+    margin-top: 0px;
   }
-
-  .main-navigation ul li a:hover {
-    background-color: $hoverGrey;
-  }
-
-/*
-  .main-navigation ul,
-  .main-navigation .menu-item-has-children > a > .icon,
-  .main-navigation .page_item_has_children > a > .icon,
-  .main-navigation ul a > .icon {
-  	display: none;
-  }
-*/
-ul.sub-menu  {
-	display: none;
-}
-
-.main-navigation.toggled-on > div > ul {
-	display: block;
-}
-
-.main-navigation.toggled-on > div > ul > li {
-  display: block;
-  float: none;
-  margin-top: 0px;
-}
-
-
 
 }

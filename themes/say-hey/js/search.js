@@ -115,12 +115,12 @@ class Search {
           </div>
         </div>
       </div>
-    `)
+    `);
     $("#primary-menu").append(`
       <li>
         <a href="#" class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></a>
       </li>
-    `)
+    `);
   }
 
 }
