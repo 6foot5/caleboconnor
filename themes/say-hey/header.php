@@ -13,6 +13,9 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
@@ -49,7 +52,7 @@
 					background-attachment: fixed;
 
 				}
-				@media (min-width: 600px) {
+				@media (min-width: 630px) {
 					.home {
 						background-image: url('<?php echo $bgImgURL; ?>');
 					}
@@ -66,7 +69,10 @@
 
 </head>
 
-<body <?php body_class(); ?>>
+<?php
+// ontouchstart="" onmouseover="" relates to hover/touch behavior
+?>
+<body ontouchstart="" onmouseover="" <?php body_class(); ?>>
 
 <?php
 
@@ -115,6 +121,13 @@ if ($thisType != 'spin') {
 		if ( !is_front_page()) {
 			pageBanner();
 		}
+		if (is_post_type_archive('artwork')) {
+			//echo 'Artwork archive page!';
+		}
+		//echo '++--' . get_post_type() . '++';
+		//$mediaCats = get_categories(array('taxonomy' => 'nt_wmc_folder'));
+		//print_r($mediaCats);
+
 	?>
 
 

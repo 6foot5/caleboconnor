@@ -20,20 +20,40 @@ get_header();
 
 			the_post();
 
-			the_post_thumbnail('large');
+			$fullsize = get_the_post_thumbnail_url(get_the_ID(), 'large');
+			$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'gallery-category');
 
+?>
+
+		<div class="flexible">
+			<div class="flexible__flex-left">
+				<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php the_title(); ?>"> <img alt="<?php the_title(); ?>" src="<?php echo $thumbnail; ?>"></a>
+			</div>
+			<div class="flexible__flex-right">
+				<h2 class="heading--small"><?php the_title(); ?></h2>
+				<hr class="about-hr" />
+				<?php
+				echo get_field('artwork_medium') . '<br /><br />';
+				echo get_field('artwork_size') . '<br /><br />';
+				the_content();
+				?>
+
+			</div>
+		</div>
+
+
+<?php
 			$workTags = wp_get_post_tags(get_the_id());
 			$workCats = wp_get_object_terms(get_the_id(), 'gallery');
 			$spins = get_field('related_spin');
 
+/*
 			echo '<br /><br />';
 			print_r($workTags);
 			echo '<br /><br />';
 			print_r($spins);
 			echo '<br /><br />HELLO -- ' . get_field('related_spin')->ID;
-
-			the_content();
-
+*/
 			// fa-icons for image view: expand-arrows-alt, external-link-alt
 
 			// get related artwork

@@ -71,6 +71,7 @@ add_filter( 'document_title_parts', 'custom_title' );
 
     add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
     add_image_size('gallery-thumb', 200, 200, true); // (name, width, height, crop? - near center of photo)
+    add_image_size('cpt-thumb', 400, 200, true); // (name, width, height, crop? - near center of photo)
     add_image_size('gallery-category', 400, 400, true); // (name, width, height, crop?)
     add_image_size('admin-preview', 55, 55, true); // (name, width, height, crop?)
 
@@ -113,30 +114,12 @@ add_action( 'after_setup_theme', 'sayhey_setup' );
 /*
 ***** SET PAGE BANNER ********
 */
+require get_theme_file_path('/inc/page-banner.php');
 
-function pageBanner($args = NULL) {
-
-  if(!$args['photo']) {
-    if(get_field('page_banner_background_image')) {
-      $bgImg = get_field('page_banner_background_image');
-      $args['photo'] = $bgImg['sizes']['page-banner'];
-    }
-    else {
-      $args['photo'] = get_theme_file_uri('/img/fabric-banner.jpg');
-    }
-  }
-
-  ?>
-
-  <div class="site-banner">
-    <div class="site-banner__bg-image" style="background-image: url(<?php echo $args['photo']; ?>);"></div>
-  </div>
-
-
-  <?php
-  //return $args['photo'];
-}
-
+/*
+***** CUSTOMIZE LOGIN SCREEN ********
+*/
+require get_theme_file_path('/inc/customize-login.php');
 
 
 
@@ -181,7 +164,8 @@ function sayhey_scripts() {
   //wp_enqueue_style('mcptc_main_styles', get_stylesheet_uri(), NULL, microtime());
   wp_enqueue_style( 'sayhey-style', get_stylesheet_uri(), NULL, microtime());
   wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
-  wp_enqueue_style( 'sayhey-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+  wp_enqueue_style( 'sayhey-font-arimo', 'https://fonts.googleapis.com/css?family=Arimo:400,700|Cinzel:400,700|Crimson+Text:400,700');
+  wp_enqueue_style( 'sayhey-font-awesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
 
 /*
   wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -485,6 +469,22 @@ END - Show featured image thumbnails in admin post listings
   function define_media_category() {
     return 'category_media';
   }
+
+  function sayhey_theme_archive_title( $title ) {
+      if ( is_category() ) {
+          $title = single_cat_title( '', false );
+      } elseif ( is_tag() ) {
+          $title = single_tag_title( '', false );
+      } elseif ( is_author() ) {
+          $title = '<span class="vcard">' . get_the_author() . '</span>';
+      } elseif ( is_post_type_archive() ) {
+          $title = post_type_archive_title( 'All ', false );
+      } elseif ( is_tax() ) {
+          $title = single_term_title( '', false );
+      }
+      return $title;
+  }
+  add_filter( 'get_the_archive_title', 'sayhey_theme_archive_title' );
 
   /**
    * SVG icons functions and filters from 2017.

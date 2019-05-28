@@ -1,7 +1,8 @@
 
 .site-header {
 
-  background-color: $offWhite;
+  /*background-color: $offWhite;*/
+  background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .7);
   top: 0;
   padding: 0;
   width: 100%;
@@ -40,12 +41,14 @@ z-index: 15;
   &__logo {
 
     position: relative;
-    background-color: $offWhite;
+    /* background-color: $offWhite; */
     border: 0px solid orange;
+    border-radius: 5%;
     text-align: right;
     display: inline-block;
 
     @mixin atSmall {
+      background-color: $offWhite;
       display: block;
       left: auto;
       position: absolute;
@@ -71,7 +74,7 @@ z-index: 15;
         width: auto;
         min-height: 100px;
         background-color: transparent;
-        background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t.png');
+        background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -83,14 +86,14 @@ z-index: 15;
       display: inline-block;
       padding: 10px 40px 10px 40px;
       text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.6rem;
+      font-weight: 400;
       border: 0px solid green;
 
       @mixin atSmall {
         display: block;
         padding: 10px 30px 10px 30px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 400;
         text-align: center;
         z-index: 1;

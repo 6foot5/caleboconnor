@@ -2,7 +2,8 @@
 /* Classs for the NAV element; main wrapper around navigation */
 .main-navigation {
   margin-top: 0;
-  background-color: $offWhite;
+  /*background-color: $offWhite;*/
+  background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .5);
   position: relative;
   width: 100%;
   border: 0px solid black;
@@ -23,7 +24,7 @@
   display: block;
   text-align: left;
   border: 0px solid red;
-  font-size: 1rem;  /* reset font size after setting to zero in 'main-navigation' */
+  font-size: 1.1rem;  /* reset font size after setting to zero in 'main-navigation' */
   margin: 0;
 
   @mixin atSmall {

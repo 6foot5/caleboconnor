@@ -105,6 +105,7 @@ function sh_cpt() {
 
     $storyArgs = array(
         'labels' => $storyLabels,
+        'description' => 'Learn about the stories behind Caleb\'s artwork and the threads that tie pieces together.',
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
         'public' => true,
@@ -133,7 +134,7 @@ function sh_cpt() {
     $processLabels = array(
         'name' => _x( 'Processes', 'sayhey' ),
         'singular_name' => _x( 'Process', 'sayhey' ),
-        'all_items' => _x( 'All Processes', 'sayhey' ),
+        'all_items' => _x( 'Caleb\'s Process', 'sayhey' ),
         'add_new' => _x( 'Add New Process', 'sayhey' ),
         'add_new_item' => _x( 'Add New Process', 'sayhey' ),
         'edit_item' => _x( 'Edit Process', 'sayhey' ),
@@ -142,11 +143,12 @@ function sh_cpt() {
         'search_items' => _x( 'Search Processes', 'sayhey' ),
         'not_found' => _x( 'No Processes found', 'sayhey' ),
         'not_found_in_trash' => _x( 'No Processes found in Trash', 'sayhey' ),
-        'menu_name' => _x( 'Processes', 'sayhey' ),
+        'menu_name' => _x( 'Process', 'sayhey' ),
     );
 
     $processArgs = array(
         'labels' => $processLabels,
+        'description' => 'Take a look inside Caleb\'s process and learn how his works are made.',
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
         'public' => true,

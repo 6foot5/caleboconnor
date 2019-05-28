@@ -1,0 +1,62 @@
+
+#login h1 a, .login h1 a {
+  background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.png');
+  background-image: none, url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.svg');
+  background-size: 180px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  color: #444;
+  width: 100%;
+  height: 180px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 0 auto 25px;
+  padding: 0;
+  text-decoration: none;
+  text-indent: -9999px;
+  outline: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.login label {
+  color: $logoGrey;
+  font-size: 1.2rem;
+}
+
+.login #backtoblog a, .login #nav a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: $logoGrey;
+}
+
+input[type=checkbox]:checked:before {
+    content: "\f147";
+    margin: -3px 0 0 -4px;
+    color: $offBlack;
+    border: none;
+}
+
+.login #login_error, .login .message, .login .success {
+    border-left: 4px solid $logoGold;
+    padding: 12px;
+    margin-left: 0;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+#wp-submit {
+  height: 2.5rem;
+  line-height: 2rem;
+  padding: 0 12px 2px;
+  font-size: 1.4rem;
+
+  background: $logoGold;
+  border-color: $logoGrey;
+  color: $offBlack;
+  text-decoration: none;
+  box-shadow: none;
+  text-shadow: none;
+}

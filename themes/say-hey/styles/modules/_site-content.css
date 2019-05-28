@@ -1,5 +1,6 @@
 
 .site-content {
-  padding-top: 69px;
+  padding-top: 3rem; /* Was 69px ?? */
   padding-bottom: 42px;
+  border: 0px solid black;
 }

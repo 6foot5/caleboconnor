@@ -2,9 +2,11 @@
 .about-link {
   display: inline-block;
   background-color: $offWhite;
+  color: $offBlack;
   border: 1px solid $offBlack;
-  padding: 5px;
-  margin: 20px 5px;
+  padding: 5px 15px;
+  margin: 20px 3px;
+  font-size: .9rem;
 
   @mixin atSmall {
     display: block;
@@ -13,8 +15,14 @@
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 6px;
-    width: 50%
+    width: 50%;
+    font-size: 1.2rem;
   }
+}
+
+.about-link:hover {
+  background-color: $logoGold;
+  color: $offBlack;
 }
 
 .about-head {

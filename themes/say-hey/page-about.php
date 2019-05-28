@@ -23,16 +23,29 @@ get_header();
 					<img class="about-photo" alt="Caleb O'Connor" src="<?php the_post_thumbnail_url('gallery-category'); ?>">
 				</div>
 				<div class="flexible__flex-right">
-					<h2 class="about-head">About Caleb</h2>
+					<h2 class="heading">About Caleb</h2>
 					<hr class="about-hr" />
-					<a href="#" class="about-link">Resume</a>
-					<a href="#" class="about-link">Awards</a>
-					<a href="#" class="about-link">Exhibitions</a>
-					<a href="#" class="about-link">Contact</a>
+
+<?php
+					$args = array(
+						'child_of' => get_the_id(),
+						'sort_column' => 'menu_order'
+					);
+
+					$child_pages = get_pages($args);
+
+					foreach ($child_pages as $child_page) {
+					?>
+						<a href="<?php the_permalink($child_page->ID); ?>" class="about-link"><?php echo $child_page->post_title; ?></a>
+					<?php
+					}
+?>
 				</div>
 			</div>
 
 		<?php
+
+		wp_reset_postdata();
 
 		while ( have_posts() ) :
 			the_post();
@@ -49,7 +62,6 @@ get_header();
 
 		?>
 
-ABOUTTTT?!
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

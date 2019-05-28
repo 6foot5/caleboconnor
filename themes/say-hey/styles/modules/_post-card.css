@@ -1,0 +1,62 @@
+
+.post-card {
+  padding: 0;
+  margin: 35px 0;
+  width: 80%;
+  max-width: 400px; /* Don't want images to pixellate (they'll be 400px wide) */
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, .2);
+
+  @mixin atSmall {
+    width: 250px;
+    margin: 35px 17px;
+  }
+
+  @mixin atMedium {
+    margin: 35px 30px;
+    width: 300px;
+  }
+
+  @mixin atLarge {
+    margin: 40px 30px;
+    width: 400px;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
+
+  &__excerpt {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+  }
+}
+
+/*
+This will contain the cards for each post. Mess with text-align and
+padding/margin to tweak how cards flow at different breakpoints
+*/
+
+.post-card-container {
+  padding: 0px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+
+  @mixin atSmall {
+    text-align: center;
+  }
+
+  @mixin atMedium {
+    text-align: center;
+  }
+
+  @mixin atLarge {
+    text-align: center;
+  }
+
+}

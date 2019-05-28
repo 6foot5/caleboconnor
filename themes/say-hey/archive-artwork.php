@@ -14,7 +14,7 @@ get_header();
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
-			  <h1>All Artwork</h1>
+			  <h1 class="heading">All Artwork</h1>
 			</div>
 
 			<?php
@@ -99,7 +99,7 @@ get_header();
 								</a>
 							</div>
 							<div class="gallery-thumb__caption">
-								<?php the_title(); ?>
+								&bull; <?php the_title(); ?> &bull;
 							</div>
 						</div>
 

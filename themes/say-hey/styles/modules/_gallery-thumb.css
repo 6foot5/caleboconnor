@@ -1,9 +1,8 @@
 
-
-
 .gallery-thumb {
   position: relative;
   display: inline-block;
+  vertical-align: top;
   width: 200px;
   padding: 0;
   margin-bottom: 1.2rem;
@@ -16,6 +15,8 @@
     z-index: 10;
     display: block;
     border: 0px solid yellow;
+    opacity: 0;
+    transition: opacity .75s ease;
   }
 
   &__image {
@@ -26,22 +27,82 @@
   }
 
   &__shadow-overlay {
-    z-index: 5;
     position: absolute;
     padding-top: 0px;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 200px;
     padding: 0;
     margin: 0;
     border: 0px solid blue;
   }
 
   &__shadow-overlay:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(0, 0, 0, 0.3); */
   }
 
+  &__button-explore {
+    position: absolute;
+    width: 80%;
+    top: 75px;
+    left: 10%;
+    text-align: center;
+  }
+
+  &__button-explore a {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    color: $offBlack;
+    border: solid 2px $offBlack;
+    background-color:  rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+
+  &__button-explore a:hover {
+    background-color: $offWhite;
+  }
+
+  &__button-view {
+    position: absolute;
+    padding: 0;
+    width: 80%;
+    left:10%;
+    top: 110px;
+    text-align: center;
+    border: 0px solid yellow;
+  }
+
+  &__button-view a {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    color: $offWhite;
+    border: solid 2px $logoGold;
+    background-color:  rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+
+  &__button-view a:hover {
+    background-color: $offBlack;
+  }
+}
+
+.gallery-thumb:hover .gallery-thumb__button-explore a {
+  opacity: 1;
+}
+
+.gallery-thumb:hover .gallery-thumb__button-view a {
+  opacity: 1;
+}
+
+.gallery-thumb:hover .gallery-thumb__caption {
+  opacity: 1;
 }
 
 .gallery-thumb img {

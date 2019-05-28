@@ -19,14 +19,28 @@
       //container.find( '.menu-item-has-children > a > i, .page_item_has_children > a > i' ).after( dropdownToggle );
 
 		// Set the active submenu dropdown toggle button initial state.
+    /*
+
+    ***
+    Commented out May 4, 2019; Do not want active submenu expanded by default
+    (OK in mobile, wrong in desktop)
+    If I can make this mobile-only, then will re-instate (e.g. via JS media query)
+    ***
+
 		container.find( '.current-menu-ancestor > button' )
 			.addClass( 'toggled-on' )
 			.attr( 'aria-expanded', 'true' )
 			.find( '.screen-reader-text' )
 			.text( sayheyScreenReaderText.collapse );
 
+    */
+
 		// Set the active submenu initial state.
-		container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
+		/*
+    Commented out May 4, 2019; Do not want active submenu expanded by default when page loads
+
+    container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
+    */
 
 		container.find( '.dropdown-toggle' ).click( function( e ) {
 			var _this = $( this ),

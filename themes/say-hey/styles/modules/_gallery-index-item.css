@@ -7,6 +7,7 @@
   margin-bottom: 2.0rem;
   margin-right: 2.0rem;
   margin-left: 2.0rem;
+  margin-top: 2.0rem;
   border: 1px solid $offBlack;
   text-align: center;
 
@@ -37,6 +38,7 @@
 
   &__text-content {
     z-index: 10;
+    width: 100%;
     position: absolute;
     padding: 5px;
     top: 50%;
@@ -58,7 +60,6 @@
 
     @mixin atLarge {
       font-size: 2.2rem;
-      width: 400px;
     }
 
   }

@@ -17,6 +17,14 @@ get_header();
 //locate_template( 'archive-artwork.php', true );
 
 $this_cat = get_queried_object();
+$this_cat_ancestors = get_ancestors($this_cat->term_id, 'gallery');
+
+$sectionHeading = $this_cat->name;
+
+foreach ($this_cat_ancestors as $ancestorID) {
+		$ancestorInfo = get_term($ancestorID, 'gallery');
+		$sectionHeading = $ancestorInfo->name . ' | ' . $sectionHeading;
+}
 
 $children = get_term_children($this_cat->term_id, 'gallery');
 
@@ -35,7 +43,8 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
-				<h1>Gallery - <?php echo $this_cat->name; ?></h1>
+				<h1 class="heading"><?php echo $sectionHeading; ?></h1>
+				<hr class="heading__line" />
 			</div>
 
     <?php
@@ -196,8 +205,20 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
 										</a>
 	                </div>
+									<div class="gallery-thumb__button-explore"><a href="<?php the_permalink(); ?>">Explore
+										&nbsp; <i class="far fa-newspaper"></i></a>
+									</div>
+									<!--
+									<div class="gallery-thumb__button-view"><a
+											href = "<?php the_post_thumbnail_url('large'); ?>"
+											data-fancybox = "gallery"
+											data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">View
+												&nbsp; <i class="fas fa-expand-arrows-alt"></i>
+										</a>
+									</div>
+								-->
 									<div class="gallery-thumb__caption">
-										<?php the_title(); ?>
+										&bull; <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> &bull;
 									</div>
 								</div>
 

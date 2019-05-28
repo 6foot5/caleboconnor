@@ -14,7 +14,9 @@
 
     @mixin atSmall {
       width: 50%;
+      min-height: 100%;
     }
+
   }
 
   &__flex-right {
@@ -38,5 +40,5 @@
 }
 
 .about-photo {
-  border-radius: 20%;
+  border-radius: 50%;
 }
