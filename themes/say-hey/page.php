@@ -40,7 +40,7 @@ get_header();
 
 		?>
 
-PAGE
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

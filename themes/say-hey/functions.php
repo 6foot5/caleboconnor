@@ -165,7 +165,7 @@ function sayhey_scripts() {
   wp_enqueue_style( 'sayhey-style', get_stylesheet_uri(), NULL, microtime());
   wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
   wp_enqueue_style( 'sayhey-font-arimo', 'https://fonts.googleapis.com/css?family=Arimo:400,700|Cinzel:400,700|Crimson+Text:400,700');
-  wp_enqueue_style( 'sayhey-font-awesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+  //wp_enqueue_style( 'sayhey-font-awesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
 
 /*
   wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -214,7 +214,9 @@ function sayhey_scripts() {
 
   	   wp_enqueue_style( 'fancybox-style', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css', array(), '3.3.5' );
 
-  	   wp_enqueue_script( 'fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), '3.3.5', false );
+       wp_enqueue_script( 'fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), '3.3.5', false );
+
+       wp_enqueue_script( 'fontawesome-js', 'https://kit.fontawesome.com/78e7cb0f98.js', array(), '5.8.2', false );
 
        wp_enqueue_script('sayhey-search-js', get_theme_file_uri('/js/search.js'), NULL, microtime(), true);
 

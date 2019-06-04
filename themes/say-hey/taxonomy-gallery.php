@@ -193,7 +193,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 									<div class="gallery-thumb__image">
 
 	                  <a
-											href = "<?php the_post_thumbnail_url('large'); ?>"
+											href = "<?php the_post_thumbnail_url('full'); ?>"
 											data-fancybox = "gallery"
 											data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
 												<img
@@ -206,7 +206,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 										</a>
 	                </div>
 									<div class="gallery-thumb__button-explore"><a href="<?php the_permalink(); ?>">Explore
-										&nbsp; <i class="far fa-newspaper"></i></a>
+										&nbsp; <i class="fal fa-newspaper"></i></a>
 									</div>
 									<!--
 									<div class="gallery-thumb__button-view"><a

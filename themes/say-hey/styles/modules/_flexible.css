@@ -8,11 +8,16 @@
   margin-right: auto;
 
   &__flex-left {
-    display: inline-block;
+    display: block;
     width: 80%;
+    padding: 20px 0;
     text-align: center;
+    border: 0px solid green;
+    margin-left: auto;
+    margin-right: auto;
 
     @mixin atSmall {
+      display: inline-block;
       width: 50%;
       min-height: 100%;
     }
@@ -20,16 +25,18 @@
   }
 
   &__flex-right {
-    display: inline-block;
+    display: block;
     width: 80%;
     border: 0px solid green;
     padding: 20px 0;
+    border: 0px solid blue;
+    margin-left: auto;
+    margin-right: auto;
 
     @mixin atSmall {
+      display: inline-block;
       width: 50%;
       padding: 0 0px;
-      margin-left: auto;
-      margin-right: auto;
     }
   }
 

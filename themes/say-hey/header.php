@@ -144,3 +144,9 @@ if ($thisType != 'spin') {
 
 }		// Only output visible header if not on a 'spin' type (Magic360)
 ?>
+
+<?php
+  $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+?>
+
+<!-- <a href="<?php echo $url ?>" onclick="window.history.back()">BACK</a> -->

@@ -66,8 +66,8 @@ class Search {
       this.resultsDiv.html(`
         <div class="row">
           <div class="one-third">
-            <h2 class="search-overlay__section-title">General Information</h2>
-            ${results.workInfo.length ? '<ul class="link-list min-list">' : '<p>No pages or posts! Search better next time!</p>'}
+            <h2 class="search-overlay__section-title">Results of your search</h2>
+            ${results.workInfo.length ? '<ul class="link-list min-list">' : '<p>No results found</p>'}
               ${results.workInfo.map(result => `
                 <li><a
                   href="#">${result.title}</a>
@@ -105,7 +105,7 @@ class Search {
         <div class="search-overlay__top">
           <div class="container">
             <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
-            <input type="text" class="search-term" placeholder="Tell me watcha want!" id="search-term" />
+            <input type="text" class="search-term" placeholder="Enter search criteria" id="search-term" />
             <i class="fa fa-window-close js-search-overlay__close" aria-hidden="true"></i>
           </div>
           <div class="container">
@@ -118,7 +118,7 @@ class Search {
     `);
     $("#primary-menu").append(`
       <li>
-        <a href="#" class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></a>
+        <a href="#" class="search-trigger js-search-trigger"><i class="fal fa-search" aria-hidden="true"></i></a>
       </li>
     `);
   }
