@@ -5,14 +5,58 @@
   margin: 0 0 0 0;
   border: 0px solid rgba(0,0,0,.9);
   border-bottom: 1px solid rgba(0,0,0,.15);
-  background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
+  /*background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');*/
   background-repeat: no-repeat;
   background-position: top 1rem left 1rem;
-  background-size: 3.2rem auto;
+  background-size: 3.3rem auto;
+  position: relative;
 
   @mixin atSmall {
     margin: 0;
     padding: 0;
     border: none;
+    display: none;
+  }
+
+  &__text {
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+    text-align: center;
+    @mixin fontFaceHeaders;
+    font-size: $mobileHeaderFontSize;
+    font-weight: 300;
+    border: 0px solid green;
+
+    @mixin atSmall {
+      display:none;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top:0;
+    left:0;
+    background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
+    background-repeat: no-repeat;
+    background-position: top 1rem left 1rem;
+    background-size: 3.3rem auto;
+    padding: 2.65rem;
+    border: 0px solid purple;
+    display: inline-block;
+  }
+
+  &__logo {
+    position: relative;
+    /* background-color: $offWhite; */
+    border: 2px solid orange;
+    border-radius: 5%;
+    text-align: right;
+    display: inline-block;
+
+    @mixin atSmall {
+      display: none;
+    }
+
+
   }
 }

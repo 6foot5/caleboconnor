@@ -17,6 +17,11 @@
   transition: opacity .3s, transform .3s, visibility .3s;
   transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
   box-sizing: border-box;
+  text-align: center;
+}
+
+.search-overlay__top {
+  padding: 1.5rem;
 }
 
 .search-overlay--active {
@@ -24,7 +29,32 @@
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
-  }
+}
+
+.search-overlay__icon {
+  margin: 0 .6rem;
+}
+
+.search-term {
+  margin-bottom: 1rem;
+  width: 60%;
+  padding: 10px;
+  outline: none;
+}
+
+.search-term:focus {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.search-overlay__section-title {
+  font-size: 2rem;
+}
+
+.js-search-overlay__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+}
 
 .spinner-loader {
   margin-top: 45px;
@@ -35,4 +65,72 @@
   border-top-color: black;
   -webkit-animation: spin 1s infinite linear;
           animation: spin 1s infinite linear;
+}
+
+.search-results__block {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  vertical-align: top;
+  margin-top: 0;
+}
+
+.search-results__block-header {
+  background-color: $logoGold;
+  color: $offWhite;
+  margin: 0;
+  padding: 5px 10px 5px 20px;
+}
+
+.search-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result {
+  display: block;
+  margin: 15px;
+  padding: 0;
+  border: 0px solid yellow;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  vertical-align: bottom;
+}
+
+.search-result__image-container {
+  display: inline-block;
+  padding: 0;
+  border: 0px solid red;
+  width: 55px;
+  padding: 0;
+  font-size: 0;
+}
+
+.search-result__image {
+  display: inline-block;
+  border: 0px solid purple;
+}
+
+.search-result__text {
+  display: inline-block;
+  padding: 0 10px;
+  border: 0px solid black;
+  width: calc(100% - 80px);
+}
+
+.search-results__no-results {
+  display: block;
+  margin: 15px;
+  padding: 0;
+  text-align: center;
+}
+
+.search-results__nav-icon {
+  font-size: calc($navigationFontSize * 1.1);
+}
+
+.search-gutter {
+  @mixin atSmall {
+    margin-right: 4rem;
+  }
 }

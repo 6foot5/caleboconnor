@@ -17,6 +17,7 @@
 */
 
 require get_theme_file_path('/inc/artwork-route.php');
+require get_theme_file_path('/inc/search-route.php');
 
 function custom_title($title_parts) {
 
@@ -69,11 +70,11 @@ add_filter( 'document_title_parts', 'custom_title' );
 			'header' => esc_html__( 'Primary', 'sayhey' ),
 		) );
 
-    add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
-    add_image_size('gallery-thumb', 200, 200, true); // (name, width, height, crop? - near center of photo)
-    add_image_size('cpt-thumb', 400, 200, true); // (name, width, height, crop? - near center of photo)
-    add_image_size('gallery-category', 400, 400, true); // (name, width, height, crop?)
     add_image_size('admin-preview', 55, 55, true); // (name, width, height, crop?)
+    add_image_size('gallery-thumb', 200, 200, true); // (name, width, height, crop? - near center of photo)
+    add_image_size('cpt-thumb', 400, 225, true, array('left','top')); // (name, width, height, crop? - near center of photo)
+    add_image_size('gallery-category', 400, 400, true); // (name, width, height, crop?)
+    add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -122,7 +123,6 @@ require get_theme_file_path('/inc/page-banner.php');
 require get_theme_file_path('/inc/customize-login.php');
 
 
-
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -163,7 +163,7 @@ function sayhey_scripts() {
 
   //wp_enqueue_style('mcptc_main_styles', get_stylesheet_uri(), NULL, microtime());
   wp_enqueue_style( 'sayhey-style', get_stylesheet_uri(), NULL, microtime());
-  wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
+  wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Merriweather:300,400|Roboto:300,400,700|Oswald:300|Libre+Baskerville');
   wp_enqueue_style( 'sayhey-font-arimo', 'https://fonts.googleapis.com/css?family=Arimo:400,700|Cinzel:400,700|Crimson+Text:400,700');
   //wp_enqueue_style( 'sayhey-font-awesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
 
@@ -212,9 +212,11 @@ function sayhey_scripts() {
   	   wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, null);
   	   wp_enqueue_script('jquery');
 
-  	   wp_enqueue_style( 'fancybox-style', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css', array(), '3.3.5' );
+       //wp_enqueue_style( 'fancybox-style', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css', array(), '3.3.5' );
+       //wp_enqueue_script( 'fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), '3.3.5', false );
 
-       wp_enqueue_script( 'fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), '3.3.5', false );
+       wp_enqueue_style( 'fancybox-style', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', array(), '3.5.7' );
+       wp_enqueue_script( 'fancybox-js', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array(), '3.5.7', false );
 
        wp_enqueue_script( 'fontawesome-js', 'https://kit.fontawesome.com/78e7cb0f98.js', array(), '5.8.2', false );
 

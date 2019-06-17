@@ -1,3 +1,4 @@
+@import "base/_global";
 @import "base/_wp-header";
 @import "base/_variables";
 @import "base/_mixins";

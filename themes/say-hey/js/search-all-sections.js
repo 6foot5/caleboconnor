@@ -69,7 +69,7 @@ class Search {
           <h3 class="heading heading--small">Artwork</h3>
         </div>
           <div class="search-results__block">
-            ${results.artworkInfo.length ? '<ul class="search-results-list">' : '<p class="search-results__no-results"><i class="fal fa-empty-set fa-lg"></i></p>'}
+            ${results.artworkInfo.length ? '<ul class="search-results-list">' : '<p>No results found</p>'}
               ${results.artworkInfo.map(result => `
                 <li class="search-result">
                   <div class="search-result__image-container">
@@ -88,7 +88,7 @@ class Search {
             <h3 class="heading heading--small">Pages</h3>
           </div>
           <div class="search-results__block">
-            ${results.generalInfo.length ? '<ul class="search-results-list">' : '<p class="search-results__no-results"><i class="fal fa-empty-set fa-lg"></i></p>'}
+            ${results.generalInfo.length ? '<ul class="search-results-list">' : '<p>No results found</p>'}
               ${results.generalInfo.map(result => `
                 <li class="search-result"><a
                   href="${result.permalink}">${result.title}</a>
@@ -101,7 +101,7 @@ class Search {
             <h3 class="heading heading--small">Behind the Art</h3>
           </div>
           <div class="search-results__block">
-            ${results.storyInfo.length ? '<ul class="search-results-list">' : results.processInfo.length ? '<ul class="search-results-list">' : '<p class="search-results__no-results"><i class="fal fa-empty-set fa-lg"></i></p>'}
+            ${results.storyInfo.length ? '<ul class="search-results-list">' : results.processInfo.length ? '<ul class="search-results-list">' : '<p>No results found</p>'}
               ${results.storyInfo.map(result => `
                 <li class="search-result"><a
                   href="${result.permalink}">Story | ${result.title}</a>
@@ -115,6 +115,15 @@ class Search {
             ${results.storyInfo.length ? '</ul>' : results.processInfo.length ? '</ul>' : ''}
           </div>
 
+          <div class="search-results__block">
+            ${results.processInfo.length ? '<ul class="search-results-list">' : '<p>No results found</p>'}
+              ${results.processInfo.map(result => `
+                <li class="search-result"><a
+                  href="${result.permalink}">Process | ${result.title}</a>
+                </li>
+              `).join('')}
+            ${results.processInfo.length ? '</ul>' : ''}
+          </div>
         </div>
       `);
       this.isSpinnerVisible = false;
@@ -158,7 +167,7 @@ class Search {
     `);
     $("#primary-menu").append(`
       <li>
-        <a href="#" title="Search this site" class="search-trigger js-search-trigger"><i class="fal fa-search search-results__nav-icon" aria-hidden="true"></i></a>
+        <a href="#" title="Search this site" class="search-trigger js-search-trigger"><i class="fal fa-search search__nav" aria-hidden="true"></i></a>
       </li>
     `);
   }

@@ -1,23 +1,23 @@
 
 .site-header {
 
-  /*background-color: $offWhite;*/
-  background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .7);
+  /* Set the background to be a bit transparent on mobile  */
+  background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .8);
   top: 0;
   padding: 0;
   width: 100%;
   height: auto;
   border: 0px solid green;
 
-/*
-position: sticky;
-z-index: 15;
-*/
+  /* entire nav bar will be sticky; logo was extracted and will scroll */
+  position: sticky;
+  z-index: 15;
+
 
   @mixin atSmall {
-/*    background-color: rgba(242,243,244,1); */
+    /* Desktop nav bar will use this offWhite color (will be sticky) */
     background-color: $offWhite;
-    border-bottom: 0px solid $offBlack;
+    border-bottom: 2px solid $logoGold;
   }
 
   &--is-expanded {
@@ -42,27 +42,28 @@ z-index: 15;
 
     position: relative;
     /* background-color: $offWhite; */
-    border: 0px solid orange;
+    border: 0px solid $logoGold;
     border-radius: 5%;
     text-align: right;
-    display: inline-block;
+    display: none;
 
     @mixin atSmall {
+      display: inline-block;
       background-color: $offWhite;
       display: block;
       left: auto;
       position: absolute;
       top: 0;
       width: auto;
-      z-index: 1;
       text-align: center;
+      z-index: 99;
     }
 
     &__image {
       position: relative;
       text-align: center;
       width: 100%;
-      min-height: 120px;
+      min-height: 7.5rem;
       background-color: $offWhite;
       border: 0px solid purple;
       display: none;
@@ -72,13 +73,12 @@ z-index: 15;
         margin-top: 10px;
         left: auto;
         width: auto;
-        min-height: 100px;
+        min-height: 6.25rem;
         background-color: transparent;
         background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        z-index: 1;
       }
     }
 
@@ -86,15 +86,17 @@ z-index: 15;
       display: inline-block;
       padding: 10px 40px 10px 40px;
       text-align: center;
-      font-size: 1.6rem;
-      font-weight: 400;
+      @mixin fontFaceHeaders;
+      font-size: $mobileHeaderFontSize;
+      font-weight: 300;
       border: 0px solid green;
+      display: none;
 
       @mixin atSmall {
         display: block;
         padding: 10px 30px 10px 30px;
-        font-size: 1.2rem;
-        font-weight: 400;
+        font-size: $logoTextFontSize;
+        font-weight: 300;
         text-align: center;
         z-index: 1;
       }

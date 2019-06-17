@@ -33,7 +33,7 @@
 
 .about-link:hover {
   background-color: $logoGold;
-  color: $offBlack;
+  color: $offWhite;
 }
 
 .about-head {

@@ -3,7 +3,7 @@
 .main-navigation {
   margin-top: 0;
   /*background-color: $offWhite;*/
-  background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .5);
+  /* background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .5); */
   position: relative;
   width: 100%;
   border: 0px solid black;
@@ -24,12 +24,19 @@
   display: block;
   text-align: left;
   border: 0px solid red;
-  font-size: 1.1rem;  /* reset font size after setting to zero in 'main-navigation' */
+  @mixin fontFaceNav;
+  font-size: $navigationFontSize;  /* reset font size after setting to zero in 'main-navigation' */
   margin: 0;
+  text-transform: uppercase;
 
   @mixin atSmall {
     display: inline-block;
     padding: 0;
+     /* font-size: calc($navigationFontSize * .85); reset font size after setting to zero in 'main-navigation' */
+  }
+
+  @mixin atMedium {
+    font-size: $navigationFontSize;  /* reset font size after setting to zero in 'main-navigation' */
   }
 }
 
@@ -44,10 +51,10 @@
   @mixin atSmall {
     display: inline-block;
     color: $offBlack;
-    padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
+    padding: 10px 20px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
     border: 0px solid orange;
     text-decoration: none;
-    width: 225px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+    width: 250px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
   }
 }
 
@@ -115,7 +122,7 @@
 
   @mixin atSmall {
     display: inline-block;
-    margin: 0;
+    margin-top: 2px; /* to accommodate 2px decoration on hover for top-level nav */
     float: left; /* experiment with turning this off... it may not be necessary with current styles */
     position: relative;
     border: none;
@@ -124,6 +131,7 @@
 
 .main-navigation ul li {
   border: 0px solid blue;
+  margin-left: 3px; /* to accommodate decoration bar on hover */
 }
 
 .main-navigation ul li:hover {
@@ -131,11 +139,13 @@
 
   @mixin atSmall {
 
-    /* Set default hover decoration to 3px bar on left */
+    /* hover color for all list items (effectively SUB-MENU items)...
+    background-color: $hoverGrey;*/
 
-    -webkit-box-shadow:inset 3px 0px 0px 0px $logoGold;
-    -moz-box-shadow:inset 3px 0px 0px 0px $logoGold;
-    box-shadow:inset 3px 0px 0px 0px $logoGold;
+    /* Set default hover decoration for sub-menu to 3px bar on left */
+    -webkit-box-shadow: -3px 0px 0px 0px $logoGold;
+    -moz-box-shadow: -3px 0px 0px 0px $logoGold;
+    box-shadow: -3px 0px 0px 0px $logoGold;
   }
 }
 
@@ -144,18 +154,16 @@
 
   @mixin atSmall {
 
-    /* Override for hover over top level nav only - show bar on top */
+    /* over-ride: hover color for top-level menu items
+    background-color: $hoverGrey; */
 
-    -webkit-box-shadow:inset 0px 2px 0px 0px $logoGold;
-    -moz-box-shadow:inset 0px 2px 0px 0px $logoGold;
-    box-shadow:inset 0px 2px 0px 0px $logoGold;
+    /* Set default hover decoration for top-level menu to 2px bar on top */
+    -webkit-box-shadow: 0px -2px 0px 0px $logoGold;
+    -moz-box-shadow: 0px -2px 0px 0px $logoGold;
+    box-shadow: 0px -2px 0px 0px $logoGold;
   }
 }
 
-.main-navigation ul li a:hover {
-  /* If I want to bring back the hover color...
-  background-color: $hoverGrey; */
-}
 
 /* This line will activate submenu on hover */
 /* To require dropdown click to expose submenu, remove this bit below */
@@ -174,7 +182,12 @@
   padding: 10px 15px;
 
   @mixin atSmall {
-    width: auto;
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
+    padding: 10px 15px 10px 15px; /* Sets default padding for top-level menu "buttons" */
+  }
+
+  @mixin atMedium {
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 20px 10px 20px; /* Sets default padding for top-level menu "buttons" */
   }
 }
@@ -184,7 +197,17 @@
 
   @mixin atSmall {
     width: auto;
+    padding: 10px 35px 10px 15px; /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
+  }
+
+  @mixin atMedium {
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 45px 10px 15px; /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
+  }
+
+  @mixin atLarge {
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
+    padding: 10px 55px 10px 15px; /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
   }
 }
 
@@ -220,24 +243,31 @@ ul.sub-menu.toggled-on {
   text-shadow: none;
 	color: $offBlack;
 	display: inline-block;
-	font-size: .5rem;
-	/*line-height: 1.5;*/
+	font-size: .625em;
+	cursor: pointer;
+  /* line-height: calc($navigationFontSize * 2.2); */
 	margin: 0 .5rem;
-	padding: 1rem;
+  /* All this crazy business below is about positioning the drop-down arrow */
+  padding: calc($navigationFontSize * 1.35) calc($navigationFontSize / 1.5) calc($navigationFontSize / 1.8) calc($navigationFontSize / 1.5);
 	position: absolute;
-	top: 1px;
+	top: 0px;
   right: -.3rem;
   z-index: 99;
 }
 
-.dropdown-toggle:hover,
-.dropdown-toggle:focus {
-	background: transparent;
+
+.dropdown-toggle:hover {
+  /* If I want to bring back the hover color...*/
 }
 
-.dropdown-toggle:focus {
+
+.dropdown-toggle:focus,
+.dropdown-toggle:hover {
+  background-color: none;
 	outline: none;
 }
+
+
 
 .dropdown-toggle.toggled-on .icon {
 	-ms-transform: rotate(-180deg); /* IE 9 */
@@ -252,4 +282,7 @@ ul.sub-menu.toggled-on {
   	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
   	transform: rotate(-90deg);
   }
+}
+.sub-menu > li > button {
+  padding: $navigationFontSize;
 }

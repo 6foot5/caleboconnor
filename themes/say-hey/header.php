@@ -83,23 +83,32 @@ if ($thisType != 'spin') {
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'sayhey' ); ?></a>
 
+	<!-- This block is for the desktop site logo, to take it out of the
+	site-header sticky area so it will scroll freely. Will disappear for
+	mobile displays -->
+	<div class="content-area">
+		<a href="<?php echo site_url(); ?>"><div class="site-header__logo">
+			<div class="site-header__logo__image"></div>
+			<div class="site-header__logo__text"><span>caleb o'connor</span></div>
+		</div></a><!-- .site-header__logo -->
+	</div><!-- .site-header__logo -->
+
 	<header id="masthead" class="site-header">
 
 		<div class="content-area">
 
+			<!-- This block is for the mobile site header
+			Will disappear for desktop displays -->
 			<div class="mobile-header">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<i id="hamburger" class="fa fa-bars"></i>
+					<i id="hamburger" class="fal fa-bars"></i>
 				</button>
-
-				<a href="<?php echo site_url(); ?>"><div class="site-header__logo">
-					<div class="site-header__logo__image"></div>
-					<div class="site-header__logo__text"><span>caleb o'connor</span></div>
-				</div></a><!-- .site-header__logo -->
+				<a href="<?php echo site_url(); ?>"><div class="mobile-header__text"><span>caleb o'connor</span></div></a>
+				<a href="<?php echo site_url(); ?>"><div class="mobile-header__image"></div></a>
 			</div><!-- .mobile-header -->
 
-			<nav id="site-navigation" class="main-navigation">
 
+			<nav id="site-navigation" class="main-navigation">
 				<?php
 				wp_nav_menu(
 					array(
@@ -107,7 +116,6 @@ if ($thisType != 'spin') {
 						'menu_id' => 'primary-menu'
 					)
 				);
-
 				//wp_nav_menu( array(	'theme_location' => 'header',	'menu_id' => 'primary-menu',	'link_after' => '<i></i>') );
 				?>
 			</nav><!-- .main-navigation -->
@@ -144,7 +152,6 @@ if ($thisType != 'spin') {
 
 }		// Only output visible header if not on a 'spin' type (Magic360)
 ?>
-
 <?php
   $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
 ?>

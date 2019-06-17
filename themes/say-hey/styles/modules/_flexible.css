@@ -22,6 +22,9 @@
       min-height: 100%;
     }
 
+    &--left-align {
+      text-align: left;
+    }
   }
 
   &__flex-right {
@@ -36,7 +39,11 @@
     @mixin atSmall {
       display: inline-block;
       width: 50%;
-      padding: 0 0px;
+      min-height: 100%;
+    }
+
+    &--left-align {
+      text-align: left;
     }
   }
 

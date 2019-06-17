@@ -12,7 +12,7 @@
 
 		// Add dropdown toggle that displays child menu items.
 		var dropdownToggle = $( '<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
-      .append( $( '<span />', { 'class': 'fa fa-chevron-down dds', text: '' }) )
+      .append( $( '<span />', { 'class': 'fas fa-chevron-down dds', text: '' }) )
 			.append( $( '<span />', { 'class': 'screen-reader-text', text: sayheyScreenReaderText.expand }) );
 
       container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
@@ -56,8 +56,9 @@
         }
 
 /* This part is working...to toggle the chevron
+
       dropdownSymbolFa.class( dropdownSymbolFa.hasClass('fa-chevron-down') ? ( dropdownSymbolFa.removeClass('fa-chevron-down'), dropdownSymbolFa.addClass('fa-chevron-up') ) : ( dropdownSymbolFa.removeClass('fa-chevron-up'), dropdownSymbolFa.addClass('fa-chevron-down') ) );
-*/
+ */
 
 			e.preventDefault();
       console.log(_this);

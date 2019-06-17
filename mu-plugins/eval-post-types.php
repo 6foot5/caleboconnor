@@ -66,7 +66,7 @@ function sh_cpt() {
     $artworkArgs = array(
         'labels' => $artworkLabels,
         'hierarchical' => false,
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'supports' => array('title', 'thumbnail', 'excerpt'),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,

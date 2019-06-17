@@ -1,4 +1,8 @@
 
+/*
+  Color variables
+*/
+
 $offWhite: #F2F3F4;
 $offWhiteR: 242;
 $offWhiteG: 243;
@@ -14,3 +18,15 @@ $logoGold: #b38c40;
 $logoGrey: #9c968b;
 
 $hoverGrey: #DDDDDD;
+
+/*
+  Font size variables
+*/
+
+$globalFontSize: 1rem;
+$navigationFontSize: .85rem;
+$headingFontSize: 2.2rem;
+$logoTextFontSize: 1rem;
+$mobileHeaderFontSize: 1.8rem;
+
+$navigationFont: 'Oswald';

@@ -35,7 +35,7 @@ get_header();
 				<?php
 				echo get_field('artwork_medium') . '<br /><br />';
 				echo get_field('artwork_size') . '<br /><br />';
-				the_content();
+				echo get_field('artwork_description');
 				?>
 
 			</div>

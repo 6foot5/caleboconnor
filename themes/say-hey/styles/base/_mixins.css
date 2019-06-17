@@ -29,3 +29,16 @@
     display: table;
   }
 }
+
+
+@define-mixin fontFaceNav {
+  font-family: 'Merriweather', serif;
+}
+
+@define-mixin fontFaceHeaders {
+  font-family: 'Merriweather', serif;
+}
+
+@define-mixin fontFaceBody {
+  font-family: 'Roboto', sans-serif;
+}

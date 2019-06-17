@@ -17,13 +17,13 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header heading heading--centered">
-				<?php
+			<header>
+				<h1 class="page-header heading heading--centered"><?php
 				$post = get_queried_object();
 				$postType = get_post_type_object($post->name);
 				$typeName = esc_html($postType->labels->menu_name);
 				echo 'Behind the Artwork - ' . $typeName;
-				?>
+				?></h1>
 				<hr class="heading__line" />
 			</header><!-- .page-header -->
 
@@ -49,14 +49,14 @@ get_header();
 							<a href="<?php echo get_the_permalink() ?>"><img width="100%" src="<?php echo $thumbnail; ?>" alt="" /></a>
 						</div>
 						<div class="post-card__excerpt">
-							<span class="heading heading--small">
+							<h2 class="heading heading--small">
 							<?php
 								printf( '<a href="%1$s">%2$s</a>',
 										esc_url( get_the_permalink() ),
 										get_the_title()
 								);
 							?>
-							</span>
+						</h2>
 							<hr class="heading__line heading__line--align-left heading__line--full-width" />
 							<?php the_excerpt(); ?>
 						</div>
@@ -71,8 +71,22 @@ get_header();
 				// the_posts_navigation();
 
 			else :
-				echo 'ELSE!';
+
 				//get_template_part( 'template-parts/content', 'none' );
+
+				$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
+				//$request->set_query_params( [ 'per_page' => 12 ] );
+				$response = rest_do_request( $request );
+				$server = rest_get_server();
+				$data = $server->response_to_data( $response, false );
+				$json = wp_json_encode( $data );
+
+				echo '+' . $data[1]['title'] . '+<br />';
+				echo '--' . $data[1]['imageSrc']['medium_large'] . '--';
+
+				//echo $json;
+
+				// print_r($data[1]);
 
 			endif;
 			?>

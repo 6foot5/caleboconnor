@@ -195,7 +195,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 	                  <a
 											href = "<?php the_post_thumbnail_url('full'); ?>"
 											data-fancybox = "gallery"
-											data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
+											data-caption = "<a href='<?php the_permalink(); ?>' target='blank'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
 												<img
 													alt="<?php the_title(); ?>"
 													src="<?php the_post_thumbnail_url('gallery-thumb'); ?>">
@@ -205,9 +205,10 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
 										</a>
 	                </div>
+									<!--
 									<div class="gallery-thumb__button-explore"><a href="<?php the_permalink(); ?>">Explore
 										&nbsp; <i class="fal fa-newspaper"></i></a>
-									</div>
+									</div>-->
 									<!--
 									<div class="gallery-thumb__button-view"><a
 											href = "<?php the_post_thumbnail_url('large'); ?>"
@@ -236,16 +237,15 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
                <!--
                	$.fancybox.defaults.loop = true;
                	$.fancybox.defaults.protect = true;
-               	$.fancybox.defaults.buttons = ['thumbs', 'fullScreen', 'close'];
+               	$.fancybox.defaults.buttons = ['fullScreen', 'close'];
+								$.fancybox.defaults.preventCaptionOverlap = true;
 
                 $('[data-fancybox="gallery"]').fancybox({
-            				thumbs : {
-          			    	autoStart : false,
-          			    	axis      : 'x'
-          				}
+          				thumbs : {
+        			    	autoStart : false,
+        			    	axis      : 'x'
+        					}
           			})
-
-      			//alert('Sucka!');
 
                //-->
           </script>

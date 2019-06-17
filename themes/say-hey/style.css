@@ -1,3 +1,20 @@
+/*
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  position: relative;
+}
+*/
+
+/*
+ Used to keep page from scrolling when search overlay is ON
+*/
+
+.body-no-scroll {
+  overflow: hidden;
+}
+
 /*!
 Theme Name: Say Hey
 Author: Rick Barley, based on Underscores.me
@@ -12,103 +29,140 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+
+/*
+  Color variables
+*/
+
+/*
+  Font size variables
+*/
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
 /* Document
    ========================================================================== */
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
+
 /* Sections
    ========================================================================== */
+
 /**
  * Remove the margin in all browsers.
  */
+
 body {
   margin: 0;
 }
+
 /**
  * Render the `main` element consistently in IE.
  */
+
 main {
   display: block;
 }
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
+
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+
 /* Grouping content
    ========================================================================== */
+
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
+
 hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
+
 /* Text-level semantics
    ========================================================================== */
+
 /**
  * Remove the gray background on active links in IE 10.
  */
+
 a {
   background-color: transparent;
 }
+
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
+
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted; /* 2 */
 }
+
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
+
 b,
 strong {
   font-weight: bolder;
 }
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 code,
 kbd,
 samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
+
 /**
  * Add the correct font size in all browsers.
  */
+
 small {
   font-size: 80%;
 }
+
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
+
 sub,
 sup {
   font-size: 75%;
@@ -116,26 +170,34 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
+
 sub {
   bottom: -0.25em;
 }
+
 sup {
   top: -0.5em;
 }
+
 /* Embedded content
    ========================================================================== */
+
 /**
  * Remove the border on images inside links in IE 10.
  */
+
 img {
   border-style: none;
 }
+
 /* Forms
    ========================================================================== */
+
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
+
 button,
 input,
 optgroup,
@@ -146,34 +208,42 @@ textarea {
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
 }
+
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
+
 button,
 input { /* 1 */
   overflow: visible;
 }
+
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
+
 button,
 select { /* 1 */
   text-transform: none;
 }
+
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
+
 button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
 }
+
 /**
  * Remove the inner border and padding in Firefox.
  */
+
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -181,27 +251,33 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
+
 /**
  * Restore the focus styles unset by the previous rule.
  */
+
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
+
 /**
  * Correct the padding in Firefox.
  */
+
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
+
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
+
 legend {
   box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
@@ -210,117 +286,151 @@ legend {
   padding: 0; /* 3 */
   white-space: normal; /* 1 */
 }
+
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
+
 progress {
   vertical-align: baseline;
 }
+
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
+
 textarea {
   overflow: auto;
 }
+
 /**
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
+
 [type="checkbox"],
 [type="radio"] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
+
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
+
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
+
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
+
 [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
+
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
+
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
+
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
+
 /* Interactive
    ========================================================================== */
+
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
+
 details {
   display: block;
 }
+
 /*
  * Add the correct display in all browsers.
  */
+
 summary {
   display: list-item;
 }
+
 /* Misc
    ========================================================================== */
+
 /**
  * Add the correct display in IE 10+.
  */
+
 template {
   display: none;
 }
+
 /**
  * Add the correct display in IE 10.
  */
+
 [hidden] {
   display: none;
 }
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+
 body,
 button,
 input,
 select,
 optgroup,
 textarea {
-  font-family: 'Crimson Text', serif;
+  font-family: 'Roboto', sans-serif;
   color: #414A4C;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
+
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
 	clear: both;
 }
+
 h1 {
   padding: 0;
   margin-bottom: 1rem;
 }
+
 p {
 	margin-bottom: 1.5em;
 }
+
 dfn, cite, em, i {
 	font-style: italic;
 }
+
 blockquote {
 	margin: 0 1.5em;
 }
+
 address {
 	margin: 0 0 1.5em;
 }
+
 pre {
 	background: #eee;
 	font-family: "Courier 10 Pitch", Courier, monospace;
@@ -332,35 +442,43 @@ pre {
 	overflow: auto;
 	padding: 1.6em;
 }
+
 code, kbd, tt, var {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 	font-size: 15px;
 	font-size: 0.9375rem;
 }
+
 abbr, acronym {
 	border-bottom: 1px dotted #666;
 	cursor: help;
 }
+
 mark, ins {
 	background: #fff9c0;
 	text-decoration: none;
 }
+
 big {
 	font-size: 125%;
 }
+
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
+
 html {
 	box-sizing: border-box;
 	height: 100%;
 }
+
 *,
 *:before,
 *:after {
 	/* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 	box-sizing: inherit;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -369,49 +487,61 @@ body {
 	background: #fff;
 	/* Fallback for when there is no custom background color defined. */
 }
+
 hr {
 	background-color: #ccc;
 	border: 0;
 	height: 1px;
 	margin-bottom: 0.5em;
 }
+
 ul, ol {
 	margin: 0 0 1.5em 3em;
 }
+
 ul {
 	list-style: disc;
 }
+
 ol {
 	list-style: decimal;
 }
+
 li > ul,
 li > ol {
 	margin-bottom: 0;
 	margin-left: 1.5em;
 }
+
 dt {
 	font-weight: bold;
 }
+
 dd {
 	margin: 0 1.5em 1.5em;
 }
+
 img {
 	height: auto;
 	/* Make sure images are scaled correctly. */
 	max-width: 100%;
 	/* Adhere to container width. */
 }
+
 figure {
 	margin: 1em 0;
 	/* Extra wide images within figure tags don't overflow the content area. */
 }
+
 table {
 	margin: 0 0 1.5em;
 	width: 100%;
 }
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
+
 button,
 input[type="button"],
 input[type="reset"],
@@ -426,12 +556,14 @@ input[type="submit"] {
 	line-height: 1;
 	padding: .6em 1em .4em;
 }
+
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
 	border-color: #ccc #bbb #aaa;
 }
+
 button:active, button:focus,
 input[type="button"]:active,
 input[type="button"]:focus,
@@ -441,6 +573,7 @@ input[type="submit"]:active,
 input[type="submit"]:focus {
 	border-color: #aaa #bbb #bbb;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -462,6 +595,7 @@ textarea {
 	border-radius: 3px;
 	padding: 3px;
 }
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
@@ -480,35 +614,46 @@ input[type="color"]:focus,
 textarea:focus {
 	color: #111;
 }
+
 select {
 	border: 1px solid #ccc;
 }
+
 textarea {
 	width: 25%;
 }
+
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
+
 a {
 	color: #414A4C;
 	text-decoration: none;
 }
+
 a:visited {
 	color: #414A4C;
 }
+
 a:hover, a:focus, a:active {
 	color: #b38c40;
 }
+
 a:focus {
 	outline: thin dotted;
 }
+
 a:hover, a:active {
 	outline: 0;
 }
+
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
+
 /* Text meant only for screen readers. */
+
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -522,6 +667,7 @@ a:hover, a:active {
 	width: 1px;
 	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
+
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
 	border-radius: 3px;
@@ -544,35 +690,44 @@ a:hover, a:active {
 	z-index: 100000;
 	/* Above WP toolbar. */
 }
+
 /* Do not show the outline on the skip link target. */
+
 #content[tabindex="-1"]:focus {
 	outline: 0;
 }
+
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
+
 .self-alignleft {
 	display: inline;
 	float: left;
 	margin-right: 1.5em;
 }
+
 .self-alignright {
 	display: inline;
 	float: right;
 	margin-left: 1.5em;
 }
+
 .self-aligncenter {
 	clear: both;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .contents-aligncenter {
   text-align: center;
 }
+
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
+
 .clear:before,
 .clear:after,
 .entry-content:before,
@@ -589,6 +744,7 @@ a:hover, a:active {
 	display: table;
 	table-layout: fixed;
 }
+
 .clear:after,
 .entry-content:after,
 .comment-content:after,
@@ -597,66 +753,85 @@ a:hover, a:active {
 .site-footer:after {
 	clear: both;
 }
+
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
+
 .gallery {
 	margin-bottom: 1.5em;
 }
+
 .gallery-item {
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
 	width: 100%;
 }
+
 .gallery-columns-2 .gallery-item {
 	max-width: 50%;
 }
+
 .gallery-columns-3 .gallery-item {
 	max-width: 33.33%;
 }
+
 .gallery-columns-4 .gallery-item {
 	max-width: 25%;
 }
+
 .gallery-columns-5 .gallery-item {
 	max-width: 20%;
 }
+
 .gallery-columns-6 .gallery-item {
 	max-width: 16.66%;
 }
+
 .gallery-columns-7 .gallery-item {
 	max-width: 14.28%;
 }
+
 .gallery-columns-8 .gallery-item {
 	max-width: 12.5%;
 }
+
 .gallery-columns-9 .gallery-item {
 	max-width: 11.11%;
 }
+
 .gallery-caption {
 	display: block;
 }
+
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
+
 .wp-caption {
 	margin-bottom: 1.5em;
 	max-width: 100%;
 }
+
 .wp-caption img[class*="wp-image-"] {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .wp-caption .wp-caption-text {
 	margin: 0.8075em 0;
 }
+
 .wp-caption-text {
 	text-align: center;
 }
+
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -665,69 +840,91 @@ a:hover, a:active {
 	margin-top: 0;
 	padding: 0;
 }
+
 /* Make sure embeds and iframes fit their containers. */
+
 embed,
 iframe,
 object {
 	max-width: 100%;
 }
+
 /* Make sure logo link wraps around logo image. */
+
 .custom-logo-link {
 	display: inline-block;
 }
+
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
+
 .widget {
 	margin: 0 0 1.5em;
 	/* Make sure select elements fit in widgets. */
 }
+
 .widget select {
 	max-width: 100%;
 }
+
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+
 .sticky {
 	display: block;
 }
+
 .hentry {
 	margin: 0 0 1.5em;
 }
+
 .updated:not(.published) {
 	display: none;
 }
+
 .page-content,
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
 }
+
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+
 .comment-content a {
 	word-wrap: break-word;
 }
+
 .bypostauthor {
 	display: block;
 }
+
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
+
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
+
 .infinite-scroll .posts-navigation,
 .infinite-scroll.neverending .site-footer {
 	/* Theme Footer (when set to scrolling) */
 	display: none;
 }
+
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+
 .infinity-end.neverending .site-footer {
 	display: block;
 }
+
 .content-area {
   max-width: 1000px;
   margin-left: auto;
@@ -738,154 +935,237 @@ object {
   padding: 0;
 
 }
+
 .content-area--padded-sides {
     max-width: 1040px;
     padding-left: 20px;
     padding-right: 20px;
   }
+
 .site {
    /*height: 100%; */
    min-height: 100%;
    position: relative;
    padding: 0;
  }
+
 .site-header {
 
-  /*background-color: $offWhite;*/
-  background: rgba(242, 243, 244, .7);
+  /* Set the background to be a bit transparent on mobile  */
+  background: rgba(242, 243, 244, .8);
   top: 0;
   padding: 0;
   width: 100%;
   height: auto;
   border: 0px solid green;
 
+  /* entire nav bar will be sticky; logo was extracted and will scroll */
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 15;
+
 }
-/*
-position: sticky;
-z-index: 15;
-*/
+
 @media (min-width: 630px) {
+
 .site-header {
-/*    background-color: rgba(242,243,244,1); */
+    /* Desktop nav bar will use this offWhite color (will be sticky) */
     background-color: #F2F3F4;
-    border-bottom: 0px solid #414A4C
+    border-bottom: 2px solid #b38c40
 
 }
   }
+
 .site-header--is-expanded {
     border-bottom: 0px solid #414A4C;
   }
+
 .site-header__menu-content--is-visible {
       z-index: 10;
       display: block;
     }
+
 @media (min-width: 630px) {
+
 .site-header__menu-content {
       float: right
 
   }
   }
+
 .site-header__logo {
 
     position: relative;
     /* background-color: $offWhite; */
-    border: 0px solid orange;
+    border: 0px solid #b38c40;
     border-radius: 5%;
     text-align: right;
-    display: inline-block;
+    display: none;
   }
+
 @media (min-width: 630px) {
+
 .site-header__logo {
+      display: inline-block;
       background-color: #F2F3F4;
       display: block;
       left: auto;
       position: absolute;
       top: 0;
       width: auto;
-      z-index: 1;
-      text-align: center
+      text-align: center;
+      z-index: 99
   }
   }
+
 .site-header__logo__image {
       position: relative;
       text-align: center;
       width: 100%;
-      min-height: 120px;
+      min-height: 7.5rem;
       background-color: #F2F3F4;
       border: 0px solid purple;
       display: none;
     }
+
 @media (min-width: 630px) {
+
 .site-header__logo__image {
         display: block;
         margin-top: 10px;
         left: auto;
         width: auto;
-        min-height: 100px;
+        min-height: 6.25rem;
         background-color: transparent;
         background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
         background-repeat: no-repeat;
         background-position: center;
-        background-size: contain;
-        z-index: 1
+        background-size: contain
     }
   }
+
 .site-header__logo__text {
       display: inline-block;
       padding: 10px 40px 10px 40px;
       text-align: center;
-      font-size: 1.6rem;
-      font-weight: 400;
+      font-family: 'Merriweather', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
       border: 0px solid green;
+      display: none;
     }
+
 @media (min-width: 630px) {
+
 .site-header__logo__text {
         display: block;
         padding: 10px 30px 10px 30px;
-        font-size: 1.2rem;
-        font-weight: 400;
+        font-size: 1rem;
+        font-weight: 300;
         text-align: center;
         z-index: 1
     }
   }
+
 .site-header__logo:hover {
     color: #b38c40;
   }
+
 .mobile-header {
   text-align: center;
   padding: .9rem 0 .9rem 0;
   margin: 0 0 0 0;
   border: 0px solid rgba(0,0,0,.9);
   border-bottom: 1px solid rgba(0,0,0,.15);
-  background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
+  /*background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');*/
   background-repeat: no-repeat;
   background-position: top 1rem left 1rem;
-  background-size: 3.2rem auto;
+  background-size: 3.3rem auto;
+  position: relative;
 }
+
 @media (min-width: 630px) {
+
 .mobile-header {
     margin: 0;
     padding: 0;
-    border: none
+    border: none;
+    display: none
 }
   }
+
+.mobile-header__text {
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    border: 0px solid green;
+  }
+
+@media (min-width: 630px) {
+
+.mobile-header__text {
+      display:none
+  }
+  }
+
+.mobile-header__image {
+    position: absolute;
+    top:0;
+    left:0;
+    background-image: url('/wp-content/themes/say-hey/img/logo-t-full.svg');
+    background-repeat: no-repeat;
+    background-position: top 1rem left 1rem;
+    background-size: 3.3rem auto;
+    padding: 2.65rem;
+    border: 0px solid purple;
+    display: inline-block;
+  }
+
+.mobile-header__logo {
+    position: relative;
+    /* background-color: $offWhite; */
+    border: 2px solid orange;
+    border-radius: 5%;
+    text-align: right;
+    display: inline-block;
+
+
+  }
+
+@media (min-width: 630px) {
+
+.mobile-header__logo {
+      display: none
+
+
+  }
+  }
+
 /*
 @import "modules/_main-navigation";
 @import "modules/_main-navigation-mobile";
 */
+
 /* Classs for the NAV element; main wrapper around navigation */
+
 .main-navigation {
   margin-top: 0;
   /*background-color: $offWhite;*/
-  background: rgba(242, 243, 244, .5);
+  /* background: rgba($offWhiteR, $offWhiteG, $offWhiteB, .5); */
   position: relative;
   width: 100%;
   border: 0px solid black;
   text-align: center;
   font-size: 0;
 }
+
 /* remove weird space below the inline-block .menu-header-container */
+
 @media (min-width: 630px) {
+
 .main-navigation {
     top: 0px;
     left: 0px;
@@ -894,20 +1174,35 @@ z-index: 15;
     background: none
 }
   }
+
 /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
+
 .menu-header-container {
   display: block;
   text-align: left;
   border: 0px solid red;
-  font-size: 1.1rem;  /* reset font size after setting to zero in 'main-navigation' */
+  font-family: 'Merriweather', serif;
+  font-size: .85rem;  /* reset font size after setting to zero in 'main-navigation' */
   margin: 0;
+  text-transform: uppercase;
 }
+
 @media (min-width: 630px) {
+
 .menu-header-container {
     display: inline-block;
     padding: 0
+     /* font-size: calc($navigationFontSize * .85); reset font size after setting to zero in 'main-navigation' */
 }
   }
+
+@media (min-width: 800px) {
+
+.menu-header-container {
+    font-size: .85rem  /* reset font size after setting to zero in 'main-navigation' */
+}
+  }
+
 .menu a { /* Wordpress-generated class applied to the top-level <ul>; a more specific anchor target, leaves logo text alone */
 
   width: auto;
@@ -916,16 +1211,19 @@ z-index: 15;
   padding: 10px 15px;
   border-bottom: 1px solid rgba(0,0,0,.15);
 }
+
 @media (min-width: 630px) {
+
 .menu a {
     display: inline-block;
     color: #414A4C;
-    padding: 10px 45px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
+    padding: 10px 20px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
     border: 0px solid orange;
     text-decoration: none;
-    width: 225px /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+    width: 250px /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
 }
   }
+
 .main-navigation ul {
   display: none;
   position: static;
@@ -941,7 +1239,9 @@ z-index: 15;
   -webkit-padding-start: 0px;
           padding-inline-start: 0px;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation ul {
     display: block;
     margin: 0;
@@ -949,13 +1249,16 @@ z-index: 15;
     z-index: 10
 }
   }
+
 .main-navigation ul ul {
   display: none;
   position: static;
   background: none;
   margin-left: 25px;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation ul ul {
     position: absolute; /* want to take sub-menus out of the flow so they doesn't take up vertical space in the parent */
     background-color: #F2F3F4;
@@ -963,13 +1266,16 @@ z-index: 15;
     margin-left: 0px
 }
   }
+
 .main-navigation ul ul ul {
   display: none;
   position: static;
   background: none;
   margin-left: 50px;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation ul ul ul {
     position: absolute;
     background-color: #F2F3F4;
@@ -978,101 +1284,158 @@ z-index: 15;
     margin-left: auto
 }
   }
+
 .main-navigation > div > ul {
   padding: 0;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation > div > ul {
     border: none
 }
   }
+
 .main-navigation > div > ul > li {
   display: none; /*?*/
   float: none;
   margin-top: 0px;
   position: relative;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation > div > ul > li {
     display: inline-block;
-    margin: 0;
+    margin-top: 2px; /* to accommodate 2px decoration on hover for top-level nav */
     float: left; /* experiment with turning this off... it may not be necessary with current styles */
     position: relative;
     border: none
 }
   }
+
 .main-navigation ul li {
   border: 0px solid blue;
+  margin-left: 3px; /* to accommodate decoration bar on hover */
 }
+
 .main-navigation ul li:hover {
   background: none;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation ul li:hover {
 
-    /* Set default hover decoration to 3px bar on left */
-    box-shadow:inset 3px 0px 0px 0px #b38c40
+    /* hover color for all list items (effectively SUB-MENU items)...
+    background-color: $hoverGrey;*/
+
+    /* Set default hover decoration for sub-menu to 3px bar on left */
+    box-shadow: -3px 0px 0px 0px #b38c40
 }
   }
+
 .main-navigation > div > ul > li:hover {
   background: none;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation > div > ul > li:hover {
 
-    /* Override for hover over top level nav only - show bar on top */
-    box-shadow:inset 0px 2px 0px 0px #b38c40
+    /* over-ride: hover color for top-level menu items
+    background-color: $hoverGrey; */
+
+    /* Set default hover decoration for top-level menu to 2px bar on top */
+    box-shadow: 0px -2px 0px 0px #b38c40
 }
   }
-.main-navigation ul li a:hover {
-  /* If I want to bring back the hover color...
-  background-color: $hoverGrey; */
-}
+
 /* This line will activate submenu on hover */
+
 /* To require dropdown click to expose submenu, remove this bit below */
+
 @media (min-width: 630px) {
+
 .main-navigation li:hover > ul {
     display: block
 }
   }
+
 .main-navigation ul ul li {
   position: relative; /* to accommodate a possible sub-menu and will allow positioning of drop-down arrows within <li> */
 }
+
 .main-navigation > div > ul > li > a {
   padding: 10px 15px;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation > div > ul > li > a {
-    width: auto;
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
+    padding: 10px 15px 10px 15px /* Sets default padding for top-level menu "buttons" */
+}
+  }
+
+@media (min-width: 800px) {
+
+.main-navigation > div > ul > li > a {
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 20px 10px 20px /* Sets default padding for top-level menu "buttons" */
 }
   }
+
 .main-navigation > div > ul > li.menu-item-has-children > a {
   padding: 10px 15px;
 }
+
 @media (min-width: 630px) {
+
 .main-navigation > div > ul > li.menu-item-has-children > a {
     width: auto;
+    padding: 10px 35px 10px 15px /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
+}
+  }
+
+@media (min-width: 800px) {
+
+.main-navigation > div > ul > li.menu-item-has-children > a {
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 45px 10px 15px /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
 }
   }
+
+@media (min-width: 1040px) {
+
+.main-navigation > div > ul > li.menu-item-has-children > a {
+    width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
+    padding: 10px 55px 10px 15px /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
+}
+  }
+
 .main-navigation ul li a:hover {
   color: #414A4C; /* This overrides global link hover color */
 }
+
 .main-navigation.toggled-on > div > ul {
 	display: block;
 }
+
 .main-navigation.toggled-on > div > ul > li {
   display: block;
   float: none;
   margin-top: 0px;
 }
+
 ul.sub-menu {
   display:none;
 }
+
 ul.sub-menu.toggled-on {
   display:block;
 }
+
 .dropdown-toggle {
 	background-color: transparent;
 	border: 0px solid purple;
@@ -1080,72 +1443,92 @@ ul.sub-menu.toggled-on {
   text-shadow: none;
 	color: #414A4C;
 	display: inline-block;
-	font-size: .5rem;
-	/*line-height: 1.5;*/
+	font-size: .625em;
+	cursor: pointer;
+  /* line-height: calc($navigationFontSize * 2.2); */
 	margin: 0 .5rem;
-	padding: 1rem;
+  /* All this crazy business below is about positioning the drop-down arrow */
+  padding: calc(.85rem * 1.35) calc(.85rem / 1.5) calc(.85rem / 1.8) calc(.85rem / 1.5);
 	position: absolute;
-	top: 1px;
+	top: 0px;
   right: -.3rem;
   z-index: 99;
 }
-.dropdown-toggle:hover,
-.dropdown-toggle:focus {
-	background: transparent;
+
+.dropdown-toggle:hover {
+  /* If I want to bring back the hover color...*/
 }
-.dropdown-toggle:focus {
+
+.dropdown-toggle:focus,
+.dropdown-toggle:hover {
+  background-color: none;
 	outline: none;
 }
+
 .dropdown-toggle.toggled-on .icon { /* IE 9 */
 	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
 	transform: rotate(-180deg);
 }
+
 /* Below is to rotate chevron when not on mobile (indicates submenu expands to the side) */
+
 @media (min-width: 630px) {
+
 .sub-menu > li > button > span { /* IE 9 */
   	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
   	transform: rotate(-90deg)
 }
   }
+
+.sub-menu > li > button {
+  padding: .85rem;
+}
+
 .menu-toggle {
 	background-color: transparent;
-	border: 0;
+	border: 0px solid black;
 	box-shadow: none;
 	color: #222;
-	font-size: 1.7rem;
+	font-size: 1.8rem;
 	font-weight: 400;
 	line-height: 1.5;
-	margin: 1px auto 2px;
 	padding: .5rem;
 	text-shadow: none;
 	cursor: pointer;
 	display: inline-block;
   position: absolute;
-  top: .9rem;
+  top: 1.05rem;
   right: .6rem;
 	outline: none;
 
 }
+
 @media (min-width: 630px) {
+
 .menu-toggle {
     display: none
 
 }
   }
+
 .menu-toggle:hover,
 .menu-toggle:focus {
 	background-color: transparent;
 	box-shadow: none;
 }
+
 .menu-toggle:focus {
 	outline: none;
 }
+
 .site-banner {
 
   display: none;
 
 }
+
 @media (min-width: 630px) {
+
 .site-banner {
     display: block;
     border-bottom: 5px solid #b38c40;
@@ -1155,12 +1538,14 @@ ul.sub-menu.toggled-on {
 
 }
   }
+
 .site-banner__bg-image {
     display: block;
     background-size: cover;
     height: 250px;
     z-index: 5;
   }
+
 .site-banner__text-content {
     position: absolute;
     padding-top: 88px;
@@ -1171,11 +1556,14 @@ ul.sub-menu.toggled-on {
     width: 100%;
     text-align: center;
   }
+
 @media (min-width: 800px) {
+
 .site-banner__text-content {
       padding-top: 60px
   }
   }
+
 .site-banner__title {
     font-weight: 300;
     color: #414A4C;
@@ -1183,18 +1571,23 @@ ul.sub-menu.toggled-on {
     margin: 0;
 
   }
+
 @media (min-width: 630px) {
+
 .site-banner__title {
       font-size: 3.2rem
 
   }
   }
+
 @media (min-width: 800px) {
+
 .site-banner__title {
       font-size: 4.8rem
 
   }
   }
+
 .site-banner__subtitle {
     font-weight: 300;
     color: #414A4C;
@@ -1202,24 +1595,31 @@ ul.sub-menu.toggled-on {
     margin: 0;
 
   }
+
 @media (min-width: 630px) {
+
 .site-banner__subtitle {
       font-size: 1.2rem
 
   }
   }
+
 @media (min-width: 800px) {
+
 .site-banner__subtitle {
       font-size: 2.4rem
 
   }
   }
+
 @media (min-width: 1040px) {
+
 .site-banner__subtitle {
       font-size: 3.2rem
 
   }
   }
+
 .site-banner__description {
     font-weight: 100;
     color: #FFF;
@@ -1230,22 +1630,27 @@ ul.sub-menu.toggled-on {
     margin-right: auto;
 
   }
+
 @media (min-width: 630px) {
+
 .site-banner__description {
       font-size: 1.875rem
 
   }
   }
+
 .site-content {
   padding-top: 3rem; /* Was 69px ?? */
   padding-bottom: 42px;
   border: 0px solid black;
 }
+
 .site-main {
   border: 0px solid blue;
   margin-top: 0rem;
   margin-bottom: 2.0rem;
 }
+
 .gallery-index-item {
   position: relative;
   display: inline-block;
@@ -1259,18 +1664,23 @@ ul.sub-menu.toggled-on {
   text-align: center;
 
 }
+
 @media (min-width: 800px) {
+
 .gallery-index-item {
     width: 300px
 
 }
   }
+
 @media (min-width: 1040px) {
+
 .gallery-index-item {
     width: 400px
 
 }
   }
+
 .gallery-index-item__shadow-overlay {
     z-index: 5;
     position: absolute;
@@ -1283,9 +1693,11 @@ ul.sub-menu.toggled-on {
     padding: 0;
     margin: 0;
   }
+
 .gallery-index-item__shadow-overlay:hover {
     background-color: rgba(255, 255, 255, 0.4);
   }
+
 .gallery-index-item__text-content {
     z-index: 10;
     width: 100%;
@@ -1304,21 +1716,27 @@ ul.sub-menu.toggled-on {
     background-color: rgba(255, 255, 255, 0.6);
 
   }
+
 @media (min-width: 800px) {
+
 .gallery-index-item__text-content {
       font-size: 1.8rem
 
   }
   }
+
 @media (min-width: 1040px) {
+
 .gallery-index-item__text-content {
       font-size: 2.2rem
 
   }
   }
+
 .gallery-index-item img {
   display: block;
 }
+
 .gallery-index-item hr {
   border: 0;
   background-color: #414A4C;
@@ -1327,6 +1745,11 @@ ul.sub-menu.toggled-on {
   margin-top: 0.15em;
   margin-bottom: 0.15em;
 }
+
+/*
+Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
+*/
+
 .gallery-thumb {
   position: relative;
   display: inline-block;
@@ -1339,6 +1762,7 @@ ul.sub-menu.toggled-on {
   border: 0px solid black;
   text-align: center;
 }
+
 .gallery-thumb__caption {
     z-index: 10;
     display: block;
@@ -1346,12 +1770,14 @@ ul.sub-menu.toggled-on {
     opacity: 0;
     transition: opacity .75s ease;
   }
+
 .gallery-thumb__image {
     padding: 0;
     width: 200px;
     text-align: center;
     border: 0px solid red;
   }
+
 .gallery-thumb__shadow-overlay {
     position: absolute;
     padding-top: 0px;
@@ -1363,9 +1789,11 @@ ul.sub-menu.toggled-on {
     margin: 0;
     border: 0px solid blue;
   }
+
 .gallery-thumb__shadow-overlay:hover {
     /* background-color: rgba(0, 0, 0, 0.3); */
   }
+
 .gallery-thumb__button-explore {
     position: absolute;
     width: 80%;
@@ -1373,6 +1801,7 @@ ul.sub-menu.toggled-on {
     left: 10%;
     text-align: center;
   }
+
 .gallery-thumb__button-explore a {
     display: inline-block;
     width: 100%;
@@ -1384,9 +1813,11 @@ ul.sub-menu.toggled-on {
     opacity: 0;
     transition: opacity .5s ease;
   }
+
 .gallery-thumb__button-explore a:hover {
     background-color: #F2F3F4;
   }
+
 .gallery-thumb__button-view {
     position: absolute;
     padding: 0;
@@ -1396,6 +1827,7 @@ ul.sub-menu.toggled-on {
     text-align: center;
     border: 0px solid yellow;
   }
+
 .gallery-thumb__button-view a {
     display: inline-block;
     width: 100%;
@@ -1407,55 +1839,75 @@ ul.sub-menu.toggled-on {
     opacity: 0;
     transition: opacity .5s ease;
   }
+
 .gallery-thumb__button-view a:hover {
     background-color: #414A4C;
   }
+
 .gallery-thumb:hover .gallery-thumb__button-explore a {
   opacity: 1;
 }
+
 .gallery-thumb:hover .gallery-thumb__button-view a {
   opacity: 1;
 }
+
 .gallery-thumb:hover .gallery-thumb__caption {
   opacity: 1;
 }
+
 .gallery-thumb img {
   display: block;
 }
+
+.gallery-thumbs--centered {
+  text-align: center;
+}
+
 .row::after {
     content: "";
     clear: both;
     display: table;
   }
+
 .row--t-padding  {
     padding-top: 80px;  /* This is to offset the relative positioning of the images in the testimonials section (they overflow 80px above the top of the containing div) */
   }
+
 .row--margins  {
     margin-right: -65px;  /* Basically makes row larger than intended, but effectively removes unnecessary padding on the right, which will be hidden by the overflow property in the wrapper block */
   }
+
 .row--margins-large  {
     margin-right: -100px;  /* Basically makes row larger than intended, but effectively removes unnecessary padding on the right, which will be hidden by the overflow property in the wrapper block */
   }
+
 .row--margins-small {
     margin-right: -45px;
   }
+
 .row--margins > div {    /* Apply to all children that are divs */
     padding-right: 65px;
   }
+
 .row--margins-large > div {    /* Apply to all children that are divs */
     padding-right: 100px;
   }
+
 .row--margins-small > div {    /* Apply to all children that are divs */
     padding-right: 45px;
   }
+
 .row__img-center {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
+
 .row__b-margin-until-medium {
     margin-bottom: 1rem;
   }
+
 @media (min-width: 800px) {
 
     .row__b-margin-until-medium {
@@ -1487,6 +1939,7 @@ ul.sub-menu.toggled-on {
       width: 63%;
     }
   }
+
 @media (min-width: 1040px) {
 
     .row__b-margin-until-large {
@@ -1518,27 +1971,35 @@ ul.sub-menu.toggled-on {
       width: 63%;
     }
   }
+
 /* BEGIN EQUAL HEIGHT RULES */
+
 @media (min-width: 800px) {
+
 .row--equal-height-at-medium {
       display: flex
 
   }
   }
+
 .row--equal-height-at-medium > div {
       float: none;
       display: flex;
     }
+
 @media (min-width: 1040px) {
+
 .row--equal-height-at-large {
       display: flex
 
   }
   }
+
 .row--equal-height-at-large > div {
       float: none;
       display: flex;
     }
+
 .flexible {
 
   display: block;
@@ -1548,6 +2009,7 @@ ul.sub-menu.toggled-on {
   margin-right: auto;
 
 }
+
 .flexible__flex-left {
     display: block;
     width: 80%;
@@ -1556,16 +2018,21 @@ ul.sub-menu.toggled-on {
     border: 0px solid green;
     margin-left: auto;
     margin-right: auto;
-
   }
+
 @media (min-width: 630px) {
+
 .flexible__flex-left {
       display: inline-block;
       width: 50%;
       min-height: 100%
+  }
+  }
 
-  }
-  }
+.flexible__flex-left--left-align {
+      text-align: left;
+    }
+
 .flexible__flex-right {
     display: block;
     width: 80%;
@@ -1575,22 +2042,32 @@ ul.sub-menu.toggled-on {
     margin-left: auto;
     margin-right: auto;
   }
+
 @media (min-width: 630px) {
+
 .flexible__flex-right {
       display: inline-block;
       width: 50%;
-      padding: 0 0px
+      min-height: 100%
   }
   }
+
+.flexible__flex-right--left-align {
+      text-align: left;
+    }
+
 @media (min-width: 630px) {
+
 .flexible {
     display: flex
 
 }
   }
+
 .about-photo {
   border-radius: 50%;
 }
+
 .about-link {
   display: inline-block;
   background-color: #F2F3F4;
@@ -1600,7 +2077,9 @@ ul.sub-menu.toggled-on {
   margin: 20px 3px;
   font-size: .9rem;
 }
+
 @media (min-width: 630px) {
+
 .about-link {
     display: block;
     margin-left: auto;
@@ -1612,7 +2091,9 @@ ul.sub-menu.toggled-on {
     font-size: 1rem
 }
   }
+
 @media (min-width: 800px) {
+
 .about-link {
     display: block;
     margin-left: auto;
@@ -1624,33 +2105,40 @@ ul.sub-menu.toggled-on {
     font-size: 1.2rem
 }
   }
+
 .about-link:hover {
   background-color: #b38c40;
-  color: #414A4C;
+  color: #F2F3F4;
 }
+
 .about-head {
   line-height: normal;
   margin-top: 0;
 }
+
 .about-hr {
   margin-bottom: 30px;
   width: 75%;
   margin-left: auto;
   margin-right: auto;
 }
+
 .heading {
-  margin: 1rem 0;
-  font-weight: 400;
-  color: #414A4C;
+  margin: .5rem 0;
+  font-weight: 300;
+  /*color: $offBlack;*/
   font-size: 2.2rem;
 
 }
+
 @media (min-width: 630px) {
+
 .heading {
     font-size: 3rem
 
 }
   }
+
 .heading__post-type {
     display: inline-block;
     font-size: .8rem;
@@ -1658,29 +2146,38 @@ ul.sub-menu.toggled-on {
     padding: 5px 15px;
     margin: .5rem 0;
   }
+
 .heading--small {
     font-size: 1.8rem;
   }
+
 @media (min-width: 630px) {
+
 .heading--small {
       font-size: 2rem
   }
   }
+
 .heading--centered {
     text-align: center;
   }
+
 .heading__line {
   width: 75%;
   margin-bottom: 2rem;
 }
+
 .heading__line--full-width {
     width: 100%;
   }
+
 .heading__line--align-left {
     text-align: left;
     margin-left: 0;
   }
+
 /* SVG Icons base styles */
+
 .icon {
 	display: inline-block;
 	fill: currentColor;
@@ -1690,6 +2187,7 @@ ul.sub-menu.toggled-on {
 	vertical-align: middle;
 	width: 1em;
 }
+
 .site-footer {
   position: absolute;
   height: 42px;
@@ -1701,10 +2199,12 @@ ul.sub-menu.toggled-on {
   background-color: #F2F3F4;
   text-align: center;
 }
+
 .site-footer__link {
     padding-left: 20px;
     padding-right: 20px;
   }
+
 .search-overlay {
   overflow-y: auto;
   overflow-x: hidden;
@@ -1723,13 +2223,45 @@ ul.sub-menu.toggled-on {
   transition: opacity .3s, transform .3s, visibility .3s;
   transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
   box-sizing: border-box;
+  text-align: center;
 }
+
+.search-overlay__top {
+  padding: 1.5rem;
+}
+
 .search-overlay--active {
     visibility: visible;
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
-  }
+}
+
+.search-overlay__icon {
+  margin: 0 .6rem;
+}
+
+.search-term {
+  margin-bottom: 1rem;
+  width: 60%;
+  padding: 10px;
+  outline: none;
+}
+
+.search-term:focus {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.search-overlay__section-title {
+  font-size: 2rem;
+}
+
+.js-search-overlay__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+}
+
 .spinner-loader {
   margin-top: 45px;
   border-radius: 50%;
@@ -1740,6 +2272,76 @@ ul.sub-menu.toggled-on {
   -webkit-animation: spin 1s infinite linear;
           animation: spin 1s infinite linear;
 }
+
+.search-results__block {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  vertical-align: top;
+  margin-top: 0;
+}
+
+.search-results__block-header {
+  background-color: #b38c40;
+  color: #F2F3F4;
+  margin: 0;
+  padding: 5px 10px 5px 20px;
+}
+
+.search-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result {
+  display: block;
+  margin: 15px;
+  padding: 0;
+  border: 0px solid yellow;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  vertical-align: bottom;
+}
+
+.search-result__image-container {
+  display: inline-block;
+  padding: 0;
+  border: 0px solid red;
+  width: 55px;
+  padding: 0;
+  font-size: 0;
+}
+
+.search-result__image {
+  display: inline-block;
+  border: 0px solid purple;
+}
+
+.search-result__text {
+  display: inline-block;
+  padding: 0 10px;
+  border: 0px solid black;
+  width: calc(100% - 80px);
+}
+
+.search-results__no-results {
+  display: block;
+  margin: 15px;
+  padding: 0;
+  text-align: center;
+}
+
+.search-results__nav-icon {
+  font-size: calc(.85rem * 1.1);
+}
+
+@media (min-width: 630px) {
+
+.search-gutter {
+    margin-right: 4rem
+}
+  }
+
 #login h1 a, .login h1 a {
   background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.png');
   background-image: none, url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.svg');
@@ -1760,21 +2362,25 @@ ul.sub-menu.toggled-on {
   overflow: hidden;
   display: block;
 }
+
 .login label {
   color: #9c968b;
   font-size: 1.2rem;
 }
+
 .login #backtoblog a, .login #nav a {
     text-decoration: none;
     font-size: 0.9rem;
     color: #9c968b;
 }
+
 input[type=checkbox]:checked:before {
     content: "\f147";
     margin: -3px 0 0 -4px;
     color: #414A4C;
     border: none;
 }
+
 .login #login_error, .login .message, .login .success {
     border-left: 4px solid #b38c40;
     padding: 12px;
@@ -1783,6 +2389,7 @@ input[type=checkbox]:checked:before {
     background-color: #fff;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
+
 #wp-submit {
   height: 2.5rem;
   line-height: 2rem;
@@ -1796,6 +2403,7 @@ input[type=checkbox]:checked:before {
   box-shadow: none;
   text-shadow: none;
 }
+
 .post-card {
   padding: 0;
   margin: 35px 0;
@@ -1805,38 +2413,48 @@ input[type=checkbox]:checked:before {
   vertical-align: top;
   border: 1px solid rgba(65, 74, 76, .2);
 }
+
 @media (min-width: 630px) {
+
 .post-card {
     width: 250px;
     margin: 35px 17px
 }
   }
+
 @media (min-width: 800px) {
+
 .post-card {
     margin: 35px 30px;
     width: 300px
 }
   }
+
 @media (min-width: 1040px) {
+
 .post-card {
     margin: 40px 30px;
     width: 400px
 }
   }
+
 .post-card__image {
     display: block;
     width: 100%;
   }
+
 .post-card__excerpt {
     display: block;
     width: 100%;
     padding: 10px;
     text-align: left;
   }
+
 /*
 This will contain the cards for each post. Mess with text-align and
 padding/margin to tweak how cards flow at different breakpoints
 */
+
 .post-card-container {
   padding: 0px;
   margin: 0;
@@ -1844,19 +2462,25 @@ padding/margin to tweak how cards flow at different breakpoints
   width: 100%;
 
 }
+
 @media (min-width: 630px) {
+
 .post-card-container {
     text-align: center
 
 }
   }
+
 @media (min-width: 800px) {
+
 .post-card-container {
     text-align: center
 
 }
   }
+
 @media (min-width: 1040px) {
+
 .post-card-container {
     text-align: center
 
