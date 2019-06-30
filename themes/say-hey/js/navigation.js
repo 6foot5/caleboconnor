@@ -47,6 +47,7 @@
 				screenReaderSpan = _this.find( '.screen-reader-text' ),
         dropdownSymbolFa = _this.find( '.dds' );
 
+/**/
         if (dropdownSymbolFa.hasClass('fa-chevron-down')) {
           dropdownSymbolFa.removeClass('fa-chevron-down');
           dropdownSymbolFa.addClass('fa-chevron-up');
@@ -58,7 +59,7 @@
 /* This part is working...to toggle the chevron
 
       dropdownSymbolFa.class( dropdownSymbolFa.hasClass('fa-chevron-down') ? ( dropdownSymbolFa.removeClass('fa-chevron-down'), dropdownSymbolFa.addClass('fa-chevron-up') ) : ( dropdownSymbolFa.removeClass('fa-chevron-up'), dropdownSymbolFa.addClass('fa-chevron-down') ) );
- */
+*/
 
 			e.preventDefault();
       console.log(_this);
@@ -70,6 +71,19 @@
 			screenReaderSpan.text( screenReaderSpan.text() === sayheyScreenReaderText.expand ? sayheyScreenReaderText.collapse : sayheyScreenReaderText.expand );
 		});
 	}
+
+/*
+  $('body').click(function(e) {
+    var parentUL = $(e.target).parents('ul').map(function(){
+      return this.className;}).get().join(", ");
+
+    //console.log('In submenu? - ' + parentUL + ' - ' + parentUL.includes('sub-menu'));
+    if( !(parentUL.includes('sub-menu')) )
+    {
+      //console.log('collapse!');
+    }
+  });
+*/
 
 	initMainNavigation( $( '.main-navigation' ) );
 

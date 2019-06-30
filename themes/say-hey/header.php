@@ -18,6 +18,7 @@
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Caleb O'Connor, accomplished fine artist and Fulbright scholar. Commissions, narrative realist works, portraiture and sculpture works that challenge."/>
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php	wp_head(); ?>
@@ -32,7 +33,7 @@
 
 			if(get_field('page_banner_background_image')) {
 				$bannerImg = get_field('page_banner_background_image');
-				$bgImgSmall = $bannerImg['sizes']['large'];
+				$bgImgSmall = $bannerImg['sizes']['medium_large'];
 			}
 
 			// Pull different bg sizes here and use media queries below to change bg src on the fly
@@ -152,6 +153,8 @@ if ($thisType != 'spin') {
 
 }		// Only output visible header if not on a 'spin' type (Magic360)
 ?>
+
+
 <?php
   $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
 ?>

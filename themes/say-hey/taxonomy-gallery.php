@@ -193,12 +193,12 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 									<div class="gallery-thumb__image">
 
 	                  <a
-											href = "<?php the_post_thumbnail_url('full'); ?>"
+											href = "<?php the_post_thumbnail_url('large'); ?>"
 											data-fancybox = "gallery"
-											data-caption = "<a href='<?php the_permalink(); ?>' target='blank'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
+											data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
 												<img
 													alt="<?php the_title(); ?>"
-													src="<?php the_post_thumbnail_url('gallery-thumb'); ?>">
+													src="<?php the_post_thumbnail_url('thumbnail'); ?>">
 
 		                  <div class="gallery-thumb__shadow-overlay">
 		                  </div>

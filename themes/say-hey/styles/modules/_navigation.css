@@ -88,6 +88,9 @@
     background-color: $offWhite;
     display: none; /* Will be revealed on parent <li> hover */
     margin-left: 0px;
+
+    /* margin-top: 2px; to accommodate 2px decoration on hover for top-level nav */
+
   }
 }
 
@@ -231,6 +234,10 @@ ul.sub-menu {
 
 ul.sub-menu.toggled-on {
   display:block;
+/*
+  @mixin atSmall {
+    display: none;
+  } */
 }
 
 

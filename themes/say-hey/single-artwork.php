@@ -33,9 +33,18 @@ get_header();
 				<h2 class="heading--small"><?php the_title(); ?></h2>
 				<hr class="about-hr" />
 				<?php
-				echo get_field('artwork_medium') . '<br /><br />';
-				echo get_field('artwork_size') . '<br /><br />';
-				echo get_field('artwork_description');
+				if (get_field('artwork_medium')) {
+					echo get_field('artwork_medium') . '<br /><br />';
+				}
+				if (get_field('artwork_size')) {
+					echo get_field('artwork_size') . '<br /><br />';
+				}
+				if (get_field('artwork_year')) {
+					echo get_field('artwork_year') . '<br /><br />';
+				}
+				if (get_field('artwork_description')) {
+					echo get_field('artwork_description') . '<br /><br />';
+				}
 				?>
 
 			</div>
@@ -99,7 +108,7 @@ get_header();
 
 										$workID = $artwork->ID;
 										$fullsize = wp_get_attachment_image_src($workID, 'large')[0];
-										$thumbnail = wp_get_attachment_image_src($workID, 'gallery-thumb')[0];
+										$thumbnail = wp_get_attachment_image_src($workID, 'thumbnail')[0];
 										$detailCount = $detailCount + 1;
 										$relatedCaption = '';
 										$captionArgs = array(

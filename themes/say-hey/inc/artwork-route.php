@@ -37,6 +37,7 @@ function sayheyArtworkResults($wpData) {
   // This defines an array of all image sizes; will be used by each artwork
   // to retrieve image URLs
   $allImageSizes = get_intermediate_image_sizes();
+  array_push($allImageSizes, 'full');
 
   // Kick off the main query, spin over all published artwork posts
   while($mainQuery->have_posts()) {
@@ -57,6 +58,8 @@ function sayheyArtworkResults($wpData) {
       foreach($allImageSizes as $thisSize) {
         $detailPermalinks[$thisSize] = wp_get_attachment_image_src($image->ID, $thisSize)[0];
       }
+
+      //$detailPermalinks['full'] = wp_get_attachment_image_src($image->ID, 'full')[0];
 
       array_push($detailImageInfo, array(
         'imageID' => $image->ID,
@@ -111,6 +114,7 @@ function sayheyArtworkResults($wpData) {
     foreach($allImageSizes as $thisSize) {
       $imagePermalinks[$thisSize] = get_the_post_thumbnail_url(get_the_ID(), $thisSize);
     }
+    //$imagePermalinks['full'] = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
 /*
 --------------------------------------------------------------------------------

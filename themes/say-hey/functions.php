@@ -18,6 +18,7 @@
 
 require get_theme_file_path('/inc/artwork-route.php');
 require get_theme_file_path('/inc/search-route.php');
+require get_theme_file_path('/inc/acf-register-blocks.php');
 
 function custom_title($title_parts) {
 
@@ -71,11 +72,15 @@ add_filter( 'document_title_parts', 'custom_title' );
 		) );
 
     add_image_size('admin-preview', 55, 55, true); // (name, width, height, crop?)
-    add_image_size('gallery-thumb', 200, 200, true); // (name, width, height, crop? - near center of photo)
     add_image_size('cpt-thumb', 400, 225, true, array('left','top')); // (name, width, height, crop? - near center of photo)
     add_image_size('gallery-category', 400, 400, true); // (name, width, height, crop?)
     add_image_size('page-banner', 1500, 350, true); // (name, width, height, crop?)
+    // add_image_size('gallery-thumb', 200, 200, true); // REMOVED 6/23, redundant after changing native thumbnail size
 
+    add_image_size('medium-small', 500, 500, false); // In case full view of art is wanted in a thumb (no crop)
+
+    update_option('medium_large_size_w', 1500);
+    update_option('medium_large_size_h', 1500);
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -230,43 +235,6 @@ function sayhey_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'sayhey_scripts' );
-/*
-function sayhey_subcategory_hierarchy() {
-
-    $category = get_queried_object();
-
-    $temp = $category;
-
-    do {
-        $parent_id = $temp->category_parent;
-        $temp = get_category( $parent_id );
-    } while ( $temp->category_parent );
-
-    $templates = array();
-
-    if ( $parent_id == 0 ) {
-        // Use default values from get_category_template()
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-        $templates[] = 'category.php';
-    } else {
-        // Create replacement $templates array
-        $parent = get_category( $parent_id );
-
-        // Current first
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-
-        // Parent second
-        $templates[] = "category-{$parent->slug}.php";
-        $templates[] = "category-{$parent->term_id}.php";
-        $templates[] = 'category.php';
-    }
-    return locate_template( $templates );
-}
-
-add_filter( 'category_template', 'sayhey_subcategory_hierarchy' );
-*/
 
 /**
  * Implement the Custom Header feature.
