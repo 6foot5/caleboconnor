@@ -1,0 +1,21 @@
+
+.sayhey-repeater-wrapper {
+  border-bottom:3px solid black;
+
+}
+
+/* add border to the repeater block row */
+.acf-repeater.-block > table > tbody > tr > td {
+  border-top-width: 5px;
+  border-top-color: #046f8a!important;
+}
+/* exclude the first row */
+.acf-repeater.-block > table > tbody > tr:first-child > td {
+  border-top-width: 0px;
+  border-top-color: #046f8a!important;
+}
+/* in case if you got any nested repeater blocks and want to hide the border  */
+.acf-repeater.-block > table > tbody > tr > td .acf-repeater.-block > table > tbody > tr > td {
+  border-top-width: 0px;
+  border-top-color: #E1E1E1;
+}

@@ -156,11 +156,16 @@ class Search {
         </div>
       </div>
     `);
+
+    // add search icon to site navigation
     $("#primary-menu").append(`
       <li>
         <a href="#" title="Search this site" class="search-trigger js-search-trigger"><i class="fal fa-search search-results__nav-icon" aria-hidden="true"></i></a>
       </li>
     `);
+
+    // add external link icon to studio link
+    $(".menu-item-415 a").append(` &nbsp;<i class="fal fa-external-link-square"></i>`);
   }
 
 }

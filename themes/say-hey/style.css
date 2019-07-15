@@ -496,7 +496,7 @@ hr {
 }
 
 ul, ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0;
 }
 
 ul {
@@ -629,6 +629,7 @@ textarea {
 
 a {
 	color: #414A4C;
+	border-bottom: 1px solid rgba(65, 74, 76, 0.3);
 	text-decoration: none;
 }
 
@@ -638,6 +639,7 @@ a:visited {
 
 a:hover, a:focus, a:active {
 	color: #b38c40;
+	border-bottom: none;
 }
 
 a:focus {
@@ -646,6 +648,10 @@ a:focus {
 
 a:hover, a:active {
 	outline: 0;
+}
+
+a.no-border {
+	border-bottom: none;
 }
 
 /*--------------------------------------------------------------
@@ -1183,6 +1189,7 @@ object {
   border: 0px solid red;
   font-family: 'Merriweather', serif;
   font-size: .85rem;  /* reset font size after setting to zero in 'main-navigation' */
+  font-weight: 300;
   margin: 0;
   text-transform: uppercase;
 }
@@ -1647,7 +1654,7 @@ ul.sub-menu.toggled-on {
 
 .site-content {
   padding-top: 3rem; /* Was 69px ?? */
-  padding-bottom: 42px;
+  padding-bottom: 8rem;
   border: 0px solid black;
 }
 
@@ -2094,7 +2101,8 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin-bottom: 15px;
     padding: 6px;
     width: 50%;
-    font-size: 1rem
+    font-size: 1rem;
+    font-weight: 300
 }
   }
 
@@ -2115,6 +2123,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 .about-link:hover {
   background-color: #b38c40;
   color: #F2F3F4;
+  border-bottom: 1px solid #414A4C;
 }
 
 .about-head {
@@ -2130,7 +2139,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 }
 
 .heading {
-  margin: .5rem 0;
+  margin: .5rem 0 1rem 0;
   font-weight: 300;
   /*color: $offBlack;*/
   font-size: 2.2rem;
@@ -2196,12 +2205,12 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 .site-footer {
   position: absolute;
-  height: 42px;
+
   right: 0;
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 5px;
+  padding: 1rem;
   background-color: #F2F3F4;
   text-align: center;
 }
@@ -2209,6 +2218,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 .site-footer__link {
     padding-left: 20px;
     padding-right: 20px;
+    border-bottom: 0;
   }
 
 .search-overlay {
@@ -2491,4 +2501,29 @@ padding/margin to tweak how cards flow at different breakpoints
     text-align: center
 
 }
+  }
+
+.contact-card {
+  display: block;
+  margin: 1rem 0;
+  border: 0;
+  padding: 0;
+  width: 80%;
+
+}
+
+.contact-card__icon {
+    display: inline-block;
+    width: 2rem;
+    padding: 0;
+  }
+
+.contact-card__text {
+    display: inline-block;
+    padding: 0 1rem;
+    margin-left: .5rem;
+  }
+
+.contact-card__link {
+    border-bottom: 0;
   }

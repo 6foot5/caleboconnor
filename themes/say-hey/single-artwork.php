@@ -13,7 +13,7 @@ get_header();
 <?php //pageBanner();	?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main contents-aligncenter">
+		<main id="main" class="site-main">
 
 		<?php
 		while ( have_posts() ) :
@@ -30,7 +30,7 @@ get_header();
 				<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php the_title(); ?>"> <img alt="<?php the_title(); ?>" src="<?php echo $thumbnail; ?>"></a>
 			</div>
 			<div class="flexible__flex-right">
-				<h2 class="heading--small"><?php the_title(); ?></h2>
+				<h2 class="heading heading--small"><?php the_title(); ?></h2>
 				<hr class="about-hr" />
 				<?php
 				if (get_field('artwork_medium')) {
@@ -95,10 +95,10 @@ get_header();
 								</style>
 
 
-								<hr />
-								<h2>Detail Images for <?php single_post_title(); ?> </h2>
+								<hr class="heading__line heading__line--align-left heading__line--full-width" />
+								<h2 class="heading heading--small">Detail Images for <?php single_post_title(); ?> </h2>
 
-								<p>
+								<div class="gallery-thumbs">
 
 								<?php
 
@@ -119,23 +119,23 @@ get_header();
 
 										$relatedCaption = artworkCaptioner($workID, $relatedCaption, $captionArgs);
 
-								?>
+										?>
 
-								<div class="gallery-thumb">
+										<div class="gallery-thumb">
 
-										<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="Detail Image <?php echo $detailCount ?>"> <img alt="Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>">
+												<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="Detail Image <?php echo $detailCount ?>"> <img alt="Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>">
 
-										<div class="gallery-thumb__shadow-overlay">
-										</div></a>
+												<div class="gallery-thumb__shadow-overlay">
+												</div></a>
+
+										</div>
+
+									<?php
+									} //end for loop
+									?>
 
 								</div>
 
-								<?php
-
-							} //end for loop
-									?>
-
-								</p>
 
 								<script type="text/javascript">
 										 <!--

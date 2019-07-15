@@ -16,6 +16,7 @@
  add_filter( 'posts_request', 'my_posts_request_filter' );
 */
 
+require get_theme_file_path('/inc/legacy-redirects.php');
 require get_theme_file_path('/inc/artwork-route.php');
 require get_theme_file_path('/inc/search-route.php');
 require get_theme_file_path('/inc/acf-register-blocks.php');
@@ -161,6 +162,13 @@ function sayhey_widgets_init() {
 }
 add_action( 'widgets_init', 'sayhey_widgets_init' );
 
+
+function sayhey_custom_wp_admin_style(){
+    wp_register_style( 'custom_wp_admin_css', get_theme_file_uri('/styles/admin-style.css'), false, microtime() );
+    wp_enqueue_style( 'custom_wp_admin_css' );
+}
+add_action('admin_enqueue_scripts', 'sayhey_custom_wp_admin_style');
+
 /**
  * Enqueue scripts and styles.
  */
@@ -305,7 +313,7 @@ function artworkCaptioner($workID = 0, $relatedCaption = '', $args = NULL) {
       $relatedCaption .= '<br />Related Stories: ';
 
       foreach($relatedStories as $story) {
-        $relatedCaption .= '<a href=\'' . get_permalink($story->ID) . '\'>+' . get_the_title($story->ID) . '+</a> ';
+        $relatedCaption .= '<a href=\'' . get_permalink($story->ID) . '\'>' . get_the_title($story->ID) . '</a> ';
       }
     }
 
@@ -331,7 +339,7 @@ function artworkCaptioner($workID = 0, $relatedCaption = '', $args = NULL) {
       $relatedCaption .= '<br />Related Processes: ';
 
       foreach($relatedProcess as $process) {
-        $relatedCaption .= '<a href=\'' . get_permalink($process->ID) . '\'>+' . get_the_title($process->ID) . '+</a> ';
+        $relatedCaption .= '<a href=\'' . get_permalink($process->ID) . '\'>' . get_the_title($process->ID) . '</a> ';
       }
     }
 

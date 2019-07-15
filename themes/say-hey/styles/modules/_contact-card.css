@@ -1,0 +1,25 @@
+
+.contact-card {
+  display: block;
+  margin: 1rem 0;
+  border: 0;
+  padding: 0;
+  width: 80%;
+
+  &__icon {
+    display: inline-block;
+    width: 2rem;
+    padding: 0;
+  }
+
+  &__text {
+    display: inline-block;
+    padding: 0 1rem;
+    margin-left: .5rem;
+  }
+
+  &__link {
+    border-bottom: 0;
+  }
+
+}

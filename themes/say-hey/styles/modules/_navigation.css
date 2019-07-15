@@ -26,6 +26,7 @@
   border: 0px solid red;
   @mixin fontFaceNav;
   font-size: $navigationFontSize;  /* reset font size after setting to zero in 'main-navigation' */
+  font-weight: 300;
   margin: 0;
   text-transform: uppercase;
 
@@ -239,6 +240,7 @@ ul.sub-menu.toggled-on {
     display: none;
   } */
 }
+
 
 
 

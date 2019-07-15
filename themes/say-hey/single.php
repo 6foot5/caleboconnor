@@ -82,9 +82,9 @@ get_header();
 
 
 					<hr class="heading__line heading__line--align-left heading__line--full-width" />
-					<h2>Related Artwork</h2>
+					<h2 class="heading heading--small">Related Artwork</h2>
 
-					<div class="gallery-thumbs--centered">
+					<div class="gallery-thumbs">
 
 					<?php
 
@@ -105,7 +105,9 @@ get_header();
 
 							<div class="gallery-thumb">
 
-									<a data-fancybox="gallery" href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>" data-caption="<a data-fancybox data-type='iframe' href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($artwork->ID, 'thumbnail'); ?>">
+									<a data-fancybox="gallery"
+										href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>"
+										data-caption="<a href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($artwork->ID, 'thumbnail'); ?>">
 
 									<div class="gallery-thumb__shadow-overlay">
 									</div></a>

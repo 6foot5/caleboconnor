@@ -17,9 +17,10 @@
     padding: 6px;
     width: 50%;
     font-size: 1rem;
+    font-weight: 300;
   }
 
-  @mixin atMedium{
+  @mixin atMedium {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -34,6 +35,7 @@
 .about-link:hover {
   background-color: $logoGold;
   color: $offWhite;
+  border-bottom: 1px solid $offBlack;
 }
 
 .about-head {

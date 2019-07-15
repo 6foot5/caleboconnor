@@ -7,7 +7,7 @@ $title = get_field('press_title') ?: '[Enter a title]';
 $link = get_field('press_link');
 
 if ($link) {
-  $anchorTag = '<a href="' . $link . '" title="' . $title . '" target="_blank">' . $title . '</a>';
+  $anchorTag = '<a href="' . $link . '" title="' . $title . '" target="_blank" rel="noopener noreferrer">' . $title . '</a>';
 }
 else {
   $anchorTag = $title;

@@ -6,9 +6,18 @@
  *
  * @package SayHey
  */
+
+
  if ($wp->request == 'artwork/gallery') {
-	 status_header(200); // WP thinks the artwork/gallery is a 404, but it's wrong. make it 200
+
+   // WP will set page title to "not found"; reset it to Gallery title
+    add_filter( 'pre_get_document_title', 'cyb_change_page_title' );
+    function cyb_change_page_title () {
+      return 'Gallery | ' . get_bloginfo('name');
+    }
+    status_header(200); // WP thinks the artwork/gallery is a 404, but it's wrong. make it 200
  }
+
 get_header();
 ?>
 

@@ -36,7 +36,7 @@ function sayhey_allowed_block_types( $allowed_blocks ) {
     //'core/more',
     //'core/nextpage', // Page break
     'core/separator',
-    //'core/spacer',
+    'core/spacer',
 
     // WP Widgets
     //'core/shortcode',

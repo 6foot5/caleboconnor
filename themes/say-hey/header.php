@@ -88,7 +88,7 @@ if ($thisType != 'spin') {
 	site-header sticky area so it will scroll freely. Will disappear for
 	mobile displays -->
 	<div class="content-area">
-		<a href="<?php echo site_url(); ?>"><div class="site-header__logo">
+		<a class="no-border" href="<?php echo site_url(); ?>"><div class="site-header__logo">
 			<div class="site-header__logo__image"></div>
 			<div class="site-header__logo__text"><span>caleb o'connor</span></div>
 		</div></a><!-- .site-header__logo -->
@@ -104,8 +104,8 @@ if ($thisType != 'spin') {
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 					<i id="hamburger" class="fal fa-bars"></i>
 				</button>
-				<a href="<?php echo site_url(); ?>"><div class="mobile-header__text"><span>caleb o'connor</span></div></a>
-				<a href="<?php echo site_url(); ?>"><div class="mobile-header__image"></div></a>
+				<a class="no-border" href="<?php echo site_url(); ?>"><div class="mobile-header__text"><span>caleb o'connor</span></div></a>
+				<a class="no-border" href="<?php echo site_url(); ?>"><div class="mobile-header__image"></div></a>
 			</div><!-- .mobile-header -->
 
 
@@ -158,5 +158,3 @@ if ($thisType != 'spin') {
 <?php
   $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
 ?>
-
-<!-- <a href="<?php echo $url ?>" onclick="window.history.back()">BACK</a> -->

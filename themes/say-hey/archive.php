@@ -25,7 +25,7 @@ get_header();
 				echo 'Behind the Artwork - ' . $typeName;
 				?></h1>
 				<hr class="heading__line" />
-			</header><!-- .page-header -->
+			</header>
 
 			<div class="post-card-container">
 
@@ -46,12 +46,12 @@ get_header();
 					?>
 					<div class="post-card">
 						<div class="post-card__image">
-							<a href="<?php echo get_the_permalink() ?>"><img width="100%" src="<?php echo $thumbnail; ?>" alt="" /></a>
+							<a class="no-border" href="<?php echo get_the_permalink() ?>"><img width="100%" src="<?php echo $thumbnail; ?>" alt="" /></a>
 						</div>
 						<div class="post-card__excerpt">
 							<h2 class="heading heading--small">
 							<?php
-								printf( '<a href="%1$s">%2$s</a>',
+								printf( '<a class="no-border" href="%1$s">%2$s</a>',
 										esc_url( get_the_permalink() ),
 										get_the_title()
 								);
