@@ -14,8 +14,15 @@ $offBlackG: 74;
 $offBlackB: 76;
 
 $logoGold: #b38c40;
+$logoGoldR: 179;
+$logoGoldG: 140;
+$logoGoldB: 64;
 
-$logoGrey: #9c968b;
+
+$logoGrey: #9c968b; (156,150,139)
+$logoGreyR: 156;
+$logoGreyG: 150;
+$logoGreyB: 139;
 
 $hoverGrey: #DDDDDD;
 

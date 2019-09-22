@@ -22,6 +22,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     transition: opacity .75s ease;
   }
 
+  &__detail-link {
+    font-size: 2rem;
+  }
+
   &__image {
     padding: 0;
     width: 200px;

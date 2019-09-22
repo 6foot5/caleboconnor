@@ -7,9 +7,11 @@ function pageBanner($args = NULL) {
       $bgImg = get_field('page_banner_background_image');
       $args['photo'] = $bgImg['sizes']['page-banner'];
     }
+    /*
     elseif (is_singular('artwork')) {
       $args['photo'] = wp_get_attachment_image_src(674, 'page-banner')[0]; // HARDCODED ID of desired bg for viewing single artwork
     }
+    */
     else {
 
       $queryArgs = array(

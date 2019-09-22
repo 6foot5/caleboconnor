@@ -15,7 +15,7 @@ get_header();
 <?php // pageBanner();	?>
 
 
-	<div id="primary" class="content-area content-area--padded-sides">
+	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main">
 
 			<header class="page-header heading heading--centered">
@@ -38,6 +38,15 @@ get_header();
 				</div>
 				<div class="flexible__flex-right flexible__flex-right--left-align">
 					<h2>Visit Us Online</h4>
+
+						<div class="contact-card__container">
+							<a title="Check out O'Connor Art Studios on Facebook" class="contact-card__link" href="https://www.facebook.com/OConnorArtStudios/" target="_blank" rel="noopener noreferrer"><div class="contact-card__icon"><i class="fab fa-facebook-f fa-2x"></i></div></a>
+							<a title="Follow O'Connor Art Studios on Instagram" class="contact-card__link" href="https://www.instagram.com/oconnorartstudios/" target="_blank" rel="noopener noreferrer"><div class="contact-card__icon"><i class="fab fa-instagram fa-2x"></i></div></a>
+							<a title="Follow O'Connor Art Studios on Twitter" class="contact-card__link" href="https://twitter.com/oconnorartists" target="_blank" rel="noopener noreferrer"><div class="contact-card__icon"><i class="fab fa-twitter fa-2x"></i></div></a>
+							<a title="Check out O'Connor Art Studios on Pinterest" class="contact-card__link" href="https://www.pinterest.com/Oconnorarts/" target="_blank" rel="noopener noreferrer"><div class="contact-card__icon"><i class="fab fa-pinterest-p fa-2x"></i></div></a>
+						</div>
+
+<!--
 
 						<a title="Check out O'Connor Art Studios on Facebook" class="contact-card__link" href="https://www.facebook.com/OConnorArtStudios/" target="_blank" rel="noopener noreferrer">
 							<div class="contact-card">
@@ -73,7 +82,7 @@ get_header();
 								<div class="contact-card__text">O'Connor Art Studios &nbsp <i class="fal fa-external-link-square"></i></div>
 							</div>
 						</a>
-
+-->
 				</div>
 			</div>
 

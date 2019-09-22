@@ -140,8 +140,13 @@ if ($thisType != 'spin') {
 	?>
 
 
+	<?php
+		if ( !is_front_page()) {
+			$siteContentExtraClass .= " site-content--bg-cover";
+		}
+	?>
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content <?php echo $siteContentExtraClass; ?>">
 
 		<?php
 			if ( !is_front_page()) {

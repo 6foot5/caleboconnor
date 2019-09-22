@@ -24,10 +24,11 @@ get_header();
 <?php
 	$siteMainExtraClass = "";
 	if ($wp->request == 'artwork/gallery') {
-		$siteMainExtraClass .= "contents-aligncenter";
+    $siteMainExtraClass .= "contents-aligncenter";
+    $contentAreaExtraClass .= "content-area--padded-sides content-area--bg-color";
 	}
 ?>
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area <?php echo $contentAreaExtraClass; ?>">
 		<main id="main" class="site-main <?php echo $siteMainExtraClass; ?>">
 
 			<?php

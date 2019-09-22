@@ -12,7 +12,7 @@ get_header();
 
 <?php //pageBanner();	?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main">
 
 		<?php
@@ -26,8 +26,8 @@ get_header();
 ?>
 
 		<div class="flexible">
-			<div class="flexible__flex-left">
-				<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php the_title(); ?>"> <img alt="<?php the_title(); ?>" src="<?php echo $thumbnail; ?>"></a>
+			<div class="flexible__flex-left font-zero">
+				<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php the_title(); ?>"><img alt="<?php the_title(); ?>" src="<?php echo $thumbnail; ?>"></a>
 			</div>
 			<div class="flexible__flex-right">
 				<h2 class="heading heading--small"><?php the_title(); ?></h2>
@@ -43,7 +43,9 @@ get_header();
 					echo get_field('artwork_year') . '<br /><br />';
 				}
 				if (get_field('artwork_description')) {
-					echo get_field('artwork_description') . '<br /><br />';
+					echo '<div class="text-block">';
+					echo get_field('artwork_description');					
+					echo '</div>';
 				}
 				?>
 

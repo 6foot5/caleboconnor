@@ -14,3 +14,7 @@ body {
 .body-no-scroll {
   overflow: hidden;
 }
+
+.font-zero {
+  font-size: 0;
+}

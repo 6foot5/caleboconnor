@@ -15,6 +15,10 @@ body {
   overflow: hidden;
 }
 
+.font-zero {
+  font-size: 0;
+}
+
 /*!
 Theme Name: Say Hey
 Author: Rick Barley, based on Underscores.me
@@ -932,7 +936,7 @@ object {
 }
 
 .content-area {
-  max-width: 1000px;
+  max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
   border: 0px solid yellow;
@@ -942,10 +946,19 @@ object {
 
 }
 
+@media (min-width: 630px) {
+
+.content-area--bg-color {
+      background-color: rgba(242,243,244,.89)
+  }
+  }
+
 .content-area--padded-sides {
-    max-width: 1040px;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 1080px;
+    padding-left: 0px; /* side padding moved to site-main */
+    padding-right: 0px;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
   }
 
 .site {
@@ -1654,14 +1667,39 @@ ul.sub-menu.toggled-on {
 
 .site-content {
   padding-top: 3rem; /* Was 69px ?? */
-  padding-bottom: 8rem;
+  padding-bottom: 18rem;
   border: 0px solid black;
+/*
+  &--bg-cover::after {
+    background-color: #563d7c;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+  }
+  */
 }
+
+@media (min-width: 630px) {
+
+.site-content--bg-cover {
+      background: url(/wp-content/themes/say-hey/img/canvas-background-light.jpg) no-repeat center center fixed;
+      background-size: cover;
+      z-index: -2
+  }
+  }
 
 .site-main {
   border: 0px solid blue;
   margin-top: 0rem;
   margin-bottom: 2.0rem;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .gallery-index-item {
@@ -1716,7 +1754,7 @@ ul.sub-menu.toggled-on {
     width: 100%;
     position: absolute;
     padding: 5px;
-    top: 50%;
+    top: 33%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
@@ -1782,6 +1820,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     border: 0px solid yellow;
     opacity: 0;
     transition: opacity .75s ease;
+  }
+
+.gallery-thumb__detail-link {
+    font-size: 2rem;
   }
 
 .gallery-thumb__image {
@@ -2512,12 +2554,6 @@ padding/margin to tweak how cards flow at different breakpoints
 
 }
 
-.contact-card__icon {
-    display: inline-block;
-    width: 2rem;
-    padding: 0;
-  }
-
 .contact-card__text {
     display: inline-block;
     padding: 0 1rem;
@@ -2527,3 +2563,62 @@ padding/margin to tweak how cards flow at different breakpoints
 .contact-card__link {
     border-bottom: 0;
   }
+
+.contact-card__container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+@media (min-width: 630px) {
+
+.contact-card__container {
+    font-size: 2rem
+}
+  }
+
+@media (min-width: 800px) {
+
+.contact-card__container {
+    font-size: 3rem
+}
+  }
+
+.contact-card__icon {
+  width: 40%;
+  height: 40%;
+  float: left;
+  text-align: center;
+  border: 2px solid #9c968b;
+  border-radius: 10px;
+  padding: 10%;
+  margin: 5% 5%;
+  background-color: rgba(156,150,139,.05);
+
+  /*
+    display: inline-block;
+    width: 2rem;
+    padding: 0;
+    */
+}
+
+.contact-card__icon:hover {
+  color: #b38c40;
+  background-color: rgba(156,150,139,.75);
+}
+
+.fancybox-caption {
+  font-size: 1.4rem !important;
+  font-weight: 300 !important;
+}
+
+.fancybox-bg {
+  opacity: 1 !important;
+}
+
+.text-block {
+  width: 100%;
+  text-align: left;
+  padding: 0 20px 20px;
+}

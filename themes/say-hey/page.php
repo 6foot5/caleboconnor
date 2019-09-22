@@ -19,7 +19,7 @@ get_header();
 	<?php //pageBanner();	?>
 
 
-	<div id="primary" class="content-area content-area--padded-sides">
+	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main">
 
 		<?php

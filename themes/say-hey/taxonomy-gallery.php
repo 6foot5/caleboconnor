@@ -39,7 +39,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
 <?php //pageBanner();	?>
 
-	<div id="primary" class="content-area content-area--padded-sides">
+	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
@@ -195,7 +195,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 	                  <a
 											href = "<?php the_post_thumbnail_url('large'); ?>"
 											data-fancybox = "gallery"
-											data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">
+											data-caption = "<a href='<?php the_permalink(); ?>'><span class='gallery-thumb__detail-link'>VIEW DETAILS</span><br /> <?php the_title(); ?></a> <?php echo $relatedCaption ?>">
 												<img
 													alt="<?php the_title(); ?>"
 													src="<?php the_post_thumbnail_url('thumbnail'); ?>">
