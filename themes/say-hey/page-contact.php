@@ -19,25 +19,31 @@ get_header();
 		<main id="main" class="site-main">
 
 			<header class="page-header heading heading--centered">
-			  <h1 class="heading">About - Contact</h1>
+			  <h1 class="heading">Get in Touch</h1>
 			  <hr class="heading__line" />
 			</header><!-- .page-header -->
 
 			<div class="flexible">
 				<div class="flexible__flex-left flexible__flex-left--left-align search-gutter">
-					<h2>Contact Caleb</h4>
+<?php
 
-					<?php
-
-					while ( have_posts() ) :
+					while ( have_posts() ) {
 						the_post();
-						the_content();
-					endwhile; // End of the loop.
 
-					?>
+						if (get_field('phone_number')) {
+							echo '<h2>Phone</h2>' . get_field('phone_number') . '<br /><br />';
+						}
+						if (get_field('email_address')) {
+							echo '<h2>Email</h2>' . get_field('email_address') . '<br /><br />';
+						}
+						if (get_field('studio_url')) {
+							echo '<h2>O\'Connor Art Studios</h2><a title="Vist O\'Connor Art Studios in Tuscaloosa" target="_blank" rel="noopener noreferrer" href="' . get_field('studio_url') . '">' .get_field('studio_url') . '</a><br /><br />';
+						}
+					}
+?>
 				</div>
 				<div class="flexible__flex-right flexible__flex-right--left-align">
-					<h2>Visit Us Online</h4>
+					<h2>Social Media</h4>
 
 						<div class="contact-card__container">
 							<a title="Check out O'Connor Art Studios on Facebook" class="contact-card__link" href="https://www.facebook.com/OConnorArtStudios/" target="_blank" rel="noopener noreferrer"><div class="contact-card__icon"><i class="fab fa-facebook-f fa-2x"></i></div></a>

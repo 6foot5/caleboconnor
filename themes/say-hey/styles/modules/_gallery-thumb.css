@@ -16,10 +16,16 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
   &__caption {
     z-index: 10;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
     display: block;
     border: 0px solid yellow;
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity .75s ease;
+
+    @mixin atMedium {
+      opacity: 0;
+    }
   }
 
   &__detail-link {
@@ -52,7 +58,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   &__button-explore {
     position: absolute;
     width: 80%;
-    top: 75px;
+    top: 150px;
     left: 10%;
     text-align: center;
   }
@@ -62,15 +68,20 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     width: 100%;
     padding: 5px 0;
     text-align: center;
-    color: $offBlack;
-    border: solid 2px $offBlack;
-    background-color:  rgba(255, 255, 255, 0.6);
-    opacity: 0;
+    color: $offWhite;
+    font-weight: 300;
+    border: solid 2px rgba($logoGoldR, $logoGoldG, $logoGoldB, 0.4);
+    background-color: rgba($offBlackR, $offBlackG, $offBlackB, 0.4);
+    opacity: 0.75;
     transition: opacity .5s ease;
+
+    @mixin atMedium {
+      opacity: 0;
+    }
   }
 
   &__button-explore a:hover {
-    background-color: $offWhite;
+    background-color: rgba($offBlackR, $offBlackG, $offBlackB, 0.8);
   }
 
   &__button-view {
@@ -89,10 +100,14 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     padding: 5px 0;
     text-align: center;
     color: $offWhite;
-    border: solid 2px $logoGold;
-    background-color:  rgba(0, 0, 0, 0.6);
-    opacity: 0;
+    font-weight: 300;
+    border: solid 2px rgba($logoGoldR, $logoGoldG, $logoGoldB, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     transition: opacity .5s ease;
+
+    @mixin atMedium {
+      opacity: 0;
+    }
   }
 
   &__button-view a:hover {

@@ -22,26 +22,26 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
 
   @mixin atSmall {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   @mixin atMedium {
-    font-size: 3rem;
+    font-size: 1.6rem;
   }
 }
 
 .contact-card__icon {
-  width: 40%;
-  height: 40%;
+  width: 36%;
+  height: 36%;
   float: left;
   text-align: center;
   border: 2px solid $logoGrey;
   border-radius: 10px;
   padding: 10%;
-  margin: 5% 5%;
+  margin: 0 1.5rem 1.5rem 0;
   background-color: rgba($logoGreyR,$logoGreyG,$logoGreyB,.05);
 
   /*
@@ -53,5 +53,5 @@
 
 .contact-card__icon:hover {
   color: $logoGold;
-  background-color: rgba($logoGreyR,$logoGreyG,$logoGreyB,.75);
+  /* background-color: rgba($logoGreyR,$logoGreyG,$logoGreyB,.75); */
 }

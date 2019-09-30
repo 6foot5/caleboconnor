@@ -28,12 +28,67 @@
 		$thisID = get_queried_object_id();
 		$thisType = get_post_type($thisID);
 
-		if (is_front_page()) {
-			$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
+		if ( is_front_page() || ( is_404() && !($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') ) ) {
 
-			if(get_field('page_banner_background_image')) {
-				$bannerImg = get_field('page_banner_background_image');
-				$bgImgSmall = $bannerImg['sizes']['medium_large'];
+			if ( is_front_page() ) {
+
+				$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
+
+				if( get_field('page_banner_background_image') ) {
+					$bannerImg = get_field('page_banner_background_image');
+					$bgImgSmall = $bannerImg['sizes']['medium_large'];
+				}
+				else {
+					$bgImgSmall = $bgImgURL;
+				}
+				$bodyClass = '.home';
+			}
+
+			// We've got a 404, let's get a random bg image to look pretty
+			else {
+
+				$queryArgs = array(
+					'post_status' => 'inherit',
+					'posts_per_page' => -1,
+					'post_type' => 'attachment',
+				);
+
+	/*
+		This query is grabbing a random image (attachment) from the media library
+		It is looking for a specific "folder" (ID 87)
+		This folder contains images to serve as background for 404 page
+	*/
+
+				$queryArgs['tax_query'] = array(
+					array(
+						'taxonomy' => 'nt_wmc_folder',
+						'terms' => array( 87 ), // ID of the "Random Banners" media folder
+						'field' => 'term_id',
+					)
+				);
+
+				$the_query = new WP_Query( $queryArgs );
+
+				if ( $the_query->have_posts() ) {
+					$theBGs = array();
+					$numBGs = 0;
+						while ( $the_query->have_posts() ) {
+						$the_query->the_post();
+							$thisImg = wp_get_attachment_image_src(get_the_ID(), 'medium_large');
+							array_push($theBGs, $thisImg[0]);
+							$numBGs += 1;
+						}
+						$bgImgURL = $theBGs[mt_rand(0,$numBGs-1)];
+				}
+				else {
+					$bgImgURL = get_theme_file_uri('/img/banner.jpg');
+				}
+
+				$bgImgSmall = $bgImgURL;
+
+				$bodyClass = '.error404';
+
+				wp_reset_postdata();
 			}
 
 			// Pull different bg sizes here and use media queries below to change bg src on the fly
@@ -43,7 +98,7 @@
 			?>
 
 			<style type="text/css">
-				.home {
+				<?php echo $bodyClass; ?> {
 					width: 100%;
 			    height: auto;
 			    background-image: url('<?php echo $bgImgSmall; ?>');
@@ -51,10 +106,13 @@
 					background-position: center center;
 					background-repeat: no-repeat;
 					background-attachment: fixed;
-
+					-ms-background-size: cover;
+					-o-background-size: cover;
+					-moz-background-size: cover;
+					-webkit-background-size: cover;
 				}
 				@media (min-width: 630px) {
-					.home {
+					<?php echo $bodyClass; ?> {
 						background-image: url('<?php echo $bgImgURL; ?>');
 					}
 				}
@@ -73,7 +131,7 @@
 <?php
 // ontouchstart="" onmouseover="" relates to hover/touch behavior
 ?>
-<body ontouchstart="" onmouseover="" <?php body_class(); ?>>
+<body <?php body_class(); ?>>
 
 <?php
 
@@ -90,7 +148,7 @@ if ($thisType != 'spin') {
 	<div class="content-area">
 		<a class="no-border" href="<?php echo site_url(); ?>"><div class="site-header__logo">
 			<div class="site-header__logo__image"></div>
-			<div class="site-header__logo__text"><span>caleb o'connor</span></div>
+			<div class="site-header__logo__text"><span>Caleb O'Connor</span></div>
 		</div></a><!-- .site-header__logo -->
 	</div><!-- .site-header__logo -->
 
@@ -104,7 +162,7 @@ if ($thisType != 'spin') {
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 					<i id="hamburger" class="fal fa-bars"></i>
 				</button>
-				<a class="no-border" href="<?php echo site_url(); ?>"><div class="mobile-header__text"><span>caleb o'connor</span></div></a>
+				<a class="no-border" href="<?php echo site_url(); ?>"><div class="mobile-header__text"><span>Caleb O'Connor</span></div></a>
 				<a class="no-border" href="<?php echo site_url(); ?>"><div class="mobile-header__image"></div></a>
 			</div><!-- .mobile-header -->
 
@@ -127,7 +185,7 @@ if ($thisType != 'spin') {
 	</header><!-- .site-header -->
 
 	<?php
-		if ( !is_front_page()) {
+		if ( !is_front_page() && ( !is_404() || ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') ) ) {
 			pageBanner();
 		}
 		if (is_post_type_archive('artwork')) {
@@ -139,23 +197,18 @@ if ($thisType != 'spin') {
 
 	?>
 
-
-	<?php
-		if ( !is_front_page()) {
-			$siteContentExtraClass .= " site-content--bg-cover";
-		}
-	?>
+<?php
+	if ( !is_front_page() && ( !is_404() || ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') ) ) {
+		$siteContentExtraClass .= " site-content--bg-cover site-content--padded-bottom";
+	}
+	if ( is_404() && !($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') ) {
+		$siteContentExtraClass .= "";
+	}
+?>
 
 	<div id="content" class="site-content <?php echo $siteContentExtraClass; ?>">
 
-		<?php
-			if ( !is_front_page()) {
-				//pageBanner();
-			}
-		?>
 <?php
-
-
 }		// Only output visible header if not on a 'spin' type (Magic360)
 ?>
 

@@ -10,7 +10,7 @@
   &__flex-left {
     display: block;
     width: 80%;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
     border: 0px solid green;
     margin-left: auto;
@@ -31,8 +31,7 @@
     display: block;
     width: 80%;
     border: 0px solid green;
-    padding: 20px 0;
-    border: 0px solid blue;
+    padding: 20px;
     margin-left: auto;
     margin-right: auto;
 
@@ -51,8 +50,4 @@
     display: flex;
   }
 
-}
-
-.about-photo {
-  border-radius: 50%;
 }

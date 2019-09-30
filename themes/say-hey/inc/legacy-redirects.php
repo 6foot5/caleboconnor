@@ -17,7 +17,7 @@ $currenturl_relative = wp_make_link_relative($currenturl);
 
 $urlParts = explode('/', $currenturl_relative);
 
-if ($urlParts[1] == 'caleb') { // That is, if request is for a page on tnhe old site
+if ($urlParts[1] == 'caleb') { // That is, if request is for a page on the old site
 
   if ( $currenturl_relative == '/caleb/' || $currenturl_relative == '/caleb' ) {
     if (wp_safe_redirect( get_site_url(), 301 ) ) {

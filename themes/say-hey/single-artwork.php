@@ -31,7 +31,7 @@ get_header();
 			</div>
 			<div class="flexible__flex-right">
 				<h2 class="heading heading--small"><?php the_title(); ?></h2>
-				<hr class="about-hr" />
+				<hr class="heading__line" />
 				<?php
 				if (get_field('artwork_medium')) {
 					echo get_field('artwork_medium') . '<br /><br />';
@@ -44,7 +44,7 @@ get_header();
 				}
 				if (get_field('artwork_description')) {
 					echo '<div class="text-block">';
-					echo get_field('artwork_description');					
+					echo get_field('artwork_description');
 					echo '</div>';
 				}
 				?>

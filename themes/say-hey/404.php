@@ -8,7 +8,7 @@
  */
 
 
- if ($wp->request == 'artwork/gallery') {
+ if ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') {
 
    // WP will set page title to "not found"; reset it to Gallery title
     add_filter( 'pre_get_document_title', 'cyb_change_page_title' );
@@ -23,68 +23,49 @@ get_header();
 
 <?php
 	$siteMainExtraClass = "";
-	if ($wp->request == 'artwork/gallery') {
+	if ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') {
     $siteMainExtraClass .= "contents-aligncenter";
     $contentAreaExtraClass .= "content-area--padded-sides content-area--bg-color";
 	}
 ?>
-	<div id="primary" class="content-area <?php echo $contentAreaExtraClass; ?>">
-		<main id="main" class="site-main <?php echo $siteMainExtraClass; ?>">
 
-			<?php
-				if ($wp->request == 'artwork/gallery') {
+<?php
+				if ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') {
+?>
+          <div id="primary" class="content-area <?php echo $contentAreaExtraClass; ?>">
+        		<main id="main" class="site-main <?php echo $siteMainExtraClass; ?>">
+<?php
 					require get_theme_file_path('/template-parts/tax-landing.php');
 				}
 				else {
-			?>
-					<section class="error-404 not-found">
+?>
+
+
+					<section class="error-404 not-found contents-aligncenter">
 						<header class="page-header">
-							<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'sayhey' ); ?></h1>
+							<h1 class="page-title"><?php esc_html_e( '404 - No such page', 'sayhey' ); ?></h1>
+              <hr class="heading__line" />
 						</header><!-- .page-header -->
 
 						<div class="page-content">
 
-							<p><?php esc_html_e( '404!! It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'sayhey' );
-							echo $wp->request; ?></p>
+              <P><a class="button" href="<?php echo site_url( '/artwork/gallery', 'https' ); ?>">View Caleb's Work</a></P>
 
-							<?php
-							get_search_form();
-
-							the_widget( 'WP_Widget_Recent_Posts' );
-							?>
-
-							<div class="widget widget_categories">
-								<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'sayhey' ); ?></h2>
-								<ul>
-									<?php
-									wp_list_categories( array(
-										'orderby'    => 'count',
-										'order'      => 'DESC',
-										'show_count' => 1,
-										'title_li'   => '',
-										'number'     => 10,
-									) );
-									?>
-								</ul>
-							</div><!-- .widget -->
-
-							<?php
-							/* translators: %1$s: smiley */
-							$sayhey_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'sayhey' ), convert_smilies( ':)' ) ) . '</p>';
-							the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$sayhey_archive_content" );
-
-							the_widget( 'WP_Widget_Tag_Cloud' );
-							?>
+							<?php	//get_search_form(); ?>
 
 						</div><!-- .page-content -->
 					</section><!-- .error-404 -->
 
-			<?php
+<?php
 				}
-			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+        if ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') {
+?>
+            </main><!-- #main -->
+          </div><!-- #primary -->
+<?php
+				}
+?>
 
 <?php
 get_footer();

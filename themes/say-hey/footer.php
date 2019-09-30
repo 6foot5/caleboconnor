@@ -18,7 +18,9 @@ $thisType = get_post_type($thisID);
 
 //echo '****' . $thisType . '***';
 
-if ($thisType != 'spin' && !is_front_page()) {
+//  && ( is_404() || ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') )
+
+if ( $thisType != 'spin' && !is_front_page() ) {
 
 ?>
 </div><!-- #content | .site-content-->

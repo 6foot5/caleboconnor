@@ -205,19 +205,20 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
 										</a>
 	                </div>
-									<!--
-									<div class="gallery-thumb__button-explore"><a href="<?php the_permalink(); ?>">Explore
-										&nbsp; <i class="fal fa-newspaper"></i></a>
-									</div>-->
-									<!--
+
+									<div class="gallery-thumb__button-explore"><a href="<?php the_permalink(); ?>">Details
+										&nbsp; <i class="fal fa-info-circle"></i><!--<i class="fal fa-newspaper"></i>--></a>
+									</div>
+<!--
 									<div class="gallery-thumb__button-view"><a
 											href = "<?php the_post_thumbnail_url('large'); ?>"
 											data-fancybox = "gallery"
 											data-caption = "<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a> <?php echo $relatedCaption ?>">View
-												&nbsp; <i class="fas fa-expand-arrows-alt"></i>
+												&nbsp; <i class="fal fa-expand-arrows"></i>
 										</a>
 									</div>
-								-->
+-->
+
 									<div class="gallery-thumb__caption">
 										&bull; <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> &bull;
 									</div>

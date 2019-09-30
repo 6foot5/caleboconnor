@@ -36,7 +36,7 @@
 @import "modules/_gallery-thumb";
 @import "modules/_row";
 @import "modules/_flexible";
-@import "modules/_about-link";
+@import "modules/_button";
 @import "modules/_heading";
 @import "modules/_icon";
 @import "modules/_site-footer";
@@ -46,3 +46,5 @@
 @import "modules/_contact-card";
 @import "modules/_fancy-overrides";
 @import "modules/_text-block";
+@import "modules/_error-404";
+@import "modules/_about";

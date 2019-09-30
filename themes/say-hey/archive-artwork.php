@@ -10,11 +10,12 @@ get_header();
 
 <?php //pageBanner();	?>
 
-	<div id="primary" class="content-area content-area--padded-sides">
+	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
 			  <h1 class="heading">All Artwork</h1>
+				<hr class="heading__line" />
 			</div>
 
 			<?php

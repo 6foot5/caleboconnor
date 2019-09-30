@@ -1,8 +1,23 @@
 
 .site-content {
   padding-top: 3rem; /* Was 69px ?? */
-  padding-bottom: 18rem;
-  border: 0px solid black;
+  border: 0px solid purple;
+
+  &--padded-bottom {
+    padding-bottom: 18rem;
+  }
+
+  &--bg-overlay::after {
+    background-color: $offWhite;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    min-height: 100vh;
+    opacity: 0;
+  }
 
   &--bg-cover {
     @mixin atSmall {
@@ -11,7 +26,6 @@
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-      z-index: -2;
     }
   }
 /*

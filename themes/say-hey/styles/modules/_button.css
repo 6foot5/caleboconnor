@@ -1,5 +1,6 @@
 
-.about-link {
+.button {
+  /*
   display: inline-block;
   background-color: $offWhite;
   color: $offBlack;
@@ -7,45 +8,38 @@
   padding: 5px 15px;
   margin: 20px 3px;
   font-size: .9rem;
+  */
+  background-color: $offWhite;
+  color: $offBlack;
+  border: 1px solid $offBlack;
+  font-weight: 300;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 6px;
+  width: 75%;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
 
   @mixin atSmall {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 15px;
     margin-bottom: 15px;
-    padding: 6px;
     width: 50%;
     font-size: 1rem;
-    font-weight: 300;
   }
 
   @mixin atMedium {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 6px;
     width: 50%;
     font-size: 1.2rem;
   }
 }
 
-.about-link:hover {
+.button:hover {
   background-color: $logoGold;
   color: $offWhite;
   border-bottom: 1px solid $offBlack;
-}
-
-.about-head {
-  line-height: normal;
-  margin-top: 0;
-}
-
-.about-hr {
-  margin-bottom: 30px;
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
 }

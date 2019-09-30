@@ -1,0 +1,16 @@
+
+.error-404 {
+  position: absolute;
+  display: block;
+  padding: 1rem;
+  width: 420px;
+  background-color: $offWhite;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border: 2px solid $logoGold;
+  border-radius: 15px;
+  opacity: .83;
+}

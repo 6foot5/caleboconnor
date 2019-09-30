@@ -412,6 +412,7 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Merriweather', serif;
 	clear: both;
+  font-weight: 300;
 }
 
 h1 {
@@ -966,6 +967,8 @@ object {
    min-height: 100%;
    position: relative;
    padding: 0;
+   margin: 0;
+   min-height: 100vh;
  }
 
 .site-header {
@@ -1201,7 +1204,7 @@ object {
   text-align: left;
   border: 0px solid red;
   font-family: 'Merriweather', serif;
-  font-size: .85rem;  /* reset font size after setting to zero in 'main-navigation' */
+  font-size: .8rem;  /* reset font size after setting to zero in 'main-navigation' */
   font-weight: 300;
   margin: 0;
   text-transform: uppercase;
@@ -1219,7 +1222,7 @@ object {
 @media (min-width: 800px) {
 
 .menu-header-container {
-    font-size: .85rem  /* reset font size after setting to zero in 'main-navigation' */
+    font-size: .8rem  /* reset font size after setting to zero in 'main-navigation' */
 }
   }
 
@@ -1474,7 +1477,7 @@ ul.sub-menu.toggled-on {
   /* line-height: calc($navigationFontSize * 2.2); */
 	margin: 0 .5rem;
   /* All this crazy business below is about positioning the drop-down arrow */
-  padding: calc(.85rem * 1.35) calc(.85rem / 1.5) calc(.85rem / 1.8) calc(.85rem / 1.5);
+  padding: calc(.8rem * 1.35) calc(.8rem / 1.5) calc(.8rem / 1.8) calc(.8rem / 1.5);
 	position: absolute;
 	top: 0px;
   right: -.3rem;
@@ -1507,7 +1510,7 @@ ul.sub-menu.toggled-on {
   }
 
 .sub-menu > li > button {
-  padding: .85rem;
+  padding: .8rem;
 }
 
 .menu-toggle {
@@ -1667,8 +1670,7 @@ ul.sub-menu.toggled-on {
 
 .site-content {
   padding-top: 3rem; /* Was 69px ?? */
-  padding-bottom: 18rem;
-  border: 0px solid black;
+  border: 0px solid purple;
 /*
   &--bg-cover::after {
     background-color: #563d7c;
@@ -1685,12 +1687,27 @@ ul.sub-menu.toggled-on {
   */
 }
 
+.site-content--padded-bottom {
+    padding-bottom: 18rem;
+  }
+
+.site-content--bg-overlay::after {
+    background-color: #F2F3F4;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    min-height: 100vh;
+    opacity: 0;
+  }
+
 @media (min-width: 630px) {
 
 .site-content--bg-cover {
       background: url(/wp-content/themes/say-hey/img/canvas-background-light.jpg) no-repeat center center fixed;
-      background-size: cover;
-      z-index: -2
+      background-size: cover
   }
   }
 
@@ -1700,6 +1717,9 @@ ul.sub-menu.toggled-on {
   margin-bottom: 2.0rem;
   margin-left: 40px;
   margin-right: 40px;
+  opacity: 1;
+  /*
+  min-height: 100vh;*/
 }
 
 .gallery-index-item {
@@ -1816,10 +1836,19 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 .gallery-thumb__caption {
     z-index: 10;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
     display: block;
     border: 0px solid yellow;
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity .75s ease;
+  }
+
+@media (min-width: 800px) {
+
+.gallery-thumb__caption {
+      opacity: 0
+  }
   }
 
 .gallery-thumb__detail-link {
@@ -1852,7 +1881,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 .gallery-thumb__button-explore {
     position: absolute;
     width: 80%;
-    top: 75px;
+    top: 150px;
     left: 10%;
     text-align: center;
   }
@@ -1862,15 +1891,23 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     width: 100%;
     padding: 5px 0;
     text-align: center;
-    color: #414A4C;
-    border: solid 2px #414A4C;
-    background-color:  rgba(255, 255, 255, 0.6);
-    opacity: 0;
+    color: #F2F3F4;
+    font-weight: 300;
+    border: solid 2px rgba(179, 140, 64, 0.4);
+    background-color: rgba(65, 74, 76, 0.4);
+    opacity: 0.75;
     transition: opacity .5s ease;
   }
 
+@media (min-width: 800px) {
+
+.gallery-thumb__button-explore a {
+      opacity: 0
+  }
+  }
+
 .gallery-thumb__button-explore a:hover {
-    background-color: #F2F3F4;
+    background-color: rgba(65, 74, 76, 0.8);
   }
 
 .gallery-thumb__button-view {
@@ -1889,10 +1926,17 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     padding: 5px 0;
     text-align: center;
     color: #F2F3F4;
-    border: solid 2px #b38c40;
-    background-color:  rgba(0, 0, 0, 0.6);
-    opacity: 0;
+    font-weight: 300;
+    border: solid 2px rgba(179, 140, 64, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     transition: opacity .5s ease;
+  }
+
+@media (min-width: 800px) {
+
+.gallery-thumb__button-view a {
+      opacity: 0
+  }
   }
 
 .gallery-thumb__button-view a:hover {
@@ -2068,7 +2112,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 .flexible__flex-left {
     display: block;
     width: 80%;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
     border: 0px solid green;
     margin-left: auto;
@@ -2092,8 +2136,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     display: block;
     width: 80%;
     border: 0px solid green;
-    padding: 20px 0;
-    border: 0px solid blue;
+    padding: 20px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -2119,79 +2162,77 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 }
   }
 
-.about-photo {
-  border-radius: 50%;
-}
-
-.about-link {
+.button {
+  /*
   display: inline-block;
-  background-color: #F2F3F4;
-  color: #414A4C;
-  border: 1px solid #414A4C;
+  background-color: $offWhite;
+  color: $offBlack;
+  border: 1px solid $offBlack;
   padding: 5px 15px;
   margin: 20px 3px;
   font-size: .9rem;
+  */
+  background-color: #F2F3F4;
+  color: #414A4C;
+  border: 1px solid #414A4C;
+  font-weight: 300;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 6px;
+  width: 75%;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
 }
 
 @media (min-width: 630px) {
 
-.about-link {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.button {
     margin-top: 15px;
     margin-bottom: 15px;
-    padding: 6px;
     width: 50%;
-    font-size: 1rem;
-    font-weight: 300
+    font-size: 1rem
 }
   }
 
 @media (min-width: 800px) {
 
-.about-link {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.button {
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 6px;
     width: 50%;
     font-size: 1.2rem
 }
   }
 
-.about-link:hover {
+.button:hover {
   background-color: #b38c40;
   color: #F2F3F4;
   border-bottom: 1px solid #414A4C;
-}
-
-.about-head {
-  line-height: normal;
-  margin-top: 0;
-}
-
-.about-hr {
-  margin-bottom: 30px;
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .heading {
   margin: .5rem 0 1rem 0;
   font-weight: 300;
   /*color: $offBlack;*/
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 
 }
 
 @media (min-width: 630px) {
 
 .heading {
-    font-size: 3rem
+    font-size: 2rem
+
+}
+  }
+
+@media (min-width: 800px) {
+
+.heading {
+    font-size: 2.4rem
 
 }
   }
@@ -2205,18 +2246,22 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   }
 
 .heading--small {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
 
 @media (min-width: 630px) {
 
 .heading--small {
-      font-size: 2rem
+      font-size: 1.5rem
   }
   }
 
 .heading--centered {
     text-align: center;
+  }
+
+.heading--tight {
+    margin: 0;
   }
 
 .heading__line {
@@ -2390,7 +2435,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 }
 
 .search-results__nav-icon {
-  font-size: calc(.85rem * 1.1);
+  font-size: calc(.8rem * 1.1);
 }
 
 @media (min-width: 630px) {
@@ -2568,32 +2613,32 @@ padding/margin to tweak how cards flow at different breakpoints
   width: 100%;
   padding: 0;
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
 }
 
 @media (min-width: 630px) {
 
 .contact-card__container {
-    font-size: 2rem
+    font-size: 1.25rem
 }
   }
 
 @media (min-width: 800px) {
 
 .contact-card__container {
-    font-size: 3rem
+    font-size: 1.6rem
 }
   }
 
 .contact-card__icon {
-  width: 40%;
-  height: 40%;
+  width: 36%;
+  height: 36%;
   float: left;
   text-align: center;
   border: 2px solid #9c968b;
   border-radius: 10px;
   padding: 10%;
-  margin: 5% 5%;
+  margin: 0 1.5rem 1.5rem 0;
   background-color: rgba(156,150,139,.05);
 
   /*
@@ -2605,7 +2650,7 @@ padding/margin to tweak how cards flow at different breakpoints
 
 .contact-card__icon:hover {
   color: #b38c40;
-  background-color: rgba(156,150,139,.75);
+  /* background-color: rgba($logoGreyR,$logoGreyG,$logoGreyB,.75); */
 }
 
 .fancybox-caption {
@@ -2621,4 +2666,23 @@ padding/margin to tweak how cards flow at different breakpoints
   width: 100%;
   text-align: left;
   padding: 0 20px 20px;
+}
+
+.error-404 {
+  position: absolute;
+  display: block;
+  padding: 1rem;
+  width: 420px;
+  background-color: #F2F3F4;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border: 2px solid #b38c40;
+  border-radius: 15px;
+  opacity: .83;
+}
+
+.about-photo {
+  border-radius: 50%;
 }

@@ -23,8 +23,8 @@ get_header();
 					<img class="about-photo" alt="Caleb O'Connor" src="<?php the_post_thumbnail_url('gallery-category'); ?>">
 				</div>
 				<div class="flexible__flex-right">
-					<h2 class="heading">About Caleb</h2>
-					<hr class="about-hr" />
+					<h2 class="heading heading--tight">About Caleb</h2>
+					<hr class="heading__line" />
 
 <?php
 					$args = array(
@@ -36,7 +36,7 @@ get_header();
 
 					foreach ($child_pages as $child_page) {
 					?>
-						<a href="<?php the_permalink($child_page->ID); ?>" class="about-link"><?php echo $child_page->post_title; ?></a>
+						<a href="<?php the_permalink($child_page->ID); ?>" class="button"><?php echo $child_page->post_title; ?></a>
 					<?php
 					}
 ?>
