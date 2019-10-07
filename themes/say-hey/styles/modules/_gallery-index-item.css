@@ -2,22 +2,30 @@
 .gallery-index-item {
   position: relative;
   display: inline-block;
-  width: 402px;
+  width: 240px;
   padding: 0;
-  margin-bottom: 2.0rem;
-  margin-right: 2.0rem;
-  margin-left: 2.0rem;
-  margin-top: 2.0rem;
+  margin-bottom: 1.0rem;
+  margin-right: 1.0rem;
+  margin-left: 1.0rem;
+  margin-top: 1.0rem;
   box-sizing: border-box;
   border: 1px solid $offBlack;
   text-align: center;
 
-  @mixin atMedium {
+  @mixin atTiny {
     width: 302px;
+    margin-bottom: 2.0rem;
+    margin-right: 2.0rem;
+    margin-left: 2.0rem;
+    margin-top: 2.0rem;
   }
 
   @mixin atLarge {
     width: 402px;
+    margin-bottom: 2.0rem;
+    margin-right: 2.0rem;
+    margin-left: 2.0rem;
+    margin-top: 2.0rem;
   }
 
   &__shadow-overlay {
