@@ -2,21 +2,22 @@
 .gallery-index-item {
   position: relative;
   display: inline-block;
-  width: 300px;
+  width: 402px;
   padding: 0;
   margin-bottom: 2.0rem;
   margin-right: 2.0rem;
   margin-left: 2.0rem;
   margin-top: 2.0rem;
+  box-sizing: border-box;
   border: 1px solid $offBlack;
   text-align: center;
 
   @mixin atMedium {
-    width: 300px;
+    width: 302px;
   }
 
   @mixin atLarge {
-    width: 400px;
+    width: 402px;
   }
 
   &__shadow-overlay {

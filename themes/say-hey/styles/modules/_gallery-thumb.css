@@ -23,7 +23,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     opacity: 0.5;
     transition: opacity .75s ease;
 
-    @mixin atMedium {
+    @media (hover: hover) {
       opacity: 0;
     }
   }
@@ -34,25 +34,25 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
   &__image {
     padding: 0;
-    width: 200px;
     text-align: center;
     border: 0px solid red;
+    margin: 0;
+    position: relative;
   }
 
   &__shadow-overlay {
     position: absolute;
-    padding-top: 0px;
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    min-height: 100%;
     padding: 0;
     margin: 0;
-    border: 0px solid blue;
+    border: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.8);
   }
 
   &__shadow-overlay:hover {
-    /* background-color: rgba(0, 0, 0, 0.3); */
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   &__button-explore {
@@ -75,7 +75,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     opacity: 0.75;
     transition: opacity .5s ease;
 
-    @mixin atMedium {
+    @media (hover: hover) {
       opacity: 0;
     }
   }

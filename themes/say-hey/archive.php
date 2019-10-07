@@ -15,7 +15,7 @@ get_header();
 	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main contents-aligncenter ">
 
-		<?php if ( have_posts() ) : ?>
+		<?php if ( have_posts() ) { ?>
 
 			<header>
 				<h1 class="page-header heading heading--centered"><?php
@@ -31,7 +31,8 @@ get_header();
 
 				<?php
 				/* Start the Loop */
-				while ( have_posts() ) :
+				while ( have_posts() ) {
+
 					the_post();
 
 					/*
@@ -66,13 +67,16 @@ get_header();
 
 					//the_excerpt();
 
-				endwhile;
+				}
 
 				// the_posts_navigation();
 
-			else :
+			}
+			else {
 
 				//get_template_part( 'template-parts/content', 'none' );
+
+				echo '<h1>No artwork found</h1>';
 
 				$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
 				//$request->set_query_params( [ 'per_page' => 12 ] );
@@ -81,14 +85,13 @@ get_header();
 				$data = $server->response_to_data( $response, false );
 				$json = wp_json_encode( $data );
 
-				echo '+' . $data[1]['title'] . '+<br />';
-				echo '--' . $data[1]['imageSrc']['medium_large'] . '--';
+				echo '+' . $data[0]['title'] . '+<br />';
+				echo '--' . $data[0]['imageSrc']['medium_large'] . '--';
 
-				//echo $json;
+				echo $json;
 
 				// print_r($data[1]);
-
-			endif;
+			}
 			?>
 
 		</div>

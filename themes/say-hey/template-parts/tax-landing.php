@@ -57,7 +57,7 @@ foreach ( $terms as $childTerm ) {
 
     $galleryThumbURL = $image['sizes']['gallery-category'];
 
-    $imgTag = '<img width="100%" src="' . $galleryThumbURL . '" alt="' . $label . '" />';
+    $imgTag = '<img src="' . $galleryThumbURL . '" alt="' . $label . '" />';
 
     printf( '<a href="%1$s">%2$s</a>',
         esc_url( get_term_link( $childTerm->term_id ) ),

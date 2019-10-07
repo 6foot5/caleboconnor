@@ -51,24 +51,28 @@ function sayheyArtworkResults($wpData) {
     $detailImagesFound = get_field('detail_images');
     $detailImageInfo = array();
 
-    foreach($detailImagesFound as $image) {
+    if( is_array($detailImagesFound) ) {
 
-      $detailPermalinks = array();
+      foreach($detailImagesFound as $image) {
 
-      foreach($allImageSizes as $thisSize) {
-        $detailPermalinks[$thisSize] = wp_get_attachment_image_src($image->ID, $thisSize)[0];
+        $detailPermalinks = array();
+
+        foreach($allImageSizes as $thisSize) {
+          $detailPermalinks[$thisSize] = wp_get_attachment_image_src($image->ID, $thisSize)[0];
+        }
+
+        //$detailPermalinks['full'] = wp_get_attachment_image_src($image->ID, 'full')[0];
+
+        array_push($detailImageInfo, array(
+          'imageID' => $image->ID,
+          'imageSizes' => $detailPermalinks
+        ));
+
+        // empty out the array for next detail image's permalinks
+        unset($detailPermalinks);
       }
-
-      //$detailPermalinks['full'] = wp_get_attachment_image_src($image->ID, 'full')[0];
-
-      array_push($detailImageInfo, array(
-        'imageID' => $image->ID,
-        'imageSizes' => $detailPermalinks
-      ));
-
-      // empty out the array for next detail image's permalinks
-      unset($detailPermalinks);
     }
+
 
 /*
 --------------------------------------------------------------------------------
