@@ -124,6 +124,11 @@ add_action( 'after_setup_theme', 'sayhey_setup' );
 require get_theme_file_path('/inc/page-banner.php');
 
 /*
+***** Function to output gallery thumbnails ********
+*/
+require get_theme_file_path('/inc/gallery-thumbs-output.php');
+
+/*
 ***** CUSTOMIZE LOGIN SCREEN ********
 */
 require get_theme_file_path('/inc/customize-login.php');
