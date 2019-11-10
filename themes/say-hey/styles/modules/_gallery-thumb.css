@@ -14,6 +14,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   border: 0px solid black;
   text-align: center;
 
+  &--hidden {
+    display: none;
+  }
+
   &__caption {
     z-index: 10;
     font-size: 0.7rem;

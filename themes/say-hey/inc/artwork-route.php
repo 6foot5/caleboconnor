@@ -10,7 +10,14 @@ add_action('rest_api_init', 'sayheyRegisterArtwork');
 function sayheyRegisterArtwork() {
   register_rest_route('sayhey/v1', 'artwork', array(
     'methods' => WP_REST_SERVER::READABLE,
-    'callback' => 'sayheyArtworkResults'
+    'callback' => 'sayheyArtworkResults',
+    'args' => array(
+      'id' => array(
+        'validate_callback' => function($param, $request, $key) {
+            return is_numeric($param);
+        }
+      )
+    )
   ));
 }
 /*
@@ -25,16 +32,32 @@ function sayheyRegisterArtwork() {
 */
 function sayheyArtworkResults($wpData) {
 
-  $mainQuery = new WP_Query(array(
+  $args = array(
     'posts_per_page' => -1,       // Get all the artwork
     'post_type' => array('artwork'),
     'order' => 'ASC',
     'orderby' => 'title'  // default sort is by title
-  ));
+  );
+
+  if ($wpData['per_page']) {
+    $args['posts_per_page'] = $wpData['per_page'];
+  }
+
+  if ($wpData['id']) {
+    $args['p'] = $wpData['id'];
+  }
+
+  if ($wpData['tax_query']) {
+    $args['tax_query'] = $wpData['tax_query'];
+  }
+
+  //print_r($args); echo '<br />';
+
+  $mainQuery = new WP_Query($args);
 
   $results = array(); // initialize the array of results
 
-  // This defines an array of all image sizes; will be used by each artwork
+  // This defines an array of all image size keywords; will be used by each artwork
   // to retrieve image URLs
   $allImageSizes = get_intermediate_image_sizes();
   array_push($allImageSizes, 'full');
@@ -50,6 +73,17 @@ function sayheyArtworkResults($wpData) {
 */
     $detailImagesFound = get_field('detail_images');
     $detailImageInfo = array();
+    $workSelectors = ''; // CSS selectors to reflect various artwork properties
+    /*
+      Selector taxonomy:
+        'year-[value]'
+        'medium-[value]'
+        'tag-[slug]'
+        'category-[slug]'
+        'has-spin'
+        'has-story'
+        'has-process'
+    */
 
     if( is_array($detailImagesFound) ) {
 
@@ -86,9 +120,12 @@ function sayheyArtworkResults($wpData) {
       array_push($workTagInfo, array(
         'tagID' => $thisTag->term_id,
         'tagName' => $thisTag->name,
+        'tagSlug' => $thisTag->slug,
         'taxonomy' => $thisTag->taxonomy,
         'permalink' => get_term_link($thisTag->term_id)
       ));
+
+      $workSelectors .= ' tag-' . $thisTag->slug;
     }
 
 /*
@@ -97,15 +134,20 @@ function sayheyArtworkResults($wpData) {
 --------------------------------------------------------------------------------
 */
     $workCats = wp_get_object_terms(get_the_id(), 'gallery');
+
     $workCatInfo = array();
 
     foreach($workCats as $thisCat) {
+
       array_push($workCatInfo, array(
         'catID' => $thisCat->term_id,
         'catName' => $thisCat->name,
+        'catSlug' => $thisCat->slug,
         'taxonomy' => $thisCat->taxonomy,
         'permalink' => get_term_link($thisCat->term_id)
       ));
+
+      $workSelectors .= ' category-' . $thisCat->slug;
     }
 
 /*
@@ -136,6 +178,10 @@ function sayheyArtworkResults($wpData) {
       )
     ));
 
+    if ($relatedStories) {
+      $workSelectors .= ' has-story';
+    }
+
     $workStoryInfo = array();
 
     foreach($relatedStories as $story) {
@@ -162,6 +208,10 @@ function sayheyArtworkResults($wpData) {
       )
     ));
 
+    if ($relatedProcesses) {
+      $workSelectors .= ' has-process';
+    }
+
     $workProcessInfo = array();
 
     foreach($relatedProcesses as $process) {
@@ -177,22 +227,39 @@ function sayheyArtworkResults($wpData) {
   Fill results array with all artwork info
 --------------------------------------------------------------------------------
 */
+    $thisSpinID = get_field('related_spin')->ID;
+    $thisYear = get_field('artwork_year');
+    $thisMedium = get_field('artwork_medium');
+
+    if ($thisYear) {
+      $workSelectors .= ' year-' . $thisYear;
+    }
+
+    if ($thisSpinID) {
+      $workSelectors .= ' has-spin';
+    }
+
+    if ($thisMedium) {
+      $workSelectors .= ' medium-' . $thisMedium['value'];
+    }
+
     array_push($results, array(
       'ID' => get_the_id(),
       'permalink' => get_the_permalink(),
       'title' => get_the_title(),
       'description' => get_field('artwork_description'),
       'featuredImage' => get_post_thumbnail_id(),
-      'medium' => get_field('artwork_medium'),
+      'medium' => $thisMedium,
       'size' => get_field('artwork_size'),
-      'date' => get_the_date('Y'),
+      'year' => $thisYear,
       'imageSrc' => $imagePermalinks,
       'detailImages' => $detailImageInfo,
       'tags' => $workTagInfo,
       'categories' => $workCatInfo,
-      'spinID' => get_field('related_spin')->ID,
+      'spinID' => $thisSpinID,
       'stories' => $workStoryInfo,
-      'processes' => $workProcessInfo
+      'processes' => $workProcessInfo,
+      'selectors' => $workSelectors
     ));
 
   }

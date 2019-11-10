@@ -1851,6 +1851,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   text-align: center;
 }
 
+.gallery-thumb--hidden {
+    display: none;
+  }
+
 .gallery-thumb__caption {
     z-index: 10;
     font-size: 0.7rem;

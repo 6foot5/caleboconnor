@@ -240,6 +240,8 @@ function sayhey_scripts() {
 
        wp_enqueue_script('sayhey-search-js', get_theme_file_uri('/js/search.js'), NULL, microtime(), true);
 
+       wp_enqueue_script('sayhey-artwork-filter-js', get_theme_file_uri('/js/artwork-filter.js'), NULL, microtime(), true);
+
        wp_localize_script('sayhey-search-js', 'sayHeyData', array(
         'root_url' => get_site_url()
       ));
