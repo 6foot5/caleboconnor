@@ -81,7 +81,7 @@ function WordPress_Magic360_get_active_modules() {
 function WordPress_Magic360_send_stat($action = '') {
 
     //NOTE: don't send from working copy
-    if('working' == 'v6.8.0' || 'working' == 'v4.6.10') {
+    if('working' == 'v6.8.4' || 'working' == 'v4.6.10') {
         return;
     }
 
@@ -93,7 +93,7 @@ function WordPress_Magic360_send_stat($action = '') {
     global $wp_version;
     $platformVersion = isset($wp_version) ? $wp_version : '';
 
-    $path = "api/stat/?action={$action}&tool_name=magic360&license=trial&tool_version=v4.6.10&module_version=v6.8.0&platform_name=wordpress&platform_version={$platformVersion}&url={$url}";
+    $path = "api/stat/?action={$action}&tool_name=magic360&license=trial&tool_version=v4.6.10&module_version=v6.8.4&platform_name=wordpress&platform_version={$platformVersion}&url={$url}";
     $handle = @fsockopen('ssl://' . $hostname, 443, $errno, $errstr, 30);
     if($handle) {
         $headers  = "GET /{$path} HTTP/1.1\r\n";
@@ -1151,7 +1151,9 @@ function WordPress_Magic360_get_containers_data($thumbs = array(), $post_id = fa
                 }
                 
                 $containersData['video-'.$videoIndex] .=' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen data-video-type="'.$dataVideoType.'"></iframe>';
-
+                
+                $videoData['thumb'] = str_replace('http://', 'https://', $videoData['thumb']);
+                
                 $productImagesHTML[] =
                     '<a data-magic-slide-id="video-'.$videoIndex.'" data-video-type="'.$dataVideoType.'" class="video-selector" href="#" onclick="return false">'.
                     '<span><b></b></span>'.

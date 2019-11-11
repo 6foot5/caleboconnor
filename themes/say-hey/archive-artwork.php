@@ -14,7 +14,7 @@ get_header();
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
-			  <h1 class="heading">All Artwork</h1>
+			  <h1 class="heading">Explore All Works<i class="selected-filter"></i></h1>
 				<hr class="heading__line" />
 			</div>
 
@@ -52,9 +52,9 @@ get_header();
 			//$json = wp_json_encode( $data );
 
 ?>
-<a href="#" class="whatever" onclick="hideSelector('all-thumbs');">RESET</a>
-|
-<a href="#" onclick="showSelector('all-thumbs');">SHOW ALL</a>
+
+	<a href="#" class="button button--inline" onclick="hideAll();">Show None</a>
+	<a href="#" class="button button--inline" onclick="showAll();">Show All</a>
 
 <?php
 
@@ -128,49 +128,70 @@ get_header();
 
 			ksort($hasSelectors);
 
-			echo '<p>';
-			foreach (array_keys($mediumSelectors) as $key) {
-				echo '<a href="#" onclick="flipSelector(\'' . $key . '\');">' . $mediumSelectors[$key] . '</a><br />';
-				//echo $key . ' > ' . $mediumSelectors[$key] . '<br />';
+			echo '<div class="artwork-filter">';
+
+			if ($mediumSelectors) {
+
+				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Medium</option>';
+				foreach (array_keys($mediumSelectors) as $key) {
+					echo '<option value="' . $key . '">' . $mediumSelectors[$key] . '</option>';
+					//echo $key . ' > ' . $mediumSelectors[$key] . '<br />';
+				}
+				echo '</select>';
 			}
-			echo '</p>';
 
-			echo '<p>';
-			foreach (array_keys($yearSelectors) as $key) {
-				echo $key . ' > ' . $yearSelectors[$key] . '<br />';
+			if ($yearSelectors) {
+
+				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Year</option>';
+				foreach (array_keys($yearSelectors) as $key) {
+					echo '<option value="' . $key . '">' . $yearSelectors[$key] . '</option>';
+				}
+				echo '</select>';
 			}
-			echo '</p>';
 
-			echo '<p>';
-			foreach (array_keys($tagSelectors) as $key) {
-				echo $key . ' > ' . $tagSelectors[$key] . '<br />';
+			if ($tagSelectors) {
+
+				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Tags</option>';
+				foreach (array_keys($tagSelectors) as $key) {
+					echo '<option value="' . $key . '">' . $tagSelectors[$key] . '</option>';
+				}
+				echo '</select>';
 			}
-			echo '</p>';
 
-			echo '<p>';
-			foreach (array_keys($categorySelectors) as $key) {
-				echo $key . ' > ' . $categorySelectors[$key] . '<br />';
+			if ($categorySelectors) {
+
+				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Categories</option>';
+				foreach (array_keys($categorySelectors) as $key) {
+					echo '<option value="' . $key . '">' . $categorySelectors[$key] . '</option>';
+				}
+				echo '</select>';
 			}
-			echo '</p>';
 
-			echo '<p>';
-			foreach (array_keys($hasSelectors) as $key) {
-				echo $key . ' > ' . $hasSelectors[$key] . '<br />';
+			if ($hasSelectors) {
+
+				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Behind the Artwork <i class="fa fa-times"></i></option>';
+				foreach (array_keys($hasSelectors) as $key) {
+					echo '<option value="' . $key . '">' . $hasSelectors[$key] . '</option>';
+				}
+				echo '</select>';
 			}
-			echo '</p>';
 
-			//print_r($mediumSelectors);
+			echo '</div>';
 
+			galleryThumbsOutput($data, NULL, true, 'all-thumbs');
+
+
+
+/*
 			foreach ( $data as $work ) {
 
-				echo '<div class="all-thumbs gallery-thumb--hidden' . $work['selectors'] . '"><p><a href="' . $work['permalink'] . '">' . $work['title'] . '</a><br />' . $work['selectors'] . '<br />+' . $medium . '+<br />' . $work['categories'];
-				echo '<p></div>';
+				echo '<div class="all-thumbs gallery-thumb--hidden' . $work['selectors'] . '"><p><a href="' . $work['permalink'] . '">' . $work['title'] . '</a><br />' . $work['selectors'] . '<br />+' . $work['medium'] . '+<br />' . $work['categories'];
+				echo '<br />' . $work['imageSrc']['large'] . '<br />' . $work['imageSrc']['thumbnail'] . '</div>';
 			}
-
+*/
 			//print_r($data);
 
 			?>
-
 
 
 		</main><!-- #main -->

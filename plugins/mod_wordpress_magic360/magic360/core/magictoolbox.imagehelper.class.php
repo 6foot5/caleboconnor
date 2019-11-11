@@ -148,7 +148,7 @@ if(!defined('MagicToolboxImageHelperClassLoaded')) {
             if ($retina = is_string($type) && preg_match('/.*2x$/', $type)) {
                 $type = preg_replace('/(.*)2x$/','$1',$type);
             }
-            
+
             $src = str_replace('/', MT_DS, $src);
             $this->src = $this->path.$src;
             if(!file_exists($this->src) || !is_file($this->src)) {
@@ -160,7 +160,7 @@ if(!defined('MagicToolboxImageHelperClassLoaded')) {
                         $size = array(0, 0);
                     } else {
                         $size = array(
-                            $this->options->getValue($type.'-max-width')*($retina?2:1), 
+                            $this->options->getValue($type.'-max-width')*($retina?2:1),
                             $this->options->getValue($type.'-max-height')*($retina?2:1)
                         );
                         $type = $type.$size[0].'x'.$size[1];

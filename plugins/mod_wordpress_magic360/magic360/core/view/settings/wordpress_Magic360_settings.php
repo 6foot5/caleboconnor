@@ -9,6 +9,15 @@
         foreach (WordPressMagic360_getParamsProfiles() as $profile => $name) {
             $GLOBALS['magictoolbox'][$id]->params->setProfile($profile);
             foreach($_POST as $name => $value) {
+            
+                //cut the url from watermark path
+                if (strpos($name,'watermark') !== false) { 
+                    $value = str_replace(site_url('','http').DIRECTORY_SEPARATOR,'',$value);
+                    $value = str_replace(site_url('','https').DIRECTORY_SEPARATOR,'',$value);
+                    $value = str_replace(str_replace('http://','',site_url('','http')).DIRECTORY_SEPARATOR,'',$value);
+                }
+            
+            
                 if(preg_match('/magic360settings_'.ucwords($profile).'_(.*)/is',$name,$matches)) {
                     $GLOBALS['magictoolbox'][$id]->params->setValue($matches[1], $value);
                 }

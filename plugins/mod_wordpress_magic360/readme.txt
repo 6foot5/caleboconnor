@@ -1,8 +1,8 @@
 #######################################################
 
  Magic 360™
- WordPress module version v6.8.0 [v1.6.79:v4.6.10]
- 
+ WordPress module version v6.8.4 [v1.6.83:v4.6.10]
+
  www.magictoolbox.com
  support@magictoolbox.com
 

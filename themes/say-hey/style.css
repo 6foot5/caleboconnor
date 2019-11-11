@@ -1243,7 +1243,7 @@ object {
     padding: 10px 20px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
     border: 0px solid orange;
     text-decoration: none;
-    width: 250px /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+    width: 200px /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
 }
   }
 
@@ -1873,7 +1873,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     }
 
 .gallery-thumb__detail-link {
-    font-size: 2rem;
+    font-size: 1.15rem;
   }
 
 .gallery-thumb__image {
@@ -2206,6 +2206,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 1.2rem;
+
 }
 
 @media (min-width: 630px) {
@@ -2215,6 +2216,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin-bottom: 15px;
     width: 50%;
     font-size: 1rem
+
 }
   }
 
@@ -2225,7 +2227,17 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin-bottom: 20px;
     width: 50%;
     font-size: 1.2rem
+
 }
+  }
+
+.button--inline {
+    display: inline-block;
+    font-size: 1rem;
+    margin: .5rem 1rem;
+    padding: .5rem 1rem;
+    width: auto;
+
   }
 
 .button:hover {
@@ -2635,19 +2647,22 @@ padding/margin to tweak how cards flow at different breakpoints
   padding: 0;
   margin: 0;
   font-size: 1.6rem;
+  text-align: center;
 }
 
 @media (min-width: 630px) {
 
 .contact-card__container {
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    text-align: left
 }
   }
 
 @media (min-width: 800px) {
 
 .contact-card__container {
-    font-size: 1.6rem
+    font-size: 1.75rem;
+    text-align: left
 }
   }
 
@@ -2658,7 +2673,7 @@ padding/margin to tweak how cards flow at different breakpoints
   text-align: center;
   border: 2px solid #9c968b;
   border-radius: 10px;
-  padding: 10%;
+  padding: 7.5%;
   margin: 0 1.5rem 1.5rem 0;
   background-color: rgba(156,150,139,.05);
 
@@ -2709,3 +2724,61 @@ padding/margin to tweak how cards flow at different breakpoints
 .about-photo {
   border-radius: 50%;
 }
+
+.artwork-filter {
+
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid;
+  border-bottom-color: rgba(65,74,76,.4);
+
+}
+
+.artwork-filter__dropdown {
+    display: inline-block;
+    font-size: 1rem;
+    font-family: @mixin fontFaceBody;
+    font-weight: 300;
+    color: #414A4C;
+    line-height: 1.3;
+    padding: .5rem 2rem .5rem .5rem;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 1rem .5rem;
+    border: 1px solid rgba(179,140,64,.4);
+    box-shadow: 0 1px 0 1px rgba(65,74,76,.04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #F2F3F4;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23414A4C%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+      linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+  }
+
+.artwork-filter__dropdown::-ms-expand {
+      display: none;
+  }
+
+.artwork-filter__dropdown:hover {
+      border-color: #414A4C;
+  }
+
+.artwork-filter__dropdown:focus {
+    border-color: #b38c40;
+    box-shadow: 0 0 1px 1px rgba(65,74,76,.7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #414A4C;
+    outline: none;
+}
+
+.artwork-filter__dropdown option {
+    font-weight:300;
+    font-size: 1rem;
+    padding: .5rem;
+    color: #414A4C;
+  }

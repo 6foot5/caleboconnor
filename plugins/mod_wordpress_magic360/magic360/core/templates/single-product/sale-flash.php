@@ -69,7 +69,9 @@ if (!isset($GLOBALS['magictoolbox']['WordPress_Magic360_product_loaded'])) {
                         $additionalDescription = preg_replace ('/<a[^>]*><img[^>]*><\/a>/is','',$post->post_excerpt);
                         $description = preg_replace ('/<a[^>]*><img[^>]*><\/a>/is','',$post->post_content);
                         $description = preg_replace ('/\[caption id=\"attachment_[0-9]+\"[^\]]*?\][^\[]*?\[\/caption\]/is','',$description);
-                            
+                        
+                        $link = '';
+                        
                         if ($useWpImages) {
                             
                             $img = wp_get_attachment_image_src( $thumbnail_id, 'full' ); 

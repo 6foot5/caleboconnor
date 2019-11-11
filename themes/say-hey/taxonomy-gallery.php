@@ -119,7 +119,7 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
           //print_r($this_cat);
 
-					$args = array(
+					$argsREST = array(
 						'posts_per_page' => -1,
 						'post_type' => 'artwork',
 						'orderby' => 'title',
@@ -133,8 +133,13 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 							)
 						);
 
-						galleryThumbsOutput($args, true);
+						$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
+						$request->set_query_params( $argsREST );
+						$response = rest_do_request( $request );
+						$server = rest_get_server();
+						$data = $server->response_to_data( $response, false );
 
+						galleryThumbsOutput($data, NULL, true, '');
 
       }
 

@@ -5,7 +5,7 @@ Copyright 2008 MagicToolbox (email : support@magictoolbox.com)
 Plugin Name: Magic 360
 Plugin URI: http://www.magictoolbox.com/magic360/?utm_source=TrialVersion&utm_medium=WordPress&utm_content=plugins-page-plugin-url-link&utm_campaign=Magic360
 Description: Spin products round in 360 degrees to show them from every angle. Activate plugin then <a href="https://www.magictoolbox.com/magic360/modules/wordpress/#installation">Get Started</a>.
-Version: 6.8.0
+Version: 6.8.4
 Author: Magic Toolbox
 Author URI: http://www.magictoolbox.com/?utm_source=TrialVersion&utm_medium=WordPress&utm_content=plugins-page-author-url-link&utm_campaign=Magic360
 

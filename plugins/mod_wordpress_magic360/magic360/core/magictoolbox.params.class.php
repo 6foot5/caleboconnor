@@ -900,7 +900,7 @@ if(!defined('MagicToolboxParamsClassLoaded')) {
             $str = array();
             foreach($this->getParams($this->generalProfile) as $param) {
                 if(!isset($param['scope']) || ($param['scope'] != $this->scope)) {
-                    continue; 
+                    continue;
                 }
                 if($serializeAll) {
                     if($mobile && $this->checkMobileValue($param['id'], $this->getValue($param['id'], $this->generalProfile), $profile, true)) {

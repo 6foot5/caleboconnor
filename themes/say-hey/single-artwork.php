@@ -34,7 +34,7 @@ get_header();
 				<hr class="heading__line" />
 				<?php
 				if (get_field('artwork_medium')) {
-					echo get_field('artwork_medium') . '<br /><br />';
+					echo get_field('artwork_medium')['label'] . '<br /><br />';
 				}
 				if (get_field('artwork_size')) {
 					echo get_field('artwork_size') . '<br /><br />';

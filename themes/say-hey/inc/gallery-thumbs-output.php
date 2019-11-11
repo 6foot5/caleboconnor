@@ -1,10 +1,10 @@
 <?php
 
-function galleryThumbsOutput($args = NULL, $showDetailButton = false) {
+function galleryThumbsOutput($restResponse, $args = NULL, $showDetailButton = false, $cssSelectors = NULL) {
 
-  $relatedWorks = new WP_Query($args);
+  //$relatedWorks = new WP_Query($args);
 
-  if ($relatedWorks->have_posts()) {
+  if ($restResponse) {
     ?>
     <style>
       @media all and (min-width: 800px) {
@@ -36,11 +36,12 @@ function galleryThumbsOutput($args = NULL, $showDetailButton = false) {
 
       <?php
 
-      while ($relatedWorks->have_posts()) {
+      //print_r($restResponse);
 
-        $relatedWorks->the_post();
+      foreach ( $restResponse as $work ) {
 
-        $workID = get_the_ID();
+        //print_r($work);
+
         $relatedCaption = '';
         $captionArgs = array(
             'get_spin' => false,
@@ -48,45 +49,46 @@ function galleryThumbsOutput($args = NULL, $showDetailButton = false) {
             'get_processes' => true
         );
 
-        $relatedSpin = get_field('related_spin');
+        $relatedSpin = $work['spinID'];
 
         if ($relatedSpin) {
-          $relatedCaption .= ' | ' . '<a data-fancybox data-type=\'iframe\' href=\'' . get_permalink($relatedSpin->ID) . '\'>View 360-degree Spin</a>';
+          $relatedCaption .= ' | ' . '<a data-fancybox data-type=\'iframe\' href=\'' . get_permalink($relatedSpin) . '\'>View 360-degree Spin</a>';
         }
 
-        $relatedCaption = artworkCaptioner($workID, $relatedCaption, $captionArgs);
+        $relatedCaption = artworkCaptioner($work['ID'], $relatedCaption, $captionArgs);
 
 
         ?>
 
-				<div class="gallery-thumb">
+				<div class="gallery-thumb <?php echo $cssSelectors . ' ' . $work['selectors']; ?>">
 					<div class="gallery-thumb__image">
 
             <a
-							href = "<?php the_post_thumbnail_url('large'); ?>"
+              class="gallery-thumb__lightbox-trigger"
+              href = "<?php echo $work['imageSrc']['large']; ?>"
 							data-fancybox = "gallery"
-							data-caption = "<a href='<?php the_permalink(); ?>'><span class='gallery-thumb__detail-link'>VIEW DETAILS</span><br /> <?php the_title(); ?></a> <?php echo $relatedCaption ?>">
+							data-caption = "<a href='<?php echo $work['permalink']; ?>'><span class='gallery-thumb__detail-link'><?php echo $work['title']; ?> (Click to view details)</span></a> <?php echo $relatedCaption ?>">
 								<img
 									class="gallery-thumb__img"
-									alt="<?php the_title(); ?>"
-									src="<?php the_post_thumbnail_url('thumbnail'); ?>">
+									alt="<?php echo $work['title']; ?>"
+									src="<?php echo $work['imageSrc']['thumbnail']; ?>">
 
               <div class="gallery-thumb__shadow-overlay">
               </div>
 
 						</a>
           </div>
-          
+
           <?php
           if ($showDetailButton) { ?>
-  					<div class="gallery-thumb__button-explore"><a href="<?php the_permalink(); ?>">Details
+  					<div class="gallery-thumb__button-explore"><a href="<?php echo $work['permalink']; ?>">Details
   						&nbsp; <i class="fal fa-info-circle"></i><!--<i class="fal fa-newspaper"></i>--></a>
   					</div>
           <?php
           } ?>
 
 					<div class="gallery-thumb__caption">
-						&bull; <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> &bull;
+						&bull; <a href="<?php $work['permalink']; ?>"><?php echo $work['title']; ?></a> &bull;
 					</div>
 				</div>
 

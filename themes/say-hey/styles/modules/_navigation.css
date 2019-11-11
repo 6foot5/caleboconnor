@@ -55,7 +55,7 @@
     padding: 10px 20px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
     border: 0px solid orange;
     text-decoration: none;
-    width: 250px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
+    width: 200px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
   }
 }
 

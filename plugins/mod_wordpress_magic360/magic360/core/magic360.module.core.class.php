@@ -71,7 +71,7 @@ if(!defined('Magic360ModuleCoreClassLoaded')) {
             }
             $headers = array();
             // add module version
-            $headers[] = '<!-- Magic 360 WordPress module version v6.8.0 [v1.6.79:v4.6.10] -->';
+            $headers[] = '<!-- Magic 360 WordPress module version v6.8.4 [v1.6.83:v4.6.10] -->';
             $headers[] = '<script type="text/javascript">window["mgctlbx$Pltm"] = "WordPress";</script>';
             // add tool style link
             $headers[] = '<link type="text/css" href="' . $cssPath . '/magic360.css" rel="stylesheet" media="screen" />';

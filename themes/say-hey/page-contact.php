@@ -19,7 +19,7 @@ get_header();
 		<main id="main" class="site-main">
 
 			<header class="page-header heading heading--centered">
-			  <h1 class="heading">Get in Touch</h1>
+			  <h1 class="heading">Stay Connected</h1>
 			  <hr class="heading__line" />
 			</header><!-- .page-header -->
 

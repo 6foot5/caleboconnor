@@ -187,7 +187,8 @@
                 let options = [ { value: 0, label: __( 'Select Shortcode' ) } ];
                 if ( shortcodes !== null ) {
                     jQuery.each(shortcodes, function(i, item) {
-                        options[i+1] = { value: i+1, label: shortcodes[i]['name'] };
+                        //options[i+1] = { value: i+1, label: shortcodes[i]['name'] };
+                        options[i+1] = { value: shortcodes[i]['id'], label: shortcodes[i]['name'] };
                     });
                 }
                 return el(
