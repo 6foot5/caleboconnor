@@ -1,10 +1,27 @@
+# plugins
+plugins/hello.php
+plugins/crop-thumbnails
+plugins/mod_wordpress_magic360
+plugins/regenerate-thumbnails
+plugins/wps-hide-login
+
+# default themes
+themes/twenty*/
+themes/say-hey/_off-cuts/
+
+# non-code directories
 uploads/**
 upgrade/**
+
+# node dependency directories
+node_modules/
 node_modules/**
+
 package-lock.json
 .DS_Store
-themes/twentyfifteen/
-themes/twentysixteenteen/
-themes/twentyseventeen/
-themes/twentynineteen/
 local-by-flywheel*
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
