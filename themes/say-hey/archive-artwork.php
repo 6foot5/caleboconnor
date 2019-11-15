@@ -28,6 +28,9 @@ get_header();
 
 			$argsREST['per_page'] = -1;
 
+/*
+	Experimenting with passing paramters in REST request...
+
 			if (false) {
 				$argsREST['id'] = 642;
 			}
@@ -41,7 +44,7 @@ get_header();
 					)
 				);
 			}
-
+*/
 			//galleryThumbsOutput($args, true);
 
 			$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );

@@ -88,7 +88,7 @@ function galleryThumbsOutput($restResponse, $args = NULL, $showDetailButton = fa
           } ?>
 
 					<div class="gallery-thumb__caption">
-						&bull; <a href="<?php $work['permalink']; ?>"><?php echo $work['title']; ?></a> &bull;
+						&bull; <a href="<?php echo $work['permalink']; ?>"><?php echo $work['title']; ?></a> &bull;
 					</div>
 				</div>
 
