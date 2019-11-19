@@ -42,6 +42,9 @@ get_header();
 				if (get_field('artwork_year')) {
 					echo get_field('artwork_year') . '<br /><br />';
 				}
+				if (get_field('artwork_location')) {
+					echo get_field('artwork_location') . '<br /><br />';
+				}
 				if (get_field('artwork_description')) {
 					echo '<div class="text-block">';
 					echo get_field('artwork_description');

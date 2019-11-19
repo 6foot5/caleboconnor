@@ -57,12 +57,12 @@ function sayheyArtworkResults($wpData) {
 
   $results = array(); // initialize the array of results
 
-  // This defines an array of all image size keywords; will be used by each artwork
-  // to retrieve image URLs
+  // This defines an array of all image size keywords registered by theme;
+  // will be used by each artwork to retrieve image URLs
   $allImageSizes = get_intermediate_image_sizes();
   array_push($allImageSizes, 'full');
 
-  // Kick off the main query, spin over all published artwork posts
+  // Kick off the main query, spin through all published artwork posts
   while($mainQuery->have_posts()) {
 
     $mainQuery->the_post();
@@ -75,7 +75,8 @@ function sayheyArtworkResults($wpData) {
     $detailImageInfo = array();
     $workSelectors = ''; // CSS selectors to reflect various artwork properties
     /*
-      Selector taxonomy:
+      Selector taxonomy (for targeting/filtering client-side in JavaScript):
+      ----------------------------------------------------------------------
         'year-[value]'
         'medium-[value]'
         'tag-[slug]'
@@ -252,6 +253,7 @@ function sayheyArtworkResults($wpData) {
       'medium' => $thisMedium,
       'size' => get_field('artwork_size'),
       'year' => $thisYear,
+      'location' => get_field('artwork_location'),
       'imageSrc' => $imagePermalinks,
       'detailImages' => $detailImageInfo,
       'tags' => $workTagInfo,

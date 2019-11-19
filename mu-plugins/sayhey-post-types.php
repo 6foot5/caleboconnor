@@ -1,8 +1,15 @@
 <?php
+/*
+Plugin Name: Say Hey Register Custom Post Types and Taxonomies
+Plugin URI:
+Description: Registers all post typesand taxonomies required for Say Hey theme
+Version: 1.0
+Author: Rick Barley
+Author URI:
+License: GPLv2 or later
+*/
 
 function sh_tax() {
-
-//function sh_custom_taxonomies() {
 
      $galleryTaxLabels = array(
         'name' => _x( 'Gallery Category', 'sayhey' ),
@@ -42,7 +49,6 @@ function sh_tax() {
     register_taxonomy( 'gallery', 'artwork', $galleryTaxArgs );
 
 }
-
 
 function sh_cpt() {
 
@@ -84,9 +90,7 @@ function sh_cpt() {
         'menu_position' => 5
     );
 
-
   // Story post type
-
 
     $storyLabels = array(
         'name' => _x( 'Stories', 'sayhey' ),
@@ -126,10 +130,7 @@ function sh_cpt() {
 
     );
 
-
-
   // Process post type
-
 
     $processLabels = array(
         'name' => _x( 'Processes', 'sayhey' ),
@@ -168,6 +169,7 @@ function sh_cpt() {
         'menu_position' => 8
     );
 
+    // 360-degree spin post type
 
     $spinLabels = array(
         'name' => _x( 'Spins', 'sayhey' ),
@@ -205,8 +207,6 @@ function sh_cpt() {
         'menu_position' => 6
     );
 
-
-
 	register_post_type('artwork', $artworkArgs);
 	register_post_type('story', $storyArgs);
   register_post_type('process', $processArgs);
@@ -216,6 +216,3 @@ function sh_cpt() {
 
 add_action('init', 'sh_tax');
 add_action('init', 'sh_cpt');
-
-
-//add_action('init', 'sh_custom_taxonomies' );

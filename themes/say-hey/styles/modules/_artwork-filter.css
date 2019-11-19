@@ -1,7 +1,7 @@
 .artwork-filter {
 
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 0;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid;
   border-bottom-color: rgba($offBlackR,$offBlackG,$offBlackB,.4);
 
@@ -53,4 +53,20 @@
     color: $offBlack;
   }
 
+}
+
+.filter-buttons {
+  margin: 0;
+
+  &--bottom-margin {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.selected-filters {
+  margin: 0;
+
+  &--bottom-margin {
+    margin-bottom: 1.5rem;
+  }
 }

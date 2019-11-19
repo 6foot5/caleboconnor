@@ -138,3 +138,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 .gallery-thumbs--centered {
   text-align: center;
 }
+
+.gallery-thumb-container {
+  margin-top: 2.5rem;
+}

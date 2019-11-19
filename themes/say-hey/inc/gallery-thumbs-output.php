@@ -89,6 +89,20 @@ function galleryThumbsOutput($restResponse, $args = NULL, $showDetailButton = fa
 
 					<div class="gallery-thumb__caption">
 						&bull; <a href="<?php echo $work['permalink']; ?>"><?php echo $work['title']; ?></a> &bull;
+            <?php
+            if ($work['stories']) {
+            ?>
+              &nbsp;<a href="<?php echo $work['stories'][0]['permalink']; ?>"><i class="fal fa-newspaper"></i></a>
+            <?php
+            }
+            if ($work['processes']) {
+            ?>
+              &nbsp;<a href="<?php echo $work['processes'][0]['permalink']; ?>"><i class="fal fa-palette"></i></a>
+            <?php
+            }
+            ?>
+
+
 					</div>
 				</div>
 

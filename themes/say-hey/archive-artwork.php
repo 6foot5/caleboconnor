@@ -14,7 +14,8 @@ get_header();
 		<main id="main" class="site-main contents-aligncenter">
 
 			<div class="aligncenter">
-			  <h1 class="heading">Explore All Works<i class="selected-filter"></i></h1>
+			  <h1 class="heading">Explore All Works</h1>
+				<div class="selected-filters"></div>
 				<hr class="heading__line" />
 			</div>
 
@@ -56,8 +57,11 @@ get_header();
 
 ?>
 
-	<a href="#" class="button button--inline" onclick="hideAll();">Show None</a>
-	<a href="#" class="button button--inline" onclick="showAll();">Show All</a>
+<div class="filter-buttons">
+	<!--<button id="show-none" class="button button--inline">Show None</button>-->
+	<button id="show-all" class="button button--inline">Show All Work</button>
+	<button id="show-filters" class="button button--inline"><span class="show-hide-filter">Hide Options</span> &nbsp; <i class="fal fa-filter"></i></button>
+</div>
 
 <?php
 
@@ -111,13 +115,13 @@ get_header();
 
 				if ($work['stories']) {
 					if ( !array_key_exists('has-story', $hasSelectors) ) {
-						$hasSelectors['has-story'] = 'Has Story';
+						$hasSelectors['has-story'] = 'Its story told';
 					}
 				}
 
 				if ($work['processes']) {
 					if ( !array_key_exists('has-process', $hasSelectors) ) {
-						$hasSelectors['has-process'] = 'Has Process';
+						$hasSelectors['has-process'] = 'Its process explained';
 					}
 				}
 
@@ -135,7 +139,7 @@ get_header();
 
 			if ($mediumSelectors) {
 
-				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Medium</option>';
+				echo '<select id="filter-medium" class="artwork-filter__dropdown"><option value="">Medium</option>';
 				foreach (array_keys($mediumSelectors) as $key) {
 					echo '<option value="' . $key . '">' . $mediumSelectors[$key] . '</option>';
 					//echo $key . ' > ' . $mediumSelectors[$key] . '<br />';
@@ -145,7 +149,7 @@ get_header();
 
 			if ($yearSelectors) {
 
-				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Year</option>';
+				echo '<select id="filter-year" class="artwork-filter__dropdown" onchange=""><option value="">Year</option>';
 				foreach (array_keys($yearSelectors) as $key) {
 					echo '<option value="' . $key . '">' . $yearSelectors[$key] . '</option>';
 				}
@@ -154,7 +158,7 @@ get_header();
 
 			if ($tagSelectors) {
 
-				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Tags</option>';
+				echo '<select id="filter-tag" class="artwork-filter__dropdown" onchange=""><option value="">Tags</option>';
 				foreach (array_keys($tagSelectors) as $key) {
 					echo '<option value="' . $key . '">' . $tagSelectors[$key] . '</option>';
 				}
@@ -163,7 +167,7 @@ get_header();
 
 			if ($categorySelectors) {
 
-				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Categories</option>';
+				echo '<select id="filter-category" class="artwork-filter__dropdown" onchange=""><option value="">Categories</option>';
 				foreach (array_keys($categorySelectors) as $key) {
 					echo '<option value="' . $key . '">' . $categorySelectors[$key] . '</option>';
 				}
@@ -172,7 +176,7 @@ get_header();
 
 			if ($hasSelectors) {
 
-				echo '<select class="artwork-filter__dropdown" onchange="flipSelector(this);"><option value="">Behind the Artwork <i class="fa fa-times"></i></option>';
+				echo '<select id="filter-has" class="artwork-filter__dropdown" onchange=""><option value="">Artwork that has...<i class="fa fa-times"></i></option>';
 				foreach (array_keys($hasSelectors) as $key) {
 					echo '<option value="' . $key . '">' . $hasSelectors[$key] . '</option>';
 				}
@@ -181,7 +185,11 @@ get_header();
 
 			echo '</div>';
 
+			echo '<div class="gallery-thumb-container">';
+
 			galleryThumbsOutput($data, NULL, true, 'all-thumbs');
+
+			echo '</div>';
 
 
 

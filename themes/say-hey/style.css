@@ -1984,6 +1984,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   text-align: center;
 }
 
+.gallery-thumb-container {
+  margin-top: 2.5rem;
+}
+
 .row::after {
     content: "";
     clear: both;
@@ -2727,8 +2731,8 @@ padding/margin to tweak how cards flow at different breakpoints
 
 .artwork-filter {
 
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 0;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid;
   border-bottom-color: rgba(65,74,76,.4);
 
@@ -2781,4 +2785,20 @@ padding/margin to tweak how cards flow at different breakpoints
     font-size: 1rem;
     padding: .5rem;
     color: #414A4C;
+  }
+
+.filter-buttons {
+  margin: 0;
+}
+
+.filter-buttons--bottom-margin {
+    margin-bottom: 2.5rem;
+  }
+
+.selected-filters {
+  margin: 0;
+}
+
+.selected-filters--bottom-margin {
+    margin-bottom: 1.5rem;
   }

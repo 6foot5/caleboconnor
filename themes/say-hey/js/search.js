@@ -22,7 +22,6 @@ class Search {
     this.closeButton.on("click", this.closeOverlay.bind(this));
     $(document).on("keydown", this.keyPressDispatcher.bind(this));
     this.searchField.on("keyup", this.typingLogic.bind(this));
-
   }
 
   // 3. Methods (function, action)
