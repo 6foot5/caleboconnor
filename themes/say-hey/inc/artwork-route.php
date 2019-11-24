@@ -47,9 +47,25 @@ function sayheyArtworkResults($wpData) {
     $args['p'] = $wpData['id'];
   }
 
+  if ($wpData['ids']) {
+    $args['post__in'] = $wpData['ids'];
+  }
+
   if ($wpData['tax_query']) {
     $args['tax_query'] = $wpData['tax_query'];
   }
+
+  /*
+  EXAMPLE tax_query argument
+  -----------------------------
+    $argsREST['tax_query'] = array(
+    array(
+      'taxonomy' => 'post_tag',
+      'field' => 'slug',
+      'terms' => 'fishing'
+    )
+  );
+  */
 
   //print_r($args); echo '<br />';
 
@@ -189,7 +205,8 @@ function sayheyArtworkResults($wpData) {
       array_push($workStoryInfo, array(
         'storyID' => $story->ID,
         'storyTitle' => get_the_title($story->ID),
-        'permalink' => get_permalink($story->ID)
+        'permalink' => get_permalink($story->ID),
+        'excerpt' => $story->post_excerpt
       ));
     }
 
@@ -219,7 +236,8 @@ function sayheyArtworkResults($wpData) {
       array_push($workProcessInfo, array(
         'processID' => $process->ID,
         'processTitle' => get_the_title($process->ID),
-        'permalink' => get_permalink($process->ID)
+        'permalink' => get_permalink($process->ID),
+        'excerpt' => $process->post_excerpt
       ));
     }
 
@@ -229,6 +247,8 @@ function sayheyArtworkResults($wpData) {
 --------------------------------------------------------------------------------
 */
     $thisSpinID = get_field('related_spin')->ID;
+    // Once spins are a thing, fill out value as an array with permalink, etc.
+
     $thisYear = get_field('artwork_year');
     $thisMedium = get_field('artwork_medium');
 

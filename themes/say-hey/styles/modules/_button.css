@@ -43,7 +43,15 @@
     margin: .5rem 1rem;
     padding: .5rem 1rem;
     width: auto;
+  }
 
+  &--related {
+    display: inline-block;
+    border-radius: 2px;
+    font-size: .85rem;
+    margin: .5rem;
+    padding: 0 .5rem;
+    width: auto;
   }
 
 }

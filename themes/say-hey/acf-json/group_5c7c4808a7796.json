@@ -1,0 +1,135 @@
+{
+    "key": "group_5c7c4808a7796",
+    "title": "Artwork metadata",
+    "fields": [
+        {
+            "key": "field_5c7c4b2f347d7",
+            "label": "Artwork Medium",
+            "name": "artwork_medium",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "oil": "Oil",
+                "oil-on-canvas": "Oil on Canvas",
+                "oil-on-linen": "Oil on Linen",
+                "oil-on-panel": "Oil on Panel",
+                "bronze": "Bronze",
+                "clay": "Clay",
+                "sculpted-in-clay-cast-in-bronze": "Sculpted in Clay, Cast in Bronze",
+                "marble": "Marble",
+                "carrara-marble": "Carrara Marble",
+                "sylacauga-marble": "Sylacauga Marble"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "array",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5c7c4ba4347d8",
+            "label": "Artwork Size",
+            "name": "artwork_size",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5d1786f98342a",
+            "label": "Artwork Year",
+            "name": "artwork_year",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1995,
+            "max": 2059,
+            "step": ""
+        },
+        {
+            "key": "field_5d1814c0b7010",
+            "label": "Artwork Location",
+            "name": "artwork_location",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5cf92ddf36b6f",
+            "label": "Artwork Description",
+            "name": "artwork_description",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "artwork"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1574534414
+}

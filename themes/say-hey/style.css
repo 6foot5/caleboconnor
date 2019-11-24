@@ -1851,6 +1851,18 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   text-align: center;
 }
 
+.gallery-thumb--tiny {
+    width: 90px;
+    margin-bottom: 1.5rem;
+    margin-right: .75rem;
+    margin-left: .75rem;
+  }
+
+.gallery-thumb--large-single {
+    width: 400px;
+    margin: 0;
+  }
+
 .gallery-thumb--hidden {
     display: none;
   }
@@ -1913,12 +1925,15 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     padding: 5px 0;
     text-align: center;
     color: #F2F3F4;
+    font-size: 1rem;
     font-weight: 300;
     border: solid 2px rgba(179, 140, 64, 0.4);
     background-color: rgba(65, 74, 76, 0.4);
     opacity: 0.75;
     transition: opacity .5s ease;
   }
+
+/* This media query detects hover capability (i.e. mouse) */
 
 @media (hover: hover) {
 
@@ -1928,6 +1943,42 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     }
 
 .gallery-thumb__button-explore a:hover {
+    background-color: rgba(65, 74, 76, 0.8);
+  }
+
+.gallery-thumb__button-expand {
+    position: absolute;
+    width: 2rem;
+    bottom: 5px;
+    right: 5px;
+    text-align: center;
+  }
+
+.gallery-thumb__button-expand a {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    color: #F2F3F4;
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: 2px;
+    border: solid 1px rgba(179, 140, 64, 0.4);
+    background-color: rgba(65, 74, 76, 0.4);
+    opacity: 0.75;
+    transition: opacity .5s ease;
+  }
+
+/* This media query detects hover capability (i.e. mouse) */
+
+@media (hover: hover) {
+
+.gallery-thumb__button-expand a {
+      opacity: 0
+  }
+    }
+
+.gallery-thumb__button-expand a:hover {
     background-color: rgba(65, 74, 76, 0.8);
   }
 
@@ -1953,6 +2004,8 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     transition: opacity .5s ease;
   }
 
+/* This media query detects hover capability (i.e. mouse) */
+
 @media (min-width: 800px) {
 
 .gallery-thumb__button-view a {
@@ -1965,6 +2018,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   }
 
 .gallery-thumb:hover .gallery-thumb__button-explore a {
+  opacity: 1;
+}
+
+.gallery-thumb:hover .gallery-thumb__button-expand a {
   opacity: 1;
 }
 
@@ -1987,6 +2044,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 .gallery-thumb-container {
   margin-top: 2.5rem;
 }
+
+.gallery-thumb-container--tiny {
+    margin-top: 1.5rem;
+  }
 
 .row::after {
     content: "";
@@ -2153,6 +2214,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   }
   }
 
+.flexible__flex-left--no-padding {
+      padding: 0px;
+    }
+
 .flexible__flex-left--left-align {
       text-align: left;
     }
@@ -2241,7 +2306,15 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin: .5rem 1rem;
     padding: .5rem 1rem;
     width: auto;
+  }
 
+.button--related {
+    display: inline-block;
+    border-radius: 2px;
+    font-size: .85rem;
+    margin: .5rem;
+    padding: 0 .5rem;
+    width: auto;
   }
 
 .button:hover {
@@ -2308,6 +2381,10 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 .heading__line--full-width {
     width: 100%;
+  }
+
+.heading__line--tight-bottom {
+    margin-bottom: .5rem;
   }
 
 .heading__line--align-left {
@@ -2548,7 +2625,7 @@ input[type=checkbox]:checked:before {
   padding: 0;
   margin: 35px 0;
   width: 80%;
-  max-width: 400px; /* Don't want images to pixellate (they'll be 400px wide) */
+  max-width: 400px; /* Don't want images to pixelate (they'll be 400px wide) */
   display: inline-block;
   vertical-align: top;
   border: 1px solid rgba(65, 74, 76, .2);
@@ -2627,6 +2704,35 @@ padding/margin to tweak how cards flow at different breakpoints
 }
   }
 
+.post-card-container--align-left {
+    text-align: left;
+
+  }
+
+@media (min-width: 630px) {
+
+.post-card-container--align-left {
+      text-align: left
+
+  }
+  }
+
+@media (min-width: 800px) {
+
+.post-card-container--align-left {
+      text-align: left
+
+  }
+  }
+
+@media (min-width: 1040px) {
+
+.post-card-container--align-left {
+      text-align: left
+
+  }
+  }
+
 .contact-card {
   display: block;
   margin: 1rem 0;
@@ -2675,10 +2781,10 @@ padding/margin to tweak how cards flow at different breakpoints
   height: 36%;
   float: left;
   text-align: center;
-  border: 2px solid #9c968b;
-  border-radius: 10px;
+  border: 1px solid #9c968b;
+  border-radius: 0px;
   padding: 7.5%;
-  margin: 0 1.5rem 1.5rem 0;
+  margin: 0 1.4rem 1.4rem 0;
   background-color: rgba(156,150,139,.05);
 
   /*

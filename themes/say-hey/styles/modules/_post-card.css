@@ -3,7 +3,7 @@
   padding: 0;
   margin: 35px 0;
   width: 80%;
-  max-width: 400px; /* Don't want images to pixellate (they'll be 400px wide) */
+  max-width: 400px; /* Don't want images to pixelate (they'll be 400px wide) */
   display: inline-block;
   vertical-align: top;
   border: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, .2);
@@ -57,6 +57,23 @@ padding/margin to tweak how cards flow at different breakpoints
 
   @mixin atLarge {
     text-align: center;
+  }
+
+  &--align-left {
+    text-align: left;
+
+    @mixin atSmall {
+      text-align: left;
+    }
+
+    @mixin atMedium {
+      text-align: left;
+    }
+
+    @mixin atLarge {
+      text-align: left;
+    }
+
   }
 
 }

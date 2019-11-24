@@ -129,6 +129,11 @@ require get_theme_file_path('/inc/page-banner.php');
 require get_theme_file_path('/inc/gallery-thumbs-output.php');
 
 /*
+***** Function to output CPT cards - story, process, etc ********
+*/
+require get_theme_file_path('/inc/cpt-cards-output.php');
+
+/*
 ***** CUSTOMIZE LOGIN SCREEN ********
 */
 require get_theme_file_path('/inc/customize-login.php');

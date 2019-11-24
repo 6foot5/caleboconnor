@@ -10,72 +10,176 @@
 get_header();
 ?>
 
-<?php //pageBanner();	?>
+<?php //pageBanner();
+
+?>
+
 
 	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main">
 
 		<?php
-		while ( have_posts() ) :
+		while ( have_posts() ) {
 
 			the_post();
 
-			$fullsize = get_the_post_thumbnail_url(get_the_ID(), 'large');
-			$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'gallery-category');
+			$argsREST['id'] = get_the_ID();
 
-?>
+			$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
+			$request->set_query_params( $argsREST );
+			$response = rest_do_request( $request );
+			$server = rest_get_server();
+			$data = $server->response_to_data( $response, false );
 
-		<div class="flexible">
-			<div class="flexible__flex-left font-zero">
-				<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php the_title(); ?>"><img alt="<?php the_title(); ?>" src="<?php echo $thumbnail; ?>"></a>
-			</div>
-			<div class="flexible__flex-right">
-				<h2 class="heading heading--small"><?php the_title(); ?></h2>
-				<hr class="heading__line" />
+
+			foreach ( $data as $work ) {
+
+				$fullsize = get_the_post_thumbnail_url(get_the_ID(), 'large');
+				$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'gallery-category');
+
+				?>
+
+				<section class="flexible">
+					<div class="flexible__flex-left font-zero">
+
+						<!--
+						<a data-fancybox="gallery" href="<?php echo $work['imageSrc']['large']; ?>" data-caption="<?php echo $work['title']; ?>"><img alt="<?php echo $work['title']; ?>" src="<?php echo $work['imageSrc']['gallery-category']; ?>"></a>
+						-->
+
+						<div class="gallery-thumb gallery-thumb--large-single">
+							<div class="gallery-thumb__image">
+
+		            <a
+		              href = "<?php echo $work['imageSrc']['large']; ?>"
+									data-fancybox = "gallery"
+									data-caption = "<?php echo $work['title']; ?>">
+										<img
+											class="gallery-thumb__img"
+											alt="<?php echo $work['title']; ?>"
+											src="<?php echo $work['imageSrc']['gallery-category']; ?>">
+
+		              <div class="gallery-thumb__shadow-overlay">
+		              </div>
+
+								</a>
+		          </div>
+
+						</div>
+
+						<div class="gallery-thumb-container gallery-thumb-container--tiny">
+
+						<?php
+
+							$detailCount = 0;
+
+							foreach($work['detailImages'] as $detail) {
+
+								$fullsize = $detail['imageSizes']['large'];
+								$thumbnail = $detail['imageSizes']['thumbnail'];
+								$detailCount = $detailCount + 1;
+								$relatedCaption = '';
+
+								?>
+
+								<div class="gallery-thumb gallery-thumb--tiny">
+
+										<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="Detail Image <?php echo $detailCount ?>"> <img alt="Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>" width="100%">
+
+										<div class="gallery-thumb__shadow-overlay">
+										</div></a>
+
+								</div>
+
+								<?php
+								} //end for loop
+								?>
+
+							</div>
+
+					</div>
+					<div class="flexible__flex-right">
+						<h2 class="heading heading--small"><?php echo $work['title']; ?></h2>
+						<hr class="heading__line heading__line--tight-bottom" />
+						<?php
+
+						if ($work['tags'] || $work['categories']) {
+							foreach ($work['tags'] as $thisTag) {
+								echo "<a href='{$thisTag['permalink']}' class='button button--related' alt='View items with the tag {$thisTag['tagName']}'>{$thisTag['tagName']}</a> ";
+							}
+							foreach ($work['categories'] as $thisCat) {
+								echo "<a href='{$thisCat['permalink']}' class='button button--related' alt='View items in the category {$thisCat['catName']}'>{$thisCat['catName']}</a> ";
+							}
+							echo '<br /><br />';
+						}
+
+						if ($work['tags']) {
+						}
+
+						if ($work['categories']) {
+						}
+
+						if ($work['medium']) {
+							echo $work['medium']['label'] . '<br /><br />';
+						}
+						if ($work['size']) {
+							echo $work['size'] . '<br /><br />';
+						}
+						if ($work['year']) {
+							echo $work['year'] . '<br /><br />';
+						}
+						if ($work['location']) {
+							echo $work['location'] . '<br /><br />';
+						}
+						if ($work['description']) {
+							echo '<div class="text-block">';
+							echo $work['description'];
+							echo '</div>';
+						}
+
+						?>
+
+					</div>
+				</section>
+
 				<?php
-				if (get_field('artwork_medium')) {
-					echo get_field('artwork_medium')['label'] . '<br /><br />';
-				}
-				if (get_field('artwork_size')) {
-					echo get_field('artwork_size') . '<br /><br />';
-				}
-				if (get_field('artwork_year')) {
-					echo get_field('artwork_year') . '<br /><br />';
-				}
-				if (get_field('artwork_location')) {
-					echo get_field('artwork_location') . '<br /><br />';
-				}
-				if (get_field('artwork_description')) {
-					echo '<div class="text-block">';
-					echo get_field('artwork_description');
-					echo '</div>';
+				if ($work['stories'] || $work['processes']) {
+					echo "<h2 class='heading heading--small'>Behind the Artwork - {$work['title']}</h2>";
+					echo '<hr class="heading__line heading__line--align-left heading__line--full-width" />';
 				}
 				?>
 
-			</div>
-		</div>
+				<section class="post-card-container post-card-container--align-left">
+
+					<?php foreach ($work['stories'] as $story) {
+								cptCardsOutput($story['storyID'], $story['permalink'], $story['storyTitle'], $story['excerpt'], 'Story');
+						}
+					?>
+
+					<?php foreach ($work['processes'] as $process) {
+								cptCardsOutput($process['processID'], $process['permalink'], $process['processTitle'], $process['excerpt'], 'Process');
+						}
+					?>
+
+				</section>
 
 
-<?php
-			$workTags = wp_get_post_tags(get_the_id());
-			$workCats = wp_get_object_terms(get_the_id(), 'gallery');
-			$spins = get_field('related_spin');
 
-/*
-			echo '<br /><br />';
-			print_r($workTags);
-			echo '<br /><br />';
-			print_r($spins);
-			echo '<br /><br />HELLO -- ' . get_field('related_spin')->ID;
-*/
+
+				<?php
+			//$workTags = $work['tags'];
+			//$workCats = $work['categories'];
+
+
+			// $spins = get_field('related_spin');
+
 			// fa-icons for image view: expand-arrows-alt, external-link-alt
 
 			// get related artwork
 
-			$detailImages = get_field('detail_images');
+			// $detailImages = get_field('detail_images');
 
 			//print_r($detailImages);
-						if ($detailImages) {
+						if ($work['detailImages']) {
 								?>
 
 								<style>
@@ -99,49 +203,6 @@ get_header();
 									}
 								</style>
 
-
-								<hr class="heading__line heading__line--align-left heading__line--full-width" />
-								<h2 class="heading heading--small">Detail Images for <?php single_post_title(); ?> </h2>
-
-								<div class="gallery-thumbs">
-
-								<?php
-
-									$detailCount = 0;
-
-									foreach($detailImages as $artwork) {
-
-										$workID = $artwork->ID;
-										$fullsize = wp_get_attachment_image_src($workID, 'large')[0];
-										$thumbnail = wp_get_attachment_image_src($workID, 'thumbnail')[0];
-										$detailCount = $detailCount + 1;
-										$relatedCaption = '';
-										$captionArgs = array(
-								        'get_spin' => false,
-								        'get_stories' => false,
-								        'get_processes' => false
-								    );
-
-										$relatedCaption = artworkCaptioner($workID, $relatedCaption, $captionArgs);
-
-										?>
-
-										<div class="gallery-thumb">
-
-												<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="Detail Image <?php echo $detailCount ?>"> <img alt="Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>">
-
-												<div class="gallery-thumb__shadow-overlay">
-												</div></a>
-
-										</div>
-
-									<?php
-									} //end for loop
-									?>
-
-								</div>
-
-
 								<script type="text/javascript">
 										 <!--
 											$.fancybox.defaults.loop = true;
@@ -160,15 +221,14 @@ get_header();
 
 								<?php
 
-						}
-
-			// end get related artwork
+						} // end "has detail images" style / script block
 
 
+		} // End foreach loop over REST results (should only be one for single-artwork page)
 
 
-		endwhile; // End of the loop.
-		?>
+	} // End of the default WP loop.
+	?>
 
 
 

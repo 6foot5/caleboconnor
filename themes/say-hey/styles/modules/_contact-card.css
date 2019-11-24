@@ -41,10 +41,10 @@
   height: 36%;
   float: left;
   text-align: center;
-  border: 2px solid $logoGrey;
-  border-radius: 10px;
+  border: 1px solid $logoGrey;
+  border-radius: 0px;
   padding: 7.5%;
-  margin: 0 1.5rem 1.5rem 0;
+  margin: 0 1.4rem 1.4rem 0;
   background-color: rgba($logoGreyR,$logoGreyG,$logoGreyB,.05);
 
   /*

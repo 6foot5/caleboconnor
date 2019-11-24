@@ -47,6 +47,10 @@
     width: 100%;
   }
 
+  &--tight-bottom {
+    margin-bottom: .5rem;
+  }
+
   &--align-left {
     text-align: left;
     margin-left: 0;

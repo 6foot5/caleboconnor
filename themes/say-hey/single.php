@@ -55,91 +55,39 @@ get_header();
 
 				$relatedArtwork = get_field('related_artwork');
 
-//print_r($relatedArtwork);
+				$relatedIDs = array();
+				foreach($relatedArtwork as $artwork) {
+					$relatedIDs[] = $artwork->ID;
+				}
+
+
+				$argsREST['ids'] = $relatedIDs;
+
+				$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
+				$request->set_query_params( $argsREST );
+				$response = rest_do_request( $request );
+				$server = rest_get_server();
+				$data = $server->response_to_data( $response, false );
+
 				if ($relatedArtwork) {
 					?>
 
-					<style>
-						@media all and (min-width: 800px) {
-							.fancybox-thumbs {
-								top: auto;
-								width: auto;
-								bottom: 0;
-								left: 0;
-								right : 0;
-								height: 95px;
-								padding: 10px 10px 5px 10px;
-								box-sizing: border-box;
-								background: rgba(0, 0, 0, 0.7);
-							}
-
-							.fancybox-show-thumbs .fancybox-inner {
-								right: 0;
-								bottom: 95px;
-							}
-						}
-					</style>
-
-
-					<hr class="heading__line heading__line--align-left heading__line--full-width" />
 					<h2 class="heading heading--small">Related Artwork</h2>
+					<hr class="heading__line heading__line--align-left heading__line--full-width" />
 
 					<div class="gallery-thumbs">
 
 					<?php
 
-						foreach($relatedArtwork as $artwork) {
-
-							$relatedCaption = '';
-							$workID = $artwork->ID;
-
-							$captionArgs = array(
-					        'get_spin' => true,
-					        'get_stories' => true,
-					        'get_processes' => true
-					    );
-
-							$relatedCaption = artworkCaptioner($workID, $relatedCaption, $captionArgs);
+					galleryThumbsOutput($data, NULL, true, 'all-thumbs');
 
 					?>
 
-							<div class="gallery-thumb">
-
-									<a data-fancybox="gallery"
-										href="<?php echo get_the_post_thumbnail_url($artwork->ID, 'large'); ?>"
-										data-caption="<a href='<?php echo get_the_permalink($workID); ?>'><?php echo get_the_title($workID); ?></a> <?php echo $relatedCaption ?>"> <img alt="<?php echo get_the_title($workID); ?>" src="<?php echo get_the_post_thumbnail_url($artwork->ID, 'thumbnail'); ?>">
-
-									<div class="gallery-thumb__shadow-overlay">
-									</div></a>
-
-							</div>
-
-					<?php
-
-						}
-						?>
-
 					</div>
 
-					<script type="text/javascript">
-							 <!--
-								$.fancybox.defaults.loop = true;
-								$.fancybox.defaults.protect = true;
-								$.fancybox.defaults.buttons = ['thumbs', 'fullScreen', 'close'];
-
-						$('[data-fancybox="gallery"]').fancybox({
-								thumbs : {
-									autoStart : false,
-									axis      : 'x'
-							}
-						})
-
-					</script>
-
-
 					<?php
 
-			}
+				}
 
 // end get related artwork
 

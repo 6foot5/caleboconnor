@@ -21,12 +21,6 @@ get_header();
 
 			<?php
 
-			$argsREST = array(
-				'post_type' => 'artwork',
-				'orderby' => 'title',
-				'order' => 'asc'
-			);
-
 			$argsREST['per_page'] = -1;
 
 /*

@@ -144,7 +144,7 @@ if ($thisType != 'spin') {
 
 	<!-- This block is for the desktop site logo, to take it out of the
 	site-header sticky area so it will scroll freely. Will disappear for
-	mobile displays -->
+	small displays -->
 	<div class="content-area">
 		<a class="no-border" href="<?php echo site_url(); ?>"><div class="site-header__logo">
 			<div class="site-header__logo__image"></div>

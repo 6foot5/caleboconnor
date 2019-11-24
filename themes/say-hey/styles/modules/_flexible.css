@@ -22,6 +22,10 @@
       min-height: 100%;
     }
 
+    &--no-padding {
+      padding: 0px;
+    }
+
     &--left-align {
       text-align: left;
     }
