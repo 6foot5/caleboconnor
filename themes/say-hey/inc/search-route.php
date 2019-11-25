@@ -14,7 +14,7 @@ function sayheySearchResults($wpData) {
   /*
     IMPORTANT - Any query containing the "s" term (i.e. a search query) will
     be subject to the filters defined in the sayhey-search mu-plugin.
-    Those filter the search query add join/where/groupby criteria for postmeta
+    This filters the search query to add join/where/groupby criteria for postmeta
     In this case, the $mainQuery will be filtered by the sayhey-search mu-plugin
   */
 
@@ -76,47 +76,105 @@ function sayheySearchResults($wpData) {
 
   } // end while loop over main query results
 
+  wp_reset_postdata();
+
   /*
     The main search query has been processed.
-    Below we're adding one more check for artwork that migt have been
+    Below we're adding one more check for content that migt have been
     tagged (post_tag taxonomy) or categorized (gallery taxonomy) with a
     term matching the search criteria.
 
     [note: the right join criteria in the sayhey-search mu-plugin could
       include these same results in the main search query. That will
       be considered as a future enhancement]
+
+      Check this stackoverflow:
+      https://wordpress.stackexchange.com/questions/173377/how-to-use-filter-hook-posts-join-for-querying-taxonomy-terms-in-posts-where
   */
 
-  $argsREST['tax_query'] = array(
-    'relation' => 'OR',
-    array(
-      'taxonomy' => 'post_tag',
-      'field' => 'name',
-      'terms' => sanitize_text_field($wpData['term'])
-    ),
-    array(
-      'taxonomy' => 'gallery',
-      'field' => 'name',
-      'terms' => sanitize_text_field($wpData['term'])
+  $taxQuery = new WP_Query(array(
+    'posts_per_page' => -1,
+    'post_type' => array('page', 'artwork', 'story', 'process'),
+    'tax_query' => array(
+      'relation' => 'OR',
+      array(
+        'taxonomy' => 'post_tag',
+        'field' => 'name',
+        'terms' => sanitize_text_field($wpData['term'])
+      ),
+      array(
+        'taxonomy' => 'gallery',
+        'field' => 'name',
+        'terms' => sanitize_text_field($wpData['term'])
+      )
     )
-  );
+  ));
 
-  $request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
-  $request->set_query_params( $argsREST );
-  $response = rest_do_request( $request );
-  $server = rest_get_server();
-  $data = $server->response_to_data( $response, false );
+  while($taxQuery->have_posts()) {
 
-  foreach ($data as $work) {
-    array_push($results['artworkInfo'], array(
-      'postType' => get_post_type(),
-      'title' => $work['title'],
-      'permalink' => $work['permalink'],
-      'thumbnail' => $work['imageSrc']['admin-preview'],
-      'medium' => $work['medium'],
-      'size' => $work['size'],
-      'date' => $work['year']
-    ));
+    $taxQuery->the_post();
+
+    // Block of code to see if taxQuery results are already in the result set
+
+    $newVal = get_the_permalink();
+
+    $pageFound = current(array_filter($results['generalInfo'], function($item) use($newVal) {
+      return isset($item['permalink']) && $newVal == $item['permalink'];
+    }));
+
+    $storyFound = current(array_filter($results['storyInfo'], function($item) use($newVal) {
+      return isset($item['permalink']) && $newVal == $item['permalink'];
+    }));
+
+    $processFound = current(array_filter($results['processInfo'], function($item) use($newVal) {
+      return isset($item['permalink']) && $newVal == $item['permalink'];
+    }));
+
+    $artworkFound = current(array_filter($results['artworkInfo'], function($item) use($newVal) {
+      return isset($item['permalink']) && $newVal == $item['permalink'];
+    }));
+
+    // End check for duplicates
+
+    if (get_post_type() == 'page' && !$pageFound) {
+      array_push($results['generalInfo'], array(
+        'postType' => get_post_type(),
+        'title' => get_the_title(),
+        'permalink' => get_the_permalink(),
+        'thumbnail' => get_the_post_thumbnail_url()
+      ));
+    }
+
+    if (get_post_type() == 'artwork' && !$artworkFound) {
+      array_push($results['artworkInfo'], array(
+        'postType' => get_post_type(),
+        'title' => get_the_title(),
+        'permalink' => get_the_permalink(),
+        'thumbnail' => get_the_post_thumbnail_url(get_the_id(),'admin-preview'),
+        'medium' => get_field('artwork_medium'),
+        'size' => get_field('artwork_size'),
+        'date' => get_the_date('Y')
+      ));
+    }
+
+    if (get_post_type() == 'story' && !$storyFound) {
+      array_push($results['storyInfo'], array(
+        'postType' => get_post_type(),
+        'title' => get_the_title(),
+        'permalink' => get_the_permalink(),
+        'thumbnail' => get_the_post_thumbnail_url()
+      ));
+    }
+
+    if (get_post_type() == 'process' && !$processFound) {
+      array_push($results['processInfo'], array(
+        'postType' => get_post_type(),
+        'title' => get_the_title(),
+        'permalink' => get_the_permalink(),
+        'thumbnail' => get_the_post_thumbnail_url()
+      ));
+    }
+
   }
 
   return $results;

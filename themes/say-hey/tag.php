@@ -32,7 +32,8 @@ $data = $server->response_to_data( $response, false );
 
 echo '<div class="gallery-thumbs">';
 
-galleryThumbsOutput($data, NULL, true, 'all-thumbs');
+$captionArgs = array('get_spin' => false, 'get_stories' => true, 'get_processes' => true);
+galleryThumbsOutput($data, $captionArgs, true, 'all-thumbs');
 
 echo '</div>';
 

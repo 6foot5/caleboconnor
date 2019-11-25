@@ -78,9 +78,8 @@ get_header();
 					<div class="gallery-thumbs">
 
 					<?php
-
-					galleryThumbsOutput($data, NULL, true, 'all-thumbs');
-
+					$captionArgs = array('get_spin' => false, 'get_stories' => false, 'get_processes' => false);
+					galleryThumbsOutput($data, $captionArgs, true, '');
 					?>
 
 					</div>

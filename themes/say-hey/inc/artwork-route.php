@@ -82,6 +82,8 @@ function sayheyArtworkResults($wpData) {
   while($mainQuery->have_posts()) {
 
     $mainQuery->the_post();
+
+    $workSelectors = ''; // CSS selectors to reflect various artwork properties
 /*
 --------------------------------------------------------------------------------
   Get the detail images, if any
@@ -89,7 +91,7 @@ function sayheyArtworkResults($wpData) {
 */
     $detailImagesFound = get_field('detail_images');
     $detailImageInfo = array();
-    $workSelectors = ''; // CSS selectors to reflect various artwork properties
+
     /*
       Selector taxonomy (for targeting/filtering client-side in JavaScript):
       ----------------------------------------------------------------------
@@ -135,9 +137,9 @@ function sayheyArtworkResults($wpData) {
 
     foreach($workTags as $thisTag) {
       array_push($workTagInfo, array(
-        'tagID' => $thisTag->term_id,
-        'tagName' => $thisTag->name,
-        'tagSlug' => $thisTag->slug,
+        'ID' => $thisTag->term_id,
+        'name' => $thisTag->name,
+        'slug' => $thisTag->slug,
         'taxonomy' => $thisTag->taxonomy,
         'permalink' => get_term_link($thisTag->term_id)
       ));
@@ -157,9 +159,9 @@ function sayheyArtworkResults($wpData) {
     foreach($workCats as $thisCat) {
 
       array_push($workCatInfo, array(
-        'catID' => $thisCat->term_id,
-        'catName' => $thisCat->name,
-        'catSlug' => $thisCat->slug,
+        'ID' => $thisCat->term_id,
+        'name' => $thisCat->name,
+        'slug' => $thisCat->slug,
         'taxonomy' => $thisCat->taxonomy,
         'permalink' => get_term_link($thisCat->term_id)
       ));
@@ -203,8 +205,8 @@ function sayheyArtworkResults($wpData) {
 
     foreach($relatedStories as $story) {
       array_push($workStoryInfo, array(
-        'storyID' => $story->ID,
-        'storyTitle' => get_the_title($story->ID),
+        'ID' => $story->ID,
+        'title' => get_the_title($story->ID),
         'permalink' => get_permalink($story->ID),
         'excerpt' => $story->post_excerpt
       ));
@@ -234,8 +236,8 @@ function sayheyArtworkResults($wpData) {
 
     foreach($relatedProcesses as $process) {
       array_push($workProcessInfo, array(
-        'processID' => $process->ID,
-        'processTitle' => get_the_title($process->ID),
+        'ID' => $process->ID,
+        'title' => get_the_title($process->ID),
         'permalink' => get_permalink($process->ID),
         'excerpt' => $process->post_excerpt
       ));

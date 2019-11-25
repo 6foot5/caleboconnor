@@ -129,6 +129,11 @@ require get_theme_file_path('/inc/page-banner.php');
 require get_theme_file_path('/inc/gallery-thumbs-output.php');
 
 /*
+***** Function to generate captions for artwork in lightbox view ********
+*/
+require get_theme_file_path('/inc/artwork-captioner.php');
+
+/*
 ***** Function to output CPT cards - story, process, etc ********
 */
 require get_theme_file_path('/inc/cpt-cards-output.php');
@@ -284,81 +289,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 */
-
-
-function artworkCaptioner($workID = 0, $relatedCaption = '', $args = NULL) {
-
-// Get 360-degree spin for specified artwork ID
-
-  if ($args['get_spin']) {
-
-    $relatedSpin = get_field('related_spin', $workID);
-
-    if ($relatedSpin) {
-
-      //$theSpin = $relatedSpin->get_field('related_spin');
-
-      if ($relatedSpin) {
-        $relatedCaption .= ' | ' . '<a data-fancybox data-type=\'iframe\' href=\'' . get_permalink($relatedSpin->ID) . '\'>View 360-degree Spin</a>';
-      }
-    }
-
-  }
-
-  // Get related stories for specified artwork ID
-
-  if ($args['get_stories']) {
-
-    $relatedStories = get_posts(array(
-                  'post_type' => 'story',
-                  'meta_query' => array(
-                    array(
-                      'key' => 'related_artwork', // name of custom field
-                      'value' => '"' . $workID . '"', // matches exactly "123", not just 123. This prevents a match for "1234"
-                      'compare' => 'LIKE'
-                    )
-                  )
-                ));
-
-    if ($relatedStories) {
-
-      $relatedCaption .= '<br />Related Stories: ';
-
-      foreach($relatedStories as $story) {
-        $relatedCaption .= '<a href=\'' . get_permalink($story->ID) . '\'>' . get_the_title($story->ID) . '</a> ';
-      }
-    }
-
-  }
-
-  // Get related processes for specified artwork ID
-
-  if ($args['get_processes']) {
-
-    $relatedProcess = get_posts(array(
-                  'post_type' => 'process',
-                  'meta_query' => array(
-                    array(
-                      'key' => 'related_artwork', // name of custom field
-                      'value' => '"' . $workID . '"', // matches exactly "123", not just 123. This prevents a match for "1234"
-                      'compare' => 'LIKE'
-                    )
-                  )
-                ));
-
-    if ($relatedProcess) {
-
-      $relatedCaption .= '<br />Related Processes: ';
-
-      foreach($relatedProcess as $process) {
-        $relatedCaption .= '<a href=\'' . get_permalink($process->ID) . '\'>' . get_the_title($process->ID) . '</a> ';
-      }
-    }
-
-  }
-
-  return $relatedCaption;
-}
 
 /* Disable WordPress Admin Bar for all users but admins. */
 

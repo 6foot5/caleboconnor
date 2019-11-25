@@ -1,20 +1,12 @@
 <?php
 /**
- * The template for displaying the ARTWORK category (i.e. display subcategories)
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * The template for displaying the GALLERY taxonomy (i.e. display categories)
+ * This is the curated section of the site, showing predefined categories
  *
  * @package SayHey
  */
 
 get_header();
-
-//locate_template( 'archive-artwork.php', true );
 
 $this_cat = get_queried_object();
 $this_cat_ancestors = get_ancestors($this_cat->term_id, 'gallery');
@@ -28,16 +20,7 @@ foreach ($this_cat_ancestors as $ancestorID) {
 
 $children = get_term_children($this_cat->term_id, 'gallery');
 
-/*
-echo '<h1>' . $this_cat->term_id . '</h1>';
-
-print_r($children);
-echo '*** ' . empty($children) . ' *** GALLERY TAX';
-*/
-
 ?>
-
-<?php //pageBanner();	?>
 
 	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main contents-aligncenter">
@@ -49,10 +32,6 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
     <?php
 
-    //print_r($this_cat);
-    //echo 'cat-term:' . $this_cat->term_id;
-
-
       if ( !empty($children) ) {    // If this category has subcategories....
 
         $terms = get_terms( array(
@@ -61,15 +40,6 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
           'hide_empty' => 1
           )
         );
-/*
-        echo '<h1>GOT CHILDREN!</h1>';
-        print_r($terms);
-        echo '<br /><br />';
-*/
-        //$queried_object = get_queried_object();
-
-        //print_r($queried_object);
-        //echo '<br /><br />';
 
         foreach ($terms as $childTerm) {
 
@@ -77,8 +47,6 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
           $image = get_field('term_image', $childTerm);
 
-          //print_r($childTerm);
-          //echo '<br /><br />';
 
           $galleryThumbURL = $image['sizes']['gallery-category'];
 
@@ -105,41 +73,30 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
           echo '</div>';
 
-//print_r($childTerm);
-          ?>
-
-          <?php
         }
 
-      } elseif (empty($children)) {                // It there are no subcategories
+      }
+			// If there are no subcategories, display all individual works within
+			elseif ( empty($children) ) {
 
-          //echo '<h1>FREE AND CLEAR!</h1>';
-
-          //$queried_object = get_queried_object();
-
-          //print_r($this_cat);
-
-					$argsREST = array(
-						'posts_per_page' => -1,
-						'post_type' => 'artwork',
-						'orderby' => 'title',
-						'order' => 'asc',
-						'tax_query' => array(
-									array(
-									'taxonomy' => 'gallery',
-									'field' => 'slug',
-									'terms' => $this_cat->slug
-								)
+				$argsREST = array(
+					'tax_query' => array(
+								array(
+								'taxonomy' => 'gallery',
+								'field' => 'slug',
+								'terms' => $this_cat->slug
 							)
-						);
+						)
+					);
 
-						$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
-						$request->set_query_params( $argsREST );
-						$response = rest_do_request( $request );
-						$server = rest_get_server();
-						$data = $server->response_to_data( $response, false );
+					$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
+					$request->set_query_params( $argsREST );
+					$response = rest_do_request( $request );
+					$server = rest_get_server();
+					$data = $server->response_to_data( $response, false );
 
-						galleryThumbsOutput($data, NULL, true, '');
+					$captionArgs = array('get_spin' => false, 'get_stories' => true, 'get_processes' => true);
+					galleryThumbsOutput($data, $captionArgs, true, '');
 
       }
 
@@ -147,9 +104,6 @@ echo '*** ' . empty($children) . ' *** GALLERY TAX';
 
     </main><!-- #main -->
 	</div><!-- #primary -->
-
-
-
 
 <?php
 

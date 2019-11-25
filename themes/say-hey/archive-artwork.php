@@ -1,6 +1,7 @@
 <?php
 /**
- * This template is to display a gallery index page, with links to each category of art
+ * This template is to display the "All Artwork" Archive page.
+ * Separate from the curated "Gallery" nav, this is more of a self-guided exploration
  *
  * @package SayHey
  */
@@ -23,31 +24,14 @@ get_header();
 
 			$argsREST['per_page'] = -1;
 
-/*
-	Experimenting with passing paramters in REST request...
-
-			if (false) {
-				$argsREST['id'] = 642;
-			}
-
-			if (false) {
-				$argsREST['tax_query'] = array(
-					array(
-						'taxonomy' => 'post_tag',
-						'field' => 'slug',
-						'terms' => 'fishing'
-					)
-				);
-			}
-*/
-			//galleryThumbsOutput($args, true);
-
 			$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
 			$request->set_query_params( $argsREST );
 			$response = rest_do_request( $request );
 			$server = rest_get_server();
 			$data = $server->response_to_data( $response, false );
-			//$json = wp_json_encode( $data );
+
+			// Encode as JSON if needed for client-side processing. In this case, no.
+			// $json = wp_json_encode( $data );
 
 ?>
 
@@ -87,8 +71,8 @@ get_header();
 
 				if ($work['tags']) {
 					foreach ($work['tags'] as $oneTag) {
-						$thisLabel = $oneTag['tagName'];
-						$thisValue = 'tag-' . $oneTag['tagSlug'];
+						$thisLabel = $oneTag['name'];
+						$thisValue = 'tag-' . $oneTag['slug'];
 						if ( !array_key_exists($thisValue, $tagSelectors) ) {
 							$tagSelectors[$thisValue] = $thisLabel;
 						}
@@ -98,8 +82,8 @@ get_header();
 
 				if ($work['categories']) {
 					foreach ($work['categories'] as $oneCat) {
-						$thisLabel = $oneCat['catName'];
-						$thisValue = 'category-' . $oneCat['catSlug'];
+						$thisLabel = $oneCat['name'];
+						$thisValue = 'category-' . $oneCat['slug'];
 						if ( !array_key_exists($thisValue, $tagSelectors) ) {
 							$categorySelectors[$thisValue] = $thisLabel;
 						}
@@ -181,7 +165,8 @@ get_header();
 
 			echo '<div class="gallery-thumb-container">';
 
-			galleryThumbsOutput($data, NULL, true, 'all-thumbs');
+			$captionArgs = array('get_spin' => false, 'get_stories' => true, 'get_processes' => true);
+			galleryThumbsOutput($data, $captionArgs, true, 'all-thumbs');
 
 			echo '</div>';
 

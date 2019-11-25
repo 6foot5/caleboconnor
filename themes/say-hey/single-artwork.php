@@ -1,19 +1,13 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all single-artwork pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package SayHey
  */
 
 get_header();
 ?>
-
-<?php //pageBanner();
-
-?>
-
 
 	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main">
@@ -42,10 +36,6 @@ get_header();
 				<section class="flexible">
 					<div class="flexible__flex-left font-zero">
 
-						<!--
-						<a data-fancybox="gallery" href="<?php echo $work['imageSrc']['large']; ?>" data-caption="<?php echo $work['title']; ?>"><img alt="<?php echo $work['title']; ?>" src="<?php echo $work['imageSrc']['gallery-category']; ?>"></a>
-						-->
-
 						<div class="gallery-thumb gallery-thumb--large-single">
 							<div class="gallery-thumb__image">
 
@@ -72,7 +62,7 @@ get_header();
 
 							$detailCount = 0;
 
-							foreach($work['detailImages'] as $detail) {
+							foreach( $work['detailImages'] as $detail ) {
 
 								$fullsize = $detail['imageSizes']['large'];
 								$thumbnail = $detail['imageSizes']['thumbnail'];
@@ -91,31 +81,25 @@ get_header();
 								</div>
 
 								<?php
-								} //end for loop
+							} // end foreach detail image loop
 								?>
-
-							</div>
-
+						</div>
 					</div>
+
 					<div class="flexible__flex-right">
 						<h2 class="heading heading--small"><?php echo $work['title']; ?></h2>
 						<hr class="heading__line heading__line--tight-bottom" />
 						<?php
 
 						if ($work['tags'] || $work['categories']) {
+							echo 'Tags:&nbsp; ';
 							foreach ($work['tags'] as $thisTag) {
-								echo "<a href='{$thisTag['permalink']}' class='button button--related' alt='View items with the tag {$thisTag['tagName']}'>{$thisTag['tagName']}</a> ";
+								echo "<a href='{$thisTag['permalink']}' class='button button--related' alt='View items with the tag {$thisTag['name']}'>{$thisTag['name']}</a> ";
 							}
 							foreach ($work['categories'] as $thisCat) {
-								echo "<a href='{$thisCat['permalink']}' class='button button--related' alt='View items in the category {$thisCat['catName']}'>{$thisCat['catName']}</a> ";
+								echo "<a href='{$thisCat['permalink']}' class='button button--related' alt='View items in the category {$thisCat['name']}'>{$thisCat['name']}</a> ";
 							}
 							echo '<br /><br />';
-						}
-
-						if ($work['tags']) {
-						}
-
-						if ($work['categories']) {
 						}
 
 						if ($work['medium']) {
@@ -151,12 +135,12 @@ get_header();
 				<section class="post-card-container post-card-container--align-left">
 
 					<?php foreach ($work['stories'] as $story) {
-								cptCardsOutput($story['storyID'], $story['permalink'], $story['storyTitle'], $story['excerpt'], 'Story');
+								cptCardsOutput($story['ID'], $story['permalink'], $story['title'], $story['excerpt'], 'Story');
 						}
 					?>
 
 					<?php foreach ($work['processes'] as $process) {
-								cptCardsOutput($process['processID'], $process['permalink'], $process['processTitle'], $process['excerpt'], 'Process');
+								cptCardsOutput($process['ID'], $process['permalink'], $process['title'], $process['excerpt'], 'Process');
 						}
 					?>
 
@@ -166,65 +150,54 @@ get_header();
 
 
 				<?php
-			//$workTags = $work['tags'];
-			//$workCats = $work['categories'];
 
 
-			// $spins = get_field('related_spin');
+			if ($work['detailImages']) {
+					?>
 
-			// fa-icons for image view: expand-arrows-alt, external-link-alt
+					<style>
+						@media all and (min-width: 800px) {
+							.fancybox-thumbs {
+								top: auto;
+								width: auto;
+								bottom: 0;
+								left: 0;
+								right : 0;
+								height: 95px;
+								padding: 10px 10px 5px 10px;
+								box-sizing: border-box;
+								background: rgba(0, 0, 0, 0.7);
+							}
 
-			// get related artwork
+							.fancybox-show-thumbs .fancybox-inner {
+								right: 0;
+								bottom: 95px;
+							}
+						}
+					</style>
 
-			// $detailImages = get_field('detail_images');
+					<script type="text/javascript">
+							 <!--
+								$.fancybox.defaults.loop = true;
+								$.fancybox.defaults.protect = true;
+								$.fancybox.defaults.buttons = ['thumbs', 'fullScreen', 'close'];
 
-			//print_r($detailImages);
-						if ($work['detailImages']) {
-								?>
+						$('[data-fancybox="gallery"]').fancybox({
+								thumbs : {
+									autoStart : false,
+									axis      : 'x'
+							}
+						})
 
-								<style>
-									@media all and (min-width: 800px) {
-										.fancybox-thumbs {
-											top: auto;
-											width: auto;
-											bottom: 0;
-											left: 0;
-											right : 0;
-											height: 95px;
-											padding: 10px 10px 5px 10px;
-											box-sizing: border-box;
-											background: rgba(0, 0, 0, 0.7);
-										}
-
-										.fancybox-show-thumbs .fancybox-inner {
-											right: 0;
-											bottom: 95px;
-										}
-									}
-								</style>
-
-								<script type="text/javascript">
-										 <!--
-											$.fancybox.defaults.loop = true;
-											$.fancybox.defaults.protect = true;
-											$.fancybox.defaults.buttons = ['thumbs', 'fullScreen', 'close'];
-
-									$('[data-fancybox="gallery"]').fancybox({
-											thumbs : {
-												autoStart : false,
-												axis      : 'x'
-										}
-									})
-
-								</script>
+					</script>
 
 
-								<?php
+					<?php
 
-						} // end "has detail images" style / script block
+			} // end "has detail images" style / script block
 
 
-		} // End foreach loop over REST results (should only be one for single-artwork page)
+		} // End foreach loop over REST results (should only be one element for this single-artwork page)
 
 
 	} // End of the default WP loop.

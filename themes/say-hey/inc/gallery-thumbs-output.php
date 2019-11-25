@@ -1,6 +1,6 @@
 <?php
 
-function galleryThumbsOutput($restResponse, $args = NULL, $showDetailButton = false, $cssSelectors = NULL) {
+function galleryThumbsOutput($restResponse, $captionArgs = array('get_spin' => false, 'get_stories' => true, 'get_processes' => true), $showDetailButton = false, $cssSelectors = NULL) {
 
   //$relatedWorks = new WP_Query($args);
 
@@ -27,36 +27,19 @@ function galleryThumbsOutput($restResponse, $args = NULL, $showDetailButton = fa
       }
     </style>
 
-    <?php
-
-      //echo '<hr>';
-      //echo '<h2>' . get_the_title() . '</h2>';
-      //echo '<ul>';
-      ?>
-
       <?php
-
-      //print_r($restResponse);
 
       foreach ( $restResponse as $work ) {
 
-        //print_r($work);
-
         $relatedCaption = '';
-        $captionArgs = array(
-            'get_spin' => false,
-            'get_stories' => true,
-            'get_processes' => true
-        );
 
         $relatedSpin = $work['spinID'];
+        $relatedStories = $work['stories'];
+        $relatedProcesses = $work['processes'];
 
-        if ($relatedSpin) {
-          $relatedCaption .= ' | ' . '<a data-fancybox data-type=\'iframe\' href=\'' . get_permalink($relatedSpin) . '\'>View 360-degree Spin</a>';
+        if ($captionArgs['get_spin'] || $captionArgs['get_stories'] || $captionArgs['get_processes']) {
+          $relatedCaption = artworkCaptioner($relatedSpin, $relatedStories, $relatedProcesses, $relatedCaption, $captionArgs);
         }
-
-        $relatedCaption = artworkCaptioner($work['ID'], $relatedCaption, $captionArgs);
-
 
         ?>
 

@@ -1,0 +1,48 @@
+{
+    "key": "group_5be4d3cbbf78b",
+    "title": "Taxonomy Meta",
+    "fields": [
+        {
+            "key": "field_5b881c7613bb8",
+            "label": "Term Image",
+            "name": "term_image",
+            "type": "image",
+            "instructions": "Please provide the image you would like to represent this taxonomy term. This will be most important in the gallery section of the website.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "gallery"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1574642408
+}
