@@ -132,7 +132,7 @@ get_header();
 				}
 				?>
 
-				<section class="post-card-container post-card-container--align-left">
+				<section class="post-card-container">
 
 					<?php foreach ($work['stories'] as $story) {
 								cptCardsOutput($story['ID'], $story['permalink'], $story['title'], $story['excerpt'], 'Story');
