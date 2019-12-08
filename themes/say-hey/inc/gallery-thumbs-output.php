@@ -49,6 +49,7 @@ function galleryThumbsOutput($restResponse, $captionArgs = array('get_spin' => f
             <a
               class="gallery-thumb__lightbox-trigger"
               href = "<?php echo $work['imageSrc']['large']; ?>"
+              title="View Larger Image  - <?php echo $work['title']; ?>"
 							data-fancybox = "gallery"
 							data-caption = "<a href='<?php echo $work['permalink']; ?>'><span class='gallery-thumb__detail-link'><?php echo $work['title']; ?> (Click to view details)</span></a> <?php echo $relatedCaption ?>">
 								<img
@@ -64,23 +65,23 @@ function galleryThumbsOutput($restResponse, $captionArgs = array('get_spin' => f
 
           <?php
           if ($showDetailButton) { ?>
-  					<div class="gallery-thumb__button-explore"><a href="<?php echo $work['permalink']; ?>">Details
+  					<div class="gallery-thumb__button-explore"><a href="<?php echo $work['permalink']; ?>"  title="View Details - <?php echo $work['title']; ?>">Details
   						&nbsp; <i class="fal fa-info-circle"></i><!--<i class="fal fa-newspaper"></i>--></a>
   					</div>
           <?php
           } ?>
 
 					<div class="gallery-thumb__caption">
-						&bull; <a href="<?php echo $work['permalink']; ?>"><?php echo $work['title']; ?></a> &bull;
+						&bull; <a href="<?php echo $work['permalink']; ?>" title="View Details - <?php echo $work['title']; ?>"><?php echo $work['title']; ?></a> &bull;
             <?php
             if ($work['stories']) {
             ?>
-              &nbsp;<a href="<?php echo $work['stories'][0]['permalink']; ?>"><i class="fal fa-newspaper"></i></a>
+              &nbsp;<a href="<?php echo $work['stories'][0]['permalink']; ?>" title="Story Behind the Art - <?php echo $work['title']; ?>"><i class="fal fa-newspaper"></i></a>
             <?php
             }
             if ($work['processes']) {
             ?>
-              &nbsp;<a href="<?php echo $work['processes'][0]['permalink']; ?>"><i class="fal fa-palette"></i></a>
+              &nbsp;<a href="<?php echo $work['processes'][0]['permalink']; ?>" title="Process Explained - <?php echo $work['title']; ?>"><i class="fal fa-palette"></i></a>
             <?php
             }
             ?>

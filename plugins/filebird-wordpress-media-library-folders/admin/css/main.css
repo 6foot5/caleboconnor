@@ -46,82 +46,80 @@
   width: 410px;
   margin-top: 13px;
 }
-.menu-item .menu-item-transport:empty {
+.filebird_tree .menu-item .menu-item-transport:empty {
   display: none;
 }
-.menu-item-depth-0 {
-  margin-left: 0;
-}
+
 .filebird_tree .menu-item-depth-0 {
   margin-left: 0;
 }
-.menu-item-depth-1 {
+.filebird_tree .menu-item-depth-1 {
   margin-left: 30px;
 }
-.menu-item-depth-2 {
+.filebird_tree .menu-item-depth-2 {
   margin-left: 60px;
 }
-.menu-item-depth-3 {
+.filebird_tree .menu-item-depth-3 {
   margin-left: 90px;
 }
-.menu-item-depth-4 {
+.filebird_tree .menu-item-depth-4 {
   margin-left: 120px;
 }
-.menu-item-depth-5 {
+.filebird_tree .menu-item-depth-5 {
   margin-left: 150px;
 }
-.menu-item-depth-6 {
+.filebird_tree .menu-item-depth-6 {
   margin-left: 180px;
 }
-.menu-item-depth-7 {
+.filebird_tree .menu-item-depth-7 {
   margin-left: 210px;
 }
-.menu-item-depth-8 {
+.filebird_tree .menu-item-depth-8 {
   margin-left: 240px;
 }
-.menu-item-depth-9 {
+.filebird_tree .menu-item-depth-9 {
   margin-left: 270px;
 }
-.menu-item-depth-10 {
+.filebird_tree .menu-item-depth-10 {
   margin-left: 300px;
 }
-.menu-item-depth-11 {
+.filebird_tree .menu-item-depth-11 {
   margin-left: 330px;
 }
 .filebird_tree .menu-item-depth-0 .menu-item-transport {
   margin-left: 0;
 }
-.menu-item-depth-1 .menu-item-transport {
+.filebird_tree .menu-item-depth-1 .menu-item-transport {
   margin-left: -30px;
 }
-.menu-item-depth-2 .menu-item-transport {
+.filebird_tree .menu-item-depth-2 .menu-item-transport {
   margin-left: -60px;
 }
-.menu-item-depth-3 .menu-item-transport {
+.filebird_tree .menu-item-depth-3 .menu-item-transport {
   margin-left: -90px;
 }
-.menu-item-depth-4 .menu-item-transport {
+.filebird_tree .menu-item-depth-4 .menu-item-transport {
   margin-left: -120px;
 }
-.menu-item-depth-5 .menu-item-transport {
+.filebird_tree .menu-item-depth-5 .menu-item-transport {
   margin-left: -150px;
 }
-.menu-item-depth-6 .menu-item-transport {
+.filebird_tree .menu-item-depth-6 .menu-item-transport {
   margin-left: -180px;
 }
-.menu-item-depth-7 .menu-item-transport {
+.filebird_tree .menu-item-depth-7 .menu-item-transport {
   margin-left: -210px;
 }
-.menu-item-depth-8 .menu-item-transport {
+.filebird_tree .menu-item-depth-8 .menu-item-transport {
   margin-left: -240px;
 }
-.menu-item-depth-9 .menu-item-transport {
+.filebird_tree .menu-item-depth-9 .menu-item-transport {
   margin-left: -270px;
 }
-.menu-item-depth-10 .menu-item-transport {
+.filebird_tree .menu-item-depth-10 .menu-item-transport {
   margin-left: -300px;
 }
-.menu-item-depth-11 .menu-item-transport {
+.filebird_tree .menu-item-depth-11 .menu-item-transport {
   margin-left: -330px;
 }
 
@@ -199,16 +197,6 @@
   font-weight: 700;
 }
 
-.filebird_tree .new-folder,
-.reset-current-folder {
-  color: #8989d4;
-  cursor: pointer;
-  display: inline-block;
-  background-color: #ddd;
-  padding: 4px;
-  border-radius: 3px;
-  margin: 0 4px;
-}
 .filebird_tree .menu-item-handle .item-title {
   margin-right: 0;
 }
@@ -382,23 +370,6 @@
 .filebird_tree .jstree-anchor:focus {
   box-shadow: none;
 }
-.tooltip-arrow {
-  display: none;
-}
-.tooltip.bottom {
-  margin-top: -2px;
-}
-.tooltip-inner {
-  padding: 3px 8px;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  background-color: rgba(76, 75, 75, 0.96);
-  border-radius: 2px;
-  white-space: nowrap;
-  font-size: 10px;
-  margin-left: 26px;
-}
 .dh-tree-icon.close {
   opacity: 1;
 }
@@ -408,17 +379,6 @@
   padding-left: 18px;
   display: block;
 }
-.tooltip {
-  position: absolute;
-  z-index: 9999;
-  display: block;
-  font-size: 12px;
-  line-height: 1.4;
-  visibility: visible;
-  filter: alpha(opacity=0);
-  opacity: 0;
-}
-
 /* Conflict with Advanced Custom Field */
 /* .fade {
     opacity: 0;
@@ -430,14 +390,6 @@
     opacity: 1;
 } */
 
-.tooltip.in {
-  filter: alpha(opacity=90);
-  opacity: 0.9;
-}
-.tooltip.bottom {
-  padding: 5px 0;
-  margin-top: -2px;
-}
 .wp-list-table tbody tr {
   -webkit-transition: opacity 0.15s linear;
   -o-transition: opacity 0.15s linear;
@@ -452,16 +404,6 @@
 body.njt-draging .filebird_tree .menu-item:hover {
   background-color: #eff4f7;
   border-color: #0172a9;
-}
-
-.tooltip-inner {
-  max-width: 100%;
-  word-wrap: break-word;
-  white-space: pre-line;
-}
-.btn-text {
-  background: none !important;
-  color: #a1a1a1 !important;
 }
 
 /* OVERLAY ADMIN BAR */

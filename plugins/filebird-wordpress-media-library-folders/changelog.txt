@@ -1,14 +1,42 @@
-﻿Sep 16, 2019 - Version 3.2.1
+Nov 11, 2019 - Version 3.5
+- Added: FileBird Gallery block for Gutenberg
+- Fixed: Error of updating media image size in unsaved post
+- Fixed: Menu CSS
+- Fixed: Remove trigger which conflicts with Divi builder
+- Fixed: Conflict with Gridd Theme
+- Fixed: Small bugs
+
+Oct 28, 2019 - Version 3.4
+- Removed: Unused CSS
+- Fixed: Elementor bug
+- Fixed: List view not load image
+- Fixed: Count items in Uncategorized folder
+- Fixed: Conflict CSS with ACF plugin
+- Fixed: Small bugs
+
+Oct 22, 2019 - Version 3.3
+- Added: Option turn on/off load FileBird JS at front-end for page builders
+- Improved: Removed CDN for customScrollBar
+- Fixed: Small bug will Elementor
+- Fixed: Select option doesn’t not change in modal popup upload
+- Fixed: Only call move image when moving folder position
+
+Sep 18, 2019 – Version 3.2.2
+- Fixed: Sorting error in list view
+- Improved: Optimize Code and Security requirements
+
+Sep 16, 2019 – Version 3.2.1
 - Fixed: Conflict with WordPress Customize Function
+- Improved: Optimize Code
 - Fixed: Some small bugs
 
-Sep 13, 2019 - Version 3.2
-- Fixed: "nt_wmc_folder" in Google Search Console results 
+Sep 13, 2019 – Version 3.2
+- Fixed: "nt_wmc_folder" in Google Search Console results
 - Fixed: Error in full front end Divi Page Builder editor
 - Fixed: PHP notice on line 582 and 586
 - Fixed: Load JS script on front end
 - Fixed: Error "FileBird is loading" on Elementor builder
-- Fixed: Compatible with Final Tiles Grid Gallery
+- Fixed: Compatible with FooGallery and Final Tiles Grid Gallery
 - Fixed: Warning notice in WordPress
 - Fixed: Margin Overlay
 - Fixed: Other small bugs

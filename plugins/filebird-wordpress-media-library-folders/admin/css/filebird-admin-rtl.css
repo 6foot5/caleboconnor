@@ -96,3 +96,10 @@ p.filebird-feedback-title {
   background: none;
   cursor: pointer;
 }
+
+@media screen and (min-width: 1024px){
+  .media-frame .media-toolbar-secondary select.attachment-filters {
+    max-width: 90px !important;
+    min-width: 80px !important;
+  }
+}

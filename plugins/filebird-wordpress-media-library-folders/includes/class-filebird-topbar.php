@@ -142,16 +142,17 @@ class FileBird_Topbar
         $query['tax_query'] = array('relation' => 'AND');
 
         foreach ($taxonomies as $taxonomy) {
-            if (isset($query[$taxonomy]) && is_numeric($query[$taxonomy])) {
+            if (isset($query[$taxonomy])) {
+              if(is_numeric($query[$taxonomy])) {
                 if ($query[$taxonomy] > 0) {
-                    // $query['post_status'] = 'inherit,private';
-                    array_push($query['tax_query'], array(
-                        'taxonomy' => $taxonomy,
-                        'field' => 'id',
-                        'terms' => $query[$taxonomy],
-                        'include_children' => false,
-                    ));
-                    //$query['include_children'] = false;
+                  // $query['post_status'] = 'inherit,private';
+                  array_push($query['tax_query'], array(
+                      'taxonomy' => $taxonomy,
+                      'field' => 'id',
+                      'terms' => $query[$taxonomy],
+                      'include_children' => false,
+                  ));
+                  //$query['include_children'] = false;
                 } else {
                     $all_terms_ids = self::filebird_get_terms_values('ids');
                     array_push($query['tax_query'], array(
@@ -161,7 +162,20 @@ class FileBird_Topbar
                         'operator' => 'NOT IN',
                     ));
                 }
-
+              } 
+              elseif(is_array($query[$taxonomy]) && $taxonomy == 'nt_wmc_folder') {
+                $query['tax_query']['relation'] = 'OR';
+                foreach($query[$taxonomy] as $k => $v) {
+                  if(is_numeric($v)) {
+                    array_push($query['tax_query'], array(
+                      'taxonomy' => $taxonomy,
+                      'field' => 'id',
+                      'terms' => $v,
+                      'include_children' => false,
+                    ));
+                  }
+                }
+              }
             }
             unset($query[$taxonomy]);
         }
@@ -171,7 +185,11 @@ class FileBird_Topbar
 
     public static function filebird_filters_enqueue_scripts()
     {
-        add_action('wp_enqueue_scripts', array('FileBird_Topbar','filebird_enqueue_media_action'));
+        $filebird_option = get_option('filebird_setting');
+        $unloadFrontend = $filebird_option ? $filebird_option['unload-frontend'] : false;
+        if(!$unloadFrontend){
+            add_action('wp_enqueue_scripts', array('FileBird_Topbar','filebird_enqueue_media_action'));
+        }
         add_action('admin_enqueue_scripts', array('FileBird_Topbar','filebird_enqueue_media_action'));
     }
 
@@ -214,14 +232,19 @@ class FileBird_Topbar
         $attachment_terms = wp_dropdown_categories($dropdown_options);
         $attachment_terms = preg_replace(array("/<select([^>]*)>/", "/<\/select>/"), "", $attachment_terms);
 
-        echo '<script type="text/javascript">';
-        echo '/* <![CDATA[ */';
-        echo 'var filebird_folder = "' . NJT_FILEBIRD_FOLDER . '";';
-        echo 'var filebird_taxonomies = {"folder":{"list_title":"' . html_entity_decode(__('All categories', NJT_FILEBIRD_TEXT_DOMAIN), ENT_QUOTES, 'UTF-8') . '","term_list":[{"term_id":"-1","term_name":"' . __('Uncategorized', NJT_FILEBIRD_TEXT_DOMAIN) . '"},' . substr($attachment_terms, 2) . ']}};';
-        echo '/* ]]> */';
-        echo '</script>';
+        // echo '<script type="text/javascript">';
+        // echo '/* <![CDATA[ */';
+        // echo 'var filebird_folder = "' . NJT_FILEBIRD_FOLDER . '";';
+        // echo 'var filebird_taxonomies = {"folder":{"list_title":"' . html_entity_decode(__('All categories', NJT_FILEBIRD_TEXT_DOMAIN), ENT_QUOTES, 'UTF-8') . '","term_list":[{"term_id":"-1","term_name":"' . __('Uncategorized', NJT_FILEBIRD_TEXT_DOMAIN) . '"},' . substr($attachment_terms, 2) . ']}};';
+        // echo '/* ]]> */';
+        // echo '</script>';
 
+        $term_list = json_decode('['.substr($attachment_terms, 2).']', true);
+        array_unshift($term_list, array('term_id' => '-1', 'term_name' =>  __('Uncategorized', NJT_FILEBIRD_TEXT_DOMAIN)));
+        
         wp_register_script('njt-filebird-upload-localize', plugins_url('admin/js/filebird-util.js', dirname(__FILE__)), array('jquery', 'jquery-ui-draggable', 'jquery-ui-droppable'), NJT_FILEBIRD_VERSION, false);
+        wp_localize_script('njt-filebird-upload-localize', 'filebird_folder', NJT_FILEBIRD_FOLDER);
+        wp_localize_script('njt-filebird-upload-localize', 'filebird_taxonomies', array('folder' => array('list_title' => __('All categories', NJT_FILEBIRD_TEXT_DOMAIN), 'term_list' => $term_list)));
         wp_localize_script('njt-filebird-upload-localize', 'filebird_translate', FileBird_JS_Translation::get_translation());
         wp_localize_script('njt-filebird-upload-localize', 'njt_fb_nonce', wp_create_nonce('ajax-nonce'));
         wp_localize_script('njt-filebird-upload-localize', 'njtFBV', NJT_FB_V);
@@ -235,7 +258,11 @@ class FileBird_Topbar
         wp_enqueue_script('njt-filebird-upload-localize');
         wp_enqueue_style('njt-filebird-treeview', plugins_url('admin/css/filebird-treeview.css', dirname(__FILE__)), array(), NJT_FILEBIRD_VERSION);
         wp_style_add_data('njt-filebird-treeview', 'rtl', 'replace');
-        wp_enqueue_script('filebird-admin-topbar', plugins_url('admin/js/filebird-admin-topbar.js', dirname(__FILE__)), array('media-views'), NJT_FILEBIRD_VERSION, true);
+        if(!defined('ELEMENTOR_VERSION') || is_admin()){
+            wp_enqueue_script('filebird-admin-topbar', plugins_url('admin/js/filebird-admin-topbar.js', dirname(__FILE__)), array('media-views'), NJT_FILEBIRD_VERSION, true);
+        } else {
+            wp_enqueue_script('filebird-admin-topbar', plugins_url('admin/js/filebird-admin-topbar.js', dirname(__FILE__)), array(), NJT_FILEBIRD_VERSION, true);
+        }
     }
 
     /**
@@ -572,7 +599,7 @@ class FileBird_Topbar
           FROM $wp_posts AS posts
           WHERE 1=1 AND (posts.ID NOT IN
           (SELECT object_id FROM $term_relationships WHERE term_taxonomy_id IN(
-            SELECT term_id from $term_taxonomy where taxonomy = 'nt_wmc_folder'))
+            SELECT term_taxonomy_id from $term_taxonomy where taxonomy = 'nt_wmc_folder'))
           ) AND posts.post_type = 'attachment' AND ((posts.post_status = 'inherit' OR posts.post_status = 'private'))");
         return $result;
     }

@@ -36,7 +36,7 @@ get_header();
 
 					foreach ($child_pages as $child_page) {
 					?>
-						<a href="<?php the_permalink($child_page->ID); ?>" class="button"><?php echo $child_page->post_title; ?></a>
+						<a href="<?php the_permalink($child_page->ID); ?>" title="<?php echo $child_page->post_title; ?>" class="button"><?php echo $child_page->post_title; ?></a>
 					<?php
 					}
 ?>

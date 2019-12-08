@@ -124,6 +124,11 @@ class FileBird
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-filebird-admin.php';
 
+        /**
+         * The class responsible for defining all actions that occur in the setting area.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-filebird-setting.php';
+
         $this->loader = new FileBird_Loader();
 
     }
@@ -156,7 +161,10 @@ class FileBird
     {
 
         $plugin_admin = new FileBird_Admin($this->get_plugin_name(), $this->get_version());
+        $plugin_setting = new FileBird_Setting($this->get_plugin_name(), $this->get_version());
         $feedback = new FileBird_Feedback();
+
+        $this->loader->add_action('admin_menu', $plugin_setting, 'create_admin_sub_menu');
 
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
@@ -210,7 +218,6 @@ class FileBird
                 $attachment_terms = wp_dropdown_categories($dropdown_options);
                 $attachment_terms = preg_replace(array("/<select([^>]*)>/", "/<\/select>/"), "", $attachment_terms);
                 $all_count = wp_count_posts('attachment')->inherit;
-                $uncatetory_count = FileBird_Topbar::get_uncategories_attachment();
 
                 echo '<script type="text/javascript">';
                 echo '/* <![CDATA[ */';

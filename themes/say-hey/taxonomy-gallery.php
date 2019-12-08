@@ -54,14 +54,16 @@ $children = get_term_children($this_cat->term_id, 'gallery');
 
 					$imgTag = '<img width="100%" src="' . $galleryThumbURL . '" alt="' . $label . '" />';
 
-          printf( '<a href="%1$s">%2$s</a>',
+          printf( '<a href="%1$s" title="View Gallery Category - %2$s">%3$s</a>',
               esc_url( get_term_link( $childTerm->term_id ) ),
+							$label,
 							$imgTag
           );
 
           ?>
 
-          <a href="<?php echo esc_url( get_term_link( $childTerm->term_id ) ) ?>">
+          <a href="<?php echo esc_url( get_term_link( $childTerm->term_id ) ) ?>"
+						 title="View Gallery Category - <?php echo $label; ?>">
             <div class="gallery-index-item__shadow-overlay">
               <div class="gallery-index-item__text-content">
                 <?php	echo $label; ?>

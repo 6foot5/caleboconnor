@@ -73,7 +73,7 @@ get_header();
 
 								<div class="gallery-thumb gallery-thumb--tiny">
 
-										<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="Detail Image <?php echo $detailCount ?>"> <img alt="Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>" width="100%">
+										<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>"> <img alt="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>" width="100%">
 
 										<div class="gallery-thumb__shadow-overlay">
 										</div></a>
@@ -92,7 +92,7 @@ get_header();
 						<?php
 
 						if ($work['tags'] || $work['categories']) {
-							echo 'Tags:&nbsp; ';
+							echo 'Related:&nbsp; ';
 							foreach ($work['tags'] as $thisTag) {
 								echo "<a href='{$thisTag['permalink']}' class='button button--related' alt='View items with the tag {$thisTag['name']}'>{$thisTag['name']}</a> ";
 							}
@@ -115,9 +115,9 @@ get_header();
 							echo $work['location'] . '<br /><br />';
 						}
 						if ($work['description']) {
-							echo '<div class="text-block">';
+							//echo '<div class="text-block">';
 							echo $work['description'];
-							echo '</div>';
+							//echo '</div>';
 						}
 
 						?>

@@ -215,4 +215,5 @@ if ($thisType != 'spin') {
 
 <?php
   $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+	//echo $url;
 ?>
