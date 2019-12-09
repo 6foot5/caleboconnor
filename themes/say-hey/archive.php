@@ -39,6 +39,8 @@ get_header();
 
 				}
 
+				cptCardsOutput(); // Output a trailling blank card to balance/pad output
+
 			}
 			?>
 

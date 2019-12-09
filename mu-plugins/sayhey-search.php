@@ -3,7 +3,7 @@
 Plugin Name: Say Hey Filter Search
 Plugin URI:
 Description: Filters main query when "s" term is present, joins on postmeta
-Version: 1.0
+Version: 1.1
 Author: Rick Barley
 Author URI:
 License: GPLv2 or later
@@ -13,22 +13,27 @@ License: GPLv2 or later
 
 add_filter( 'posts_join', function ( $join, $query ) {
 
-    $searchTerm = $query->get('s');
+  $searchTerm = $query->get('s');
+  $isSearchRoute = $query->get('sayhey_search_route');
 
-    if ( $searchTerm ) {
-      global $wpdb;
-      $join .= " INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id";
-    }
+  if ( $isSearchRoute ) {
+    global $wpdb;
+    $join .= " INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id";
+  }
 
-    return $join;
+  return $join;
 }, 10, 2);
 
 // Add search term comparison to postmeta.meta_value....
 
 add_filter('posts_where', function ( $where, $query ) {
-	//$label = $query->query['query_label'] ?? '';
+  // search-route.php labels its search query as "sayhey_search_route"
+  // if that label is found, then we know the source and will manipulate
+	// $label = $query->query['query_label'] ?? '';
   $searchTerm = $query->get('s');
-  if ( $searchTerm ) {
+  $isSearchRoute = $query->get('sayhey_search_route');
+
+  if ( $isSearchRoute ) {
 		global $wpdb;
     $where .= " OR {$wpdb->prefix}postmeta.meta_value LIKE '%{$searchTerm}%' ";
 	}
@@ -41,8 +46,9 @@ add_filter('posts_where', function ( $where, $query ) {
 add_filter('posts_groupby', function ( $groupby, $query ) {
 
   $searchTerm = $query->get('s');
+  $isSearchRoute = $query->get('sayhey_search_route');
 
-  if ( $searchTerm ) {
+  if ( $isSearchRoute ) {
 
 		global $wpdb;
 

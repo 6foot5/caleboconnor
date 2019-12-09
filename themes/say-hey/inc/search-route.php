@@ -21,7 +21,8 @@ function sayheySearchResults($wpData) {
   $mainQuery = new WP_Query(array(
     'posts_per_page' => -1,
     'post_type' => array('page', 'artwork', 'story', 'process'),
-    's' => sanitize_text_field($wpData['term'])
+    's' => sanitize_text_field($wpData['term']),
+    'sayhey_search_route' => true
   ));
 
   $results = array(
@@ -92,6 +93,14 @@ function sayheySearchResults($wpData) {
       https://wordpress.stackexchange.com/questions/173377/how-to-use-filter-hook-posts-join-for-querying-taxonomy-terms-in-posts-where
   */
 
+  $matchingTermIds = get_terms([
+    'taxonomy' => array('post_tag','gallery'),
+    'name__like' => sanitize_text_field($wpData['term']),
+    'fields' => 'ids'
+  ]);
+
+  //print_r($matchingTermIds);
+
   $taxQuery = new WP_Query(array(
     'posts_per_page' => -1,
     'post_type' => array('page', 'artwork', 'story', 'process'),
@@ -99,13 +108,13 @@ function sayheySearchResults($wpData) {
       'relation' => 'OR',
       array(
         'taxonomy' => 'post_tag',
-        'field' => 'name',
-        'terms' => sanitize_text_field($wpData['term'])
+        'field' => 'id',
+        'terms' => $matchingTermIds
       ),
       array(
         'taxonomy' => 'gallery',
-        'field' => 'name',
-        'terms' => sanitize_text_field($wpData['term'])
+        'field' => 'id',
+        'terms' => $matchingTermIds
       )
     )
   ));

@@ -32,6 +32,7 @@ function custom_title($title_parts) {
 }
 add_filter( 'document_title_parts', 'custom_title' );
 
+
  if ( ! function_exists( 'sayhey_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -203,7 +204,9 @@ function sayhey_scripts() {
   For use with borrowed 2017 theme JS
 */
 
-  wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+
+wp_enqueue_script( 'sayhey-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js', array(), '20151215', true );
 
   wp_localize_script( 'sayhey-navigation', 'sayheyScreenReaderText', array(
       'expand' => __('Expand child menu', 'sayhey'),
@@ -264,22 +267,22 @@ add_action( 'wp_enqueue_scripts', 'sayhey_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+//require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+//require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+//require get_template_directory() . '/inc/template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+//require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
@@ -385,7 +388,10 @@ END - Show featured image thumbnails in admin post listings
   /*
   * separate media categories from post categories
   * use a custom category called ‘category_media’ for the categories in the media library
-  */
+  *
+
+  // COMMENTED OUT - 12/8/19 (not needed?)
+
   add_filter('wpmediacategory_taxonomy', 'define_media_category');
 
   function define_media_category() {
@@ -407,6 +413,7 @@ END - Show featured image thumbnails in admin post listings
       return $title;
   }
   add_filter( 'get_the_archive_title', 'sayhey_theme_archive_title' );
+  */
 
   /**
    * SVG icons functions and filters from 2017.

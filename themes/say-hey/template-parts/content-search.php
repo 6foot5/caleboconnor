@@ -9,27 +9,29 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="search-result--fallback" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			sayhey_posted_on();
-			sayhey_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
+		<?php the_title( sprintf( '<h2 class="heading--smallest"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php sayhey_post_thumbnail(); ?>
+
+	<?php
+	$thumbURL = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail')[0];
+
+	if ($thumbURL) {
+	?>
+		<a class="img" href="<?php echo esc_url( get_permalink() ); ?>" title="<?php get_the_title() ?>">
+			<img src="<?php echo $thumbURL; ?>" />
+			<div class="search-result--fallback__label">
+				<?php echo get_post_type(); ?>
+			</div>
+		</a>
+	<?php
+	}
+	?>
 
 	<div class="entry-summary">
-		<?php the_excerpt(); ?>
+		<?php //the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer">
-		<?php sayhey_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

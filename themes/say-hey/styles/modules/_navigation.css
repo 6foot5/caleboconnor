@@ -295,3 +295,7 @@ ul.sub-menu.toggled-on {
 .sub-menu > li > button {
   padding: $navigationFontSize;
 }
+
+.no-js .js-dependent {
+  display: none;
+}

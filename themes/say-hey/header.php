@@ -11,7 +11,7 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-js"> <!-- Modernizr will remove the "no-" prefix if JS is available -->
 <head>
 
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>

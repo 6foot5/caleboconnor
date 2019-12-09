@@ -41,6 +41,7 @@ get_header();
 
 		            <a
 		              href = "<?php echo $work['imageSrc']['large']; ?>"
+									title="View Larger: <?php echo $work['title'] ?> "
 									data-fancybox = "gallery"
 									data-caption = "<?php echo $work['title']; ?>">
 										<img
@@ -73,7 +74,13 @@ get_header();
 
 								<div class="gallery-thumb gallery-thumb--tiny">
 
-										<a data-fancybox="gallery" href="<?php echo $fullsize; ?>" data-caption="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>"> <img alt="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>" src="<?php echo $thumbnail; ?>" width="100%">
+										<a data-fancybox="gallery"
+											href="<?php echo $fullsize; ?>"
+											title="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>"
+											data-caption="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>">
+											<img
+												alt="<?php echo $work['title'] ?> - Detail Image <?php echo $detailCount ?>"
+												src="<?php echo $thumbnail; ?>" width="100%">
 
 										<div class="gallery-thumb__shadow-overlay">
 										</div></a>
@@ -134,14 +141,14 @@ get_header();
 
 				<section class="post-card-container">
 
-					<?php foreach ($work['stories'] as $story) {
-								cptCardsOutput($story['ID'], $story['permalink'], $story['title'], $story['excerpt'], 'Story');
-						}
-					?>
-
-					<?php foreach ($work['processes'] as $process) {
+					<?php
+					foreach ($work['stories'] as $story) {
+								cptCardsOutput($story['ID'], $story['permalink'], $story['title'], $story['excerpt'], 'Stories');
+					}
+					foreach ($work['processes'] as $process) {
 								cptCardsOutput($process['ID'], $process['permalink'], $process['title'], $process['excerpt'], 'Process');
-						}
+					}
+					cptCardsOutput(); // Output a trailling blank card to balance/pad output
 					?>
 
 				</section>

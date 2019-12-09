@@ -11,45 +11,54 @@ get_header();
 ?>
 
 	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<div class="content-area content-area--padded-sides content-area--bg-color">
+			<main id="main" class="site-main contents-aligncenter">
 
-		<?php if ( have_posts() ) : ?>
+				<?php get_search_form(); ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
+
+				<?php
+				if ( have_posts() ) {
+				?>
+
+					<header class="page-header">
+						<h2 class="heading--small">
+							<?php
+							/* translators: %s: search query. */
+							printf( esc_html__( 'Results for: %s', 'sayhey' ), '<span>"' . get_search_query() . '"</span>' );
+							?>
+						</h2>
+						<hr class="heading__line" />
+					</header><!-- .page-header -->
+
 					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'sayhey' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+					/* Start the Loop */
+					while ( have_posts() ) {
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+						the_post();
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+						/**
+						 * Run the loop for the search to output the results.
+						 * If you want to overload this in a child theme then include a file
+						 * called content-search.php and that will be used instead.
+						 */
+						get_template_part( 'template-parts/content', 'search' );
 
-			endwhile;
+					}
 
-			the_posts_navigation();
+				}
+				else {
+					echo 'No results';
+				}
 
-		else :
+				?>
 
-			get_template_part( 'template-parts/content', 'none' );
 
-		endif;
-		?>
 
-		</main><!-- #main -->
+
+			</main><!-- #main -->
+		</div>
 	</section><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

@@ -634,8 +634,16 @@ textarea {
 
 a {
 	color: #414A4C;
-	border-bottom: 1px solid rgba(65, 74, 76, 0.3);
+	border-bottom: 1px solid rgba(65, 74, 76, 0.7);
 	text-decoration: none;
+}
+
+a.img {
+	display: inline-block;
+	border-bottom: 0;
+	text-decoration: none;
+	font-size: 0px;
+	position: relative;
 }
 
 a:visited {
@@ -644,7 +652,7 @@ a:visited {
 
 a:hover, a:focus, a:active {
 	color: #b38c40;
-	border-bottom: none;
+	border-bottom: 1px solid rgba(65, 74, 76, 0);
 }
 
 a:focus {
@@ -1513,6 +1521,10 @@ ul.sub-menu.toggled-on {
   padding: .8rem;
 }
 
+.no-js .js-dependent {
+  display: none;
+}
+
 .menu-toggle {
 	background-color: transparent;
 	border: 0px solid black;
@@ -2354,6 +2366,13 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     background-color: #F2F3F4;
     padding: 5px 15px;
     margin: .5rem 0;
+    border: 1px solid rgba(65, 74, 76, 0.7);
+  }
+
+.heading__post-type:hover {
+    background-color: #b38c40;
+    color: #F2F3F4;
+    border: 1px solid rgba(65, 74, 76, 0.7);
   }
 
 .heading--small {
@@ -2364,6 +2383,17 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 .heading--small {
       font-size: 1.5rem
+  }
+  }
+
+.heading--smallest {
+    font-size: 1.1rem;
+  }
+
+@media (min-width: 630px) {
+
+.heading--smallest {
+      font-size: 1.2rem
   }
   }
 
@@ -2459,8 +2489,13 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   margin: 0 .6rem;
 }
 
+.search-form {
+  margin-bottom: 4rem;
+}
+
 .search-term {
   margin-bottom: 1rem;
+  margin-right: 1rem;
   width: 60%;
   padding: 10px;
   outline: none;
@@ -2517,7 +2552,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   margin: 15px;
   padding: 0;
   border: 0px solid yellow;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0px solid rgba(0, 0, 0, 0.2);
   vertical-align: bottom;
 }
 
@@ -2553,11 +2588,48 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   font-size: calc(.8rem * 1.1);
 }
 
+.search-results__nav-icon a::before {
+  font-size: .8rem;
+  content: 'Search  ';
+}
+
+@media (min-width: 630px) {
+
+.search-results__nav-icon a::before {
+    content: ''
+}
+  }
+
 @media (min-width: 630px) {
 
 .search-gutter {
     margin-right: 4rem
 }
+  }
+
+input[type=submit].search-submit {
+    font-size: 1rem;
+    padding: .5rem 1.5rem;
+}
+
+.search-result--fallback {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  max-width: 250px;
+  margin: 2rem;
+  padding: 0;
+}
+
+.search-result--fallback__label {
+    position: absolute;
+    bottom: .75rem;
+    right: .33rem;
+    padding: 0 .75rem;
+    font-size: .85rem;
+    background-color: rgba(65,74,76,.7);
+    border-radius: 2px;
+    color: #F2F3F4;
   }
 
 #login h1 a, .login h1 a {
@@ -2657,8 +2729,20 @@ input[type=checkbox]:checked:before {
   }
 
 .post-card__image {
+    position:relative;
     display: block;
     width: 100%;
+  }
+
+.post-card__type-label {
+    position: absolute;
+    bottom: .75rem;
+    right: .33rem;
+    padding: 0 .75rem;
+    font-size: .85rem;
+    background-color: rgba(65,74,76,.7);
+    border-radius: 2px;
+    color: #F2F3F4;
   }
 
 .post-card__excerpt {
@@ -2666,6 +2750,10 @@ input[type=checkbox]:checked:before {
     width: 100%;
     padding: 10px;
     text-align: left;
+  }
+
+.post-card--blank {
+    border: 0px;
   }
 
 /*

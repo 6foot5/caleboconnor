@@ -127,7 +127,8 @@ class Search {
     setTimeout(() => this.searchField.focus(), 301);
     console.log("OPEN");
     this.isOverlayOpen = true;
-    return false; // prevents default behavior of anchor links (will prevent fallback search page from loading when JS is enabled)
+    // below prevents default behavior of anchor links (will prevent fallback search page from loading when JS is enabled)
+    return false;
   }
 
   closeOverlay() {
@@ -155,19 +156,8 @@ class Search {
         </div>
       </div>
     `);
-
-    // add search icon to site navigation
-    $("#primary-menu").append(`
-      <li>
-        <a href="#" title="Search this site" class="search-trigger js-search-trigger"><i class="fal fa-search search-results__nav-icon" aria-hidden="true"></i></a>
-      </li>
-    `);
-
-    // add external link icon to studio link
-    $(".menu-item-415 a").append(` &nbsp;<i class="fal fa-external-link-square"></i>`);
   }
 
 }
 
 var siteSearch = new Search;
-//export default Search;
