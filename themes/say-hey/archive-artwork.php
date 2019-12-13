@@ -22,7 +22,10 @@ get_header();
 
 			<?php
 
-			$argsREST['per_page'] = -1;
+			//$argsREST['per_page'] = -1;
+
+			// tells the REST route to localize IDs and selectors for use by JS filter
+			$argsREST['localize_results'] = true;
 
 			$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
 			$request->set_query_params( $argsREST );
@@ -37,7 +40,7 @@ get_header();
 
 <div class="filter-buttons">
 	<!--<button id="show-none" class="button button--inline">Show None</button>-->
-	<button id="show-all" class="button button--inline">Show All Work</button>
+	<button id="show-all" class="button button--inline">Clear Filters</button>
 	<button id="show-filters" class="button button--inline"><span class="show-hide-filter">Hide Options</span> &nbsp; <i class="fal fa-filter"></i></button>
 </div>
 
@@ -93,13 +96,13 @@ get_header();
 
 				if ($work['stories']) {
 					if ( !array_key_exists('has-story', $hasSelectors) ) {
-						$hasSelectors['has-story'] = 'Its story told';
+						$hasSelectors['has-story'] = 'Has its story told';
 					}
 				}
 
 				if ($work['processes']) {
 					if ( !array_key_exists('has-process', $hasSelectors) ) {
-						$hasSelectors['has-process'] = 'Its process explained';
+						$hasSelectors['has-process'] = 'Has its process explained';
 					}
 				}
 
@@ -154,7 +157,7 @@ get_header();
 
 			if ($hasSelectors) {
 
-				echo '<select id="filter-has" class="artwork-filter__dropdown" onchange=""><option value="">Artwork that has...<i class="fa fa-times"></i></option>';
+				echo '<select id="filter-has" class="artwork-filter__dropdown" onchange=""><option value="">Artwork that...<i class="fa fa-times"></i></option>';
 				foreach (array_keys($hasSelectors) as $key) {
 					echo '<option value="' . $key . '">' . $hasSelectors[$key] . '</option>';
 				}
@@ -170,16 +173,6 @@ get_header();
 
 			echo '</div>';
 
-
-
-/*
-			foreach ( $data as $work ) {
-
-				echo '<div class="all-thumbs gallery-thumb--hidden' . $work['selectors'] . '"><p><a href="' . $work['permalink'] . '">' . $work['title'] . '</a><br />' . $work['selectors'] . '<br />+' . $work['medium'] . '+<br />' . $work['categories'];
-				echo '<br />' . $work['imageSrc']['large'] . '<br />' . $work['imageSrc']['thumbnail'] . '</div>';
-			}
-*/
-			//print_r($data);
 
 			?>
 

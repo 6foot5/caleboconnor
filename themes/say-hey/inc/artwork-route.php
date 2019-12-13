@@ -72,6 +72,7 @@ function sayheyArtworkResults($wpData) {
   $mainQuery = new WP_Query($args);
 
   $results = array(); // initialize the array of results
+  $resultsLocalized = array(); // initialize the array of IDs and CSS selectors to localize
 
   // This defines an array of all image size keywords registered by theme;
   // will be used by each artwork to retrieve image URLs
@@ -266,6 +267,8 @@ function sayheyArtworkResults($wpData) {
       $workSelectors .= ' medium-' . $thisMedium['value'];
     }
 
+    $workSelectors .= ' artwork-' . get_the_id();
+
     array_push($results, array(
       'ID' => get_the_id(),
       'permalink' => get_the_permalink(),
@@ -286,6 +289,15 @@ function sayheyArtworkResults($wpData) {
       'selectors' => $workSelectors
     ));
 
+    array_push($resultsLocalized, array(
+      'artworkID' => get_the_id(),
+      'selectors' => $workSelectors
+    ));
+
+  }
+
+  if ($wpData['localize_results']) {
+    wp_localize_script('sayhey-artwork-filter-js', 'sayHeyArtworkFilter', $resultsLocalized);
   }
 
   return $results;

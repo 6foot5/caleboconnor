@@ -43,11 +43,11 @@ function galleryThumbsOutput($restResponse, $captionArgs = array('get_spin' => f
 
         ?>
 
-				<div class="gallery-thumb <?php echo $cssSelectors . ' ' . $work['selectors']; ?>">
+				<div class="gallery-thumb <?php echo $cssSelectors . ' ' . $work['selectors']; ?>" data-artwork-id="<?php echo $work['ID'] ?>">
 					<div class="gallery-thumb__image">
 
             <a
-              class="gallery-thumb__lightbox-trigger"
+              class="gallery-thumb__lightbox-trigger trigger-<?php echo $work['ID'] ?>"
               href = "<?php echo $work['imageSrc']['large']; ?>"
               title="View Larger Image  - <?php echo $work['title']; ?>"
 							data-fancybox = "gallery"

@@ -2,8 +2,8 @@
 class ArtFilter {
 
   constructor() {
+
     this.allThumbs = $(".all-thumbs");
-    //this.allThumbs.addClass("gallery-thumb--hidden");
     this.allFancyTriggers = $(".gallery-thumb__lightbox-trigger");
     this.filterButtons = $(".filter-buttons");
     this.filterControls = $(".artwork-filter");
@@ -17,84 +17,82 @@ class ArtFilter {
     this.showAll =  $("#show-all");
     this.showNone =  $("#show-none");
     this.isFilterVisible = true;
-    this.selectedFilters = [];
-    this.selectedFilterLabels = [];
-    this.currentMedium = "";
-    this.currentYear = "";
-    this.removedFilters = [];
+    this.filterProperties = ['medium','year','tag','category','has'];
+
+    this.filterSelections = {
+      mediumKeys: [],
+      mediumLabels: [],
+      yearKeys: [],
+      yearLabels: [],
+      tagKeys: [],
+      tagLabels: [],
+      categoryKeys: [],
+      categoryLabels: [],
+      hasKeys: [],
+      hasLabels: [],
+      matchedIDs: [],
+      thumbSelectors: [],
+      triggerSelectors: []
+    };
+
+    this.artworkIDs = sayHeyArtworkFilter; // Localized artwork dump from WP
     this.events();
-  }
+
+  } // end constructor
 
   events() {
 
+    /*
+    -------------------------------------------------------------------------
+      Method to deal with "remove filter" actions
+      That is, when a "selected filter" button is toggled off
+    -------------------------------------------------------------------------
+    */
     $(".selected-filters").on("click", ".filter-button", (e) => {
 
-      let removedValue = this.selectedFilters.indexOf(e.target.attributes[1].nodeValue);
+      // data-filter-type attribute from the button clicked
+      let removedType = e.target.attributes[2].nodeValue;
 
-      if (removedValue >= 0) {
-        this.selectedFilters.splice(removedValue,1);
-        this.selectedFilterLabels.splice(removedValue,1);
+      // check for index using data-filter-value attribute of the button clicked
+      let removedValueIndex = this.filterSelections[`${removedType}Keys`].indexOf(e.target.attributes[1].nodeValue);
+
+      if (removedValueIndex >= 0) {
+        // remove the removed filter value from the arrays
+        this.filterSelections[`${removedType}Keys`].splice(removedValueIndex,1);
+        this.filterSelections[`${removedType}Labels`].splice(removedValueIndex,1);
       }
 
+      // remove the filter button itself form the page
       $(`[data-filter-value='${e.target.attributes[1].nodeValue}']`).remove();
 
-      console.log('.' + this.selectedFilters.join('.'));
-      console.log(this.selectedFilterLabels);
+      // console.log(this.filterSelections);
 
-      const combinedSelectors = this.selectedFilters.join('.');
+      this.filtersRefresh();
 
-      // Hide all thumbnails
-      this.allThumbs.addClass("gallery-thumb--hidden");
-      this.allFancyTriggers.attr('data-fancybox', '');
-
-      // If any filters are still selected, reveal those thumbnails
-      if(this.selectedFilters.length) {
-        $(`.${combinedSelectors}`).toggleClass("gallery-thumb--hidden");
-        $(`.${combinedSelectors} .gallery-thumb__lightbox-trigger`).attr('data-fancybox', 'gallery');
-      }
-
-    })
+    });
 
     this.selectMedium.change( () => {
-      /*
-      let priorMedium = this.selectedFilters.indexOf(this.currentMedium);
-      this.currentMedium = this.selectMedium.val();
-      console.log(priorMedium + ' - ' + this.currentMedium);
-      if (priorMedium >= 0) {
-        this.selectedFilters.splice(priorMedium,1);
-        this.selectedFilterLabels.splice(priorMedium,1);
-      }
-      */
-      this.filtersAdd.call(this, this.selectMedium);
+      this.filtersAdd.call(this, this.selectMedium, 'medium');
     });
 
     this.selectYear.change( () => {
-      /*
-      let priorYear = this.selectedFilters.indexOf(this.currentYear);
-      this.currentYear = this.selectYear.val();
-      console.log(priorYear + ' - ' + this.currentYear);
-      if (priorYear >= 0) {
-        this.selectedFilters.splice(priorYear,1);
-        this.selectedFilterLabels.splice(priorYear,1);
-      }
-      */
-      this.filtersAdd.call(this, this.selectYear);
+      this.filtersAdd.call(this, this.selectYear, 'year');
     });
 
     this.selectTag.change( () => {
-      this.filtersAdd.call(this, this.selectTag);
+      this.filtersAdd.call(this, this.selectTag, 'tag');
     });
 
     this.selectCategory.change( () => {
-      this.filtersAdd.call(this, this.selectCategory);
+      this.filtersAdd.call(this, this.selectCategory, 'category');
     });
 
     this.selectHas.change( () => {
-      this.filtersAdd.call(this, this.selectHas);
+      this.filtersAdd.call(this, this.selectHas, 'has');
     });
 
     this.showFilters.on("click", () => {
-      //console.log("made it - " + this.isFilterVisible);
+
       if ( this.isFilterVisible ) {
         this.filterControls.slideUp(300, () => {
           this.isFilterVisible = false;
@@ -113,41 +111,110 @@ class ArtFilter {
     this.showNone.on("click", () => {
       this.allThumbs.addClass("gallery-thumb--hidden");
       this.allFancyTriggers.attr('data-fancybox', '');
-      this.selectedFilters.length = 0;
-      this.selectedFilterLabels.length = 0;
+      this.filterProperties.forEach( (prop) => {
+        this.filterSelections[`${prop}Keys`].length = 0;
+        this.filterSelections[`${prop}Labels`].length = 0;
+      });
+      this.filterSelections.matchedIDs.length = 0;
+      this.filterSelections.thumbSelectors = '';
+      this.filterSelections.triggerSelectors = '';
     })
 
     this.showAll.on("click", () => {
       this.allThumbs.removeClass("gallery-thumb--hidden");
       this.allFancyTriggers.attr('data-fancybox', 'gallery');
-      this.selectedFilters.length = 0;
-      this.selectedFilterLabels.length = 0;
+      this.filterProperties.forEach( (prop) => {
+        this.filterSelections[`${prop}Keys`].length = 0;
+        this.filterSelections[`${prop}Labels`].length = 0;
+      });
+      this.filterSelections.matchedIDs.length = 0;
+      this.filterSelections.thumbSelectors = '';
+      this.filterSelections.triggerSelectors = '';
       $(".selected-filters").html('');
     })
 
   }
 
-  filtersAdd(thisSelected) {
-    //console.log(thisSelected.val());
-    if ( this.selectedFilters.indexOf(thisSelected.val()) < 0 ) {
+  filtersRefresh() {
+
+    let remainingWorks = this.artworkIDs.slice();
+    let matchingWorks = [];
+
+    //console.log(remainingWorks);
+
+    this.filterProperties.forEach( (property) => {
+
+      if (this.filterSelections[`${property}Keys`].length) {
+        matchingWorks = remainingWorks.filter( (item) => {
+          let filtermatches = 0;
+          this.filterSelections[`${property}Keys`].forEach( (currProp) => {
+            if (item.selectors.indexOf(currProp) >= 0) {
+              filtermatches++;
+              //console.log('match found');
+            }
+          });
+          return filtermatches;
+        });
+        //console.log('matching works');
+        //console.log(matchingWorks);
+
+        remainingWorks = matchingWorks.slice();
+        matchingWorks.length = 0;
+        //console.log(remainingWorks);
+      }
+    });
+
+    this.filterSelections.matchedIDs.length = 0;
+    this.filterSelections.matchedIDs = remainingWorks.slice();
+    this.filterSelections.thumbSelectors = '';
+    this.filterSelections.triggerSelectors = '';
+
+    let matchCount = 0;
+
+    this.filterSelections.matchedIDs.forEach( (work) => {
+
+      this.filterSelections.thumbSelectors += '.artwork-' + work.artworkID;
+      this.filterSelections.triggerSelectors += '.trigger-' + work.artworkID;
+
+      matchCount++;
+
+      if (matchCount < this.filterSelections.matchedIDs.length) {
+        this.filterSelections.thumbSelectors += ', ';
+        this.filterSelections.triggerSelectors += ', ';
+      }
+
+    });
+
+    // Hide all thumbnails
+    this.allThumbs.addClass("gallery-thumb--hidden");
+    this.allFancyTriggers.attr('data-fancybox', '');
+
+    // If any filters are still selected, reveal those thumbnails
+    if(this.filterSelections.matchedIDs.length) {
+      $(`${this.filterSelections.thumbSelectors}`).toggleClass("gallery-thumb--hidden");
+      $(`${this.filterSelections.triggerSelectors}`).attr('data-fancybox', 'gallery');
+    }
+
+  } // End filtersRefresh()
+
+  filtersAdd(thisSelectedObject, thisSelectedType) {
+
+    if ( this.filterSelections[`${thisSelectedType}Keys`].indexOf(thisSelectedObject.val()) < 0 ) {
 
       // Push newly selected filter onto the value and label arrays
-      this.selectedFilters.push(thisSelected.val());
-      this.selectedFilterLabels.push(thisSelected.children("option:selected").text());
+      this.filterSelections[`${thisSelectedType}Keys`].push(thisSelectedObject.val());
+      this.filterSelections[`${thisSelectedType}Labels`].push(thisSelectedObject.children("option:selected").text());
 
-      const combinedSelectors = this.selectedFilters.join('.');
+      this.filtersRefresh();
 
-      this.allThumbs.addClass("gallery-thumb--hidden");
-      this.allFancyTriggers.attr('data-fancybox', '');
-
-      $(`.${combinedSelectors}`).toggleClass("gallery-thumb--hidden");
-      $(`.${combinedSelectors} .gallery-thumb__lightbox-trigger`).attr('data-fancybox', 'gallery');
-      $(".selected-filters").append(` <button class="filter-button" data-filter-value="${thisSelected.val()}">${thisSelected.children("option:selected").text()} (X)</button>`);
+      // Add a "selected filter" button
+      $(".selected-filters").append(` <button class="filter-button" data-filter-value="${thisSelectedObject.val()}" data-filter-type="${thisSelectedType}">${thisSelectedObject.children("option:selected").text()} (X)</button>`);
       $(".selected-filters").addClass("selected-filters--bottom-margin");
     }
 
-    thisSelected[0].selectedIndex = 0;
-  }
+    thisSelectedObject[0].selectedIndex = 0;
+
+  } // end filtersAdd()
 
 }
 

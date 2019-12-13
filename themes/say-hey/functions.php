@@ -253,7 +253,9 @@ wp_enqueue_script( 'sayhey-modernizr', get_template_directory_uri() . '/js/vendo
 
        wp_enqueue_script('sayhey-search-js', get_theme_file_uri('/js/search.js'), NULL, microtime(), true);
 
-       wp_enqueue_script('sayhey-artwork-filter-js', get_theme_file_uri('/js/artwork-filter.js'), NULL, microtime(), true);
+       if ( is_post_type_archive('artwork') ) {
+         wp_enqueue_script('sayhey-artwork-filter-js', get_theme_file_uri('/js/artwork-filter.js'), NULL, microtime(), true);
+       }
 
        wp_localize_script('sayhey-search-js', 'sayHeyData', array(
         'root_url' => get_site_url()
