@@ -1803,24 +1803,24 @@ ul.sub-menu.toggled-on {
     width: 100%;
     position: absolute;
     padding: 5px;
-    top: 33%;
+    top: 8%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #414A4C;
     font-weight: 300;
     text-align: center;
     vertical-align: middle;
     border: 0px solid red;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.5);
 
   }
 
 @media (min-width: 800px) {
 
 .gallery-index-item__text-content {
-      font-size: 1.8rem
+      font-size: 1.5rem
 
   }
   }
@@ -1828,7 +1828,7 @@ ul.sub-menu.toggled-on {
 @media (min-width: 1040px) {
 
 .gallery-index-item__text-content {
-      font-size: 2.2rem
+      font-size: 1.8rem
 
   }
   }
@@ -2633,8 +2633,8 @@ input[type=submit].search-submit {
   }
 
 #login h1 a, .login h1 a {
-  background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.png');
-  background-image: none, url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.svg');
+  background-image: url('/wp-content/themes/say-hey/img/logo-t-full.png');
+  background-image: none, url('/wp-content/themes/say-hey/img/logo-t-full.svg');
   background-size: 180px;
   background-position: center top;
   background-repeat: no-repeat;

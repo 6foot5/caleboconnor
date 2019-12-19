@@ -1,7 +1,7 @@
 
 #login h1 a, .login h1 a {
-  background-image: url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.png');
-  background-image: none, url('http://caleb.local/wp-content/themes/say-hey/img/logo-t-full.svg');
+  background-image: url('/wp-content/themes/say-hey/img/logo-t-full.png');
+  background-image: none, url('/wp-content/themes/say-hey/img/logo-t-full.svg');
   background-size: 180px;
   background-position: center top;
   background-repeat: no-repeat;

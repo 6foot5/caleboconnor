@@ -35,8 +35,8 @@ function sayheyArtworkResults($wpData) {
   $args = array(
     'posts_per_page' => -1,       // Get all the artwork
     'post_type' => array('artwork'),
-    'order' => 'ASC',
-    'orderby' => 'title'  // default sort is by title
+    'order' => 'DESC',
+    'orderby' => 'date'  // default sort is by date
   );
 
   if ($wpData['per_page']) {
