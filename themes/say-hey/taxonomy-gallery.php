@@ -37,7 +37,9 @@ $children = get_term_children($this_cat->term_id, 'gallery');
         $terms = get_terms( array(
           'taxonomy' => 'gallery',
           'parent' => $this_cat->term_id,
-          'hide_empty' => 1
+          'hide_empty' => 1,
+					'orderby' => 'description',
+					'order' => 'asc'
           )
         );
 

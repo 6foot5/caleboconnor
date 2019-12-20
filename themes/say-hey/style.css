@@ -1803,10 +1803,10 @@ ul.sub-menu.toggled-on {
     width: 100%;
     position: absolute;
     padding: 5px;
-    top: 8%;
+    top: 0;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
     font-size: 1rem;
     color: #414A4C;
     font-weight: 300;

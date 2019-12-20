@@ -29,7 +29,8 @@ $terms = get_terms( array(
   'hide_empty' => 1,
   'childless' => false,		// includes top-level categories that have subcategories
   'parent' => 0, 					// returns only top-level categories
-  'orderby' => 'parent'
+  'orderby' => 'description',
+  'order' => 'asc'
   )
 );
 
