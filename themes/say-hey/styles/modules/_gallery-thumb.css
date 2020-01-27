@@ -183,6 +183,22 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   opacity: 1;
 }
 
+.gallery-thumb .gallery-thumb__button-explore a:focus {
+  opacity: 1;
+}
+
+.gallery-thumb .gallery-thumb__button-expand a:focus {
+  opacity: 1;
+}
+
+.gallery-thumb .gallery-thumb__button-view a:focus {
+  opacity: 1;
+}
+
+.gallery-thumb__caption > a:focus-visible {
+  opacity: 1;
+}
+
 .gallery-thumb img {
   display: block;
 }

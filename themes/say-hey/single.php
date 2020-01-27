@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all single posts (Process and Stories)
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -18,17 +18,19 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
+			$post = get_queried_object();
+			$postType = get_post_type_object(get_post_type($post));
+			//print_r($postType);
+			if ($postType) {
+					echo '<a href="' . get_post_type_archive_link($postType->name) . '" class="heading__post-type">ALL ' . strtoupper(esc_html($postType->labels->menu_name)) . '</a><br />';
+			}
 			?>
+
+			<div class="reading">
 
 			<header class="page-header">
 				<?php
-				$post = get_queried_object();
-				$postType = get_post_type_object(get_post_type($post));
-				//print_r($postType);
-				if ($postType) {
-				    echo '<a href="' . get_post_type_archive_link($postType->name) . '" class="heading__post-type">' . strtoupper(esc_html($postType->labels->menu_name)) . '</a><br />';
-				}
-				the_title('<h1 class="heading heading--small">','</h1>');
+				the_title('<h1 class="heading">','</h1>');
 				?>
 				<hr class="heading__line heading__line--align-left heading__line--full-width" />
 			</header><!-- .page-header -->
@@ -56,8 +58,10 @@ get_header();
 				$relatedArtwork = get_field('related_artwork');
 
 				$relatedIDs = array();
-				foreach($relatedArtwork as $artwork) {
-					$relatedIDs[] = $artwork->ID;
+				if ($relatedArtwork) {
+					foreach($relatedArtwork as $artwork) {
+						$relatedIDs[] = $artwork->ID;
+					}
 				}
 
 
@@ -92,6 +96,8 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
+
+		</div>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

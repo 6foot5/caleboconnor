@@ -16,9 +16,10 @@
   &__post-type {
     display: inline-block;
     font-size: .8rem;
+    text-decoration: none;
     background-color: $offWhite;
     padding: 5px 15px;
-    margin: .5rem 0;
+    margin: .5rem 0 1.5rem 0;
     border: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.7);
   }
 

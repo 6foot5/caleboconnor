@@ -7,15 +7,6 @@
  * @package SayHey
  */
 
-// View posts query SQL...
-/*
- function my_posts_request_filter( $input ) {
- 	print_r( $input );
- 	return $input;
- }
- add_filter( 'posts_request', 'my_posts_request_filter' );
-*/
-
 require get_theme_file_path('/inc/legacy-redirects.php');
 require get_theme_file_path('/inc/artwork-route.php');
 require get_theme_file_path('/inc/search-route.php');
@@ -83,6 +74,7 @@ add_filter( 'document_title_parts', 'custom_title' );
 
     update_option('medium_large_size_w', 1500);
     update_option('medium_large_size_h', 1500);
+
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -118,6 +110,36 @@ add_filter( 'document_title_parts', 'custom_title' );
 	}
 endif;
 add_action( 'after_setup_theme', 'sayhey_setup' );
+
+
+/*
+ * Adds custom image sizes to media library insertion option
+ * May not be super useful for basic post editing... we'll see
+ */
+add_filter( 'image_size_names_choose', 'my_custom_sizes' );
+
+function my_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+      'medium_large' => __('Medium Large'),
+      'medium-small' => __('Medium Small'),
+    ) );
+}
+
+/*
+ * Using ACF to define a custom site settings page.
+ */
+$settingsArgs = array(
+  'page_title' => __('Website Options'),
+  'menu_title' => __('Website Options'),
+  'menu_slug' => 'sayhey-options',
+  'capability' => 'edit_artworks',
+  'update_button' => __('Update Options', 'acf'),
+  'updated_message' => __("Website Options Updated", 'acf')
+);
+
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page( $settingsArgs );
+}
 
 /*
 ***** SET PAGE BANNER ********
@@ -190,49 +212,12 @@ add_action('admin_enqueue_scripts', 'sayhey_custom_wp_admin_style');
  */
 function sayhey_scripts() {
 
-  //wp_enqueue_style('mcptc_main_styles', get_stylesheet_uri(), NULL, microtime());
   wp_enqueue_style( 'sayhey-style', get_stylesheet_uri(), NULL, microtime());
-  wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Merriweather:300,400|Roboto:300,400,700|Oswald:300|Libre+Baskerville');
-  wp_enqueue_style( 'sayhey-font-arimo', 'https://fonts.googleapis.com/css?family=Arimo:400,700|Cinzel:400,700|Crimson+Text:400,700');
-  //wp_enqueue_style( 'sayhey-font-awesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+  wp_enqueue_style( 'sayhey-font-roboto', 'https://fonts.googleapis.com/css?family=Merriweather:300,400|Roboto:300,400,700');
 
-/*
-  wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-*/
-
-/*
-  For use with borrowed 2017 theme JS
-*/
-
-wp_enqueue_script( 'sayhey-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
-
-wp_enqueue_script( 'sayhey-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js', array(), '20151215', true );
-
-  wp_localize_script( 'sayhey-navigation', 'sayheyScreenReaderText', array(
-      'expand' => __('Expand child menu', 'sayhey'),
-      'collapse' => __('Collapse child menu', 'sayhey')
-  ));
-
-
-/*
-  if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'sayhey-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array( 'jquery' ), '1.0', true );
-		$sayhey_l10n['expand']   = __( 'Expand child menu', 'sayhey' );
-		$sayhey_l10n['collapse'] = __( 'Collapse child menu', 'sayhey' );
-		$sayhey_l10n['icon']     = sayhey_get_svg(
-			array(
-				'icon'     => 'angle-down',
-				'fallback' => true,
-			)
-		);
-	}
-*/
-
-	wp_enqueue_script( 'sayhey-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
 
   // See https://wordpress.stackexchange.com/questions/189310/how-to-remove-default-jquery-and-add-js-in-footer
   // Goal is to prevent WP from loading default JQ version for *non-admin* pages (e.g. to use fancy box)
@@ -240,63 +225,37 @@ wp_enqueue_script( 'sayhey-modernizr', get_template_directory_uri() . '/js/vendo
   	if ( !is_admin() ) {
 
   	   wp_deregister_script('jquery');
-  	   wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, null);
+  	   wp_register_script('jquery', get_theme_file_uri('/js/vendor/jquery.3.3.1.min.js'), false, null);
   	   wp_enqueue_script('jquery');
 
-       //wp_enqueue_style( 'fancybox-style', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css', array(), '3.3.5' );
-       //wp_enqueue_script( 'fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), '3.3.5', false );
+       wp_enqueue_script( 'font-awesome-kit', 'https://kit.fontawesome.com/78e7cb0f98.js', [], null );
+       //wp_enqueue_script( 'fontawesome-js', 'https://kit.fontawesome.com/78e7cb0f98.js', array(), '5.8.2', false );
 
-       wp_enqueue_style( 'fancybox-style', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', array(), '3.5.7' );
-       wp_enqueue_script( 'fancybox-js', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array(), '3.5.7', false );
+       wp_enqueue_script( 'sayhey-vendor-bundle-js', get_theme_file_uri('/js/dist/vendor.js'), array('jquery'), microtime(), false );
 
-       wp_enqueue_script( 'fontawesome-js', 'https://kit.fontawesome.com/78e7cb0f98.js', array(), '5.8.2', false );
+       //wp_enqueue_script('sayhey-search-js', get_theme_file_uri('/js/search.js'), NULL, microtime(), true);
+       wp_enqueue_script( 'sayhey-custom-bundle-js', get_theme_file_uri('/js/dist/custom.js'), array('sayhey-vendor-bundle-js'), microtime(), true );
 
-       wp_enqueue_script('sayhey-search-js', get_theme_file_uri('/js/search.js'), NULL, microtime(), true);
+       // if ( is_post_type_archive('artwork') ) {
+       //   wp_enqueue_script('sayhey-artwork-filter-js', get_theme_file_uri('/js/artwork-filter.js'), NULL, microtime(), true);
+       // }
 
-       if ( is_post_type_archive('artwork') ) {
-         wp_enqueue_script('sayhey-artwork-filter-js', get_theme_file_uri('/js/artwork-filter.js'), NULL, microtime(), true);
-       }
-
-       wp_localize_script('sayhey-search-js', 'sayHeyData', array(
+      wp_localize_script('sayhey-custom-bundle-js', 'sayHeyData', array(
         'root_url' => get_site_url()
       ));
+
+      wp_localize_script( 'sayhey-custom-bundle-js', 'sayheyScreenReaderText', array(
+          'expand' => __('Expand child menu', 'sayhey'),
+          'collapse' => __('Collapse child menu', 'sayhey')
+      ));
+
      }
 
 }
 
 add_action( 'wp_enqueue_scripts', 'sayhey_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-//require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-//require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-//require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-/*
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-*/
-
 /* Disable WordPress Admin Bar for all users but admins. */
-
 show_admin_bar(false);
 
 /*
@@ -304,7 +263,7 @@ Make admin interface more useful by showing featured image thumbnails in post li
 */
 
   // GET FEATURED IMAGE
-  function ST4_get_featured_image($post_ID) {
+  function sayhey_get_featured_image($post_ID) {
       $post_thumbnail_id = get_post_thumbnail_id($post_ID);
       if ($post_thumbnail_id) {
           $post_thumbnail_img = wp_get_attachment_image_src($post_thumbnail_id, 'admin-preview');
@@ -313,26 +272,26 @@ Make admin interface more useful by showing featured image thumbnails in post li
   }
 
   // ADD NEW COLUMN
-  function ST4_columns_head($defaults) {
+  function sayhey_columns_head($defaults) {
       $defaults['featured_image'] = 'Featured Image';
       return $defaults;
   }
 
   // SHOW THE FEATURED IMAGE
-  function ST4_columns_content($column_name, $post_ID) {
+  function sayhey_columns_content($column_name, $post_ID) {
       if ($column_name == 'featured_image') {
-          $post_featured_image = ST4_get_featured_image($post_ID);
+          $post_featured_image = sayhey_get_featured_image($post_ID);
           if ($post_featured_image) {
               echo '<img src="' . $post_featured_image . '" />';
           }
       }
   }
 
-  add_filter('manage_artwork_posts_columns', 'ST4_columns_head');
-  add_action('manage_artwork_posts_custom_column', 'ST4_columns_content', 10, 2);
+  add_filter('manage_artwork_posts_columns', 'sayhey_columns_head');
+  add_action('manage_artwork_posts_custom_column', 'sayhey_columns_content', 10, 2);
 
-  add_filter('manage_spin_posts_columns', 'ST4_columns_head');
-  add_action('manage_spin_posts_custom_column', 'ST4_columns_content', 10, 2);
+  add_filter('manage_spin_posts_columns', 'sayhey_columns_head');
+  add_action('manage_spin_posts_custom_column', 'sayhey_columns_content', 10, 2);
 
 /*
 END - Show featured image thumbnails in admin post listings
@@ -346,9 +305,7 @@ END - Show featured image thumbnails in admin post listings
  * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
  */
 
-  add_action('restrict_manage_posts', 'tsm_filter_post_type_by_taxonomy');
-
-  function tsm_filter_post_type_by_taxonomy() {
+  function sayhey_filter_post_type_by_taxonomy() {
   	global $typenow;
   	$post_type = 'artwork';
   	$taxonomy  = 'gallery';
@@ -367,15 +324,15 @@ END - Show featured image thumbnails in admin post listings
   		));
   	};
   }
+  add_action('restrict_manage_posts', 'sayhey_filter_post_type_by_taxonomy');
 
   /**
    * Filter posts by taxonomy in admin
    * @author  Mike Hemberger
    * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
    */
-  add_filter('parse_query', 'tsm_convert_id_to_term_in_query');
 
-  function tsm_convert_id_to_term_in_query($query) {
+  function sayhey_convert_id_to_term_in_query($query) {
   	global $pagenow;
   	$post_type = 'artwork';
   	$taxonomy  = 'gallery';
@@ -385,39 +342,51 @@ END - Show featured image thumbnails in admin post listings
   		$q_vars[$taxonomy] = $term->slug;
   	}
   }
+  add_filter('parse_query', 'sayhey_convert_id_to_term_in_query');
 
-
-  /*
-  * separate media categories from post categories
-  * use a custom category called ‘category_media’ for the categories in the media library
-  *
-
-  // COMMENTED OUT - 12/8/19 (not needed?)
-
-  add_filter('wpmediacategory_taxonomy', 'define_media_category');
-
-  function define_media_category() {
-    return 'category_media';
+  // Remove dashboard widgets
+  function sayhey_remove_dashboard_meta() {
+  	if ( ! current_user_can( 'manage_options' ) ) {
+  		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+  		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+  		remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
+  		remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
+  		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+  		remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+  		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+  		remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+  		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
+  	}
   }
+  add_action( 'admin_init', 'sayhey_remove_dashboard_meta' );
 
-  function sayhey_theme_archive_title( $title ) {
-      if ( is_category() ) {
-          $title = single_cat_title( '', false );
-      } elseif ( is_tag() ) {
-          $title = single_tag_title( '', false );
-      } elseif ( is_author() ) {
-          $title = '<span class="vcard">' . get_the_author() . '</span>';
-      } elseif ( is_post_type_archive() ) {
-          $title = post_type_archive_title( 'All ', false );
-      } elseif ( is_tax() ) {
-          $title = single_term_title( '', false );
-      }
-      return $title;
+  // Sets admin dash "screen options" column options
+  function sayhey_set_dashboard_columns() {
+      add_screen_option(
+          'layout_columns',
+          array(
+              'max'     => 1,
+              'default' => 1
+          )
+      );
   }
-  add_filter( 'get_the_archive_title', 'sayhey_theme_archive_title' );
-  */
+  add_action( 'admin_head-index.php', 'sayhey_set_dashboard_columns' );
+  /**
+   * Add a widget to the dashboard for training videos
+   * This function is hooked into the 'wp_dashboard_setup' action below.
+   */
+  function sayhey_add_dashboard_widgets() {
+  	wp_add_dashboard_widget(
+  		'sayhey_dashboard_training_widget', // Widget slug.
+  		'Say Hey Wordpress Theme - Training Videos', // Title.
+  		'sayhey_dashboard_training_widget_render' // Display function.
+  	);
+  }
+  add_action( 'wp_dashboard_setup', 'sayhey_add_dashboard_widgets' );
 
   /**
-   * SVG icons functions and filters from 2017.
+   * Create the function to output the contents of your Dashboard Widget.
    */
-  //require get_parent_theme_file_path( '/inc/icon-functions.php' );
+  function sayhey_dashboard_training_widget_render() {
+    require get_theme_file_path('/inc/dashboard-training.php');
+  }

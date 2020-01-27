@@ -234,4 +234,6 @@ class ArtFilter {
 
 }
 
-var artworkFilter = new ArtFilter;
+if ( typeof sayHeyArtworkFilter !== 'undefined' ) {
+  var artworkFilter = new ArtFilter;
+}

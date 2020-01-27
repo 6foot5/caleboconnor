@@ -17,6 +17,22 @@ get_header();
 
 			the_post();
 
+			?>
+
+			<header class="page-header">
+				<?php
+				//$post = get_queried_object();
+				//$postType = get_post_type_object(get_post_type($post));
+				//print_r($postType);
+				if (true) {
+				    //echo '<a href="#" class="heading__post-type js-back js-dependent">Back</a><br />';
+				}
+				//the_title('<h1 class="heading heading--small">','</h1>');
+				?>
+			</header><!-- .page-header -->
+
+			<?php
+
 			$argsREST['id'] = get_the_ID();
 
 			$request = new WP_REST_Request( 'GET', '/sayhey/v1/artwork' );
@@ -36,6 +52,7 @@ get_header();
 				<section class="flexible">
 					<div class="flexible__flex-left font-zero">
 
+						<a href="#" class="heading__post-type js-back js-dependent">Back</a><br />
 						<div class="gallery-thumb gallery-thumb--large-single">
 							<div class="gallery-thumb__image">
 

@@ -38,6 +38,12 @@ function sh_tax() {
         'show_tagcloud' => false,
         'show_admin_column' => true,
         'hierarchical' => true,
+        'capabilities' => array(
+        	'manage_terms' => 'manage_gallery',
+        	'edit_terms' => 'edit_gallery',
+        	'delete_terms' => 'delete_gallery',
+        	'assign_terms' => 'assign_gallery'
+        ),
         'rewrite' => array(
         	'slug' => 'artwork/gallery' ,
           'hierarchical' => true,
@@ -46,7 +52,28 @@ function sh_tax() {
         'query_var' => true
     );
 
+    // Need to explicitly define the post_tag capabilities so that they can
+    // be assigned to custom roles (e.g. using the Members plugin)
+    // register_taxonomy is used to create or alter a taxonomy
+    // https://codex.wordpress.org/Function_Reference/register_taxonomy
+
+    $postTagTaxArgs = array(
+        'capabilities' => array(
+        	'manage_terms' => 'manage_post_tag',
+        	'edit_terms' => 'edit_post_tag',
+        	'delete_terms' => 'delete_post_tag',
+        	'assign_terms' => 'assign_post_tag'
+        ),
+        'rewrite' => array(
+        	'slug' => 'tag' ,
+          'hierarchical' => false,
+        	'with_front' => false
+        ),
+        'query_var' => true
+    );
+
     register_taxonomy( 'gallery', 'artwork', $galleryTaxArgs );
+    register_taxonomy( 'post_tag', 'artwork', $postTagTaxArgs );
 
 }
 
@@ -84,7 +111,8 @@ function sh_cpt() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array( 'slug' => 'artwork', 'with_front' => false),
-        'capability_type' => 'post',
+        'capability_type' => 'artwork',
+        'map_meta_cap' => true,
         'taxonomies' => array('gallery', 'post_tag'),
         'menu_icon' => 'dashicons-art',
         'menu_position' => 5
@@ -123,7 +151,8 @@ function sh_cpt() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array( 'slug' => 'stories'),
-        'capability_type' => 'post',
+        'capability_type' => 'story',
+        'map_meta_cap' => true,
         'taxonomies' => array('categories', 'post_tag'),
         'menu_icon' => 'dashicons-book',
         'menu_position' => 7
@@ -163,7 +192,8 @@ function sh_cpt() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array( 'slug' => 'process'),
-        'capability_type' => 'post',
+        'capability_type' => 'process',
+        'map_meta_cap' => true,
         'taxonomies' => array('categories', 'post_tag'),
         'menu_icon' => 'dashicons-lightbulb',
         'menu_position' => 8
@@ -201,7 +231,8 @@ function sh_cpt() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array( 'slug' => 'spins'),
-        'capability_type' => 'post',
+        'capability_type' => 'spin',
+        'map_meta_cap' => true,
         'taxonomies' => array('categories'),
         'menu_icon' => 'dashicons-image-rotate',
         'menu_position' => 6

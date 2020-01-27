@@ -3,25 +3,26 @@
 --------------------------------------------------------------*/
 a {
 	color: $offBlack;
-	border-bottom: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.7);
-	text-decoration: none;
+	/* border-bottom: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.7); */
+	text-decoration: underline;
 }
 
 a.img {
 	display: inline-block;
-	border-bottom: 0;
+	border-bottom: none;
 	text-decoration: none;
 	font-size: 0px;
 	position: relative;
 }
 
 a:visited {
-	color: $offBlack;
+	/* color: $offBlack; */
 }
 
 a:hover, a:focus, a:active {
 	color: $logoGold;
-	border-bottom: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0);
+	text-decoration: none;
+	/* border-bottom: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0); */
 }
 
 a:focus {
@@ -33,5 +34,6 @@ a:hover, a:active {
 }
 
 a.no-border {
-	border-bottom: none;
+	text-decoration: none;
+	/* border-bottom: none; */
 }

@@ -1,11 +1,3 @@
-/*
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  position: relative;
-}
-*/
 
 /*
  Used to keep page from scrolling when search overlay is ON
@@ -17,4 +9,8 @@ body {
 
 .font-zero {
   font-size: 0;
+}
+
+.no-js .js-dependent {
+  display: none;
 }

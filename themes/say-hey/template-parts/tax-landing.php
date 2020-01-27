@@ -10,7 +10,7 @@
   - an actual post type archive page for "artwork"
       * this archive page will resolve as /artwork/
       * this is a dump of all artwork items, and will be searchable
-      * on-page filters will include tags, medium, categories, title (?)
+      * on-page filters will include tags, medium, categories, year, etc
 */
 ?>
 
@@ -21,8 +21,6 @@
 
 
 <?php
-//echo '**' . $cat_id->term_id . '**';
-//print_r($cat_id);
 
 $terms = get_terms( array(
   'taxonomy' => 'gallery',
@@ -39,13 +37,11 @@ $itemCount = 0;
 foreach ( $terms as $childTerm ) {
 /*
 
-  -->  Displaying gallery thumbs as inline-block divs allows them to naturally
+  Displaying gallery thumbs as inline-block divs allows them to naturally
   flow from one line to the next, obviating the need to row/column logic.
 
 */
   echo '<div class="gallery-index-item">';
-  //print_r($childTerm);
-
 
     $image = get_field('term_image', $childTerm);
 
@@ -83,5 +79,32 @@ foreach ( $terms as $childTerm ) {
 
 }  //for each item in gallery
 
-
+// BELOW: One last card for the "Explore All Work" section, if JS is enabled
 ?>
+
+<div class="gallery-index-item js-dependent">
+
+  <?php
+
+    $allWorkImage = get_field('all_work_thumbnail', 'options');
+    $allWorkImageURL = $allWorkImage['sizes']['gallery-category'];
+
+    $imgTag = '<img src="' . $allWorkImageURL . '" alt="Explore All Work" />';
+
+    printf( '<a href="%1$s" title="View Gallery Category - %2$s">%3$s</a>',
+        esc_url( get_post_type_archive_link( 'artwork' ) ),
+        'Explore All Work',
+        $imgTag
+    );
+  ?>
+
+  <a href="<?php echo esc_url( get_post_type_archive_link( 'artwork' ) ) ?>"
+     title="Explore All Work">
+    <div class="gallery-index-item__shadow-overlay">
+      <div class="gallery-index-item__text-content">
+        Explore All Work
+      </div>
+    </div>
+  </a>
+
+</div>

@@ -1,13 +1,12 @@
 # plugins
-plugins/hello.php
-plugins/crop-thumbnails
-plugins/mod_wordpress_magic360
-plugins/regenerate-thumbnails
-plugins/wps-hide-login
+plugins/*
+!plugins/advanced-custom-fields-pro
+!plugins/filebird-wordpress-media-library-folders
 
 # default themes
 themes/twenty*/
 themes/say-hey/_off-cuts/
+themes/say-hey/styles/experiments
 
 # non-code directories
 uploads/**

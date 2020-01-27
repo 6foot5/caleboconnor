@@ -48,13 +48,13 @@
   margin: 0px 0px;
   padding: 10px 15px;
   border-bottom: 1px solid rgba(0,0,0,.15);
+  text-decoration: none;
 
   @mixin atSmall {
     display: inline-block;
     color: $offBlack;
     padding: 10px 20px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
     border: 0px solid orange;
-    text-decoration: none;
     width: 200px; /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
   }
 }
@@ -294,8 +294,4 @@ ul.sub-menu.toggled-on {
 }
 .sub-menu > li > button {
   padding: $navigationFontSize;
-}
-
-.no-js .js-dependent {
-  display: none;
 }

@@ -297,7 +297,7 @@ function sayheyArtworkResults($wpData) {
   }
 
   if ($wpData['localize_results']) {
-    wp_localize_script('sayhey-artwork-filter-js', 'sayHeyArtworkFilter', $resultsLocalized);
+    wp_localize_script('sayhey-custom-bundle-js', 'sayHeyArtworkFilter', $resultsLocalized);
   }
 
   return $results;

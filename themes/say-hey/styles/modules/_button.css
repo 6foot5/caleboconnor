@@ -11,6 +11,7 @@
   */
   background-color: $offWhite;
   color: $offBlack;
+  text-decoration: none;
   border: 1px solid $offBlack;
   font-weight: 300;
   display: block;
@@ -52,6 +53,11 @@
     margin: .5rem;
     padding: 0 .5rem;
     width: auto;
+  }
+
+  &--selected {
+    background-color: $logoGold;
+    color: $offWhite;    
   }
 
 }

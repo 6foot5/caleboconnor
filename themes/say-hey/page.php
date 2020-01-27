@@ -1,175 +1,110 @@
 <?php
 /**
- * The template for displaying all pages
+ * The template for displaying all (ABOUT) pages
  *
  * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package SayHey
+ * This theme has only ABOUT pages and a "search" page
+ * The "search" page is handled by page-search.php
  */
 
 get_header();
 ?>
 
 
-	<?php //pageBanner();	?>
+<?php // Setup for "About" section page header
 
+	global $post;
+
+	$post_slug = $post->post_name;
+	$aboutPage = get_page_by_path( 'about' );
+	$aboutID = $aboutPage->ID;
+
+	if ( has_post_thumbnail( $aboutID ) ) {
+		$featuredImageArr = wp_get_attachment_image_src( get_post_thumbnail_id( $aboutID ), 'gallery-category' );
+		$featuredImageURL = $featuredImageArr[0];
+	}
+
+	$subpageArgs = array(
+		'child_of' => $aboutID,
+		'sort_column' => 'menu_order'
+	);
+
+	$childPages = get_pages($subpageArgs);
+
+?>
 
 	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main">
 
-		<?php
-
-
-		while ( have_posts() ) :
-
-			the_post();
-
-			global $post;
-			//print_r($post);
-?>
-			<header class="page-header heading heading--centered">
-				<h1 class="heading"><?php
-				$postType = $post->post_title;
-				$typeName = esc_html($postType->labels->menu_name);
-				echo 'About - ' . $postType;
-				?></h1>
-				<hr class="heading__line" />
-			</header>
+			<div class="flexible">
+				<div class="flexible__flex-left">
+					<img class="about-photo" alt="Caleb O'Connor" src="<?php echo $featuredImageURL; ?>">
+				</div>
+				<div class="flexible__flex-right">
+					<!-- <h1 class="heading heading--tight">
+					</h1> -->
+					<h1 class="heading heading--tight">
+					<?php
+						if ( $post_slug == 'about' ) {
+							echo 'About Caleb';
+						} else {
+							$postType = $post->post_title;
+						  $typeName = esc_html($postType->labels->menu_name);
+						  echo $postType;
+						}
+				  ?>
+					</h1>
+					<hr class="heading__line" />
 
 <?php
+// End About page heading section
 
-			$post_slug = $post->post_name;
-
-			if ($post_slug == 'press') {
-				$repeaterField = 'press_repeater';
-				$dateField = 'press_date';
-				$titleField = 'press_title';
-				$notesField = 'press_notes';
-			}
-			elseif ($post_slug == 'exhibitions') {
-				$repeaterField = 'exhibition_repeater';
-				$dateField = 'exhibition_date';
-				$titleField = 'exhibition_title';
-				$notesField = 'exhibition_notes';
-			}
-			elseif ($post_slug == 'awards') {
-				$repeaterField = 'award_repeater';
-				$dateField = 'award_date';
-				$titleField = 'award_title';
-				$notesField = 'award_notes';
-			}
-
-			$repeater = get_field($repeaterField);
-
-			// vars
-			$explodedYear = array();
-			$explodedMonth = array();
-			$explodedDay = array();
-
-//print_r($repeater);
-
-	// https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
-	// need to enqueue admin scripts to make repeater blocks look better
-
-			// populate order
-			//$i = 0;
-			foreach( $repeater as $i => $row ) {
-
-				//print_r($row);
-				$phpDate = strtotime($row[$dateField]);
-				$explodedYear[$i] = date('Y', $phpDate);
-				$explodedMonth[$i] = date('m', $phpDate);
-				$explodedDay[$i] = date('d', $phpDate);
-
-
-				//$i++;
-			}
-
-			array_multisort($explodedYear, SORT_DESC, SORT_NUMERIC,
-											$explodedMonth, SORT_DESC, SORT_NUMERIC,
-											$explodedDay, SORT_DESC, SORT_NUMERIC, $repeater);
-			/*
-		 									$explodedDates[1], SORT_DESC, SORT_NUMERIC,
-											$explodedDates[2], SORT_DESC, SORT_NUMERIC, $repeater);
-*/
-			// loop through repeater field
-			// to separate group shows and one-man shows, just loop over array twice:
-			// once for group (with IF) and once for one-man (with IF)
-			if( $repeater ) {
-
-				$i = 0;
-				$lastHeaderYear = date('Y', strtotime($repeater[0][$dateField]));
-				echo '<h2>' . $lastHeaderYear . '</h2>';
-
-				foreach( $repeater as $row ) {
-					//echo '<p>' . $lastHeaderYear . ' - ' . date('Y', strtotime($row['exhibition_date'])) . '</p>';
-					if ($lastHeaderYear != date('Y', strtotime($row[$dateField]))) {
-						$lastHeaderYear = date('Y', strtotime($row[$dateField]));
-						echo '<h2>' . $lastHeaderYear . '</h2>';
+					$extraStyle = '';
+					foreach ($childPages as $childPage) {
+						if ( $childPage->ID == $post->ID ) {
+							$extraStyle = 'button--selected'; // to show active page in sub-nav
+						}
+?>
+						<a href="<?php the_permalink($childPage->ID); ?>" title="<?php echo $childPage->post_title; ?>" class="button <?php echo $extraStyle ?>"><?php echo $childPage->post_title; ?></a>
+<?php
+						$extraStyle = '';
 					}
-					echo '<p>';
+?>
+				</div>
+			</div>
 
-					if ($post_slug == 'press') {
-						if ($row['press_link']) {
-						?>
-							<a href="<?php echo $row['press_link']; ?>" rel="nofollow noreferrer" target="_blank"><?php echo $row[$titleField]; ?></a>&nbsp;
-							<i class="fal fa-external-link-square"></i><br />
-						<?php
-						}
-						else {
-							echo $row[$titleField] . '<br />';
-						}
-					}
-					else {
-						if ($post_slug == 'exhibitions') {
-							echo $row[$titleField];
-							if ($row['exhibition_type']) {
-								echo ' (' . $row['exhibition_type'] . ')';
-							}
-							echo '<br />';
-						}
-						else {
-							echo $row[$titleField] . '<br />';
-						}
-					}
+			<hr class="heading__line" />
 
+			<?php
 
-					if ($post_slug == 'exhibitions') {
-						if ($row['exhibition_gallery']) {
-							echo $row['exhibition_gallery'];
-						}
-						if ($row['exhibition_location']) {
-							echo ', ' . $row['exhibition_location'] . '<br />';
-						}
-					}
+			// Begin (sub-)page-specific output
 
-					if ($post_slug == 'press') {
-						if ($row['press_outlet']) {
-							echo $row['press_outlet'] . '<br />';
-						}
-					}
+			wp_reset_postdata();
 
-					if ($row[$notesField]) {
-						echo $row[$notesField] . '<br />';
-					}
-					echo '</p>';
+			while ( have_posts() ) {
+
+				the_post();
+
+				if ( $post_slug == 'statement' ) {
+
+					get_template_part( 'template-parts/content', 'statement' );
+				}
+
+				elseif ( 	$post_slug == 'awards' ||
+									$post_slug == 'exhibitions' ||
+									$post_slug == 'press' ) {
+
+					get_template_part( 'template-parts/content', 'repeater' );
+				}
+
+				elseif ( $post_slug == 'contact' ) {
+
+					get_template_part( 'template-parts/content', 'contact' );
 				}
 
 			}
 
-			//the_content();
-
-			//get_template_part( 'template-parts/content', 'page' );
-
-		endwhile; // End of the loop.
-
-		?>
-
+			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

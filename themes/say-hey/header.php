@@ -32,64 +32,68 @@
 
 			if ( is_front_page() ) {
 
-				$bgImgURL = wp_get_attachment_url( get_post_thumbnail_id($thisID) );
+				// Preferred images from the website options page
+				$optionsHomeImageDesktop = get_field('homepage_image_desktop', 'options');
+				$optionsHomeImageMobile = get_field('homepage_image_mobile', 'options');
 
-				if( get_field('page_banner_background_image') ) {
-					$bannerImg = get_field('page_banner_background_image');
-					$bgImgSmall = $bannerImg['sizes']['medium_large'];
+				// Backup images (featured image for desktop, banner for mobile)
+				$featuredImageArray = wp_get_attachment_image_src( get_post_thumbnail_id($thisID), 'large' );
+				$bannerImageArray = get_field('page_banner_background_image');
+
+				// If there's an options value for DESKTOP homepage image...
+				if ( $optionsHomeImageDesktop ) {
+					$bgImgURL = $optionsHomeImageDesktop['sizes']['large'];
 				}
+				// If there's no option for homepage desktop image, use front-page featured image
 				else {
-					$bgImgSmall = $bgImgURL;
+					$featuredImageArray = wp_get_attachment_image_src( get_post_thumbnail_id($thisID), 'large' );
+					$bgImgURL = $featuredImageArray[0];
 				}
+
+				// If there's an options value for MOBILE homepage image...
+				if ( $optionsHomeImageMobile ) {
+					$bgImgSmall = $optionsHomeImageMobile['sizes']['medium_large'];
+				}
+				// If there's no option for homepage mobile image, use front-page banner image
+				else {
+					$bgImgSmall = $bannerImageArray['sizes']['medium_large'];
+				}
+
 				$bodyClass = '.home';
+
 			}
 
 			// We've got a 404, let's get a random bg image to look pretty
 			else {
 
-				$queryArgs = array(
-					'post_status' => 'inherit',
-					'posts_per_page' => -1,
-					'post_type' => 'attachment',
-				);
-
 	/*
 		This query is grabbing a random image (attachment) from the media library
-		It is looking for a specific "folder" (ID 87)
-		This folder contains images to serve as background for 404 page
+		It is looking for images selected in site settings page (WP admin)
+		These images will serve as background for 404 page
 	*/
 
-				$queryArgs['tax_query'] = array(
-					array(
-						'taxonomy' => 'nt_wmc_folder',
-						'terms' => array( 87 ), // ID of the "Random Banners" media folder
-						'field' => 'term_id',
-					)
-				);
+				$bgImagesFound = get_field('page_not_found_backgrounds', 'options');
+				$bgPermalinks = array();
 
-				$the_query = new WP_Query( $queryArgs );
-
-				if ( $the_query->have_posts() ) {
-					$theBGs = array();
+				if ( $bgImagesFound ) {
 					$numBGs = 0;
-						while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-							$thisImg = wp_get_attachment_image_src(get_the_ID(), 'medium_large');
-							array_push($theBGs, $thisImg[0]);
-							$numBGs += 1;
-						}
-						$bgImgURL = $theBGs[mt_rand(0,$numBGs-1)];
+					foreach($bgImagesFound as $image) {
+						$thisImg = wp_get_attachment_image_src($image->ID, 'large');
+						array_push($bgPermalinks, $thisImg[0]);
+						$numBGs += 1;
+					}
+					$bgImgURL = $bgPermalinks[mt_rand(0,$numBGs-1)];
 				}
 				else {
-					$bgImgURL = get_theme_file_uri('/img/banner.jpg');
+					$bgImgURL = get_theme_file_uri('/img/canvas-background-light.jpg');
 				}
 
 				$bgImgSmall = $bgImgURL;
 
 				$bodyClass = '.error404';
 
-				wp_reset_postdata();
-			}
+
+			} // End if-else block to pull background images for home and 404
 
 			// Pull different bg sizes here and use media queries below to change bg src on the fly
 			// https://www.w3schools.com/Css/css_rwd_images.asp
@@ -129,7 +133,6 @@
 </head>
 
 <?php
-// ontouchstart="" onmouseover="" relates to hover/touch behavior
 ?>
 <body <?php body_class(); ?>>
 
@@ -175,7 +178,6 @@ if ($thisType != 'spin') {
 						'menu_id' => 'primary-menu'
 					)
 				);
-				//wp_nav_menu( array(	'theme_location' => 'header',	'menu_id' => 'primary-menu',	'link_after' => '<i></i>') );
 				?>
 			</nav><!-- .main-navigation -->
 
@@ -188,12 +190,6 @@ if ($thisType != 'spin') {
 		if ( !is_front_page() && ( !is_404() || ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') ) ) {
 			pageBanner();
 		}
-		if (is_post_type_archive('artwork')) {
-			//echo 'Artwork archive page!';
-		}
-		//echo '++--' . get_post_type() . '++';
-		//$mediaCats = get_categories(array('taxonomy' => 'nt_wmc_folder'));
-		//print_r($mediaCats);
 
 	?>
 
@@ -216,4 +212,7 @@ if ($thisType != 'spin') {
 <?php
   $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
 	//echo $url;
+
+	$allImageSizes = get_intermediate_image_sizes();
+	print_r($allImageSizes);
 ?>

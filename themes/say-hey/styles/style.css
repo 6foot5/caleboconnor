@@ -1,5 +1,5 @@
-@import "base/_global";
 @import "base/_wp-header";
+@import "base/_global";
 @import "base/_variables";
 @import "base/_mixins";
 
@@ -19,14 +19,13 @@
 @import "_s/__comments";
 @import "_s/__infinite-scroll";
 
+@import "vendor/_fancybox";
+
 @import "modules/_content-area";
 @import "modules/_site";
 @import "modules/_site-header";
 @import "modules/_mobile-header";
-/*
-@import "modules/_main-navigation";
-@import "modules/_main-navigation-mobile";
-*/
+
 @import "modules/_navigation";
 @import "modules/_menu-toggle";
 @import "modules/_site-banner";
@@ -48,4 +47,5 @@
 @import "modules/_text-block";
 @import "modules/_error-404";
 @import "modules/_about";
+@import "modules/_reading";
 @import "modules/_artwork-filter";

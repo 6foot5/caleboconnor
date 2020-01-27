@@ -10,8 +10,6 @@
   @mixin atTiny {
     margin-left: 40px;
     margin-right: 40px;
-
   }
-  /*
-  min-height: 100vh;*/
+
 }

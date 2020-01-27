@@ -1,29 +1,8 @@
 /*
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  position: relative;
-}
-*/
-
-/*
- Used to keep page from scrolling when search overlay is ON
-*/
-
-.body-no-scroll {
-  overflow: hidden;
-}
-
-.font-zero {
-  font-size: 0;
-}
-
-/*!
 Theme Name: Say Hey
 Author: Rick Barley, based on Underscores.me
 Description: Description
-Version: 1.0.0
+Version: 1.1
 
 This theme, like WordPress, is licensed under the GPL.
 
@@ -33,140 +12,121 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
-
+/*
+ Used to keep page from scrolling when search overlay is ON
+*/
+.body-no-scroll {
+  overflow: hidden;
+}
+.font-zero {
+  font-size: 0;
+}
+.no-js .js-dependent {
+  display: none;
+}
 /*
   Color variables
 */
-
 /*
   Font size variables
 */
-
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
 /* Document
    ========================================================================== */
-
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
-
 /* Sections
    ========================================================================== */
-
 /**
  * Remove the margin in all browsers.
  */
-
 body {
   margin: 0;
 }
-
 /**
  * Render the `main` element consistently in IE.
  */
-
 main {
   display: block;
 }
-
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-
 /* Grouping content
    ========================================================================== */
-
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
-
 hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
-
 /* Text-level semantics
    ========================================================================== */
-
 /**
  * Remove the gray background on active links in IE 10.
  */
-
 a {
   background-color: transparent;
 }
-
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
-
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted; /* 2 */
 }
-
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-
 b,
 strong {
   font-weight: bolder;
 }
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-
 code,
 kbd,
 samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
-
 /**
  * Add the correct font size in all browsers.
  */
-
 small {
   font-size: 80%;
 }
-
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
-
 sub,
 sup {
   font-size: 75%;
@@ -174,34 +134,26 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-
 sub {
   bottom: -0.25em;
 }
-
 sup {
   top: -0.5em;
 }
-
 /* Embedded content
    ========================================================================== */
-
 /**
  * Remove the border on images inside links in IE 10.
  */
-
 img {
   border-style: none;
 }
-
 /* Forms
    ========================================================================== */
-
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
-
 button,
 input,
 optgroup,
@@ -212,42 +164,34 @@ textarea {
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
 }
-
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
-
 button,
 input { /* 1 */
   overflow: visible;
 }
-
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
-
 button,
 select { /* 1 */
   text-transform: none;
 }
-
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
-
 button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
 }
-
 /**
  * Remove the inner border and padding in Firefox.
  */
-
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -255,33 +199,27 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-
 /**
  * Restore the focus styles unset by the previous rule.
  */
-
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-
 /**
  * Correct the padding in Firefox.
  */
-
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
-
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
-
 legend {
   box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
@@ -290,113 +228,87 @@ legend {
   padding: 0; /* 3 */
   white-space: normal; /* 1 */
 }
-
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
-
 progress {
   vertical-align: baseline;
 }
-
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
-
 textarea {
   overflow: auto;
 }
-
 /**
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-
 [type="checkbox"],
 [type="radio"] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
-
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-
 [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
-
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
-
 /* Interactive
    ========================================================================== */
-
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
-
 details {
   display: block;
 }
-
 /*
  * Add the correct display in all browsers.
  */
-
 summary {
   display: list-item;
 }
-
 /* Misc
    ========================================================================== */
-
 /**
  * Add the correct display in IE 10+.
  */
-
 template {
   display: none;
 }
-
 /**
  * Add the correct display in IE 10.
  */
-
 [hidden] {
   display: none;
 }
-
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
-
 body,
 button,
 input,
@@ -408,34 +320,27 @@ textarea {
   font-size: 1rem;
   line-height: 1.5;
 }
-
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Merriweather', serif;
 	clear: both;
   font-weight: 300;
 }
-
 h1 {
   padding: 0;
   margin-bottom: 1rem;
 }
-
 p {
 	margin-bottom: 1.5em;
 }
-
 dfn, cite, em, i {
 	font-style: italic;
 }
-
 blockquote {
 	margin: 0 1.5em;
 }
-
 address {
 	margin: 0 0 1.5em;
 }
-
 pre {
 	background: #eee;
 	font-family: "Courier 10 Pitch", Courier, monospace;
@@ -447,43 +352,35 @@ pre {
 	overflow: auto;
 	padding: 1.6em;
 }
-
 code, kbd, tt, var {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 	font-size: 15px;
 	font-size: 0.9375rem;
 }
-
 abbr, acronym {
 	border-bottom: 1px dotted #666;
 	cursor: help;
 }
-
 mark, ins {
 	background: #fff9c0;
 	text-decoration: none;
 }
-
 big {
 	font-size: 125%;
 }
-
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
-
 html {
 	box-sizing: border-box;
 	height: 100%;
 }
-
 *,
 *:before,
 *:after {
 	/* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 	box-sizing: inherit;
 }
-
 body {
   margin: 0;
   padding: 0;
@@ -492,61 +389,49 @@ body {
 	background: #fff;
 	/* Fallback for when there is no custom background color defined. */
 }
-
 hr {
 	background-color: #ccc;
 	border: 0;
 	height: 1px;
 	margin-bottom: 0.5em;
 }
-
 ul, ol {
 	margin: 0;
 }
-
 ul {
 	list-style: disc;
 }
-
 ol {
 	list-style: decimal;
 }
-
 li > ul,
 li > ol {
 	margin-bottom: 0;
 	margin-left: 1.5em;
 }
-
 dt {
 	font-weight: bold;
 }
-
 dd {
 	margin: 0 1.5em 1.5em;
 }
-
 img {
 	height: auto;
 	/* Make sure images are scaled correctly.*/
 	max-width: 100%;
 	/* Adhere to container width. */
 }
-
 figure {
 	margin: 1em 0;
 	/* Extra wide images within figure tags don't overflow the content area. */
 }
-
 table {
 	margin: 0 0 1.5em;
 	width: 100%;
 }
-
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
-
 button,
 input[type="button"],
 input[type="reset"],
@@ -561,14 +446,12 @@ input[type="submit"] {
 	line-height: 1;
 	padding: .6em 1em .4em;
 }
-
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
 	border-color: #ccc #bbb #aaa;
 }
-
 button:active, button:focus,
 input[type="button"]:active,
 input[type="button"]:focus,
@@ -578,7 +461,6 @@ input[type="submit"]:active,
 input[type="submit"]:focus {
 	border-color: #aaa #bbb #bbb;
 }
-
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -600,7 +482,6 @@ textarea {
 	border-radius: 3px;
 	padding: 3px;
 }
-
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
@@ -619,60 +500,49 @@ input[type="color"]:focus,
 textarea:focus {
 	color: #111;
 }
-
 select {
 	border: 1px solid #ccc;
 }
-
 textarea {
 	width: 25%;
 }
-
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
-
 a {
 	color: #414A4C;
-	border-bottom: 1px solid rgba(65, 74, 76, 0.7);
-	text-decoration: none;
+	/* border-bottom: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.7); */
+	text-decoration: underline;
 }
-
 a.img {
 	display: inline-block;
-	border-bottom: 0;
+	border-bottom: none;
 	text-decoration: none;
 	font-size: 0px;
 	position: relative;
 }
-
 a:visited {
-	color: #414A4C;
+	/* color: $offBlack; */
 }
-
 a:hover, a:focus, a:active {
 	color: #b38c40;
-	border-bottom: 1px solid rgba(65, 74, 76, 0);
+	text-decoration: none;
+	/* border-bottom: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0); */
 }
-
 a:focus {
 	outline: thin dotted;
 }
-
 a:hover, a:active {
 	outline: 0;
 }
-
 a.no-border {
-	border-bottom: none;
+	text-decoration: none;
+	/* border-bottom: none; */
 }
-
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
-
 /* Text meant only for screen readers. */
-
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -686,7 +556,6 @@ a.no-border {
 	width: 1px;
 	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
-
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
 	border-radius: 3px;
@@ -709,44 +578,35 @@ a.no-border {
 	z-index: 100000;
 	/* Above WP toolbar. */
 }
-
 /* Do not show the outline on the skip link target. */
-
 #content[tabindex="-1"]:focus {
 	outline: 0;
 }
-
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
-
 .self-alignleft {
 	display: inline;
 	float: left;
 	margin-right: 1.5em;
 }
-
 .self-alignright {
 	display: inline;
 	float: right;
 	margin-left: 1.5em;
 }
-
 .self-aligncenter {
 	clear: both;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-
 .contents-aligncenter {
   text-align: center;
 }
-
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
-
 .clear:before,
 .clear:after,
 .entry-content:before,
@@ -763,7 +623,6 @@ a.no-border {
 	display: table;
 	table-layout: fixed;
 }
-
 .clear:after,
 .entry-content:after,
 .comment-content:after,
@@ -772,85 +631,66 @@ a.no-border {
 .site-footer:after {
 	clear: both;
 }
-
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
-
 .gallery {
 	margin-bottom: 1.5em;
 }
-
 .gallery-item {
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
 	width: 100%;
 }
-
 .gallery-columns-2 .gallery-item {
 	max-width: 50%;
 }
-
 .gallery-columns-3 .gallery-item {
 	max-width: 33.33%;
 }
-
 .gallery-columns-4 .gallery-item {
 	max-width: 25%;
 }
-
 .gallery-columns-5 .gallery-item {
 	max-width: 20%;
 }
-
 .gallery-columns-6 .gallery-item {
 	max-width: 16.66%;
 }
-
 .gallery-columns-7 .gallery-item {
 	max-width: 14.28%;
 }
-
 .gallery-columns-8 .gallery-item {
 	max-width: 12.5%;
 }
-
 .gallery-columns-9 .gallery-item {
 	max-width: 11.11%;
 }
-
 .gallery-caption {
 	display: block;
 }
-
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
-
 .wp-caption {
 	margin-bottom: 1.5em;
 	max-width: 100%;
 }
-
 .wp-caption img[class*="wp-image-"] {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-
 .wp-caption .wp-caption-text {
 	margin: 0.8075em 0;
 }
-
 .wp-caption-text {
 	text-align: center;
 }
-
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
-
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -859,91 +699,184 @@ a.no-border {
 	margin-top: 0;
 	padding: 0;
 }
-
 /* Make sure embeds and iframes fit their containers. */
-
 embed,
 iframe,
 object {
 	max-width: 100%;
 }
-
 /* Make sure logo link wraps around logo image. */
-
 .custom-logo-link {
 	display: inline-block;
 }
-
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
-
 .widget {
 	margin: 0 0 1.5em;
 	/* Make sure select elements fit in widgets. */
 }
-
 .widget select {
 	max-width: 100%;
 }
-
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-
 .sticky {
 	display: block;
 }
-
 .hentry {
 	margin: 0 0 1.5em;
 }
-
 .updated:not(.published) {
 	display: none;
 }
-
 .page-content,
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
 }
-
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
 }
-
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
-
 .comment-content a {
 	word-wrap: break-word;
 }
-
 .bypostauthor {
 	display: block;
 }
-
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
-
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
-
 .infinite-scroll .posts-navigation,
 .infinite-scroll.neverending .site-footer {
 	/* Theme Footer (when set to scrolling) */
 	display: none;
 }
-
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
-
 .infinity-end.neverending .site-footer {
 	display: block;
 }
-
+body.compensate-for-scrollbar{overflow:hidden}
+.fancybox-active{height:auto}
+.fancybox-is-hidden{left:-9999px;margin:0;position:absolute!important;top:-9999px;visibility:hidden}
+.fancybox-container{-webkit-backface-visibility:hidden;height:100%;left:0;outline:none;position:fixed;-webkit-tap-highlight-color:transparent;top:0;touch-action:manipulation;-webkit-transform:translateZ(0);transform:translateZ(0);width:100%;z-index:99992}
+.fancybox-container *{box-sizing:border-box}
+.fancybox-bg,.fancybox-inner,.fancybox-outer,.fancybox-stage{bottom:0;left:0;position:absolute;right:0;top:0}
+.fancybox-outer{-webkit-overflow-scrolling:touch;overflow-y:auto}
+.fancybox-bg{background:#1e1e1e;opacity:0;-webkit-transition-duration:inherit;transition-duration:inherit;-webkit-transition-property:opacity;transition-property:opacity;-webkit-transition-timing-function:cubic-bezier(.47,0,.74,.71);transition-timing-function:cubic-bezier(.47,0,.74,.71)}
+.fancybox-is-open .fancybox-bg{opacity:.9;-webkit-transition-timing-function:cubic-bezier(.22,.61,.36,1);transition-timing-function:cubic-bezier(.22,.61,.36,1)}
+.fancybox-caption,.fancybox-infobar,.fancybox-navigation .fancybox-button,.fancybox-toolbar{direction:ltr;opacity:0;position:absolute;-webkit-transition:opacity .25s ease,visibility 0s ease .25s;transition:opacity .25s ease,visibility 0s ease .25s;visibility:hidden;z-index:99997}
+.fancybox-show-caption .fancybox-caption,.fancybox-show-infobar .fancybox-infobar,.fancybox-show-nav .fancybox-navigation .fancybox-button,.fancybox-show-toolbar .fancybox-toolbar{opacity:1;-webkit-transition:opacity .25s ease 0s,visibility 0s ease 0s;transition:opacity .25s ease 0s,visibility 0s ease 0s;visibility:visible}
+.fancybox-infobar{color:#ccc;font-size:13px;-webkit-font-smoothing:subpixel-antialiased;height:44px;left:0;line-height:44px;min-width:44px;mix-blend-mode:difference;padding:0 10px;pointer-events:none;top:0;-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.fancybox-toolbar{right:0;top:0}
+.fancybox-stage{direction:ltr;overflow:visible;-webkit-transform:translateZ(0);transform:translateZ(0);z-index:99994}
+.fancybox-is-open .fancybox-stage{overflow:hidden}
+.fancybox-slide{-webkit-backface-visibility:hidden;display:none;height:100%;left:0;outline:none;overflow:auto;-webkit-overflow-scrolling:touch;padding:44px;position:absolute;text-align:center;top:0;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform;white-space:normal;width:100%;z-index:99994}
+.fancybox-slide:before{content:"";display:inline-block;font-size:0;height:100%;vertical-align:middle;width:0}
+.fancybox-is-sliding .fancybox-slide,.fancybox-slide--current,.fancybox-slide--next,.fancybox-slide--previous{display:block}
+.fancybox-slide--image{overflow:hidden;padding:44px 0}
+.fancybox-slide--image:before{display:none}
+.fancybox-slide--html{padding:6px}
+.fancybox-content{background:#fff;display:inline-block;margin:0;max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;padding:44px;position:relative;text-align:left;vertical-align:middle}
+.fancybox-slide--image .fancybox-content{-webkit-animation-timing-function:cubic-bezier(.5,0,.14,1);animation-timing-function:cubic-bezier(.5,0,.14,1);-webkit-backface-visibility:hidden;background:transparent;background-repeat:no-repeat;background-size:100% 100%;left:0;max-width:none;overflow:visible;padding:0;position:absolute;top:0;-webkit-transform-origin:top left;transform-origin:top left;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:99995}
+.fancybox-can-zoomOut .fancybox-content{cursor:-webkit-zoom-out;cursor:zoom-out}
+.fancybox-can-zoomIn .fancybox-content{cursor:-webkit-zoom-in;cursor:zoom-in}
+.fancybox-can-pan .fancybox-content,.fancybox-can-swipe .fancybox-content{cursor:-webkit-grab;cursor:grab}
+.fancybox-is-grabbing .fancybox-content{cursor:-webkit-grabbing;cursor:grabbing}
+.fancybox-container [data-selectable=true]{cursor:text}
+.fancybox-image,.fancybox-spaceball{background:transparent;border:0;height:100%;left:0;margin:0;max-height:none;max-width:none;padding:0;position:absolute;top:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:100%}
+.fancybox-spaceball{z-index:1}
+.fancybox-slide--iframe .fancybox-content,.fancybox-slide--map .fancybox-content,.fancybox-slide--pdf .fancybox-content,.fancybox-slide--video .fancybox-content{height:100%;overflow:visible;padding:0;width:100%}
+.fancybox-slide--video .fancybox-content{background:#000}
+.fancybox-slide--map .fancybox-content{background:#e5e3df}
+.fancybox-slide--iframe .fancybox-content{background:#fff}
+.fancybox-iframe,.fancybox-video{background:transparent;border:0;display:block;height:100%;margin:0;overflow:hidden;padding:0;width:100%}
+.fancybox-iframe{left:0;position:absolute;top:0}
+.fancybox-error{background:#fff;cursor:default;max-width:400px;padding:40px;width:100%}
+.fancybox-error p{color:#444;font-size:16px;line-height:20px;margin:0;padding:0}
+.fancybox-button{background:rgba(30,30,30,.6);border:0;border-radius:0;box-shadow:none;cursor:pointer;display:inline-block;height:44px;margin:0;padding:10px;position:relative;-webkit-transition:color .2s;transition:color .2s;vertical-align:top;visibility:inherit;width:44px}
+.fancybox-button,.fancybox-button:link,.fancybox-button:visited{color:#ccc}
+.fancybox-button:hover{color:#fff}
+.fancybox-button:focus{outline:none}
+.fancybox-button.fancybox-focus{outline:1px dotted}
+.fancybox-button[disabled],.fancybox-button[disabled]:hover{color:#888;cursor:default;outline:none}
+.fancybox-button div{height:100%}
+.fancybox-button svg{display:block;height:100%;overflow:visible;position:relative;width:100%}
+.fancybox-button svg path{fill:currentColor;stroke-width:0}
+.fancybox-button--fsenter svg:nth-child(2),.fancybox-button--fsexit svg:first-child,.fancybox-button--pause svg:first-child,.fancybox-button--play svg:nth-child(2){display:none}
+.fancybox-progress{background:#ff5268;height:2px;left:0;position:absolute;right:0;top:0;-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:0;transform-origin:0;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;transition-property:transform;transition-property:transform, -webkit-transform;-webkit-transition-timing-function:linear;transition-timing-function:linear;z-index:99998}
+.fancybox-close-small{background:transparent;border:0;border-radius:0;color:#ccc;cursor:pointer;opacity:.8;padding:8px;position:absolute;right:-12px;top:-44px;z-index:401}
+.fancybox-close-small:hover{color:#fff;opacity:1}
+.fancybox-slide--html .fancybox-close-small{color:currentColor;padding:10px;right:0;top:0}
+.fancybox-slide--image.fancybox-is-scaling .fancybox-content{overflow:hidden}
+.fancybox-is-scaling .fancybox-close-small,.fancybox-is-zoomable.fancybox-can-pan .fancybox-close-small{display:none}
+.fancybox-navigation .fancybox-button{background-clip:content-box;height:100px;opacity:0;position:absolute;top:calc(50% - 50px);width:70px}
+.fancybox-navigation .fancybox-button div{padding:7px}
+.fancybox-navigation .fancybox-button--arrow_left{left:0;left:env(safe-area-inset-left);padding:31px 26px 31px 6px}
+.fancybox-navigation .fancybox-button--arrow_right{padding:31px 6px 31px 26px;right:0;right:env(safe-area-inset-right)}
+.fancybox-caption{background:-webkit-gradient(linear,left bottom, left top,color-stop(0, rgba(0,0,0,.85)),color-stop(50%, rgba(0,0,0,.3)),color-stop(65%, rgba(0,0,0,.15)),color-stop(75.5%, rgba(0,0,0,.075)),color-stop(82.85%, rgba(0,0,0,.037)),color-stop(88%, rgba(0,0,0,.019)),to(transparent));background:linear-gradient(0deg,rgba(0,0,0,.85) 0,rgba(0,0,0,.3) 50%,rgba(0,0,0,.15) 65%,rgba(0,0,0,.075) 75.5%,rgba(0,0,0,.037) 82.85%,rgba(0,0,0,.019) 88%,transparent);bottom:0;color:#eee;font-size:14px;font-weight:400;left:0;line-height:1.5;padding:75px 44px 25px;pointer-events:none;right:0;text-align:center;z-index:99996}
+@supports (padding:max(0px)){.fancybox-caption{padding:75px max(44px,env(safe-area-inset-right)) max(25px,env(safe-area-inset-bottom)) max(44px,env(safe-area-inset-left))}}
+.fancybox-caption--separate{margin-top:-50px}
+.fancybox-caption__body{max-height:50vh;overflow:auto;pointer-events:all}
+.fancybox-caption a,.fancybox-caption a:link,.fancybox-caption a:visited{color:#ccc;text-decoration:none}
+.fancybox-caption a:hover{color:#fff;text-decoration:underline}
+.fancybox-loading{-webkit-animation:a 1s linear infinite;animation:a 1s linear infinite;background:transparent;border:4px solid #888;border-bottom-color:#fff;border-radius:50%;height:50px;left:50%;margin:-25px 0 0 -25px;opacity:.7;padding:0;position:absolute;top:50%;width:50px;z-index:99999}
+@-webkit-keyframes a{to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}
+@keyframes a{to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}
+.fancybox-animated{-webkit-transition-timing-function:cubic-bezier(0,0,.25,1);transition-timing-function:cubic-bezier(0,0,.25,1)}
+.fancybox-fx-slide.fancybox-slide--previous{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}
+.fancybox-fx-slide.fancybox-slide--next{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}
+.fancybox-fx-slide.fancybox-slide--current{opacity:1;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.fancybox-fx-fade.fancybox-slide--next,.fancybox-fx-fade.fancybox-slide--previous{opacity:0;-webkit-transition-timing-function:cubic-bezier(.19,1,.22,1);transition-timing-function:cubic-bezier(.19,1,.22,1)}
+.fancybox-fx-fade.fancybox-slide--current{opacity:1}
+.fancybox-fx-zoom-in-out.fancybox-slide--previous{opacity:0;-webkit-transform:scale3d(1.5,1.5,1.5);transform:scale3d(1.5,1.5,1.5)}
+.fancybox-fx-zoom-in-out.fancybox-slide--next{opacity:0;-webkit-transform:scale3d(.5,.5,.5);transform:scale3d(.5,.5,.5)}
+.fancybox-fx-zoom-in-out.fancybox-slide--current{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}
+.fancybox-fx-rotate.fancybox-slide--previous{opacity:0;-webkit-transform:rotate(-1turn);transform:rotate(-1turn)}
+.fancybox-fx-rotate.fancybox-slide--next{opacity:0;-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+.fancybox-fx-rotate.fancybox-slide--current{opacity:1;-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+.fancybox-fx-circular.fancybox-slide--previous{opacity:0;-webkit-transform:scale3d(0,0,0) translate3d(-100%,0,0);transform:scale3d(0,0,0) translate3d(-100%,0,0)}
+.fancybox-fx-circular.fancybox-slide--next{opacity:0;-webkit-transform:scale3d(0,0,0) translate3d(100%,0,0);transform:scale3d(0,0,0) translate3d(100%,0,0)}
+.fancybox-fx-circular.fancybox-slide--current{opacity:1;-webkit-transform:scaleX(1) translateZ(0);transform:scaleX(1) translateZ(0)}
+.fancybox-fx-tube.fancybox-slide--previous{-webkit-transform:translate3d(-100%,0,0) scale(.1) skew(-10deg);transform:translate3d(-100%,0,0) scale(.1) skew(-10deg)}
+.fancybox-fx-tube.fancybox-slide--next{-webkit-transform:translate3d(100%,0,0) scale(.1) skew(10deg);transform:translate3d(100%,0,0) scale(.1) skew(10deg)}
+.fancybox-fx-tube.fancybox-slide--current{-webkit-transform:translateZ(0) scale(1);transform:translateZ(0) scale(1)}
+@media (max-height:576px){.fancybox-slide{padding-left:6px;padding-right:6px}.fancybox-slide--image{padding:6px 0}.fancybox-close-small{right:-6px}.fancybox-slide--image .fancybox-close-small{background:#4e4e4e;color:#f2f4f6;height:36px;opacity:1;padding:6px;right:0;top:0;width:36px}.fancybox-caption{padding-left:12px;padding-right:12px}@supports (padding:max(0px)){.fancybox-caption{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}}}
+.fancybox-share{background:#f4f4f4;border-radius:3px;max-width:90%;padding:30px;text-align:center}
+.fancybox-share h1{color:#222;font-size:35px;font-weight:700;margin:0 0 20px}
+.fancybox-share p{margin:0;padding:0}
+.fancybox-share__button{border:0;border-radius:3px;display:inline-block;font-size:14px;font-weight:700;line-height:40px;margin:0 5px 10px;min-width:130px;padding:0 15px;text-decoration:none;-webkit-transition:all .2s;transition:all .2s;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap}
+.fancybox-share__button:link,.fancybox-share__button:visited{color:#fff}
+.fancybox-share__button:hover{text-decoration:none}
+.fancybox-share__button--fb{background:#3b5998}
+.fancybox-share__button--fb:hover{background:#344e86}
+.fancybox-share__button--pt{background:#bd081d}
+.fancybox-share__button--pt:hover{background:#aa0719}
+.fancybox-share__button--tw{background:#1da1f2}
+.fancybox-share__button--tw:hover{background:#0d95e8}
+.fancybox-share__button svg{height:25px;margin-right:7px;position:relative;top:-1px;vertical-align:middle;width:25px}
+.fancybox-share__button svg path{fill:#fff}
+.fancybox-share__input{background:transparent;border:0;border-bottom:1px solid #d7d7d7;border-radius:0;color:#5d5b5b;font-size:14px;margin:10px 0 0;outline:none;padding:10px 15px;width:100%}
+.fancybox-thumbs{background:#ddd;bottom:0;display:none;margin:0;-webkit-overflow-scrolling:touch;-ms-overflow-style:-ms-autohiding-scrollbar;padding:2px 2px 4px;position:absolute;right:0;-webkit-tap-highlight-color:rgba(0,0,0,0);top:0;width:212px;z-index:99995}
+.fancybox-thumbs-x{overflow-x:auto;overflow-y:hidden}
+.fancybox-show-thumbs .fancybox-thumbs{display:block}
+.fancybox-show-thumbs .fancybox-inner{right:212px}
+.fancybox-thumbs__list{font-size:0;height:100%;list-style:none;margin:0;overflow-x:hidden;overflow-y:auto;padding:0;position:absolute;position:relative;white-space:nowrap;width:100%}
+.fancybox-thumbs-x .fancybox-thumbs__list{overflow:hidden}
+.fancybox-thumbs-y .fancybox-thumbs__list::-webkit-scrollbar{width:7px}
+.fancybox-thumbs-y .fancybox-thumbs__list::-webkit-scrollbar-track{background:#fff;border-radius:10px;box-shadow:inset 0 0 6px rgba(0,0,0,.3)}
+.fancybox-thumbs-y .fancybox-thumbs__list::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:10px}
+.fancybox-thumbs__list a{-webkit-backface-visibility:hidden;backface-visibility:hidden;background-color:rgba(0,0,0,.1);background-position:50%;background-repeat:no-repeat;background-size:cover;cursor:pointer;float:left;height:75px;margin:2px;max-height:calc(100% - 8px);max-width:calc(50% - 4px);outline:none;overflow:hidden;padding:0;position:relative;-webkit-tap-highlight-color:transparent;width:100px}
+.fancybox-thumbs__list a:before{border:6px solid #ff5268;bottom:0;content:"";left:0;opacity:0;position:absolute;right:0;top:0;-webkit-transition:all .2s cubic-bezier(.25,.46,.45,.94);transition:all .2s cubic-bezier(.25,.46,.45,.94);z-index:99991}
+.fancybox-thumbs__list a:focus:before{opacity:.5}
+.fancybox-thumbs__list a.fancybox-thumbs-active:before{opacity:1}
+@media (max-width:576px){.fancybox-thumbs{width:110px}.fancybox-show-thumbs .fancybox-inner{right:110px}.fancybox-thumbs__list a{max-width:calc(100% - 10px)}}
 .content-area {
   max-width: 1080px;
   margin-left: auto;
@@ -954,14 +887,11 @@ object {
   padding: 0;
 
 }
-
 @media (min-width: 630px) {
-
 .content-area--bg-color {
       background-color: rgba(242,243,244,.89)
   }
   }
-
 .content-area--padded-sides {
     max-width: 1080px;
     padding-left: 0px; /* side padding moved to site-main */
@@ -969,7 +899,6 @@ object {
     padding-top: 3rem;
     padding-bottom: 2rem;
   }
-
 .site {
    /*height: 100%; */
    min-height: 100%;
@@ -978,7 +907,6 @@ object {
    margin: 0;
    min-height: 100vh;
  }
-
 .site-header {
 
   /* Set the background to be a bit transparent on mobile  */
@@ -995,9 +923,7 @@ object {
   z-index: 15;
 
 }
-
 @media (min-width: 630px) {
-
 .site-header {
     /* Desktop nav bar will use this offWhite color (will be sticky) */
     background-color: #F2F3F4;
@@ -1005,24 +931,19 @@ object {
 
 }
   }
-
 .site-header--is-expanded {
     border-bottom: 0px solid #414A4C;
   }
-
 .site-header__menu-content--is-visible {
       z-index: 10;
       display: block;
     }
-
 @media (min-width: 630px) {
-
 .site-header__menu-content {
       float: right
 
   }
   }
-
 .site-header__logo {
 
     position: relative;
@@ -1032,9 +953,7 @@ object {
     text-align: right;
     display: none;
   }
-
 @media (min-width: 630px) {
-
 .site-header__logo {
       display: inline-block;
       background-color: #F2F3F4;
@@ -1047,7 +966,6 @@ object {
       z-index: 99
   }
   }
-
 .site-header__logo__image {
       position: relative;
       text-align: center;
@@ -1057,9 +975,7 @@ object {
       border: 0px solid purple;
       display: none;
     }
-
 @media (min-width: 630px) {
-
 .site-header__logo__image {
         display: block;
         margin-top: 10px;
@@ -1073,7 +989,6 @@ object {
         background-size: contain
     }
   }
-
 .site-header__logo__text {
       display: inline-block;
       padding: 10px 40px 10px 40px;
@@ -1084,9 +999,7 @@ object {
       border: 0px solid green;
       display: none;
     }
-
 @media (min-width: 630px) {
-
 .site-header__logo__text {
         display: block;
         padding: 10px 30px 10px 30px;
@@ -1096,11 +1009,9 @@ object {
         z-index: 1
     }
   }
-
 .site-header__logo:hover {
     color: #b38c40;
   }
-
 .mobile-header {
   text-align: center;
   padding: .9rem 0 .9rem 0;
@@ -1113,9 +1024,7 @@ object {
   background-size: 3.3rem auto;
   position: relative;
 }
-
 @media (min-width: 630px) {
-
 .mobile-header {
     margin: 0;
     padding: 0;
@@ -1123,7 +1032,6 @@ object {
     display: none
 }
   }
-
 .mobile-header__text {
     display: inline-block;
     padding: 10px 40px 10px 40px;
@@ -1133,14 +1041,11 @@ object {
     font-weight: 300;
     border: 0px solid green;
   }
-
 @media (min-width: 630px) {
-
 .mobile-header__text {
       display:none
   }
   }
-
 .mobile-header__image {
     position: absolute;
     top:0;
@@ -1153,7 +1058,6 @@ object {
     border: 0px solid purple;
     display: inline-block;
   }
-
 .mobile-header__logo {
     position: relative;
     /* background-color: $offWhite; */
@@ -1164,23 +1068,14 @@ object {
 
 
   }
-
 @media (min-width: 630px) {
-
 .mobile-header__logo {
       display: none
 
 
   }
   }
-
-/*
-@import "modules/_main-navigation";
-@import "modules/_main-navigation-mobile";
-*/
-
 /* Classs for the NAV element; main wrapper around navigation */
-
 .main-navigation {
   margin-top: 0;
   /*background-color: $offWhite;*/
@@ -1191,11 +1086,8 @@ object {
   text-align: center;
   font-size: 0;
 }
-
 /* remove weird space below the inline-block .menu-header-container */
-
 @media (min-width: 630px) {
-
 .main-navigation {
     top: 0px;
     left: 0px;
@@ -1204,9 +1096,7 @@ object {
     background: none
 }
   }
-
 /* Wordpress-generated nav container around top <ul>; align contents of nav list to left */
-
 .menu-header-container {
   display: block;
   text-align: left;
@@ -1217,23 +1107,18 @@ object {
   margin: 0;
   text-transform: uppercase;
 }
-
 @media (min-width: 630px) {
-
 .menu-header-container {
     display: inline-block;
     padding: 0
      /* font-size: calc($navigationFontSize * .85); reset font size after setting to zero in 'main-navigation' */
 }
   }
-
 @media (min-width: 800px) {
-
 .menu-header-container {
     font-size: .8rem  /* reset font size after setting to zero in 'main-navigation' */
 }
   }
-
 .menu a { /* Wordpress-generated class applied to the top-level <ul>; a more specific anchor target, leaves logo text alone */
 
   width: auto;
@@ -1241,20 +1126,17 @@ object {
   margin: 0px 0px;
   padding: 10px 15px;
   border-bottom: 1px solid rgba(0,0,0,.15);
+  text-decoration: none;
 }
-
 @media (min-width: 630px) {
-
 .menu a {
     display: inline-block;
     color: #414A4C;
     padding: 10px 20px 10px 15px; /* Sets padding for the "buttons" in the SUB menus */
     border: 0px solid orange;
-    text-decoration: none;
     width: 200px /* defining a width here is essentially defining a width on sub-menu elements (we'll over-ride this width below for top-level links) */
 }
   }
-
 .main-navigation ul {
   display: none;
   position: static;
@@ -1270,9 +1152,7 @@ object {
   -webkit-padding-start: 0px;
           padding-inline-start: 0px;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation ul {
     display: block;
     margin: 0;
@@ -1280,16 +1160,13 @@ object {
     z-index: 10
 }
   }
-
 .main-navigation ul ul {
   display: none;
   position: static;
   background: none;
   margin-left: 25px;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation ul ul {
     position: absolute; /* want to take sub-menus out of the flow so they doesn't take up vertical space in the parent */
     background-color: #F2F3F4;
@@ -1299,16 +1176,13 @@ object {
     /* margin-top: 2px; to accommodate 2px decoration on hover for top-level nav */
 }
   }
-
 .main-navigation ul ul ul {
   display: none;
   position: static;
   background: none;
   margin-left: 50px;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation ul ul ul {
     position: absolute;
     background-color: #F2F3F4;
@@ -1317,27 +1191,21 @@ object {
     margin-left: auto
 }
   }
-
 .main-navigation > div > ul {
   padding: 0;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation > div > ul {
     border: none
 }
   }
-
 .main-navigation > div > ul > li {
   display: none; /*?*/
   float: none;
   margin-top: 0px;
   position: relative;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation > div > ul > li {
     display: inline-block;
     margin-top: 2px; /* to accommodate 2px decoration on hover for top-level nav */
@@ -1346,18 +1214,14 @@ object {
     border: none
 }
   }
-
 .main-navigation ul li {
   border: 0px solid blue;
   margin-left: 3px; /* to accommodate decoration bar on hover */
 }
-
 .main-navigation ul li:hover {
   background: none;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation ul li:hover {
 
     /* hover color for all list items (effectively SUB-MENU items)...
@@ -1367,13 +1231,10 @@ object {
     box-shadow: -3px 0px 0px 0px #b38c40
 }
   }
-
 .main-navigation > div > ul > li:hover {
   background: none;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation > div > ul > li:hover {
 
     /* over-ride: hover color for top-level menu items
@@ -1383,88 +1244,66 @@ object {
     box-shadow: 0px -2px 0px 0px #b38c40
 }
   }
-
 /* This line will activate submenu on hover */
-
 /* To require dropdown click to expose submenu, remove this bit below */
-
 @media (min-width: 630px) {
-
 .main-navigation li:hover > ul {
     display: block
 }
   }
-
 .main-navigation ul ul li {
   position: relative; /* to accommodate a possible sub-menu and will allow positioning of drop-down arrows within <li> */
 }
-
 .main-navigation > div > ul > li > a {
   padding: 10px 15px;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation > div > ul > li > a {
     width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 15px 10px 15px /* Sets default padding for top-level menu "buttons" */
 }
   }
-
 @media (min-width: 800px) {
-
 .main-navigation > div > ul > li > a {
     width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 20px 10px 20px /* Sets default padding for top-level menu "buttons" */
 }
   }
-
 .main-navigation > div > ul > li.menu-item-has-children > a {
   padding: 10px 15px;
 }
-
 @media (min-width: 630px) {
-
 .main-navigation > div > ul > li.menu-item-has-children > a {
     width: auto;
     padding: 10px 35px 10px 15px /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
 }
   }
-
 @media (min-width: 800px) {
-
 .main-navigation > div > ul > li.menu-item-has-children > a {
     width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 45px 10px 15px /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
 }
   }
-
 @media (min-width: 1040px) {
-
 .main-navigation > div > ul > li.menu-item-has-children > a {
     width: auto; /* This overrides width for top-level menu buttons (originally defined for sub-menu widths) */
     padding: 10px 55px 10px 15px /* Overrides padding for top-level menu "buttons" with children to accommodate dropdown icon */
 }
   }
-
 .main-navigation ul li a:hover {
   color: #414A4C; /* This overrides global link hover color */
 }
-
 .main-navigation.toggled-on > div > ul {
 	display: block;
 }
-
 .main-navigation.toggled-on > div > ul > li {
   display: block;
   float: none;
   margin-top: 0px;
 }
-
 ul.sub-menu {
   display:none;
 }
-
 ul.sub-menu.toggled-on {
   display:block;
 /*
@@ -1472,7 +1311,6 @@ ul.sub-menu.toggled-on {
     display: none;
   } */
 }
-
 .dropdown-toggle {
 	background-color: transparent;
 	border: 0px solid purple;
@@ -1491,40 +1329,28 @@ ul.sub-menu.toggled-on {
   right: -.3rem;
   z-index: 99;
 }
-
 .dropdown-toggle:hover {
   /* If I want to bring back the hover color...*/
 }
-
 .dropdown-toggle:focus,
 .dropdown-toggle:hover {
   background-color: none;
 	outline: none;
 }
-
 .dropdown-toggle.toggled-on .icon { /* IE 9 */
 	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
 	transform: rotate(-180deg);
 }
-
 /* Below is to rotate chevron when not on mobile (indicates submenu expands to the side) */
-
 @media (min-width: 630px) {
-
 .sub-menu > li > button > span { /* IE 9 */
   	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
   	transform: rotate(-90deg)
 }
   }
-
 .sub-menu > li > button {
   padding: .8rem;
 }
-
-.no-js .js-dependent {
-  display: none;
-}
-
 .menu-toggle {
 	background-color: transparent;
 	border: 0px solid black;
@@ -1543,33 +1369,26 @@ ul.sub-menu.toggled-on {
 	outline: none;
 
 }
-
 @media (min-width: 630px) {
-
 .menu-toggle {
     display: none
 
 }
   }
-
 .menu-toggle:hover,
 .menu-toggle:focus {
 	background-color: transparent;
 	box-shadow: none;
 }
-
 .menu-toggle:focus {
 	outline: none;
 }
-
 .site-banner {
 
   display: none;
 
 }
-
 @media (min-width: 630px) {
-
 .site-banner {
     display: block;
     border-bottom: 5px solid #b38c40;
@@ -1579,14 +1398,12 @@ ul.sub-menu.toggled-on {
 
 }
   }
-
 .site-banner__bg-image {
     display: block;
     background-size: cover;
     height: 250px;
     z-index: 5;
   }
-
 .site-banner__text-content {
     position: absolute;
     padding-top: 88px;
@@ -1597,14 +1414,11 @@ ul.sub-menu.toggled-on {
     width: 100%;
     text-align: center;
   }
-
 @media (min-width: 800px) {
-
 .site-banner__text-content {
       padding-top: 60px
   }
   }
-
 .site-banner__title {
     font-weight: 300;
     color: #414A4C;
@@ -1612,23 +1426,18 @@ ul.sub-menu.toggled-on {
     margin: 0;
 
   }
-
 @media (min-width: 630px) {
-
 .site-banner__title {
       font-size: 3.2rem
 
   }
   }
-
 @media (min-width: 800px) {
-
 .site-banner__title {
       font-size: 4.8rem
 
   }
   }
-
 .site-banner__subtitle {
     font-weight: 300;
     color: #414A4C;
@@ -1636,31 +1445,24 @@ ul.sub-menu.toggled-on {
     margin: 0;
 
   }
-
 @media (min-width: 630px) {
-
 .site-banner__subtitle {
       font-size: 1.2rem
 
   }
   }
-
 @media (min-width: 800px) {
-
 .site-banner__subtitle {
       font-size: 2.4rem
 
   }
   }
-
 @media (min-width: 1040px) {
-
 .site-banner__subtitle {
       font-size: 3.2rem
 
   }
   }
-
 .site-banner__description {
     font-weight: 100;
     color: #FFF;
@@ -1671,15 +1473,12 @@ ul.sub-menu.toggled-on {
     margin-right: auto;
 
   }
-
 @media (min-width: 630px) {
-
 .site-banner__description {
       font-size: 1.875rem
 
   }
   }
-
 .site-content {
   padding-top: 3rem; /* Was 69px ?? */
   border: 0px solid purple;
@@ -1698,11 +1497,9 @@ ul.sub-menu.toggled-on {
   }
   */
 }
-
 .site-content--padded-bottom {
     padding-bottom: 18rem;
   }
-
 .site-content--bg-overlay::after {
     background-color: #F2F3F4;
     content: "";
@@ -1714,15 +1511,12 @@ ul.sub-menu.toggled-on {
     min-height: 100vh;
     opacity: 0;
   }
-
 @media (min-width: 630px) {
-
 .site-content--bg-cover {
       background: url(/wp-content/themes/say-hey/img/canvas-background-light.jpg) no-repeat center center fixed;
       background-size: cover
   }
   }
-
 .site-main {
   border: 0px solid blue;
   margin-top: 0rem;
@@ -1730,18 +1524,15 @@ ul.sub-menu.toggled-on {
   opacity: 1;
   margin-left: 20px;
   margin-right: 20px;
-  /*
-  min-height: 100vh;*/
+
 }
-
 @media (min-width: 480px) {
-
 .site-main {
     margin-left: 40px;
     margin-right: 40px
+
 }
   }
-
 .gallery-index-item {
   position: relative;
   display: inline-block;
@@ -1756,9 +1547,7 @@ ul.sub-menu.toggled-on {
   text-align: center;
 
 }
-
 @media (min-width: 480px) {
-
 .gallery-index-item {
     width: 302px;
     margin-bottom: 2.0rem;
@@ -1768,9 +1557,7 @@ ul.sub-menu.toggled-on {
 
 }
   }
-
 @media (min-width: 1040px) {
-
 .gallery-index-item {
     width: 402px;
     margin-bottom: 2.0rem;
@@ -1780,7 +1567,6 @@ ul.sub-menu.toggled-on {
 
 }
   }
-
 .gallery-index-item__shadow-overlay {
     z-index: 5;
     position: absolute;
@@ -1793,11 +1579,9 @@ ul.sub-menu.toggled-on {
     padding: 0;
     margin: 0;
   }
-
 .gallery-index-item__shadow-overlay:hover {
     background-color: rgba(255, 255, 255, 0.4);
   }
-
 .gallery-index-item__text-content {
     z-index: 10;
     width: 100%;
@@ -1816,27 +1600,21 @@ ul.sub-menu.toggled-on {
     background-color: rgba(255, 255, 255, 0.5);
 
   }
-
 @media (min-width: 800px) {
-
 .gallery-index-item__text-content {
       font-size: 1.5rem
 
   }
   }
-
 @media (min-width: 1040px) {
-
 .gallery-index-item__text-content {
       font-size: 1.8rem
 
   }
   }
-
 .gallery-index-item img {
   display: block;
 }
-
 .gallery-index-item hr {
   border: 0;
   background-color: #414A4C;
@@ -1845,11 +1623,9 @@ ul.sub-menu.toggled-on {
   margin-top: 0.15em;
   margin-bottom: 0.15em;
 }
-
 /*
 Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 */
-
 .gallery-thumb {
   position: relative;
   display: inline-block;
@@ -1862,24 +1638,20 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   border: 0px solid black;
   text-align: center;
 }
-
 .gallery-thumb--tiny {
     width: 90px;
     margin-bottom: 1.5rem;
     margin-right: .75rem;
     margin-left: .75rem;
   }
-
 .gallery-thumb--large-single {
     width: 100%;
     max-width: 400px;
     margin: 0;
   }
-
 .gallery-thumb--hidden {
     display: none;
   }
-
 .gallery-thumb__caption {
     z-index: 10;
     font-size: 0.7rem;
@@ -1887,20 +1659,17 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     display: block;
     border: 0px solid yellow;
     opacity: 0.5;
+    -webkit-transition: opacity .75s ease;
     transition: opacity .75s ease;
   }
-
 @media (hover: hover) {
-
 .gallery-thumb__caption {
       opacity: 0
   }
     }
-
 .gallery-thumb__detail-link {
     font-size: 1.15rem;
   }
-
 .gallery-thumb__image {
     padding: 0;
     text-align: center;
@@ -1908,7 +1677,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin: 0;
     position: relative;
   }
-
 .gallery-thumb__shadow-overlay {
     position: absolute;
     top: 0;
@@ -1919,11 +1687,9 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin: 0;
     border: 1px solid rgba(65, 74, 76, 0.8);
   }
-
 .gallery-thumb__shadow-overlay:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
-
 .gallery-thumb__button-explore {
     position: absolute;
     width: 80%;
@@ -1931,7 +1697,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     left: 10%;
     text-align: center;
   }
-
 .gallery-thumb__button-explore a {
     display: inline-block;
     width: 100%;
@@ -1943,22 +1708,18 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     border: solid 2px rgba(179, 140, 64, 0.4);
     background-color: rgba(65, 74, 76, 0.4);
     opacity: 0.75;
+    -webkit-transition: opacity .5s ease;
     transition: opacity .5s ease;
   }
-
 /* This media query detects hover capability (i.e. mouse) */
-
 @media (hover: hover) {
-
 .gallery-thumb__button-explore a {
       opacity: 0
   }
     }
-
 .gallery-thumb__button-explore a:hover {
     background-color: rgba(65, 74, 76, 0.8);
   }
-
 .gallery-thumb__button-expand {
     position: absolute;
     width: 2rem;
@@ -1966,7 +1727,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     right: 5px;
     text-align: center;
   }
-
 .gallery-thumb__button-expand a {
     display: inline-block;
     width: 100%;
@@ -1979,22 +1739,18 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     border: solid 1px rgba(179, 140, 64, 0.4);
     background-color: rgba(65, 74, 76, 0.4);
     opacity: 0.75;
+    -webkit-transition: opacity .5s ease;
     transition: opacity .5s ease;
   }
-
 /* This media query detects hover capability (i.e. mouse) */
-
 @media (hover: hover) {
-
 .gallery-thumb__button-expand a {
       opacity: 0
   }
     }
-
 .gallery-thumb__button-expand a:hover {
     background-color: rgba(65, 74, 76, 0.8);
   }
-
 .gallery-thumb__button-view {
     position: absolute;
     padding: 0;
@@ -2004,7 +1760,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     text-align: center;
     border: 0px solid yellow;
   }
-
 .gallery-thumb__button-view a {
     display: inline-block;
     width: 100%;
@@ -2014,98 +1769,88 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     font-weight: 300;
     border: solid 2px rgba(179, 140, 64, 0.4);
     background-color: rgba(0, 0, 0, 0.4);
+    -webkit-transition: opacity .5s ease;
     transition: opacity .5s ease;
   }
-
 /* This media query detects hover capability (i.e. mouse) */
-
 @media (min-width: 800px) {
-
 .gallery-thumb__button-view a {
       opacity: 0
   }
   }
-
 .gallery-thumb__button-view a:hover {
     background-color: #414A4C;
   }
-
 .gallery-thumb:hover .gallery-thumb__button-explore a {
   opacity: 1;
 }
-
 .gallery-thumb:hover .gallery-thumb__button-expand a {
   opacity: 1;
 }
-
 .gallery-thumb:hover .gallery-thumb__button-view a {
   opacity: 1;
 }
-
 .gallery-thumb:hover .gallery-thumb__caption {
   opacity: 1;
 }
-
+.gallery-thumb .gallery-thumb__button-explore a:focus {
+  opacity: 1;
+}
+.gallery-thumb .gallery-thumb__button-expand a:focus {
+  opacity: 1;
+}
+.gallery-thumb .gallery-thumb__button-view a:focus {
+  opacity: 1;
+}
+.gallery-thumb__caption > a:focus-visible {
+  opacity: 1;
+}
 .gallery-thumb img {
   display: block;
 }
-
 .gallery-thumbs--centered {
   text-align: center;
 }
-
 .gallery-thumb-container {
   margin-top: 2.5rem;
 }
-
 .gallery-thumb-container--tiny {
     margin-top: 1.5rem;
   }
-
 .row::after {
     content: "";
     clear: both;
     display: table;
   }
-
 .row--t-padding  {
     padding-top: 80px;  /* This is to offset the relative positioning of the images in the testimonials section (they overflow 80px above the top of the containing div) */
   }
-
 .row--margins  {
     margin-right: -65px;  /* Basically makes row larger than intended, but effectively removes unnecessary padding on the right, which will be hidden by the overflow property in the wrapper block */
   }
-
 .row--margins-large  {
     margin-right: -100px;  /* Basically makes row larger than intended, but effectively removes unnecessary padding on the right, which will be hidden by the overflow property in the wrapper block */
   }
-
 .row--margins-small {
     margin-right: -45px;
   }
-
 .row--margins > div {    /* Apply to all children that are divs */
     padding-right: 65px;
   }
-
 .row--margins-large > div {    /* Apply to all children that are divs */
     padding-right: 100px;
   }
-
 .row--margins-small > div {    /* Apply to all children that are divs */
     padding-right: 45px;
   }
-
 .row__img-center {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-
 .row__b-margin-until-medium {
     margin-bottom: 1rem;
   }
-
 @media (min-width: 800px) {
 
     .row__b-margin-until-medium {
@@ -2137,7 +1882,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
       width: 63%;
     }
   }
-
 @media (min-width: 1040px) {
 
     .row__b-margin-until-large {
@@ -2169,35 +1913,31 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
       width: 63%;
     }
   }
-
 /* BEGIN EQUAL HEIGHT RULES */
-
 @media (min-width: 800px) {
-
 .row--equal-height-at-medium {
+      display: -webkit-box;
       display: flex
 
   }
   }
-
 .row--equal-height-at-medium > div {
       float: none;
+      display: -webkit-box;
       display: flex;
     }
-
 @media (min-width: 1040px) {
-
 .row--equal-height-at-large {
+      display: -webkit-box;
       display: flex
 
   }
   }
-
 .row--equal-height-at-large > div {
       float: none;
+      display: -webkit-box;
       display: flex;
     }
-
 .flexible {
 
   display: block;
@@ -2207,7 +1947,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   margin-right: auto;
 
 }
-
 .flexible__flex-left {
     display: block;
     width: 80%;
@@ -2217,24 +1956,19 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin-left: auto;
     margin-right: auto;
   }
-
 @media (min-width: 630px) {
-
 .flexible__flex-left {
       display: inline-block;
       width: 50%;
       min-height: 100%
   }
   }
-
 .flexible__flex-left--no-padding {
       padding: 0px;
     }
-
 .flexible__flex-left--left-align {
       text-align: left;
     }
-
 .flexible__flex-right {
     display: block;
     width: 80%;
@@ -2243,28 +1977,23 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin-left: auto;
     margin-right: auto;
   }
-
 @media (min-width: 630px) {
-
 .flexible__flex-right {
       display: inline-block;
       width: 50%;
       min-height: 100%
   }
   }
-
 .flexible__flex-right--left-align {
       text-align: left;
     }
-
 @media (min-width: 630px) {
-
 .flexible {
+    display: -webkit-box;
     display: flex
 
 }
   }
-
 .button {
   /*
   display: inline-block;
@@ -2277,6 +2006,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   */
   background-color: #F2F3F4;
   color: #414A4C;
+  text-decoration: none;
   border: 1px solid #414A4C;
   font-weight: 300;
   display: block;
@@ -2290,9 +2020,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   font-size: 1.2rem;
 
 }
-
 @media (min-width: 630px) {
-
 .button {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -2301,9 +2029,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 }
   }
-
 @media (min-width: 800px) {
-
 .button {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2312,7 +2038,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 }
   }
-
 .button--inline {
     display: inline-block;
     font-size: 1rem;
@@ -2320,7 +2045,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     padding: .5rem 1rem;
     width: auto;
   }
-
 .button--related {
     display: inline-block;
     border-radius: 2px;
@@ -2329,13 +2053,15 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     padding: 0 .5rem;
     width: auto;
   }
-
+.button--selected {
+    background-color: #b38c40;
+    color: #F2F3F4;    
+  }
 .button:hover {
   background-color: #b38c40;
   color: #F2F3F4;
   border-bottom: 1px solid #414A4C;
 }
-
 .heading {
   margin: .5rem 0 1rem 0;
   font-weight: 300;
@@ -2343,88 +2069,69 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   font-size: 1.8rem;
 
 }
-
 @media (min-width: 630px) {
-
 .heading {
     font-size: 2rem
 
 }
   }
-
 @media (min-width: 800px) {
-
 .heading {
     font-size: 2.4rem
 
 }
   }
-
 .heading__post-type {
     display: inline-block;
     font-size: .8rem;
+    text-decoration: none;
     background-color: #F2F3F4;
     padding: 5px 15px;
-    margin: .5rem 0;
+    margin: .5rem 0 1.5rem 0;
     border: 1px solid rgba(65, 74, 76, 0.7);
   }
-
 .heading__post-type:hover {
     background-color: #b38c40;
     color: #F2F3F4;
     border: 1px solid rgba(65, 74, 76, 0.7);
   }
-
 .heading--small {
     font-size: 1.3rem;
   }
-
 @media (min-width: 630px) {
-
 .heading--small {
       font-size: 1.5rem
   }
   }
-
 .heading--smallest {
     font-size: 1.1rem;
   }
-
 @media (min-width: 630px) {
-
 .heading--smallest {
       font-size: 1.2rem
   }
   }
-
 .heading--centered {
     text-align: center;
   }
-
 .heading--tight {
     margin: 0;
   }
-
 .heading__line {
   width: 75%;
   margin-bottom: 2rem;
 }
-
 .heading__line--full-width {
     width: 100%;
   }
-
 .heading__line--tight-bottom {
     margin-bottom: .5rem;
   }
-
 .heading__line--align-left {
     text-align: left;
     margin-left: 0;
   }
-
 /* SVG Icons base styles */
-
 .icon {
 	display: inline-block;
 	fill: currentColor;
@@ -2434,7 +2141,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 	vertical-align: middle;
 	width: 1em;
 }
-
 .site-footer {
   position: absolute;
 
@@ -2446,13 +2152,11 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   background-color: #F2F3F4;
   text-align: center;
 }
-
 .site-footer__link {
     padding-left: 20px;
     padding-right: 20px;
     border-bottom: 0;
   }
-
 .search-overlay {
   overflow-y: auto;
   overflow-x: hidden;
@@ -2468,31 +2172,27 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   -webkit-transform: scale(1.09);
           transform: scale(1.09);
   transition: opacity .3s, visibility .3s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s, visibility .3s, -webkit-transform .3s;
   transition: opacity .3s, transform .3s, visibility .3s;
   transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
   box-sizing: border-box;
   text-align: center;
 }
-
 .search-overlay__top {
   padding: 1.5rem;
 }
-
 .search-overlay--active {
     visibility: visible;
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
 }
-
 .search-overlay__icon {
   margin: 0 .6rem;
 }
-
 .search-form {
   margin-bottom: 4rem;
 }
-
 .search-term {
   margin-bottom: 1rem;
   margin-right: 1rem;
@@ -2500,21 +2200,17 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   padding: 10px;
   outline: none;
 }
-
 .search-term:focus {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-
 .search-overlay__section-title {
   font-size: 2rem;
 }
-
 .js-search-overlay__close {
   position: absolute;
   top: 1.5rem;
   right: 1rem;
 }
-
 .spinner-loader {
   margin-top: 45px;
   border-radius: 50%;
@@ -2525,7 +2221,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   -webkit-animation: spin 1s infinite linear;
           animation: spin 1s infinite linear;
 }
-
 .search-results__block {
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
@@ -2533,20 +2228,17 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   vertical-align: top;
   margin-top: 0;
 }
-
 .search-results__block-header {
   background-color: #b38c40;
   color: #F2F3F4;
   margin: 0;
   padding: 5px 10px 5px 20px;
 }
-
 .search-results-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .search-result {
   display: block;
   margin: 15px;
@@ -2555,7 +2247,6 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   border-bottom: 0px solid rgba(0, 0, 0, 0.2);
   vertical-align: bottom;
 }
-
 .search-result__image-container {
   display: inline-block;
   padding: 0;
@@ -2564,54 +2255,43 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   padding: 0;
   font-size: 0;
 }
-
 .search-result__image {
   display: inline-block;
   border: 0px solid purple;
 }
-
 .search-result__text {
   display: inline-block;
   padding: 0 10px;
   border: 0px solid black;
   width: calc(100% - 80px);
 }
-
 .search-results__no-results {
   display: block;
   margin: 15px;
   padding: 0;
   text-align: center;
 }
-
 .search-results__nav-icon {
   font-size: calc(.8rem * 1.1);
 }
-
 .search-results__nav-icon a::before {
   font-size: .8rem;
   content: 'Search  ';
 }
-
 @media (min-width: 630px) {
-
 .search-results__nav-icon a::before {
     content: ''
 }
   }
-
 @media (min-width: 630px) {
-
 .search-gutter {
     margin-right: 4rem
 }
   }
-
 input[type=submit].search-submit {
     font-size: 1rem;
     padding: .5rem 1.5rem;
 }
-
 .search-result--fallback {
   position: relative;
   display: inline-block;
@@ -2620,7 +2300,6 @@ input[type=submit].search-submit {
   margin: 2rem;
   padding: 0;
 }
-
 .search-result--fallback__label {
     position: absolute;
     bottom: .75rem;
@@ -2631,7 +2310,6 @@ input[type=submit].search-submit {
     border-radius: 2px;
     color: #F2F3F4;
   }
-
 #login h1 a, .login h1 a {
   background-image: url('/wp-content/themes/say-hey/img/logo-t-full.png');
   background-image: none, url('/wp-content/themes/say-hey/img/logo-t-full.svg');
@@ -2644,33 +2322,30 @@ input[type=submit].search-submit {
   font-size: 20px;
   font-weight: 400;
   line-height: 1.3em;
-  margin: 0 auto 25px;
+  margin: 10 auto 1.5rem;
   padding: 0;
   text-decoration: none;
   text-indent: -9999px;
   outline: 0;
   overflow: hidden;
   display: block;
+  border-bottom: none;
 }
-
 .login label {
   color: #9c968b;
   font-size: 1.2rem;
 }
-
 .login #backtoblog a, .login #nav a {
     text-decoration: none;
     font-size: 0.9rem;
     color: #9c968b;
 }
-
 input[type=checkbox]:checked:before {
-    content: "\f147";
+    content: "\F147";
     margin: -3px 0 0 -4px;
     color: #414A4C;
     border: none;
 }
-
 .login #login_error, .login .message, .login .success {
     border-left: 4px solid #b38c40;
     padding: 12px;
@@ -2679,7 +2354,6 @@ input[type=checkbox]:checked:before {
     background-color: #fff;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
-
 #wp-submit {
   height: 2.5rem;
   line-height: 2rem;
@@ -2693,7 +2367,6 @@ input[type=checkbox]:checked:before {
   box-shadow: none;
   text-shadow: none;
 }
-
 .post-card {
   padding: 0;
   margin: 35px 0;
@@ -2703,37 +2376,29 @@ input[type=checkbox]:checked:before {
   vertical-align: top;
   border: 1px solid rgba(65, 74, 76, .2);
 }
-
 @media (min-width: 630px) {
-
 .post-card {
     width: 250px;
     margin: 35px 17px
 }
   }
-
 @media (min-width: 800px) {
-
 .post-card {
     margin: 35px 30px;
     width: 300px
 }
   }
-
 @media (min-width: 1040px) {
-
 .post-card {
     margin: 40px 30px;
     width: 400px
 }
   }
-
 .post-card__image {
     position:relative;
     display: block;
     width: 100%;
   }
-
 .post-card__type-label {
     position: absolute;
     bottom: .75rem;
@@ -2744,23 +2409,19 @@ input[type=checkbox]:checked:before {
     border-radius: 2px;
     color: #F2F3F4;
   }
-
 .post-card__excerpt {
     display: block;
     width: 100%;
     padding: 10px;
     text-align: left;
   }
-
 .post-card--blank {
     border: 0px;
   }
-
 /*
 This will contain the cards for each post. Mess with text-align and
 padding/margin to tweak how cards flow at different breakpoints
 */
-
 .post-card-container {
   padding: 0px;
   margin: 0;
@@ -2768,60 +2429,46 @@ padding/margin to tweak how cards flow at different breakpoints
   width: 100%;
 
 }
-
 @media (min-width: 630px) {
-
 .post-card-container {
     text-align: center
 
 }
   }
-
 @media (min-width: 800px) {
-
 .post-card-container {
     text-align: center
 
 }
   }
-
 @media (min-width: 1040px) {
-
 .post-card-container {
     text-align: center
 
 }
   }
-
 .post-card-container--align-left {
     text-align: left;
 
   }
-
 @media (min-width: 630px) {
-
 .post-card-container--align-left {
       text-align: left
 
   }
   }
-
 @media (min-width: 800px) {
-
 .post-card-container--align-left {
       text-align: left
 
   }
   }
-
 @media (min-width: 1040px) {
-
 .post-card-container--align-left {
       text-align: left
 
   }
   }
-
 .contact-card {
   display: block;
   margin: 1rem 0;
@@ -2830,17 +2477,14 @@ padding/margin to tweak how cards flow at different breakpoints
   width: 80%;
 
 }
-
 .contact-card__text {
     display: inline-block;
     padding: 0 1rem;
     margin-left: .5rem;
   }
-
 .contact-card__link {
     border-bottom: 0;
   }
-
 .contact-card__container {
   width: 100%;
   padding: 0;
@@ -2848,23 +2492,18 @@ padding/margin to tweak how cards flow at different breakpoints
   font-size: 1.6rem;
   text-align: center;
 }
-
 @media (min-width: 630px) {
-
 .contact-card__container {
     font-size: 1.25rem;
     text-align: left
 }
   }
-
 @media (min-width: 800px) {
-
 .contact-card__container {
     font-size: 1.75rem;
     text-align: left
 }
   }
-
 .contact-card__icon {
   width: 36%;
   height: 36%;
@@ -2882,29 +2521,24 @@ padding/margin to tweak how cards flow at different breakpoints
     padding: 0;
     */
 }
-
 .contact-card__icon:hover {
   color: #b38c40;
   /* background-color: rgba($logoGreyR,$logoGreyG,$logoGreyB,.75); */
 }
-
 .fancybox-caption {
   /*
   font-size: 1.4rem !important;
   font-weight: 300 !important;
   */
 }
-
 .fancybox-bg {
   opacity: 0.97 !important;
 }
-
 .text-block {
   width: 100%;
   text-align: left;
   padding: 0 20px 20px;
 }
-
 .error-404 {
   position: absolute;
   display: block;
@@ -2919,11 +2553,14 @@ padding/margin to tweak how cards flow at different breakpoints
   border-radius: 15px;
   opacity: .83;
 }
-
 .about-photo {
   border-radius: 50%;
 }
-
+.reading {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .artwork-filter {
 
   margin-bottom: 0;
@@ -2932,7 +2569,6 @@ padding/margin to tweak how cards flow at different breakpoints
   border-bottom-color: rgba(65,74,76,.4);
 
 }
-
 .artwork-filter__dropdown {
     display: inline-block;
     font-size: 1rem;
@@ -2953,20 +2589,19 @@ padding/margin to tweak how cards flow at different breakpoints
     appearance: none;
     background-color: #F2F3F4;
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23414A4C%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+      -webkit-gradient(linear, left top, left bottom, from(#ffffff),to(#e5e5e5));
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23414A4C%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
       linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
   }
-
 .artwork-filter__dropdown::-ms-expand {
       display: none;
   }
-
 .artwork-filter__dropdown:hover {
       border-color: #414A4C;
   }
-
 .artwork-filter__dropdown:focus {
     border-color: #b38c40;
     box-shadow: 0 0 1px 1px rgba(65,74,76,.7);
@@ -2974,26 +2609,21 @@ padding/margin to tweak how cards flow at different breakpoints
     color: #414A4C;
     outline: none;
 }
-
 .artwork-filter__dropdown option {
     font-weight:300;
     font-size: 1rem;
     padding: .5rem;
     color: #414A4C;
   }
-
 .filter-buttons {
   margin: 0;
 }
-
 .filter-buttons--bottom-margin {
     margin-bottom: 2.5rem;
   }
-
 .selected-filters {
   margin: 0;
 }
-
 .selected-filters--bottom-margin {
     margin-bottom: 1.5rem;
   }
