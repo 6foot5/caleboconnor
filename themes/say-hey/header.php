@@ -213,6 +213,6 @@ if ($thisType != 'spin') {
   $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
 	//echo $url;
 
-	$allImageSizes = get_intermediate_image_sizes();
-	print_r($allImageSizes);
+	// $allImageSizes = get_intermediate_image_sizes();
+	// print_r($allImageSizes);
 ?>
