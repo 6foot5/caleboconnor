@@ -25,9 +25,9 @@ $children = get_term_children($this_cat->term_id, 'gallery');
 	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
 		<main id="main" class="site-main contents-aligncenter">
 
-			<div class="aligncenter">
+			<div class="contents-aligncenter">
 				<h1 class="heading"><?php echo $sectionHeading; ?></h1>
-				<hr class="heading__line" />
+				<hr class="heading__line heading__line--full-width" />
 			</div>
 
     <?php

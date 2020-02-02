@@ -18,8 +18,15 @@
     max-width: 1080px;
     padding-left: 0px; /* side padding moved to site-main */
     padding-right: 0px;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+
+    @mixin atSmall {
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &--padded-left {
+    padding-left: 20px;
   }
 
 }

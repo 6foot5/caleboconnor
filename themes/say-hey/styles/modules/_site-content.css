@@ -4,7 +4,7 @@
   border: 0px solid purple;
 
   &--padded-bottom {
-    padding-bottom: 18rem;
+    padding-bottom: 10rem;
   }
 
   &--bg-overlay::after {

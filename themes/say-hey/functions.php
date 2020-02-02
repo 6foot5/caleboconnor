@@ -72,6 +72,8 @@ add_filter( 'document_title_parts', 'custom_title' );
 
     add_image_size('medium-small', 500, 500, false); // In case full view of art is wanted in a thumb (no crop)
 
+    // add_image_size('medium-square', 500, 500, true); 
+
     update_option('medium_large_size_w', 1500);
     update_option('medium_large_size_h', 1500);
 

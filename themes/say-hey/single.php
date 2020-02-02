@@ -18,16 +18,18 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
-			$post = get_queried_object();
-			$postType = get_post_type_object(get_post_type($post));
-			//print_r($postType);
-			if ($postType) {
-					echo '<a href="' . get_post_type_archive_link($postType->name) . '" class="heading__post-type">ALL ' . strtoupper(esc_html($postType->labels->menu_name)) . '</a><br />';
-			}
 			?>
 
 			<div class="reading">
 
+			<?php
+				$post = get_queried_object();
+				$postType = get_post_type_object(get_post_type($post));
+				//print_r($postType);
+				if ($postType) {
+						echo '<a href="' . get_post_type_archive_link($postType->name) . '" class="heading__back-link"><i class="fal fa-arrow-left"></i> &nbsp;ALL ' . strtoupper(esc_html($postType->labels->menu_name)) . '</a><br />';
+				}
+			?>
 			<header class="page-header">
 				<?php
 				the_title('<h1 class="heading">','</h1>');
@@ -79,7 +81,7 @@ get_header();
 					<h2 class="heading heading--small">Related Artwork</h2>
 					<hr class="heading__line heading__line--align-left heading__line--full-width" />
 
-					<div class="gallery-thumbs">
+					<div class="gallery-thumbs contents-aligncenter">
 
 					<?php
 					$captionArgs = array('get_spin' => false, 'get_stories' => false, 'get_processes' => false);

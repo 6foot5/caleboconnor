@@ -9,7 +9,7 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area content-area--padded-sides content-area--bg-color">
+	<div id="primary" class="content-area content-area--padded-sides content-area--padded-left content-area--bg-color">
 		<main id="main" class="site-main">
 
 		<?php
@@ -18,18 +18,6 @@ get_header();
 			the_post();
 
 			?>
-
-			<header class="page-header">
-				<?php
-				//$post = get_queried_object();
-				//$postType = get_post_type_object(get_post_type($post));
-				//print_r($postType);
-				if (true) {
-				    //echo '<a href="#" class="heading__post-type js-back js-dependent">Back</a><br />';
-				}
-				//the_title('<h1 class="heading heading--small">','</h1>');
-				?>
-			</header><!-- .page-header -->
 
 			<?php
 
@@ -49,10 +37,22 @@ get_header();
 
 				?>
 
-				<section class="flexible">
-					<div class="flexible__flex-left font-zero">
+				<header class="page-header">
 
-						<a href="#" class="heading__post-type js-back js-dependent">Back</a><br />
+					<div class="contents-aligncenter">
+						<h1 class="heading"><?php echo $work['title']; ?></h1>
+						<hr class="heading__line heading__line--full-width" />
+						<!-- <a href="#" class="heading__back-link  heading__back-link--single-artwork js-back js-dependent"><i class="fal fa-arrow-left"></i></a><br /> -->
+					</div>
+
+
+				</header><!-- .page-header -->
+
+
+
+				<section class="flexible">
+					<div class="flexible__flex-left flexible__flex-left--no-padding font-zero">
+
 						<div class="gallery-thumb gallery-thumb--large-single">
 							<div class="gallery-thumb__image">
 
@@ -64,9 +64,9 @@ get_header();
 										<img
 											class="gallery-thumb__img"
 											alt="<?php echo $work['title']; ?>"
-											src="<?php echo $work['imageSrc']['gallery-category']; ?>">
+											src="<?php echo $work['imageSrc']['medium']; ?>">
 
-		              <div class="gallery-thumb__shadow-overlay">
+		              <div class="gallery-thumb__shadow-overlay gallery-thumb__shadow-overlay--no-border">
 		              </div>
 
 								</a>
@@ -111,7 +111,7 @@ get_header();
 					</div>
 
 					<div class="flexible__flex-right">
-						<h2 class="heading heading--small"><?php echo $work['title']; ?></h2>
+						<h2 class="heading heading--small">About this work</h2>
 						<hr class="heading__line heading__line--tight-bottom" />
 						<?php
 
@@ -149,14 +149,14 @@ get_header();
 					</div>
 				</section>
 
-				<?php
-				if ($work['stories'] || $work['processes']) {
-					echo "<h2 class='heading heading--small'>Behind the Artwork - {$work['title']}</h2>";
-					echo '<hr class="heading__line heading__line--align-left heading__line--full-width" />';
-				}
-				?>
+				<section class="post-card-container contents-aligncenter">
 
-				<section class="post-card-container">
+					<?php
+					if ($work['stories'] || $work['processes']) {
+						echo "<h2 class='heading heading--small'>Behind the Artwork: {$work['title']}</h2>";
+						echo '<hr class="heading__line heading__line--align-left heading__line--full-width" />';
+					}
+					?>
 
 					<?php
 					foreach ($work['stories'] as $story) {

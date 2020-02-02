@@ -13,17 +13,30 @@
     font-size: 2.4rem;
   }
 
-  &__post-type {
+  &__back-link {
+    position: relative;
     display: inline-block;
     font-size: .8rem;
     text-decoration: none;
     background-color: $offWhite;
-    padding: 5px 15px;
-    margin: .5rem 0 1.5rem 0;
+    padding: 5px 25px 5px 23px;
+    margin: .5rem 0 1rem 0;
     border: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.7);
+
+    &--single-artwork {
+      position: absolute;
+      padding: 5px 10px 5px 10px;
+      top: .4rem;
+      left: 0;
+      margin: 0;
+      /* margin: .5rem 0 1.5rem 0; */
+
+      @mixin atSmall {
+      }
+    }
   }
 
-  &__post-type:hover {
+  &__back-link:hover {
     background-color: $logoGold;
     color: $offWhite;
     border: 1px solid rgba($offBlackR, $offBlackG, $offBlackB, 0.7);
@@ -71,4 +84,10 @@
     text-align: left;
     margin-left: 0;
   }
+}
+
+.page-header {
+  position: relative;
+  padding: 0;
+  margin: 0;
 }

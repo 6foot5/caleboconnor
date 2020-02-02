@@ -896,8 +896,15 @@ body.compensate-for-scrollbar{overflow:hidden}
     max-width: 1080px;
     padding-left: 0px; /* side padding moved to site-main */
     padding-right: 0px;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+  }
+@media (min-width: 630px) {
+.content-area--padded-sides {
+      padding-top: 3rem;
+      padding-bottom: 2rem
+  }
+  }
+.content-area--padded-left {
+    padding-left: 20px;
   }
 .site {
    /*height: 100%; */
@@ -1498,7 +1505,7 @@ ul.sub-menu.toggled-on {
   */
 }
 .site-content--padded-bottom {
-    padding-bottom: 18rem;
+    padding-bottom: 10rem;
   }
 .site-content--bg-overlay::after {
     background-color: #F2F3F4;
@@ -1646,7 +1653,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   }
 .gallery-thumb--large-single {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0;
   }
 .gallery-thumb--hidden {
@@ -1687,6 +1694,9 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     margin: 0;
     border: 1px solid rgba(65, 74, 76, 0.8);
   }
+.gallery-thumb__shadow-overlay--no-border {
+      border: 0;
+    }
 .gallery-thumb__shadow-overlay:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
@@ -1945,6 +1955,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 
 }
 .flexible__flex-left {
@@ -1964,7 +1975,7 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
   }
   }
 .flexible__flex-left--no-padding {
-      padding: 0px;
+      padding: 20px 0px;
     }
 .flexible__flex-left--left-align {
       text-align: left;
@@ -2081,16 +2092,27 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
 
 }
   }
-.heading__post-type {
+.heading__back-link {
+    position: relative;
     display: inline-block;
     font-size: .8rem;
     text-decoration: none;
     background-color: #F2F3F4;
-    padding: 5px 15px;
-    margin: .5rem 0 1.5rem 0;
+    padding: 5px 25px 5px 23px;
+    margin: .5rem 0 1rem 0;
     border: 1px solid rgba(65, 74, 76, 0.7);
   }
-.heading__post-type:hover {
+.heading__back-link--single-artwork {
+      position: absolute;
+      padding: 5px 10px 5px 10px;
+      top: .4rem;
+      left: 0;
+      margin: 0;
+    }
+/* margin: .5rem 0 1.5rem 0; */
+@media (min-width: 630px) {
+  }
+.heading__back-link:hover {
     background-color: #b38c40;
     color: #F2F3F4;
     border: 1px solid rgba(65, 74, 76, 0.7);
@@ -2131,6 +2153,11 @@ Buttons on hover adapted from: https://codepen.io/philcheng/pen/YWyYwG
     text-align: left;
     margin-left: 0;
   }
+.page-header {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
 /* SVG Icons base styles */
 .icon {
 	display: inline-block;
@@ -2557,6 +2584,7 @@ padding/margin to tweak how cards flow at different breakpoints
   border-radius: 50%;
 }
 .reading {
+  position: relative;
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
