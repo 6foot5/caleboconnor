@@ -2588,6 +2588,7 @@ padding/margin to tweak how cards flow at different breakpoints
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
+  text-align: left;
 }
 .artwork-filter {
 

@@ -1,4 +1,4 @@
-<div class="reading">
+<!-- <div class="reading"> -->
 
   <?php
 
@@ -6,4 +6,4 @@
 
   ?>
 
-</div>
+<!-- </div> -->

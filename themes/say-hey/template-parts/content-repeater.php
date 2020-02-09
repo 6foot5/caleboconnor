@@ -1,6 +1,6 @@
 
 
-<div class="reading">
+<!-- <div class="reading"> -->
 
 <?php
 
@@ -123,4 +123,4 @@ if( $repeater ) {
 
 }
 ?>
-</div>
+<!-- </div> -->

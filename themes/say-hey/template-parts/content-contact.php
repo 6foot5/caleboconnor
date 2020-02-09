@@ -1,5 +1,5 @@
 
-	<div class="flexible reading">
+	<div class="flexible">
 		<div class="flexible__flex-left flexible__flex-left--left-align search-gutter">
 <?php
 

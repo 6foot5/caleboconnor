@@ -1,6 +1,6 @@
 {
     "key": "group_5d0fe911439f3",
-    "title": "Press Coverage",
+    "title": "Press Coverage (Add, Edit, or Remove Entries Below)",
     "fields": [
         {
             "key": "field_5d2a7f9ce3147",
@@ -124,12 +124,12 @@
         ]
     ],
     "menu_order": 0,
-    "position": "acf_after_title",
+    "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1580076150
+    "modified": 1581219277
 }

@@ -140,7 +140,7 @@ get_header();
 						}
 						if ($work['description']) {
 							//echo '<div class="text-block">';
-							echo $work['description'];
+							echo '<div class="reading">' . $work['description'] . '</div>';
 							//echo '</div>';
 						}
 

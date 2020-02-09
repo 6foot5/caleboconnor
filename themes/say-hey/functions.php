@@ -72,7 +72,7 @@ add_filter( 'document_title_parts', 'custom_title' );
 
     add_image_size('medium-small', 500, 500, false); // In case full view of art is wanted in a thumb (no crop)
 
-    // add_image_size('medium-square', 500, 500, true); 
+    // add_image_size('medium-square', 500, 500, true);
 
     update_option('medium_large_size_w', 1500);
     update_option('medium_large_size_h', 1500);
@@ -391,4 +391,23 @@ END - Show featured image thumbnails in admin post listings
    */
   function sayhey_dashboard_training_widget_render() {
     require get_theme_file_path('/inc/dashboard-training.php');
+  }
+
+
+  /**
+  * Collapse ACF Repeater by default
+  * https://wpster.com/collapse-advanced-custom-fields-repeater-by-default/
+  */
+  add_action('acf/input/admin_head', 'sayhey_acf_repeater_collapse');
+  function sayhey_acf_repeater_collapse() {
+  ?>
+  <style id="sayhey-acf-repeater-collapse">.acf-repeater .acf-table {display:none;}</style>
+  <script type="text/javascript">
+       jQuery(function($) {
+         // $('.acf-repeater .acf-row [data-id^='row-']').addClass('-collapsed');
+            $("[data-id^='row-']").addClass('-collapsed');
+            $('#sayhey-acf-repeater-collapse').detach();
+       });
+  </script>
+  <?php
   }

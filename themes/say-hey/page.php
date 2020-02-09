@@ -75,6 +75,8 @@ get_header();
 
 			<hr class="heading__line" />
 
+			<div class="reading">
+
 			<?php
 
 			// Begin (sub-)page-specific output
@@ -85,12 +87,18 @@ get_header();
 
 				the_post();
 
-				if ( $post_slug == 'statement' ) {
+				// $pageContent = get_the_content();
 
-					get_template_part( 'template-parts/content', 'statement' );
+				if ( get_the_content() ) {
+					the_content();
 				}
 
-				elseif ( 	$post_slug == 'awards' ||
+				// if ( $post_slug == 'statement' ) {
+				// 	get_template_part( 'template-parts/content', 'statement' );
+				// }
+				// else
+
+				if ( 	$post_slug == 'awards' ||
 									$post_slug == 'exhibitions' ||
 									$post_slug == 'press' ) {
 
@@ -105,6 +113,8 @@ get_header();
 			}
 
 			?>
+
+			</div>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

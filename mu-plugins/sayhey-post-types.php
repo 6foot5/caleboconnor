@@ -115,7 +115,7 @@ function sh_cpt() {
         'map_meta_cap' => true,
         'taxonomies' => array('gallery', 'post_tag'),
         'menu_icon' => 'dashicons-art',
-        'menu_position' => 5
+        'menu_position' => 12
     );
 
   // Story post type
@@ -155,7 +155,7 @@ function sh_cpt() {
         'map_meta_cap' => true,
         'taxonomies' => array('categories', 'post_tag'),
         'menu_icon' => 'dashicons-book',
-        'menu_position' => 7
+        'menu_position' => 14
 
     );
 
@@ -196,7 +196,7 @@ function sh_cpt() {
         'map_meta_cap' => true,
         'taxonomies' => array('categories', 'post_tag'),
         'menu_icon' => 'dashicons-lightbulb',
-        'menu_position' => 8
+        'menu_position' => 16
     );
 
     // 360-degree spin post type
@@ -235,7 +235,7 @@ function sh_cpt() {
         'map_meta_cap' => true,
         'taxonomies' => array('categories'),
         'menu_icon' => 'dashicons-image-rotate',
-        'menu_position' => 6
+        'menu_position' => 18
     );
 
 	register_post_type('artwork', $artworkArgs);

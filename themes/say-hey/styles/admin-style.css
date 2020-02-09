@@ -6,7 +6,7 @@
 
 /* add border to the repeater block row */
 .acf-repeater.-block > table > tbody > tr > td {
-  border-top-width: 5px;
+  border-top-width: 2px;
   border-top-color: #046f8a!important;
 }
 /* exclude the first row */
@@ -18,4 +18,10 @@
 .acf-repeater.-block > table > tbody > tr > td .acf-repeater.-block > table > tbody > tr > td {
   border-top-width: 0px;
   border-top-color: #E1E1E1;
+}
+
+.dashboard-video {
+  display: inline-block;
+  padding: 0;
+  margin: 1rem;
 }

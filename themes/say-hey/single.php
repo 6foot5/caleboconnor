@@ -81,7 +81,7 @@ get_header();
 					<h2 class="heading heading--small">Related Artwork</h2>
 					<hr class="heading__line heading__line--align-left heading__line--full-width" />
 
-					<div class="gallery-thumbs contents-aligncenter">
+					<div class="gallery-thumbs">
 
 					<?php
 					$captionArgs = array('get_spin' => false, 'get_stories' => false, 'get_processes' => false);
