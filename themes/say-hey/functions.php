@@ -390,7 +390,8 @@ END - Show featured image thumbnails in admin post listings
    * Create the function to output the contents of your Dashboard Widget.
    */
   function sayhey_dashboard_training_widget_render() {
-    require get_theme_file_path('/inc/dashboard-training.php');
+    echo 'Placeholder';
+    //require get_theme_file_path('/inc/dashboard-training.php');
   }
 
 

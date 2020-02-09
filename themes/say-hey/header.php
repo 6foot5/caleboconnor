@@ -194,6 +194,8 @@ if ($thisType != 'spin') {
 	?>
 
 <?php
+	$siteContentExtraClass = '';
+
 	if ( !is_front_page() && ( !is_404() || ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') ) ) {
 		$siteContentExtraClass .= " site-content--bg-cover site-content--padded-bottom";
 	}
