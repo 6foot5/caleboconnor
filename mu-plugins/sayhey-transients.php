@@ -6,7 +6,7 @@
 */
 
 function sayhey_transient_lifespan() {
-  if( true ) { // for debugging, make this "true" for transients to immediately expire
+  if( false ) { // for debugging, make this "true" for transients to immediately expire
     return 1;
   }
   else {
