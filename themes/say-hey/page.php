@@ -49,7 +49,7 @@ get_header();
 							echo 'About Caleb';
 						} else {
 							$postType = $post->post_title;
-						  $typeName = esc_html($postType->labels->menu_name);
+						  // $typeName = esc_html($postType->labels->menu_name);
 						  echo $postType;
 						}
 				  ?>

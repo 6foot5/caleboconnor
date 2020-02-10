@@ -22,7 +22,8 @@ get_header();
 ?>
 
 <?php
-	$siteMainExtraClass = "";
+	$siteMainExtraClass = '';
+  $contentAreaExtraClass = '';
 	if ($wp->request == 'artwork/gallery' || $wp->request == 'artwork/gallery/') {
     $siteMainExtraClass .= "contents-aligncenter";
     $contentAreaExtraClass .= "content-area--padded-sides content-area--bg-color";

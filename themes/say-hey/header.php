@@ -208,12 +208,14 @@ if ($thisType != 'spin') {
 
 <?php
 }		// Only output visible header if not on a 'spin' type (Magic360)
-?>
 
-
-<?php
-  $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
-	//echo $url;
+	if (isset($_SERVER['HTTP_REFERER'])) {
+		$url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+	}
+	else {
+		$url = '';
+	}
+	// echo $url;
 
 	// $allImageSizes = get_intermediate_image_sizes();
 	// print_r($allImageSizes);
