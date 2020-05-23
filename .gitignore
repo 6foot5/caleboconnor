@@ -8,6 +8,7 @@ themes/twenty*/
 themes/say-hey/_off-cuts/
 themes/say-hey/assets/videos/admintutorial
 themes/say-hey/styles/experiments
+themes/say-hey/styles/fa
 
 # non-code directories
 uploads/**
